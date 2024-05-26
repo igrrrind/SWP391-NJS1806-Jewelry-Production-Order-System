@@ -174,7 +174,7 @@ CREATE TABLE Request_Images (
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY,
     product_stock_id INT NOT NULL,
-    image_url NVARCHAR(255) NOT NULL,
+    gallery_url NVARCHAR(255) NOT NULL,
     alt TEXT,
     FOREIGN KEY (product_id) REFERENCES Product(product_id)
 );
