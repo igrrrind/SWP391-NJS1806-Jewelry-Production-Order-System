@@ -173,7 +173,7 @@ CREATE TABLE Request_Images (
 
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY,
-    product_id INT NOT NULL,
+    product_stock_id INT NOT NULL,
     image_url NVARCHAR(255) NOT NULL,
     alt TEXT,
     FOREIGN KEY (product_id) REFERENCES Product(product_id)
@@ -208,7 +208,7 @@ CREATE TABLE Production_Tracking (
     production_id INT NOT NULL PRIMARY KEY,
     product_id INT NOT NULL,
     start_date DATE NOT NULL,
-    status_id INT NOT NULL,
+    production_status_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
     FOREIGN KEY (status_id) REFERENCES Production_Status(production_status_id)
 );
