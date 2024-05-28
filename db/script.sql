@@ -7,7 +7,7 @@ CREATE TABLE Roles (
     UNIQUE (role_name)
 );
 
-CREATE TABLE [User] (
+CREATE TABLE [User] ( 
     user_id INT NOT NULL PRIMARY KEY,
     email NVARCHAR(50) NOT NULL,
     phone NVARCHAR(50) NOT NULL,
@@ -94,10 +94,12 @@ CREATE TABLE Orders (
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
     order_status NVARCHAR(50) NOT NULL,
-    payment_status NVARCHAR(50) NOT NULL,
+    payment_status_id INT NOT NULL,
     is_shipment BIT NOT NULL,
     is_custom BIT NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id)
+    FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
+
 );
 
 CREATE TABLE Order_Fixed_Items (
@@ -208,6 +210,14 @@ CREATE TABLE Production_Status (
     production_status_id INT NOT NULL PRIMARY KEY,
     status_name VARCHAR(50) NOT NULL
 );
+
+
+CREATE TABLE Payment_Status (
+    payment_status_id INT NOT NULL PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+);
+
+
 
 CREATE TABLE Production_Tracking (
     production_id INT NOT NULL PRIMARY KEY,
