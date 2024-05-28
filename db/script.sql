@@ -106,7 +106,6 @@ CREATE TABLE Order_Fixed_Items (
     order_fixed_item_id INT NOT NULL PRIMARY KEY,
     order_id INT NOT NULL,
     product_stock_id INT NOT NULL,
-    order_date DATE NOT NULL,
     quantity INT NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
@@ -118,7 +117,6 @@ CREATE TABLE Order_Fixed_Items (
 CREATE TABLE Order_Custom_Items (
     order_item_id INT NOT NULL PRIMARY KEY,
     order_id INT NOT NULL,
-    order_date DATE NOT NULL,
     gemstone_id INT NOT NULL,
     metal_id INT NOT NULL,
     size INT,
