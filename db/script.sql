@@ -1,3 +1,6 @@
+
+
+
 CREATE TABLE Roles (
     role_id INT NOT NULL PRIMARY KEY,
     role_name NVARCHAR(50) NOT NULL,
@@ -112,6 +115,7 @@ CREATE TABLE Order_Fixed_Items (
 CREATE TABLE Order_Custom_Items (
     order_item_id INT NOT NULL PRIMARY KEY,
     order_id INT NOT NULL,
+    order_date DATE NOT NULL,
     gemstone_id INT NOT NULL,
     metal_id INT NOT NULL,
     size INT,
