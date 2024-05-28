@@ -102,6 +102,7 @@ CREATE TABLE Orders (
     payment_status_id INT NOT NULL,
     is_shipment BIT NOT NULL,
     is_custom BIT NOT NULL,
+    order_total  DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id),
     FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
 
