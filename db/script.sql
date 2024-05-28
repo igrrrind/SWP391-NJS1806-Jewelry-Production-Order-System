@@ -1,5 +1,5 @@
 
-
+CREATE DATABASE JeweleryORDERPRODUCTION
 
 CREATE TABLE Roles (
     role_id INT NOT NULL PRIMARY KEY,
@@ -74,6 +74,7 @@ CREATE TABLE Product_Stock (
     size INT,
     stock_quantity INT,
     price DECIMAL(10, 2) NOT NULL,
+    gallery_url NVARCHAR(255) NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
     FOREIGN KEY (gemstone_id) REFERENCES Gemstone(gemstone_id),
     FOREIGN KEY (metal_id) REFERENCES Metals(metal_id),
@@ -178,9 +179,9 @@ CREATE TABLE Request_Images (
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY,
     product_stock_id INT NOT NULL,
-    gallery_url NVARCHAR(255) NOT NULL,
+    image_url NVARCHAR(255) NOT NULL,
     alt TEXT,
-    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+    FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id)
 );
 
 
@@ -214,5 +215,5 @@ CREATE TABLE Production_Tracking (
     start_date DATE NOT NULL,
     production_status_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
-    FOREIGN KEY (status_id) REFERENCES Production_Status(production_status_id)
+    FOREIGN KEY (production_status_id) REFERENCES Production_Status(production_status_id)
 );
