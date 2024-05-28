@@ -19,6 +19,11 @@ CREATE TABLE [User] (
     UNIQUE (phone)
 );
 
+CREATE TABLE Payment_Status (
+    payment_status_id INT NOT NULL PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+);
+
 
 CREATE TABLE Customer_Detail (
     customer_id INT NOT NULL PRIMARY KEY,
@@ -97,7 +102,7 @@ CREATE TABLE Orders (
     payment_status_id INT NOT NULL,
     is_shipment BIT NOT NULL,
     is_custom BIT NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id)
+    FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id),
     FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
 
 );
@@ -209,11 +214,6 @@ CREATE TABLE Production_Status (
     status_name VARCHAR(50) NOT NULL
 );
 
-
-CREATE TABLE Payment_Status (
-    payment_status_id INT NOT NULL PRIMARY KEY,
-    status_name VARCHAR(50) NOT NULL
-);
 
 
 
