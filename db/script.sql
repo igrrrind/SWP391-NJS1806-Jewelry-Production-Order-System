@@ -56,7 +56,7 @@ CREATE TABLE Product (
     product_type_id INT NOT NULL,
     product_name NVARCHAR(50) NOT NULL,
     product_description TEXT,
-    inStock BIT NOT NULL,
+    inStock BIT,
     FOREIGN KEY (product_type_id) REFERENCES Product_Types(product_type_id),
     UNIQUE (product_name)
 );
@@ -112,6 +112,7 @@ CREATE TABLE Order_Fixed_Items (
     order_fixed_item_id INT NOT NULL PRIMARY KEY,
     order_id INT NOT NULL,
     product_stock_id INT NOT NULL,
+    product_id INT NOT NULL,
     quantity INT NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
@@ -126,6 +127,7 @@ CREATE TABLE Order_Custom_Items (
     gemstone_id INT NOT NULL,
     metal_id INT NOT NULL,
     size INT,
+    unit_price DECIMAL(10, 2) NOT NULL,
     quantity INT,
     subtotal DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
@@ -162,7 +164,7 @@ CREATE TABLE Design (
     order_custom_id INT NOT NULL,
     order_id INT NOT NULL,
     description TEXT NOT NULL,
-    designated_completion DATE NOT NULL,
+    designated_completion DATE,
     is_completed BIT NOT NULL,
     FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id),
     FOREIGN KEY (order_id) REFERENCES Orders(order_id)
@@ -331,12 +333,12 @@ INSERT INTO Order_Fixed_Items (order_fixed_item_id, order_id, product_stock_id, 
 (5, 5, 5, 1, 400.00, 400.00);
 
 -- Insert order custom items
-INSERT INTO Order_Custom_Items (order_item_id, order_id, gemstone_id, metal_id, size, quantity, subtotal) VALUES 
-(1, 4, 1, 1, 6, 1, 600.00),
-(2, 5, 2, 2, 7, 1, 700.00),
-(3, 1, 3, 3, 8, 1, 800.00),
-(4, 2, 4, 4, 9, 1, 900.00),
-(5, 3, 5, 5, 10, 1, 1000.00);
+INSERT INTO Order_Custom_Items (order_item_id, order_id, gemstone_id, metal_id, size, unit_price, quantity, subtotal) VALUES 
+(1, 4, 1, 1, 6,600.00, 1, 600.00),
+(2, 5, 2, 2, 7,700.00, 1, 700.00),
+(3, 1, 3, 3, 8,800.00, 1, 800.00),
+(4, 2, 4, 4, 9,900.00, 1, 900.00),
+(5, 3, 5, 5, 10,1000.00, 1, 1000.00);
 
 -- Insert transactions
 INSERT INTO Transactions (transaction_id, order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES 
@@ -359,20 +361,6 @@ INSERT INTO Design (design_id, order_custom_id, order_id, description, designate
 (1, 1, 4, 'Custom gold ring with diamond', '2024-12-01', 0),
 (2, 2, 5, 'Custom silver necklace with ruby', '2024-12-02', 0),
 (3, 3, 1, 'Custom platinum earrings with sapphire', '2024-12-03', 0),
-(4, 4, 2, 'Custom titanium bracelet with emerald
-keep generating
-
-ChatGPT
-Certainly! Let's continue generating mock data for the remaining tables:
-
-sql
-Copy code
--- Insert more designs
-INSERT INTO Design (design_id, order_custom_id, order_id, description, designated_completion, is_completed) VALUES 
-(5, 5, 3, 'Custom palladium pendant with amethyst', '2024-12-04', 0),
-(6, 1, 5, 'Custom gold ring with diamond', '2024-12-05', 0),
-(7, 2, 1, 'Custom silver necklace with ruby', '2024-12-06', 0),
-(8, 3, 2, 'Custom platinum earrings with sapphire', '2024-12-07', 0),
 (9, 4, 3, 'Custom titanium bracelet with emerald', '2024-12-08', 0);
 
 -- Insert design images
