@@ -212,7 +212,7 @@ CREATE TABLE Production_Status (
 
 CREATE TABLE Production_Tracking (
     production_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    product_id INT NOT NULL,
+    order_id INT NOT NULL,
     start_date DATE NOT NULL,
     production_status_id INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
