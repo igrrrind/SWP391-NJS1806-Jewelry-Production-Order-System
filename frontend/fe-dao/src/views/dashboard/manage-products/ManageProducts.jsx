@@ -5,6 +5,7 @@ const ManageProductsPage = () => {
 
     const [products, setProducts] = useState([]);
 
+   
     
 
     useEffect(() => {

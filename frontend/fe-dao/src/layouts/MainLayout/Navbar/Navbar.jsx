@@ -1,7 +1,8 @@
 import Logo from '../../../assets/logo.svg';
 import { Button } from "@/components/ui/button"
-import { useNavigate } from 'react-router-dom'; 
-import { Outlet } from 'react-router-dom';
+import { useNavigate,Outlet } from 'react-router-dom'; 
+import { useAuth } from '../../../contexts/AuthContext';
+
 
 
 

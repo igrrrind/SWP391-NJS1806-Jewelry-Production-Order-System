@@ -1,7 +1,20 @@
 import { Gem, Home, ShoppingBag, UsersRound } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../../contexts/AuthContext';
+import { Button } from '@/components/ui/button';
+
 
 const Sidenav = () => {
+
+  const { currentUser, logout } = useAuth();
+
+
+  const handleLogOut = async () => {
+      await logout();
+      navigate("/");
+  }
+  
+
   return (
     <div className="flex h-screen xl:h-screen flex-col p-4 bg-stone-900 text-white min-w-[210px]">
       <div className='h-[50px]'></div>
@@ -32,6 +45,16 @@ const Sidenav = () => {
           </li>
         </ul>
       </nav>
+      {currentUser && (
+        <div className="mt-auto">
+          <Button 
+            onClick={handleLogOut}
+            className=" border-2 border-cyan-50 block w-full py-2.5 px-4 mb-10 rounded transition duration-200 hover:bg-gray-700"
+          >
+            Logout
+          </Button>
+        </div>
+      )}
     </div>
   );
 };
