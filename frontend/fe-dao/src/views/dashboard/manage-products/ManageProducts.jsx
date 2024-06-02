@@ -12,11 +12,10 @@ const ManageProductsPage = () => {
       // Function to fetch order data from the API, map to collumns
       const fetchProducts = async () => {
           try {
-              const response = await fetch('/data.json'); 
+              const response = await fetch('https://localhost:7169/api/Product'); 
               const data = await response.json();
-              const processedData = processData(data);
-              setProducts(processedData);
-              console.log(processedData);
+              setProducts(data);
+              console.log(data);
           } catch (error) {
               console.error('Error fetching resources:', error);
           }
@@ -24,20 +23,6 @@ const ManageProductsPage = () => {
 
       fetchProducts();
       }, []);
-
-      const processData = (data) => {
-        return data.Product.map(product => {
-            const productTypes = data.Product_Types.find(pt => pt.product_type_id === product.product_type_id);
-
-            return {
-                ...product,
-                product_type: productTypes.type_name
-            }
-
-        })
-
-      }
-
 
     return (
         <main className="p-4 xl:flex flex-1 xl:space-x-4">
