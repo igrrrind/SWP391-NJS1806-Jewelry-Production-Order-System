@@ -210,6 +210,14 @@ CREATE TABLE Production_Status (
     status_name VARCHAR(50) NOT NULL
 );
 
+
+CREATE TABLE Payment_Status (
+    payment_status_id INT NOT NULL PRIMARY KEY,
+    status_name VARCHAR(50) NOT NULL
+);
+
+
+
 CREATE TABLE Production_Tracking (
     production_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
@@ -223,5 +231,3 @@ CREATE TABLE Production_Tracking (
 --**NOTE: ONLY INSERT THE DATA YOU NEED, BECASUE YOUR DATABASE BE DIFFERENT FROM THIS ONE (VIEW COMMITS TO SEE CHANGES)
 DROP DATABASE  JeweleryOrderProduction
 
-
--- Insert roles
