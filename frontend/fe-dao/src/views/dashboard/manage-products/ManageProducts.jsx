@@ -12,7 +12,7 @@ const ManageProductsPage = () => {
       // Function to fetch order data from the API, map to collumns
       const fetchProducts = async () => {
           try {
-              const response = await fetch('https://localhost:7169/api/Product'); 
+              const response = await fetch('https://localhost:7169/api/Product/'); 
               const data = await response.json();
               setProducts(data);
               console.log(data);
