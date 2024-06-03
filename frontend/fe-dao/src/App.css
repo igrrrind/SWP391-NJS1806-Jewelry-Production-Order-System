@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.cormorant-sc-light {
+    font-family: "Cormorant SC", serif;
+    font-weight: 300;
+    font-style: normal;
+  }
+  
+  .cormorant-sc-regular {
+    font-family: "Cormorant SC", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .cormorant-sc-medium {
+    font-family: "Cormorant SC", serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+  
+  .cormorant-sc-semibold {
+    font-family: "Cormorant SC", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+  
+  .cormorant-sc-bold {
+    font-family: "Cormorant SC", serif;
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  .login-container{
+    width: 450px;
+  } 
+  

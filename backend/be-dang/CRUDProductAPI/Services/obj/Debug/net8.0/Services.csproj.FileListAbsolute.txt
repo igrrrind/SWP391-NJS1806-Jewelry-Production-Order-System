@@ -1,0 +1,15 @@
+/Users/nguyenwin/dev/CRUDProductAPI/Services/bin/Debug/net8.0/Services.deps.json
+/Users/nguyenwin/dev/CRUDProductAPI/Services/bin/Debug/net8.0/Services.dll
+/Users/nguyenwin/dev/CRUDProductAPI/Services/bin/Debug/net8.0/Services.pdb
+/Users/nguyenwin/dev/CRUDProductAPI/Services/bin/Debug/net8.0/Repositories.dll
+/Users/nguyenwin/dev/CRUDProductAPI/Services/bin/Debug/net8.0/Repositories.pdb
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.csproj.AssemblyReference.cache
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.AssemblyInfoInputs.cache
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.AssemblyInfo.cs
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.csproj.CoreCompileInputs.cache
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.csproj.Up2Date
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.dll
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/refint/Services.dll
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/Services.pdb
+/Users/nguyenwin/dev/CRUDProductAPI/Services/obj/Debug/net8.0/ref/Services.dll
