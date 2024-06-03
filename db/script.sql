@@ -7,8 +7,6 @@ CREATE TABLE Roles (
     UNIQUE (role_name)
 );
 
-
-
 CREATE TABLE [User] ( 
     uid NVARCHAR(50) NOT NULL PRIMARY KEY, -- Changed from string to NVARCHAR(50)
     email NVARCHAR(50) NOT NULL,
@@ -36,11 +34,6 @@ CREATE TABLE Customer_Detail (
     district_town NVARCHAR(50) NOT NULL,
     FOREIGN KEY (uid) REFERENCES [User](uid),
     UNIQUE (uid)
-);
-
-CREATE TABLE Payment_Status (
-    payment_status_id INT NOT NULL PRIMARY KEY,
-    status_name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE Product_Types (
@@ -165,7 +158,7 @@ CREATE TABLE Design (
     order_id INT NOT NULL,
     description TEXT NOT NULL,
     designated_completion DATE,
-    is_completed BIT NOT NULL,s
+    is_completed BIT NOT NULL,
     FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id),
     FOREIGN KEY (order_id) REFERENCES Orders(order_id)
 );
@@ -218,9 +211,6 @@ CREATE TABLE Production_Status (
 );
 
 
-
-
-
 CREATE TABLE Production_Tracking (
     production_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
@@ -233,4 +223,3 @@ CREATE TABLE Production_Tracking (
 
 --**NOTE: ONLY INSERT THE DATA YOU NEED, BECASUE YOUR DATABASE BE DIFFERENT FROM THIS ONE (VIEW COMMITS TO SEE CHANGES)
 DROP DATABASE  JeweleryOrderProduction
-
