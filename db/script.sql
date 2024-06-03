@@ -74,7 +74,7 @@ CREATE TABLE Product_Stock (
     size INT,
     stock_quantity INT,
     price DECIMAL(10, 2) NOT NULL,
-    gallery_url NVARCHAR(255) NOT NULL,
+    gallery_url NVARCHAR(255),
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
     FOREIGN KEY (gemstone_id) REFERENCES Gemstone(gemstone_id),
     FOREIGN KEY (metal_id) REFERENCES Metals(metal_id),
@@ -166,21 +166,21 @@ CREATE TABLE Design (
 CREATE TABLE Design_Images (
     design_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     design_id INT NOT NULL,
-    image_url NVARCHAR(255) NOT NULL,
+    image_url NVARCHAR(255),
     FOREIGN KEY (design_id) REFERENCES Design(design_id)
 );
 
 CREATE TABLE Request_Images (
     request_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_custom_id INT NOT NULL,
-    image_url NVARCHAR(255) NOT NULL,
+    image_url NVARCHAR(255),
     FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id)
 );
 
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     product_stock_id INT NOT NULL,
-    image_url NVARCHAR(255) NOT NULL,
+    image_url NVARCHAR(255),
     alt TEXT,
     FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id)
 );
