@@ -1,0 +1,93 @@
+{
+    "Roles": [
+      { "role_id": 1, "role_name": "Admin" },
+      { "role_id": 2, "role_name": "Customer" }
+    ],
+    "User": [
+      { "user_id": 1, "email": "admin@example.com", "phone": "1234567890", "password": "adminpass", "created_date": "2024-01-01", "role_id": 1 },
+      { "user_id": 2, "email": "customer@example.com", "phone": "0987654321", "password": "custpass", "created_date": "2024-01-02", "role_id": 2 }
+    ],
+    "Payment_Status": [
+      { "payment_status_id": 1, "status_name": "Paid" },
+      { "payment_status_id": 2, "status_name": "Pending" },
+      { "payment_status_id": 0, "status_name": "Deposited" }    ],
+    "Customer_Detail": [
+      { "customer_id": 1, "user_id": 2, "first_name": "John", "last_name": "Doe", "sex": "Male", "birth_date": "1990-01-01", "address_line": "123 Main St", "province": "Ontario", "district_town": "Toronto" }
+    ],
+    "Product_Types": [
+      { "product_type_id": 1, "type_name": "Ring" },
+      { "product_type_id": 2, "type_name": "Necklace" }
+    ],
+    "Metals": [
+      { "metal_id": 1, "metal_type_name": "Gold" },
+      { "metal_id": 2, "metal_type_name": "Silver" }
+    ],
+    "Product": [
+      { "product_id": 1, "product_type_id": 1, "product_name": "Gold Ring", "product_description": "A beautiful gold ring. A beautiful gold ring.A beautiful gold ring.A beautiful gold ring.A beautiful gold ring.A beautiful gold ring.", "inStock": 1 },
+      { "product_id": 2, "product_type_id": 2, "product_name": "Silver Necklace", "product_description": "A stunning silver necklace.", "inStock": 1 }
+    ],
+    "Gemstone": [
+      { "gemstone_id": 1, "gemstone_type": "Diamond", "gemstone_carat": 2, "color": "White" },
+      { "gemstone_id": 2, "gemstone_type": "Ruby", "gemstone_carat": 3, "color": "Red" }
+    ],
+    "Product_Stock": [
+      { "product_stock_id": 1, "product_id": 1, "gemstone_id": 1, "metal_id": 1, "size": 7, "stock_quantity": 10, "price": 499.99, "gallery_url": "http://example.com/images/gold_ring.jpg" },
+      { "product_stock_id": 2, "product_id": 2, "gemstone_id": 2, "metal_id": 2, "size": null, "stock_quantity": 5, "price": 299.99, "gallery_url": "http://example.com/images/silver_necklace.jpg" }
+    ],
+    "Status": [
+      { "status_id": 1, "status_detail": "Processing" },
+      { "status_id": 2, "status_detail": "Shipped" }
+    ],
+    "Orders": [
+      { "order_id": 1, "customer_id": 1, "order_date": "2024-05-01", "order_status": 1, "payment_status_id": 2, "is_shipment": 0, "is_custom": 0, "order_total": 499.99},
+      { "order_id": 2, "customer_id": 1, "order_date": "2024-05-10", "order_status": 2, "payment_status_id": 1, "is_shipment": 1, "is_custom": 0, "order_total": 499.99  },
+      { "order_id": 3, "customer_id": 1, "order_date": "2024-05-15", "order_status": 1, "payment_status_id": 2, "is_shipment": 0, "is_custom": 1, "order_total": 499.99 },
+      { "order_id": 4, "customer_id": 1, "order_date": "2024-05-20", "order_status": 2, "payment_status_id": 1, "is_shipment": 1, "is_custom": 1, "order_total": 499.99 },
+      { "order_id": 5, "customer_id": 1, "order_date": "2024-05-25", "order_status": 1, "payment_status_id": 2, "is_shipment": 0, "is_custom": 0, "order_total": 499.99 }
+    ],
+    "Order_Fixed_Items": [
+      { "order_fixed_item_id": 1, "order_id": 1, "product_stock_id": 1, "quantity": 1, "unit_price": 499.99, "subtotal": 499.99 },
+      { "order_fixed_item_id": 2, "order_id": 2, "product_stock_id": 2, "quantity": 2, "unit_price": 299.99, "subtotal": 599.98 },
+      { "order_fixed_item_id": 3, "order_id": 5, "product_stock_id": 1, "quantity": 1, "unit_price": 499.99, "subtotal": 499.99 }
+    ],
+    "Order_Custom_Items": [
+      { "order_item_id": 1, "order_id": 3, "gemstone_id": 1, "metal_id": 1, "size": 7, "quantity": 1, "subtotal": 599.99 },
+      { "order_item_id": 2, "order_id": 4, "gemstone_id": 2, "metal_id": 2, "size": 8, "quantity": 1, "subtotal": 699.99 }
+    ],
+    "Transactions": [
+      { "transaction_id": 1, "order_id": 1, "transaction_date": "2024-05-02", "transaction_total": 499.99, "payment_type": "Credit Card", "is_deposit": 1 },
+      { "transaction_id": 2, "order_id": 2, "transaction_date": "2024-05-11", "transaction_total": 599.98, "payment_type": "PayPal", "is_deposit": 0 },
+      { "transaction_id": 3, "order_id": 3, "transaction_date": "2024-05-16", "transaction_total": 599.99, "payment_type": "Credit Card", "is_deposit": 1 },
+      { "transaction_id": 4, "order_id": 4, "transaction_date": "2024-05-21", "transaction_total": 699.99, "payment_type": "Bank Transfer", "is_deposit": 0 },
+      { "transaction_id": 5, "order_id": 5, "transaction_date": "2024-05-26", "transaction_total": 499.99, "payment_type": "Credit Card", "is_deposit": 1 }
+    ],
+    "Quote": [
+      { "quote_id": 1, "order_id": 1, "created_date": "2024-05-01", "metal_weight": 5.0, "metal_cost": 200.00, "carat_price": 50.00, "carat_cost": 100.00, "production_cost": 50.00, "quote_total_price": 400.00 }
+    ],
+    "Design": [
+      { "design_id": 1, "order_custom_id": 1, "order_id": 1, "description": "Custom gold ring with diamond", "designated_completion": "2024-06-01", "is_completed": 0 }
+    ],
+    "Design_Images": [
+      { "design_image_id": 1, "design_id": 1, "image_url": "http://example.com/images/design1.jpg" }
+    ],
+    "Request_Images": [
+      { "request_image_id": 1, "order_custom_id": 1, "image_url": "http://example.com/images/request1.jpg" }
+    ],
+    "Product_Images": [
+      { "product_image_id": 1, "product_stock_id": 1, "image_url": "http://example.com/images/product1.jpg", "alt": "Gold Ring" }
+    ],
+    "Shipment": [
+      { "order_id": 1, "shipment_date": "2024-05-05", "shipping_address": "123 Main St", "shipping_province": "Ontario", "shipping_district": "Toronto", "is_shipping": 1, "shipping_fee": 15.00 }
+    ],
+    "Review": [
+      { "review_id": 1, "product_id": 1, "rating": 5, "comment": "Excellent product!" }
+    ],
+    "Production_Status": [
+      { "production_status_id": 1, "status_name": "In Production" },
+      { "production_status_id": 2, "status_name": "Completed" }
+    ],
+    "Production_Tracking": [
+      { "production_id": 1, "product_id": 1, "start_date": "2024-05-01", "production_status_id": 1 }
+    ]
+  }
+  

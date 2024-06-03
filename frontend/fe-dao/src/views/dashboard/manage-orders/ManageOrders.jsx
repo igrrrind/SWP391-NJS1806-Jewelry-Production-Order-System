@@ -49,6 +49,23 @@ const ManageOrdersPage = () => {
       });
     };
 
+    useEffect(() => {
+      // Function to fetch order data from the API, map to collumns
+      const fetchOrderDetails = async () => {
+          if (!selectedOrder) return;
+          try {
+              const response = await fetch('/data.json'); 
+              const data = await response.json();
+              const orderDetails = data.Order_Details.find(o => o.order_id === selectedOrder.order_id)
+              setOrderDetail(orderDetails);
+          } catch (error) {
+              console.error('Error fetching resources:', error);
+          }
+      };
+
+      fetchOrderDetails();
+      }, []);
+
     
 
 
