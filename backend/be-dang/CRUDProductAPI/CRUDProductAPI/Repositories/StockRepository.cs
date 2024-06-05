@@ -1,4 +1,5 @@
-﻿using Repositories.CustomizeObjects;
+﻿using Microsoft.Identity.Client;
+using Repositories.CustomizeObjects;
 using Repositories.Models;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Repositories
         
         public void GetAllStocks()
         {
-            
+            String aaaa;
                             
                             
 
