@@ -45,25 +45,16 @@ import {
 import React, { useState } from 'react';
 import ImageUpload from "@/components/custom/image-upload"
 
-const AddProduct = () => {
-  const [formData, setFormData] = useState({
-    product_id: '',
-    product_type_id: '',
-    product_name: '',
-    product_description: '',
-    inStock: '',
-  });
+const AddProduct = ({product,onSubmit}) => {
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
-  };
+    const [formData, setFormData] = useState({
+      product_id: '',
+      product_type_id: '',
+      product_name: '',
+      product_description: '',
+      inStock: '',
+    });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // You can add your submission logic here
-    console.log(formData);
-  };
   return (
     <Card>
       <CardHeader>
@@ -75,6 +66,7 @@ const AddProduct = () => {
       <CardContent>
 
 
+      <form onSubmit={onSubmit}>
 
         <div className="grid gap-6">
           <div className="grid gap-3">
@@ -122,15 +114,25 @@ const AddProduct = () => {
           <ImageUpload msg="Upload one image file as the product thumbnail"/>
           </div>
 
-
+          <div className="grid gap-3">
+            <Button>Create Product</Button>
+          </div>
 
 
         </div>
+        </form>
       </CardContent>
     </Card>
   );
 };
 
 export default AddProduct;
+
+
+
+
+
+
+
 
 

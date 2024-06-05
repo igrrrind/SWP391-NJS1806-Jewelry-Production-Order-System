@@ -20,6 +20,14 @@ const OrderDetails = ({order,orderDetails}) => {
       );
     }
 
+    if (order.is_custom){
+      return (
+        div
+      )
+    }
+
+
+    if (!order.is_custom)
     return(
         <div>
             <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
