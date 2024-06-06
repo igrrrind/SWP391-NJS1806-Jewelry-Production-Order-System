@@ -1,21 +1,12 @@
+import { zodResolver } from "@hookform/resolvers/zod"
+import { useForm } from "react-hook-form"
+import { z } from "zod"
 
-import {
-  ChevronLeft,
-
-  Image,
-
-  PlusCircle,
-
-  Upload,
-} from "lucide-react"
-
-import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
@@ -28,32 +19,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table"
-import { Textarea } from "@/components/ui/textarea"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
 
+import { Textarea } from "@/components/ui/textarea"
 import React, { useState } from 'react';
 import ImageUpload from "@/components/custom/image-upload"
+import { Form } from "@/components/ui/form"
 
-const AddProduct = ({product,onSubmit}) => {
 
-    const [formData, setFormData] = useState({
-      product_id: '',
-      product_type_id: '',
-      product_name: '',
-      product_description: '',
-      inStock: '',
-    });
+const AddProduct = ({productTypes,onSubmit}) => {
+  const {register, handleSubmit, formState: { errors } } = useForm();
 
   return (
     <Card>
@@ -65,8 +39,8 @@ const AddProduct = ({product,onSubmit}) => {
       </CardHeader>
       <CardContent>
 
-
-      <form onSubmit={onSubmit}>
+      <Form>
+      <form onSubmit={onSubmit(handleSubmit)}>
 
         <div className="grid gap-6">
           <div className="grid gap-3">
@@ -75,27 +49,27 @@ const AddProduct = ({product,onSubmit}) => {
               id="name"
               type="text"
               className="w-full"
-              defaultValue="Gamer Gear Pro Controller"
+              placeholder="Give it a name..."
+              {...register('name', { required: true })}
             />
           </div>
 
 
           <div className="grid gap-3">
-            <Label htmlFor="description">Jewelery Type</Label>
-            <Select>
+            <Label htmlFor="type">Jewelery Type</Label>
+            <Select {...register('type', { required: true })}
+>
                           <SelectTrigger
                             id="type"
                             aria-label="Select Type"
                           >
                             <SelectValue placeholder="Select Type" />
                           </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="Necklace">Necklace</SelectItem>
-                            <SelectItem value="Bracelet">Bracelet</SelectItem>
-                            <SelectItem value="Charm">Charm</SelectItem>
-                            <SelectItem value="Ring">Ring</SelectItem>
-                            <SelectItem value="Earrings">Earrings</SelectItem>
+                          {productTypes.map(type => (
+                          <SelectContent key={type.productTypeId} >                        
+                            <SelectItem value={type.productTypeId}>{type.productTypeName}</SelectItem>       
                           </SelectContent>
+                          ))}
             </Select>
           </div>
 
@@ -105,6 +79,7 @@ const AddProduct = ({product,onSubmit}) => {
               id="description"
               defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
               className="min-h-32"
+              {...register('description', { required: true })}
             />
           </div>
 
@@ -121,6 +96,7 @@ const AddProduct = ({product,onSubmit}) => {
 
         </div>
         </form>
+        </Form>
       </CardContent>
     </Card>
   );

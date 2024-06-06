@@ -108,15 +108,15 @@ const ProductTable = ({products}) => {
            
 
                             {products.map(product => (
-                                <TableRow key={product.product_id}>
-                                    <TableCell>{product.product_id}</TableCell>
-                                    <TableCell className="hidden sm:table-cell">{product.product_name}</TableCell>
+                                <TableRow key={product.productId}>
+                                    <TableCell>{product.productId}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{product.productName}</TableCell>
                                     <TableCell className="hidden sm:table-cell"><img src="https://www.google.com/imgres?q=jewelery&imgurl=http%3A%2F%2Fgiftyet.co.uk%2Fcdn%2Fshop%2Fcollections%2FCustom_925_silver_cat_necklance.jpg%3Fv%3D1691757165&imgrefurl=https%3A%2F%2Fgiftyet.co.uk%2Fcollections%2Fjewelry&docid=2Be1CHXWV-9OJM&tbnid=BU_nxMpu593OOM&vet=12ahUKEwjL3vHtt7KGAxURYvUHHVdfDZ4QM3oECBcQAA..i&w=691&h=692&hcb=2&ved=2ahUKEwjL3vHtt7KGAxURYvUHHVdfDZ4QM3oECBcQAA" /></TableCell>
-                                    <TableCell className="hidden sm:table-cell">{product.product_type}</TableCell>
-                                    <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{product.product_description}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{product.productType}</TableCell>
+                                    <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{product.productDescription}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
-                                        <Badge className="text-xs" variant={product.inStock === 1 ? 'secondary' : 'outline'}>
-                                            {product.inStock? "In Stock" : "Out of Stock"}
+                                        <Badge className="text-xs" variant={product.isActive === 1 ? 'secondary' : 'outline'}>
+                                            {product.isActive? "Active" : "Hidden"}
                                         </Badge>
                                     </TableCell>                                  {/*  <TableCell className="hidden sm:table-cell">{product.sales}</TableCell> */}
                                     
