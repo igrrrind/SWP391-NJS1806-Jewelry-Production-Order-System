@@ -5,6 +5,8 @@ import AddProduct from "./AddProduct";
 export default function AddProductPage() {
     //get all types, all gemstones, all metals
     const [productTypes, setProductTypes] = useState([]);
+    const [isCreated, setIsCreated] = useState(false);
+    
 
     useEffect(() => {
         // Function to fetch product types data from the API, map to collumns
@@ -25,6 +27,7 @@ export default function AddProductPage() {
         axios.put('https://localhost:7169/productTypes', data)
             .then(response => {
                 console.log('Product updated successfully:', response.data);
+                setIsCreated(true);
                 // Handle success (e.g., redirect or display a message)
             })
             .catch(error => {
@@ -37,8 +40,8 @@ export default function AddProductPage() {
 
     return (
         <>
-            <AddProduct productTypes={productTypes} onSubmit={handleSubmit}/>
-          {/*  <AddProductStock  metals={metals} gemstones={gemstones}></AddProductStock> */}
+            <AddProduct productTypes={productTypes} onSubmit={handleSubmit} isSubmitted={isCreated}/>
+            {isCreated &&  <AddProductStock  metals={metals} gemstones={gemstones}></AddProductStock>}
         </>
     )
 }

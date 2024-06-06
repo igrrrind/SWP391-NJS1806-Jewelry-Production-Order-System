@@ -26,7 +26,7 @@ import ImageUpload from "@/components/custom/image-upload"
 import { Form } from "@/components/ui/form"
 
 
-const AddProduct = ({productTypes,onSubmit}) => {
+const AddProduct = ({productTypes,onSubmit,isSubmitted}) => {
   const {register, handleSubmit, formState: { errors } } = useForm();
 
   return (
@@ -41,8 +41,9 @@ const AddProduct = ({productTypes,onSubmit}) => {
 
       <Form>
       <form onSubmit={onSubmit(handleSubmit)}>
-
-        <div className="grid gap-6">
+      <fieldset disabled={isSubmitted}>
+      <div className="grid gap-6">
+        
           <div className="grid gap-3">
             <Label htmlFor="name">Name</Label>
             <Input
@@ -52,6 +53,7 @@ const AddProduct = ({productTypes,onSubmit}) => {
               placeholder="Give it a name..."
               {...register('name', { required: true })}
             />
+            {errors.name && <span>This field is required</span>}
           </div>
 
 
@@ -71,6 +73,7 @@ const AddProduct = ({productTypes,onSubmit}) => {
                           </SelectContent>
                           ))}
             </Select>
+            {errors.type && <span>This field is required</span>}
           </div>
 
           <div className="grid gap-3">
@@ -81,6 +84,7 @@ const AddProduct = ({productTypes,onSubmit}) => {
               className="min-h-32"
               {...register('description', { required: true })}
             />
+            {errors.description && <span>This field is required</span>}
           </div>
 
 
@@ -93,8 +97,8 @@ const AddProduct = ({productTypes,onSubmit}) => {
             <Button>Create Product</Button>
           </div>
 
-
         </div>
+        </fieldset>
         </form>
         </Form>
       </CardContent>
