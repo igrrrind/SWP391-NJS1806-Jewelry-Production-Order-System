@@ -1,0 +1,425 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\SWP1\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\controllers\\designcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\controllers\\designcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\dto\\designdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\dto\\designdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\repositories\\designrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\repositories\\designrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\interface\\idesign.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\interface\\idesign.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\interface\\iorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\interface\\iorder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\dto\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\dto\\orderdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\repositories\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\helper\\mappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\helper\\mappers.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\migrations\\20240605071149_initialdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\migrations\\20240605071149_initialdb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\customerdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\customerdetail.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\design.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\design.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\migrations\\jeweleryorderproduction1contextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\migrations\\jeweleryorderproduction1contextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\designimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\designimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\paymentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\swp1.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\swp1.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\swp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\swp1.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\metal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\metal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\jeweleryorderproduction1context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\jeweleryorderproduction1context.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\models\\gemstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\models\\gemstone.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|d:\\swp1\\swp1\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDFBAC4B-E1EE-4617-99CB-BB08F96657AC}|SWP1\\SWP1.csproj|solutionrelative:swp1\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e506b91c-c606-466a-90a9-123d1d1e12b3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "PaymentStatus.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\PaymentStatus.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\PaymentStatus.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\PaymentStatus.cs",
+              "RelativeToolTip": "SWP1\\Models\\PaymentStatus.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:52:50.009Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Order.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\Order.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\Order.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\Order.cs",
+              "RelativeToolTip": "SWP1\\Models\\Order.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:51:54.232Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "OrderDto.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Dto\\OrderDto.cs",
+              "RelativeDocumentMoniker": "SWP1\\Dto\\OrderDto.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Dto\\OrderDto.cs",
+              "RelativeToolTip": "SWP1\\Dto\\OrderDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:51:47.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "OrderController.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Controllers\\OrderController.cs",
+              "RelativeDocumentMoniker": "SWP1\\Controllers\\OrderController.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Controllers\\OrderController.cs",
+              "RelativeToolTip": "SWP1\\Controllers\\OrderController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAACQAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T15:50:46.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Repositories\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "SWP1\\Repositories\\OrderRepository.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Repositories\\OrderRepository.cs",
+              "RelativeToolTip": "SWP1\\Repositories\\OrderRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-07T14:06:26.422Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "Metal.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\Metal.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\Metal.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\Metal.cs",
+              "RelativeToolTip": "SWP1\\Models\\Metal.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T12:25:23.55Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "Gemstone.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\Gemstone.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\Gemstone.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\Gemstone.cs",
+              "RelativeToolTip": "SWP1\\Models\\Gemstone.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T12:25:20.133Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "SWP1.csproj",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\SWP1.csproj",
+              "RelativeDocumentMoniker": "SWP1\\SWP1.csproj",
+              "ToolTip": "D:\\SWP1\\SWP1\\SWP1.csproj",
+              "RelativeToolTip": "SWP1\\SWP1.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-06T12:10:16.684Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "SWP1\\WeatherForecast.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\WeatherForecast.cs",
+              "RelativeToolTip": "SWP1\\WeatherForecast.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-06T11:56:52.083Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Mappers.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Helper\\Mappers.cs",
+              "RelativeDocumentMoniker": "SWP1\\Helper\\Mappers.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Helper\\Mappers.cs",
+              "RelativeToolTip": "SWP1\\Helper\\Mappers.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAASAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:29:56.956Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DesignDto.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Dto\\DesignDto.cs",
+              "RelativeDocumentMoniker": "SWP1\\Dto\\DesignDto.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Dto\\DesignDto.cs",
+              "RelativeToolTip": "SWP1\\Dto\\DesignDto.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:29:25.591Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DesignController.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Controllers\\DesignController.cs",
+              "RelativeDocumentMoniker": "SWP1\\Controllers\\DesignController.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Controllers\\DesignController.cs",
+              "RelativeToolTip": "SWP1\\Controllers\\DesignController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAiwDQAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:25:59.973Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IDesign.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Interface\\IDesign.cs",
+              "RelativeDocumentMoniker": "SWP1\\Interface\\IDesign.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Interface\\IDesign.cs",
+              "RelativeToolTip": "SWP1\\Interface\\IDesign.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:22:05.358Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "JeweleryOrderProduction1Context.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\JeweleryOrderProduction1Context.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\JeweleryOrderProduction1Context.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\JeweleryOrderProduction1Context.cs",
+              "RelativeToolTip": "SWP1\\Models\\JeweleryOrderProduction1Context.cs",
+              "ViewState": "AQIAAF8AAAAAAAAAAAAUwHwAAABFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:21:12.196Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IOrder.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Interface\\IOrder.cs",
+              "RelativeDocumentMoniker": "SWP1\\Interface\\IOrder.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Interface\\IOrder.cs",
+              "RelativeToolTip": "SWP1\\Interface\\IOrder.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:20:23.936Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DesignRepository.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Repositories\\DesignRepository.cs",
+              "RelativeDocumentMoniker": "SWP1\\Repositories\\DesignRepository.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Repositories\\DesignRepository.cs",
+              "RelativeToolTip": "SWP1\\Repositories\\DesignRepository.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAACMAAAAUAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:19:16.309Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Program.cs",
+              "RelativeDocumentMoniker": "SWP1\\Program.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Program.cs",
+              "RelativeToolTip": "SWP1\\Program.cs",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAAAAMAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:14:59.27Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "SWP1.http",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\SWP1.http",
+              "RelativeDocumentMoniker": "SWP1\\SWP1.http",
+              "ToolTip": "D:\\SWP1\\SWP1\\SWP1.http",
+              "RelativeToolTip": "SWP1\\SWP1.http",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2024-06-05T07:14:58.125Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\appsettings.json",
+              "RelativeDocumentMoniker": "SWP1\\appsettings.json",
+              "ToolTip": "D:\\SWP1\\SWP1\\appsettings.json",
+              "RelativeToolTip": "SWP1\\appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-06-05T07:14:38.862Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "JeweleryOrderProduction1ContextModelSnapshot.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Migrations\\JeweleryOrderProduction1ContextModelSnapshot.cs",
+              "RelativeDocumentMoniker": "SWP1\\Migrations\\JeweleryOrderProduction1ContextModelSnapshot.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Migrations\\JeweleryOrderProduction1ContextModelSnapshot.cs",
+              "RelativeToolTip": "SWP1\\Migrations\\JeweleryOrderProduction1ContextModelSnapshot.cs",
+              "ViewState": "AQIAACUAAAAAAAAAAAAQwBsAAAAuAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:14:29.012Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "20240605071149_InitialDB.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Migrations\\20240605071149_InitialDB.cs",
+              "RelativeDocumentMoniker": "SWP1\\Migrations\\20240605071149_InitialDB.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Migrations\\20240605071149_InitialDB.cs",
+              "RelativeToolTip": "SWP1\\Migrations\\20240605071149_InitialDB.cs",
+              "ViewState": "AQIAAGkBAAAAAAAAAAAQwAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:14:16.674Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "CustomerDetail.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\CustomerDetail.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\CustomerDetail.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\CustomerDetail.cs",
+              "RelativeToolTip": "SWP1\\Models\\CustomerDetail.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:13:06.513Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "DesignImage.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\DesignImage.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\DesignImage.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\DesignImage.cs",
+              "RelativeToolTip": "SWP1\\Models\\DesignImage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAYAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:10:59.298Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Design.cs",
+              "DocumentMoniker": "D:\\SWP1\\SWP1\\Models\\Design.cs",
+              "RelativeDocumentMoniker": "SWP1\\Models\\Design.cs",
+              "ToolTip": "D:\\SWP1\\SWP1\\Models\\Design.cs",
+              "RelativeToolTip": "SWP1\\Models\\Design.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-05T07:10:52.803Z"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
