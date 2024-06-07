@@ -1,31 +1,40 @@
 import Logo from '../../../assets/logo.svg';
 import { Button } from "@/components/ui/button"
-import { useNavigate,Outlet } from 'react-router-dom'; 
+import { useNavigate,Outlet, Link } from 'react-router-dom'; 
 import { useAuth } from '../../../contexts/AuthContext';
+import { useState } from 'react';
+import { ShoppingCartIcon } from 'lucide-react';
 
 
 
 
 const Navbar = () => {
+
+    const [cartItems, setCartItems] = useState(3);
+
     const navigate = useNavigate(); 
     const handleClick = () => navigate('/login'); 
     return (
       <>
           <header className="bg-white shadow-sm font-sans">
-          <div className='bg-stone-900 w-full inline-block h-7'></div>
-          <div className="container mx-auto flex items-center justify-between">
-            <nav className="flex items-center space-x-10 text-sm">
-              <a href="#" className="text-gray-700 hover:text-gray-900">PRODUCTS</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">CUSTOMIZE & PERSONALIZE</a>
-              <a href="#" className="text-gray-700 hover:text-gray-900">OUR BLOG</a>
-            </nav>
 
-            <div className="logo">
-              <img src={Logo} alt="" className='w-24'/>
-            </div>
+          <div className='bg-stone-900 w-full inline-block h-7'></div>
+
+          <div className="container mx-auto items-center grid grid-cols-3">
+          <div>
+            <nav className="flex items-center space-x-10 text-sm">
+              <Link to="/products" className="text-gray-700 hover:text-gray-900">PRODUCTS</Link>
+              <Link href="#" className="text-gray-700 hover:text-gray-900">CUSTOMIZE & PERSONALIZE</Link>
+              <Link href="#" className="text-gray-700 hover:text-gray-900">OUR BLOG</Link>
+            </nav>
+          </div>
+
+          <div className="logo flex justify-center">
+             <Link to="/"><img src={Logo} alt="" className='w-24'/></Link>
+          </div>
 
                 
-            
+          <div className='flex justify-between'>
             <div className="flex items-center space-x-4">
               <div className="relative">
                 <input 
@@ -42,6 +51,18 @@ const Navbar = () => {
               
             </div>
             <Button variant='outline' onClick={handleClick}>Login</Button> 
+
+            <div className="relative hover:cursor-pointer">
+                    <ShoppingCartIcon className="h-8 w-8 text-gray-800" />
+                    {cartItems > 0 && (
+                        <span className="absolute top-0 left-4 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+                            {cartItems}
+                        </span>
+                    )}
+             </div>
+          </div>
+
+            
           </div>
         </header>
         <Outlet/>
@@ -51,4 +72,5 @@ const Navbar = () => {
 
 export default Navbar;
 
+  
   
