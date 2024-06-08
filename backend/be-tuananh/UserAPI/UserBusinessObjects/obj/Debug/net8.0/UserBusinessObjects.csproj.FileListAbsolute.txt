@@ -1,0 +1,14 @@
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\bin\Debug\net8.0\UserBusinessObjects.deps.json
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\bin\Debug\net8.0\UserBusinessObjects.runtimeconfig.json
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\bin\Debug\net8.0\UserBusinessObjects.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\bin\Debug\net8.0\UserBusinessObjects.pdb
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.csproj.AssemblyReference.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.GeneratedMSBuildEditorConfig.editorconfig
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.AssemblyInfoInputs.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.AssemblyInfo.cs
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.csproj.CoreCompileInputs.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\refint\UserBusinessObjects.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.pdb
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\UserBusinessObjects.genruntimeconfig.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserBusinessObjects\obj\Debug\net8.0\ref\UserBusinessObjects.dll

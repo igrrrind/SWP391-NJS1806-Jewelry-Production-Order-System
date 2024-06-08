@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.CustomizeObjects;
+using Repositories.Models;
 using Services;
 
 namespace CRUDProductAPI.Controllers
@@ -12,14 +13,29 @@ namespace CRUDProductAPI.Controllers
     {
         StockService _stockService = new();
         [HttpGet("{id}")]
-        public IActionResult GetAllStocksById(int id)
+        public IActionResult GetAllStocksByProductId(int id)
         {
-            List<ViewStock>? stocksList = _stockService.GetAllStocksById(id);
+            List<ViewStock>? stocksList = _stockService.GetAllStocksByProductId(id);
             if(stocksList == null)
             {
                 return NotFound();
             }
             return Ok(stocksList);
+        }
+
+        [HttpPut("Update")]
+        public IActionResult UpdateProductStock(ProductStock productStock) 
+        {
+            try
+            {
+                _stockService.UpdateProductStock(productStock);
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(new {Success = true, Data = productStock});
+            
         }
     }
 }

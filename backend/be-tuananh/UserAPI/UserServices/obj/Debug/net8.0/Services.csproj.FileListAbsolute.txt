@@ -1,0 +1,15 @@
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.csproj.AssemblyReference.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.GeneratedMSBuildEditorConfig.editorconfig
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.AssemblyInfoInputs.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.AssemblyInfo.cs
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.csproj.CoreCompileInputs.cache
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\bin\Debug\net8.0\Services.deps.json
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\bin\Debug\net8.0\Services.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\bin\Debug\net8.0\Services.pdb
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\bin\Debug\net8.0\Repositories.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\bin\Debug\net8.0\Repositories.pdb
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.csproj.Up2Date
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\refint\Services.dll
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\Services.pdb
+D:\DATA\Code\SWP391\SWP391-NJS1806-Jewelry-Production-Order-System-main\backend\be-tuananh\UserAPI\UserServices\obj\Debug\net8.0\ref\Services.dll

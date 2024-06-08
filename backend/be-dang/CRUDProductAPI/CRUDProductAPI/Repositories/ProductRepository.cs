@@ -80,7 +80,23 @@ namespace Repositories
             
             return viewProduct;
         }
+        //CREATE
+        public void CreateProduct(Product product)
+        {
+            _context = new JeweleryOrderProductionContext();
+            
+            
+            _context.Products.Add(product);
+            _context.SaveChanges();
+        }
 
+        //UPDATE
+        public void UpdateProduct(Product product)
+        {
+            _context = new JeweleryOrderProductionContext();
+            _context.Products.Update(product);
+            _context.SaveChanges();
+        }
 
         
 

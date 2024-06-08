@@ -13,13 +13,13 @@ namespace Repositories
     {
         private JeweleryOrderProductionContext _context = null;
         private OriginalGemstoneRepository _gemstoneRepo = new();
-        public List<ViewStock>? GetAllStocksById(int id)
+        public List<ViewStock>? GetAllStocksByProductId(int id)
         {
             _context = new JeweleryOrderProductionContext();
             var stocksList = from s in _context.ProductStocks
                              join m in _context.Metals
                              on s.MetalId equals m.MetalId
-                             where s.MetalId == id
+                             where s.ProductId == id
                              select new ViewStock()
                              {
                                  ProductStockId = s.ProductStockId,
@@ -44,6 +44,14 @@ namespace Repositories
             });
             return returnList;                
 
+        }
+
+        //UPDATE
+        public void UpdateProductStock(ProductStock productStock)
+        {
+            _context = new JeweleryOrderProductionContext();
+            _context.ProductStocks.Update(productStock);
+            _context.SaveChanges();
         }
     }
 }
