@@ -12,12 +12,37 @@ namespace Repositories
     public class StockRepository
     {
         private JeweleryOrderProductionContext _context = null;
-        
-        public void GetAllStocks()
+        private OriginalGemstoneRepository _gemstoneRepo = new();
+        public List<ViewStock>? GetAllStocksById(int id)
         {
-            String aaaa;
-                            
-                            
+            _context = new JeweleryOrderProductionContext();
+            var stocksList = from s in _context.ProductStocks
+                             join m in _context.Metals
+                             on s.MetalId equals m.MetalId
+                             where s.MetalId == id
+                             select new ViewStock()
+                             {
+                                 ProductStockId = s.ProductStockId,
+                                 ProductId = s.ProductId,
+                                 GemstoneId = s.GemstoneId,
+                                 MetalId = s.MetalId,
+                                 MetalTypeName = m.MetalTypeName,
+                                 Size = s.Size,
+                                 StockQuantity = s.StockQuantity,
+                                 Price = s.Price,
+                                 GalleryUrl = s.GalleryUrl
+                             };
+            List<ViewStock> returnList = stocksList.ToList();
+
+            List<Gemstone> gemstonesList = _gemstoneRepo.GetAllGemstones();
+
+            returnList.ForEach(stock => {
+                Gemstone gemstone = gemstonesList.First(gemstone => gemstone.GemstoneId == stock.GemstoneId);
+                stock.GemstoneType = gemstone.GemstoneType;
+                stock.GemstoneColor = gemstone.Color;
+            
+            });
+            return returnList;                
 
         }
     }

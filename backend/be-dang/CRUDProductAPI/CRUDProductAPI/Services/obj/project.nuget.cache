@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "KkDPmY6K/UI=",
+  "dgSpecHash": "IZ03QBN5EaA=",
   "success": true,
-  "projectFilePath": "C:\\Users\\DEEps\\Downloads\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj",
+  "projectFilePath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\DEEps\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\DEEps\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
