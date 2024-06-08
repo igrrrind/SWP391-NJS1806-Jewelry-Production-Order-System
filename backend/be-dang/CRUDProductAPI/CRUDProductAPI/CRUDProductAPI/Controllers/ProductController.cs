@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Repositories.CustomizeObjects;
+using Repositories.Models;
 using Services;
 
 namespace CRUDProductAPI.Controllers
@@ -11,12 +12,13 @@ namespace CRUDProductAPI.Controllers
     [ApiController]
     public class ProductController : ControllerBase
     {
-
+        ProductService pServices = new ProductService();
+        
 
         [HttpGet]
         public IActionResult GetAllProduct()
         {
-            ProductService pServices = new ProductService();
+            
             List<ViewProduct> products = pServices.GetAllProduct();
             return Ok(products);
         }
@@ -24,7 +26,7 @@ namespace CRUDProductAPI.Controllers
         [HttpGet("Active")]
         public IActionResult GetAllActiveProduct()
         {
-            ProductService pServices = new ProductService();
+            
             List<ViewProduct> products = pServices.GetAllActiveProduct();
             return Ok(products);
         }
@@ -34,7 +36,7 @@ namespace CRUDProductAPI.Controllers
         {
             try
             {
-                ProductService pServices = new ProductService();
+                
                 ViewProduct? product = pServices.GetProductById(id);
                 if (product == null)
                 {
@@ -47,6 +49,62 @@ namespace CRUDProductAPI.Controllers
             {
                 return BadRequest();
             }
+        }
+
+        //CREATE
+        [HttpPost("Create")]
+        public IActionResult CreateProduct(Product product)
+        {
+            try
+            {
+                Product newProduct = new Product()
+                {
+                    ProductName = product.ProductName,
+                    ProductDescription = product.ProductDescription,
+                    ProductTypeId = product.ProductTypeId,
+                    IsActive = product.IsActive
+                };
+                pServices.CreateProduct(newProduct);
+            }
+            catch (Exception ex) 
+            { 
+                return BadRequest(ex.Message);
+            }
+            
+            return Ok();
+        }
+        //UPDATE
+        [HttpPut("Update")]
+        public IActionResult UpdateProduct(Product product)
+        {
+            try
+            {
+                pServices.UpdateProduct(product);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
+            return Ok();
+        }
+
+
+
+        //UPDATE
+
+
+        //GET ALL PRODUCT TYPE
+        [HttpGet("type")]
+        public IActionResult GetAllProductTypes() 
+        {
+            List<ProductType> productTypesList = new List<ProductType>();
+            productTypesList = pServices.GetAllProductTypes();
+            if(productTypesList == null)
+            {
+                return NotFound();
+            }
+            return Ok(productTypesList);
         }
     }
 }
