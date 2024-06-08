@@ -21,13 +21,13 @@ public partial class ProductStock
 
     public string? GalleryUrl { get; set; }
 
-    public virtual Gemstone Gemstone { get; set; } = null!;
+    public virtual Gemstone? Gemstone { get; set; }// = null!;
 
-    public virtual Metal Metal { get; set; } = null!;
+    public virtual Metal? Metal { get; set; }// = null!;
 
     public virtual ICollection<OrderFixedItem> OrderFixedItems { get; set; } = new List<OrderFixedItem>();
 
-    public virtual Product Product { get; set; } = null!;
+    public virtual Product? Product { get; set; }// = null!;
 
     public virtual ICollection<ProductImage> ProductImages { get; set; } = new List<ProductImage>();
 }

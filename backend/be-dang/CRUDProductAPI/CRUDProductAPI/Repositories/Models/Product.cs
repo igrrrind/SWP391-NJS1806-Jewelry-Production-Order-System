@@ -19,7 +19,7 @@ public partial class Product
 
     public virtual ICollection<ProductStock> ProductStocks { get; set; } = new List<ProductStock>();
 
-    public virtual ProductType ProductType { get; set; } = null!;
+    public virtual ProductType? ProductType { get; set; }// = null!;
 
     public virtual ICollection<Review> Reviews { get; set; } = new List<Review>();
 }
