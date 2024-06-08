@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Repositories.CustomizeObjects
 {
-    internal class ViewStock
+    public class ViewStock
     {
         public int ProductStockId { get; set; }
 
@@ -15,8 +15,6 @@ namespace Repositories.CustomizeObjects
         public int GemstoneId { get; set; }
 
         public string GemstoneType { get; set; } = null!;
-
-        public int GemstoneCarat { get; set; }
 
         public string? GemstoneColor { get; set; }
 

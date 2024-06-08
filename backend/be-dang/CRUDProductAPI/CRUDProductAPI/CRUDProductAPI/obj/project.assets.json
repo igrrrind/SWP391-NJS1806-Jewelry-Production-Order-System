@@ -3766,11 +3766,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\DEEps\\Downloads\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI.csproj",
+      "projectUniqueName": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI.csproj",
       "projectName": "CRUDProductAPI",
-      "projectPath": "C:\\Users\\DEEps\\Downloads\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI.csproj",
+      "projectPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI.csproj",
       "packagesPath": "C:\\Users\\DEEps\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\DEEps\\Downloads\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\obj\\",
+      "outputPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\DEEps\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -3788,8 +3788,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\DEEps\\Downloads\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj": {
-              "projectPath": "C:\\Users\\DEEps\\Downloads\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj"
+            "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj": {
+              "projectPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj"
             }
           }
         }
