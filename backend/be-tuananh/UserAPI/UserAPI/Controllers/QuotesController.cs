@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -12,11 +13,13 @@ namespace UserAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    //[EnableCors("AllowAll")]
+
     public class QuotesController : ControllerBase
     {
-        private QuoteServices _context;
+        private QuoteService _context;
 
-        public QuotesController(QuoteServices context)
+        public QuotesController(QuoteService context)
         {
             _context = context;
         }
@@ -77,7 +80,7 @@ namespace UserAPI.Controllers
 
             _context.AddQuote(quote);
 
-            return NoContent();
+            return quote;
         }
 
         // DELETE: api/Quotes/5

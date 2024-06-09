@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj": {}
+    "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj": {}
   },
   "projects": {
-    "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj": {
+    "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
+        "projectUniqueName": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
         "projectName": "UserAPI",
-        "projectPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
+        "projectPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
         "packagesPath": "C:\\Users\\TuanAnh\\.nuget\\packages\\",
-        "outputPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserAPI\\obj\\",
+        "outputPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,8 +33,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj": {
-                "projectPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj"
+              "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj": {
+                "projectPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj"
               }
             }
           }
@@ -92,14 +92,14 @@
         }
       }
     },
-    "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj": {
+    "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj",
+        "projectUniqueName": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj",
+        "projectPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj",
         "packagesPath": "C:\\Users\\TuanAnh\\.nuget\\packages\\",
-        "outputPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserRepositories\\obj\\",
+        "outputPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -187,14 +187,14 @@
         }
       }
     },
-    "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj": {
+    "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj",
+        "projectUniqueName": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj",
         "projectName": "Services",
-        "projectPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj",
+        "projectPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj",
         "packagesPath": "C:\\Users\\TuanAnh\\.nuget\\packages\\",
-        "outputPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserServices\\obj\\",
+        "outputPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -216,8 +216,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj": {
-                "projectPath": "D:\\DATA\\Code\\SWP391\\SWP391-NJS1806-Jewelry-Production-Order-System-main\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj"
+              "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj": {
+                "projectPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\Repositories.csproj"
               }
             }
           }

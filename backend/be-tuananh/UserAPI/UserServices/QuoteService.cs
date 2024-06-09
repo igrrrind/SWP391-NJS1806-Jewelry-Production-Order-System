@@ -9,31 +9,36 @@ using System.Threading.Tasks;
 
 namespace Services
 {
-    public class QuoteServices
+    public class QuoteService
     {
-        private QuoteRepository quoteRepository;
+        private QuoteRepository? quoteRepository = null;
 
         public List<Quote> GetQuotes()
         {
+            quoteRepository = new QuoteRepository();
             return quoteRepository.GetQuotes();
         }
         public Quote? GetQuote(int id)
         {
+            quoteRepository = new QuoteRepository();
             return quoteRepository.GetQuote(id);
         }
 
         public Quote AddQuote(Quote quote)
         {
+            quoteRepository = new QuoteRepository();
             return quoteRepository.AddQuote(quote);
         }
 
         public Quote UpdateQuote(int id, Quote quote)
         {
+            quoteRepository = new QuoteRepository();
             return quoteRepository.UpdateQuote(id, quote);
         }
 
         public void DeleteQuote(int id)
         {
+            quoteRepository = new QuoteRepository();
             quoteRepository.DeleteQuote(id);
 
         }
