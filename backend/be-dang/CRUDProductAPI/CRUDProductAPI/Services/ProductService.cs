@@ -23,9 +23,10 @@ namespace Services
             return _ProductRepo.GetProductById(id);
         }
         //CREATE
-        public void CreateProduct(Product product)
+        public int CreateProduct(Product product)
         { 
             _ProductRepo.CreateProduct(product);
+            return product.ProductId;
         }
 
         //UPDATE

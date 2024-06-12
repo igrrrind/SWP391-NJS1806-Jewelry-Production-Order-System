@@ -50,10 +50,9 @@ namespace CRUDProductAPI.Controllers
                 return BadRequest();
             }
         }
-
-        //CREATE
+        
         [HttpPost("Create")]
-        public IActionResult CreateProduct(Product product)
+        public IActionResult CreateProduct( Product product)
         {
             try
             {
@@ -64,14 +63,14 @@ namespace CRUDProductAPI.Controllers
                     ProductTypeId = product.ProductTypeId,
                     IsActive = product.IsActive
                 };
-                pServices.CreateProduct(newProduct);
+                int productId = pServices.CreateProduct(newProduct); //Call the service method and get the productId
+
+                return Ok(new { productId });  // Return the productId in the response
             }
             catch (Exception ex) 
             { 
                 return BadRequest(ex.Message);
             }
-            
-            return Ok();
         }
         //UPDATE
         [HttpPut("Update")]
