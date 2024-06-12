@@ -170,12 +170,14 @@ CREATE TABLE Design_Images (
     FOREIGN KEY (design_id) REFERENCES Design(design_id)
 );
 
-CREATE TABLE Request_Images (
-    request_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    order_custom_id INT NOT NULL,
-    image_url NVARCHAR(255),
-    FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id)
-);
+CREATE TABLE Request (
+    request_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    order_id INT NOT NULL,    
+    order_custom_id INT,
+    request_description NVARCHAR(MAX) NOT NULL,
+    FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id)    
+)
 
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -219,6 +221,9 @@ CREATE TABLE Production_Tracking (
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
     FOREIGN KEY (production_status_id) REFERENCES Production_Status(production_status_id)
 );
+
+
+
 
 
 --**NOTE: ONLY INSERT THE DATA YOU NEED, BECASUE YOUR DATABASE BE DIFFERENT FROM THIS ONE (VIEW COMMITS TO SEE CHANGES)
@@ -344,12 +349,10 @@ INSERT INTO Design_Images (design_id, image_url) VALUES (3, 'http://example.com/
 INSERT INTO Design_Images (design_id, image_url) VALUES (4, 'http://example.com/design4.jpg');
 INSERT INTO Design_Images (design_id, image_url) VALUES (5, 'http://example.com/design5.jpg');
 
--- Inserting into Request_Images
-INSERT INTO Request_Images (order_custom_id, image_url) VALUES (1, 'http://example.com/request1.jpg');
-INSERT INTO Request_Images (order_custom_id, image_url) VALUES (2, 'http://example.com/request2.jpg');
-INSERT INTO Request_Images (order_custom_id, image_url) VALUES (3, 'http://example.com/request3.jpg');
-INSERT INTO Request_Images (order_custom_id, image_url) VALUES (4, 'http://example.com/request4.jpg');
-INSERT INTO Request_Images (order_custom_id, image_url) VALUES (5, 'http://example.com/request5.jpg');
+-- Inserting into Request
+
+
+
 
 -- Inserting into Product_Images
 INSERT INTO Product_Images (product_stock_id, image_url, alt) VALUES (1, 'http://example.com/product1.jpg', 'Gold Ring');
