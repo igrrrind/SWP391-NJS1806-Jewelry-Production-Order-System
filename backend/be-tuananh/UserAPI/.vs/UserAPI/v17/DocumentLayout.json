@@ -1,7 +1,24 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\quoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\quoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\productiontrackingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\productiontrackingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\userapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\userapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,6 +55,57 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "QuoteRepository.cs",
+              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\QuoteRepository.cs",
+              "RelativeDocumentMoniker": "UserRepositories\\QuoteRepository.cs",
+              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\QuoteRepository.cs",
+              "RelativeToolTip": "UserRepositories\\QuoteRepository.cs",
+              "ViewState": "AQIAACAAAAAAAAAAAAAowDkAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-12T11:52:37.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\UserRepository.cs",
+              "RelativeDocumentMoniker": "UserRepositories\\UserRepository.cs",
+              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\UserRepository.cs*",
+              "RelativeToolTip": "UserRepositories\\UserRepository.cs*",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAQwI0AAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-12T11:52:37.767Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ProductionTrackingRepository.cs",
+              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\ProductionTrackingRepository.cs",
+              "RelativeDocumentMoniker": "UserRepositories\\ProductionTrackingRepository.cs",
+              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\ProductionTrackingRepository.cs",
+              "RelativeToolTip": "UserRepositories\\ProductionTrackingRepository.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-12T10:47:29.308Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserAPI.csproj",
+              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
+              "RelativeDocumentMoniker": "UserAPI\\UserAPI.csproj",
+              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
+              "RelativeToolTip": "UserAPI\\UserAPI.csproj",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-06-12T10:47:24.378Z"
             }
           ]
         }
