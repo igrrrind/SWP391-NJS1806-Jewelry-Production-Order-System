@@ -31,7 +31,16 @@ namespace UserAPI.Controllers
             var list = iUserService.GetAllUsers().ToList();
             return Ok(list);
         }
+        [HttpGet("GetRole{roleId}")]
 
+        public IActionResult GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
+        {
+            if (iUserService.GetAllUsers() == null)
+            {
+                return NotFound();
+            }
+            return Ok(iUserService.GetAllUsersByRole(roleId, pageNumber, pageSize));
+        }
         [HttpGet("Customers")]
         public IActionResult GetCustomers()
         {

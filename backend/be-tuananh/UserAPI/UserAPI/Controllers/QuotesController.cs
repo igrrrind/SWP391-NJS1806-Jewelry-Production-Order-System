@@ -26,9 +26,10 @@ namespace UserAPI.Controllers
 
         // GET: api/Quotes
         [HttpGet]
-        public IActionResult GetQuotes()
+        public IActionResult GetQuotes(int pageNumber, int pageSize)
         {
-            var quoteList = _context.GetQuotes();
+
+            var quoteList = _context.GetQuotes(pageNumber, pageSize);
             return Ok(quoteList);
         }
 
@@ -51,7 +52,7 @@ namespace UserAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutQuote(int id, Quote quote)
         {
-            if (_context.GetQuotes() == null)
+            if (_context.GetQuotes(1, 1000) == null)
             {
                 return NotFound();
             }
@@ -72,7 +73,7 @@ namespace UserAPI.Controllers
         public async Task<ActionResult<Quote>> PostQuote(Quote quote)
         {
             
-            if (_context.GetQuotes() == null)
+            if (_context.GetQuotes(1, 1000) == null)
             {
                 return NotFound();
             }
