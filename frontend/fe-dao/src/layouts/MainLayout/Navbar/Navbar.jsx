@@ -40,7 +40,7 @@ const Navbar = () => {
                 <input 
                   type="text" 
                   placeholder="Search for a product" 
-                  className="border border-gray-300 rounded-full px-4 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500" text-sm
+                  className="border border-gray-300 rounded-full px-4 py-1 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
                 />
                 <button className="absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-500">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

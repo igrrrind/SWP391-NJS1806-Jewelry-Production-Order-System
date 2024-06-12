@@ -8,9 +8,10 @@ import { AuthProvider } from './contexts/AuthContext';
 import AddProductPage from './views/dashboard/manage-products/add-product/AddProductPage';
 import HomePage from './views/home/HomePage';
 import ProductPage from './views/products/ProductsPage';
+import ProductDetailsPage from './views/products/{id}/ProductDetailsPage';
 
 
-const products = {
+const productsPages = {
   rings: {
     title: "Rings",
     description: "Explore our exquisite collection of rings.",
@@ -49,13 +50,15 @@ const App = () => {
         <Route path="/products" element={<MainLayout />}>
               <Route index element={<ProductPage title="Our Products" description="Where else, if not from us" />}/> 
 
-              {Object.entries(products).map(([key, { title, description }]) => (
+              {Object.entries(productsPages).map(([key, { title, description }]) => (
               <Route 
                 key={key} 
                 path={key} 
                 element={<ProductPage title={title} description={description} />} 
               />
             ))}
+               <Route path=":productId/:productName" element={<ProductDetailsPage />} />
+
         </Route>
 
         <Route path="/dashboard" element={<DashboardLayout />}>
