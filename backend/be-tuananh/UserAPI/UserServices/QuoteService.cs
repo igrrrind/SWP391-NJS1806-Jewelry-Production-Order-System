@@ -13,10 +13,10 @@ namespace Services
     {
         private QuoteRepository? quoteRepository = null;
 
-        public List<Quote> GetQuotes()
+        public List<Quote> GetQuotes(int pageNumber, int pageSize)
         {
             quoteRepository = new QuoteRepository();
-            return quoteRepository.GetQuotes();
+            return quoteRepository.GetQuotes(pageNumber, pageSize);
         }
         public Quote? GetQuote(int id)
         {

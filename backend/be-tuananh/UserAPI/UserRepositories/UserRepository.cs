@@ -73,7 +73,25 @@ namespace Repositories
 
             return detailUser;
         }
-
+        public List<DetailUser> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
+        {
+            dbContext = new JeweleryOrderProductionContext();
+            var detailUserList = from u in dbContext.Users
+                                 join r in dbContext.Roles
+                                 on u.RoleId equals r.RoleId
+                                 where u.RoleId == roleId
+                                 select new DetailUser()
+                                 {
+                                     Uid = u.Uid,
+                                     Email = u.Email,
+                                     Phone = u.Phone,
+                                     FirstName = u.FirstName,
+                                     LastName = u.LastName,
+                                     RoleName = r.RoleName
+                                 };
+            var skipNumber = (pageNumber - 1) * pageSize;
+            return detailUserList.ToList().Skip(skipNumber).Take(pageSize).ToList();
+        }
         public User? GetUser(string id)
         {
             dbContext = new JeweleryOrderProductionContext();
