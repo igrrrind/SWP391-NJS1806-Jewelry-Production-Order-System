@@ -1,30 +1,15 @@
 import { useState, useEffect } from 'react';
 import ProductTable from './ProductTable';
+import { useAllProducts } from '@/hooks/productsHooks';
 
 const ManageProductsPage = () => {
 
-    const [products, setProducts] = useState([]);
+    const { products,loading } = useAllProducts();
 
-   
-    
-
-    useEffect(() => {
-      // Function to fetch order data from the API, map to collumns
-      const fetchProducts = async () => {
-          try {
-              const response = await fetch('https://localhost:7169/api/Product/'); 
-              const data = await response.json();
-              setProducts(data);
-              console.log(data);
-          } catch (error) {
-              console.error('Error fetching resources:', error);
-          }
-      };
-
-      fetchProducts();
-      }, []);
+    if (loading) return <div>Loading...</div>;
 
     return (
+        
         <main className="p-4 xl:flex flex-1 xl:space-x-4">
                 <div className="flex-1">
                      <ProductTable products={products} />

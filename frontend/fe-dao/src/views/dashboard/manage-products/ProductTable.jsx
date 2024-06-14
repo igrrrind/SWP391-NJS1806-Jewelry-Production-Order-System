@@ -59,6 +59,7 @@ const ProductTable = ({products}) => {
                             </TableRow>
                         </TableHeader>
                         <TableBody>
+                            {/*
                              <TableRow>
                                     <TableCell>
                                         <div className="font-medium">James Bond</div>
@@ -101,7 +102,7 @@ const ProductTable = ({products}) => {
                                     </TableCell>
                                 </TableRow>
 
-
+    */}
 
                         {/*  mapping orders to table cells*/}
 
@@ -111,7 +112,7 @@ const ProductTable = ({products}) => {
                                 <TableRow key={product.productId}>
                                     <TableCell>{product.productId}</TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productName}</TableCell>
-                                    <TableCell className="hidden sm:table-cell"><img src="https://www.google.com/imgres?q=jewelery&imgurl=http%3A%2F%2Fgiftyet.co.uk%2Fcdn%2Fshop%2Fcollections%2FCustom_925_silver_cat_necklance.jpg%3Fv%3D1691757165&imgrefurl=https%3A%2F%2Fgiftyet.co.uk%2Fcollections%2Fjewelry&docid=2Be1CHXWV-9OJM&tbnid=BU_nxMpu593OOM&vet=12ahUKEwjL3vHtt7KGAxURYvUHHVdfDZ4QM3oECBcQAA..i&w=691&h=692&hcb=2&ved=2ahUKEwjL3vHtt7KGAxURYvUHHVdfDZ4QM3oECBcQAA" /></TableCell>
+                                    <TableCell className="hidden sm:table-cell"> {/* <FireBaseImage path={products/thumbnail/{url converter}} alt={product.productnName} */} thumbnail</TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productType}</TableCell>
                                     <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{product.productDescription}</TableCell>
                                     <TableCell className="hidden sm:table-cell">

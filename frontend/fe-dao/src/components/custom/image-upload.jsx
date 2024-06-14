@@ -1,16 +1,17 @@
-"use client";
-
 import React, { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
 import {
   ref,
   uploadBytesResumable,
   getDownloadURL,
+  deleteObject,
 } from "firebase/storage";
 import { FileImage, X, UploadCloud } from "lucide-react";
 import { Input } from "../ui/input";
 import { ScrollArea } from "../ui/scroll-area";
 import { Progress } from "@radix-ui/react-progress";
+
+import {storage} from '../../services/Firebase'
 
 
 
@@ -19,7 +20,7 @@ const ImageColor = {
   fillColor: "fill-purple-600",
 };
 
-export default function ImageUpload({msg}) {
+export default function ImageUpload({msg,uploadPath,uploadFileName}) {
   const [uploadedFile, setUploadedFile] = useState(null);
   const [fileToUpload, setFileToUpload] = useState(null);
 
@@ -31,7 +32,7 @@ export default function ImageUpload({msg}) {
   };
 
   const uploadFileToFirebase = (file) => {
-    const storageRef = ref(storage, `uploads/${file.name}`);
+    const storageRef = ref(storage, `${uploadPath}/${uploadFileName}.png`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -63,10 +64,22 @@ export default function ImageUpload({msg}) {
     );
   };
 
-  const removeFile = () => {
-    setFileToUpload(null);
-    setUploadedFile(null);
+  const removeFile = async () => {
+    try {
+      // Remove file from Firebase Storage if uploaded
+      if (uploadedFile) {
+        const storageRef = ref(storage, `${uploadPath}/${uploadFileName}.png`);
+        await deleteObject(storageRef);
+      }
+  
+      // Clear uploaded file state
+      setUploadedFile(null);
+      setFileToUpload(null);
+    } catch (error) {
+      console.error("Error removing file from Firebase Storage: ", error);
+    }
   };
+
 
   const onDrop = useCallback(async (acceptedFiles) => {
     const file = acceptedFiles[0];

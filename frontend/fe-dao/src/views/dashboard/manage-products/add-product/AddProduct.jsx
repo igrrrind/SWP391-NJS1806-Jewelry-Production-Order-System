@@ -1,6 +1,4 @@
-import { zodResolver } from "@hookform/resolvers/zod"
-import { useForm } from "react-hook-form"
-import { z } from "zod"
+import { Controller, useForm } from "react-hook-form"
 
 import { Button } from "@/components/ui/button"
 import {
@@ -12,6 +10,7 @@ import {
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+
 import {
   Select,
   SelectContent,
@@ -21,16 +20,16 @@ import {
 } from "@/components/ui/select"
 
 import { Textarea } from "@/components/ui/textarea"
-import React, { useState } from 'react';
 import ImageUpload from "@/components/custom/image-upload"
-import { Form } from "@/components/ui/form"
 
 
-const AddProduct = ({productTypes,onSubmit,isSubmitted}) => {
-  const {register, handleSubmit, formState: { errors } } = useForm();
+const  AddProduct = ({productTypes, onSubmit, isSubmitted}) => {
+
+  //const thumbnailPath = "products/thumbnails"
+  const { register, handleSubmit, control, formState: { errors } } = useForm();
 
   return (
-    <Card>
+    <Card className="w-1/3">
       <CardHeader>
         <CardTitle>Product Details</CardTitle>
         <CardDescription>
@@ -39,80 +38,80 @@ const AddProduct = ({productTypes,onSubmit,isSubmitted}) => {
       </CardHeader>
       <CardContent>
 
-      <Form>
-      <form onSubmit={onSubmit(handleSubmit)}>
+      <form onSubmit={handleSubmit(onSubmit)}>
       <fieldset disabled={isSubmitted}>
       <div className="grid gap-6">
         
           <div className="grid gap-3">
-            <Label htmlFor="name">Name</Label>
+            <Label htmlFor="productName">Name</Label>
             <Input
-              id="name"
+              id="productName"
               type="text"
               className="w-full"
               placeholder="Give it a name..."
-              {...register('name', { required: true })}
+              {...register('productName', { required: true })}
             />
-            {errors.name && <span>This field is required</span>}
+            {errors.name && <span className="text-red-600">This field is required</span>}
           </div>
 
 
           <div className="grid gap-3">
-            <Label htmlFor="type">Jewelery Type</Label>
-            <Select {...register('type', { required: true })}
->
-                          <SelectTrigger
-                            id="type"
-                            aria-label="Select Type"
-                          >
-                            <SelectValue placeholder="Select Type" />
-                          </SelectTrigger>
-                          {productTypes.map(type => (
-                          <SelectContent key={type.productTypeId} >                        
-                            <SelectItem value={type.productTypeId}>{type.productTypeName}</SelectItem>       
-                          </SelectContent>
-                          ))}
-            </Select>
-            {errors.type && <span>This field is required</span>}
+            <Label htmlFor="productTypeId">Jewelery Type</Label>
+            <Controller
+              name="productTypeId"
+              control={control}
+              defaultValue=""
+              rules={{ required: true }}
+              render={({ field }) => (
+                <Select onValueChange={field.onChange} value={field.value}>
+                  <SelectTrigger 
+                    id="productTypeId"     
+                    aria-label="Select Type">
+                    <SelectValue placeholder="Select Type" />
+                  </SelectTrigger>
+
+                  <SelectContent>
+                    {productTypes.map(type => (
+                      <SelectItem key={type.productTypeId} value={type.productTypeId.toString()}>
+                        {type.typeName}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>                     
+              )}
+            />
+            {errors.type && <span className="text-red-600">This field is required</span>}
           </div>
 
           <div className="grid gap-3">
-            <Label htmlFor="description">Description</Label>
+            <Label htmlFor="productDescription">Description</Label>
             <Textarea
-              id="description"
-              defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor, nisl nec ultricies ultricies, nunc nisl ultricies nunc, nec ultricies nunc nisl nec nunc."
+              id="productDescription"
+              placeholder="Provide a detailed description of the product."
               className="min-h-32"
-              {...register('description', { required: true })}
+              {...register('productDescription', { required: true })}
             />
-            {errors.description && <span>This field is required</span>}
+            {errors.description && <span className="text-red-600">This field is required</span>}
           </div>
 
-
+          {/*
           <div className="grid gap-3">
             <Label htmlFor="description">Thumbnail</Label>
-          <ImageUpload msg="Upload one image file as the product thumbnail"/>
-          </div>
+            <ImageUpload msg="Upload one image file as the product thumbnail" uploadPath={thumbnailPath} uploadFileName={}/>
+          </div> */}
 
           <div className="grid gap-3">
-            <Button>Create Product</Button>
+            <Button type="submit">Create Product</Button>
           </div>
+
 
         </div>
         </fieldset>
         </form>
-        </Form>
       </CardContent>
+      
     </Card>
   );
 };
 
 export default AddProduct;
-
-
-
-
-
-
-
-
-
