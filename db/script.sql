@@ -100,6 +100,24 @@ CREATE TABLE Orders (
     FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
 );
 
+DROP TABLE Orders
+
+CREATE TABLE Orders (
+    order_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    customer_id INT NOT NULL,
+    order_date DATE NOT NULL,
+    status_id NVARCHAR(50) NOT NULL,
+    payment_status_id INT NOT NULL,
+    is_shipment BIT NOT NULL,
+    is_custom BIT NOT NULL,
+    order_total DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id),
+    FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
+    FOREIGN KEY (status_id) REFERENCES [Status](status_id)
+);
+
+
+
 CREATE TABLE Order_Fixed_Items (
     order_fixed_item_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
