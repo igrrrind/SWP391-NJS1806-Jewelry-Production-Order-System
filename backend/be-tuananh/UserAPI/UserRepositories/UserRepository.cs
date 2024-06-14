@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Repositories.CustomObjects;
+﻿using Repositories.CustomObjects;
 using Repositories.Models;
 
 namespace Repositories
@@ -27,7 +26,6 @@ namespace Repositories
 
             return detailUserList.ToList();
         }
-
         public List<Customer> GetCustomers()
         {
             dbContext = new JeweleryOrderProductionContext();
@@ -73,7 +71,25 @@ namespace Repositories
 
             return detailUser;
         }
-
+        public List<DetailUser> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
+        {
+            dbContext = new JeweleryOrderProductionContext();
+            var detailUserList = from u in dbContext.Users
+                                 join r in dbContext.Roles
+                                 on u.RoleId equals r.RoleId
+                                 where u.RoleId == roleId
+                                 select new DetailUser()
+                                 {
+                                     Uid = u.Uid,
+                                     Email = u.Email,
+                                     Phone = u.Phone,
+                                     FirstName = u.FirstName,
+                                     LastName = u.LastName,
+                                     RoleName = r.RoleName
+                                 };
+            var skipNumber = (pageNumber - 1) * pageSize;
+            return detailUserList.ToList().Skip(skipNumber).Take(pageSize).ToList();
+        }
         public User? GetUser(string id)
         {
             dbContext = new JeweleryOrderProductionContext();
@@ -106,11 +122,19 @@ namespace Repositories
         public void DeleteUser(string id)
         {
             dbContext = new JeweleryOrderProductionContext();
-            CustomerDetail oDetail = dbContext.CustomerDetails.FirstOrDefault(d => d.Uid.Equals(id));
+            CustomerDetail? oDetail = dbContext.CustomerDetails.FirstOrDefault(d => d.Uid.Equals(id));
+            Order? oOrder = dbContext.Orders.FirstOrDefault(o => o.CustomerId.Equals(id));
             User oUser = GetUser(id);
-            if (oUser != null)
+            if (oOrder != null)
+            {
+                dbContext.Remove(oOrder);
+            }
+            if (oDetail != null)
             {
                 dbContext.Remove(oDetail);
+            }
+            if (oUser != null)
+            {
                 dbContext.Remove(oUser);
                 dbContext.SaveChanges();
             }

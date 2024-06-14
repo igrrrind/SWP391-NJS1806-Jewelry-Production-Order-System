@@ -19,6 +19,10 @@ namespace Services
         {
             return userRepository.GetAllUsers();
         }
+        public List<DetailUser> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
+        {
+            return userRepository.GetAllUsersByRole(roleId, pageNumber, pageSize);
+        }
 
         public List<Customer> GetCustomers()
         {

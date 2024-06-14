@@ -1,4 +1,7 @@
 
+using Services;
+using UserAPI.Controllers;
+
 namespace UserAPI
 {
     public class Program
@@ -7,12 +10,17 @@ namespace UserAPI
         {
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddControllers(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
+            builder.Services.AddScoped<CustomerDetailService>();
+            builder.Services.AddScoped<QuoteService>();
+            builder.Services.AddScoped<ShipmentService>();
+            builder.Services.AddScoped<UserService>();
+            builder.Services.AddScoped<ProductionTrackingService>();
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
-            builder.Services.AddSwaggerGen();
+            builder.Services.AddSwaggerGen();   
 
             var app = builder.Build();
 

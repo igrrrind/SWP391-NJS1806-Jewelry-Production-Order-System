@@ -12,11 +12,13 @@ namespace Repositories
     public class QuoteRepository
     {
         private JeweleryOrderProductionContext dbContext = null;
-        public List<Quote> GetQuotes()
+        public List<Quote> GetQuotes(int pageNumber, int pageSize)
         {
             dbContext = new JeweleryOrderProductionContext();
-            return dbContext.Quotes.ToList();
+            var skipNumber = (pageNumber - 1) * pageSize;
+            return dbContext.Quotes.ToList().Skip(skipNumber).Take(pageSize).ToList();
         }
+        
 
         public Quote? GetQuote(int id)
         {
