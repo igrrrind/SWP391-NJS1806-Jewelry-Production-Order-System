@@ -91,28 +91,13 @@ CREATE TABLE Orders (
     order_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     customer_id INT NOT NULL,
     order_date DATE NOT NULL,
-    order_status NVARCHAR(50) NOT NULL,
+    status_id INT NOT NULL,
     payment_status_id INT NOT NULL,
     is_shipment BIT NOT NULL,
     is_custom BIT NOT NULL,
     order_total DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id),
-    FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
-);
-
-DROP TABLE Orders
-
-CREATE TABLE Orders (
-    order_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    customer_id INT NOT NULL,
-    order_date DATE NOT NULL,
-    status_id NVARCHAR(50) NOT NULL,
-    payment_status_id INT NOT NULL,
-    is_shipment BIT NOT NULL,
-    is_custom BIT NOT NULL,
-    order_total DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (customer_id) REFERENCES Customer_Detail(customer_id),
-    FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id)
+    FOREIGN KEY (payment_status_id) REFERENCES Payment_Status(payment_status_id),
     FOREIGN KEY (status_id) REFERENCES [Status](status_id)
 );
 
@@ -319,11 +304,11 @@ INSERT INTO Status (status_detail) VALUES ('Cancelled');
 INSERT INTO Status (status_detail) VALUES ('Returned');
 
 -- Inserting into Orders
-INSERT INTO Orders (customer_id, order_date, order_status, payment_status_id, is_shipment, is_custom, order_total) VALUES (1, '2023-01-01', 'Processing', 1, 1, 0, 600.00);
-INSERT INTO Orders (customer_id, order_date, order_status, payment_status_id, is_shipment, is_custom, order_total) VALUES (2, '2023-02-02', 'Shipped', 2, 1, 1, 1100.00);
-INSERT INTO Orders (customer_id, order_date, order_status, payment_status_id, is_shipment, is_custom, order_total) VALUES (3, '2023-03-03', 'Delivered', 2, 1, 0, 1600.00);
-INSERT INTO Orders (customer_id, order_date, order_status, payment_status_id, is_shipment, is_custom, order_total) VALUES (4, '2023-04-04', 'Cancelled', 3, 0, 1, 2100.00);
-INSERT INTO Orders (customer_id, order_date, order_status, payment_status_id, is_shipment, is_custom, order_total) VALUES (5, '2023-05-05', 'Returned', 4, 0, 0, 2600.00);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (1, '2023-01-01', 1, 1, 1, 0, 600.00);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (2, '2023-02-02', 1, 2, 1, 1, 1100.00);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (3, '2023-03-03', 2, 2, 1, 0, 1600.00);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (4, '2023-04-04', 3, 3, 0, 1, 2100.00);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (5, '2023-05-05', 4, 4, 0, 0, 2600.00);
 
 -- Inserting into Order_Fixed_Items
 INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (1, 1, 1, 1, 500.00, 500.00);
