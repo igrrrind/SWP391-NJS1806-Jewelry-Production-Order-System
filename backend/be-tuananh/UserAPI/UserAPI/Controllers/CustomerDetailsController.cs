@@ -30,8 +30,6 @@ namespace UserAPI.Controllers
         {
             CustomerDetail customerDetail = _context.GetDetailByUid(id);
             return customerDetail == null ? NotFound() : Ok(customerDetail);    
-            
-
         }
 
         // PUT: api/CustomerDetails/5
@@ -66,9 +64,7 @@ namespace UserAPI.Controllers
             {
                 return NotFound();
             }
-
             _context.DeleteCustomerDetail(id);
-
             return NoContent();
         }
 

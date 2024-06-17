@@ -35,13 +35,7 @@ namespace UserAPI.Controllers
         public IActionResult GetProductionTracking(int id)
         {
             var productionTracking = _context.GetProductionTracking(id);
-
-            if (productionTracking == null)
-            {
-                return NotFound();
-            }
-
-            return Ok(productionTracking);
+            return productionTracking == null ? NotFound() : Ok(productionTracking);
         }
 
         // PUT: api/ProductionTrackings/5
