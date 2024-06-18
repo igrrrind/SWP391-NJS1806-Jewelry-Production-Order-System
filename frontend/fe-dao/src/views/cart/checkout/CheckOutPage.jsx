@@ -3,16 +3,60 @@ import { useSelector } from "react-redux"
 import MyInformation from "./MyInformation"
 import { Separator } from "@/components/ui/separator"
 import CheckOutDetails from "./CheckOutDetails"
+import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { initiatePayment } from "@/hooks/paymentHooks"
 
 const CheckOutPage = () => {
 
-    const handlePlaceOrder=() => {}
-    const cart = useSelector(state => state.cart )
+    const cart = useSelector(state => state.cart);
+    const navigate = useNavigate();
+    const [url, setUrl] = useState(null);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const preparePaymentUrl = async () => {
+            try {
+                const paymentUrl = await initiatePayment(cart.total * 10000, "Test", "86778676");
+                setUrl(paymentUrl);
+            } catch (error) {
+                console.error('Error preparing payment URL:', error.message);
+                setError('Error preparing payment URL. Please try again.');
+            }
+        };
+
+        preparePaymentUrl();
+    }, [cart.total]);
+
+    
+    const handlePlaceOrder = () => {
+        if (!url) {
+            console.error('Payment URL is not available');
+            setError('Payment URL is not available. Please try again.');
+            return;
+        }
+
+
+        const tempTab = window.open(url, "_blank", "noopener,noreferrer");
+        if (!tempTab) {
+            console.error('Failed to open new tab. The popup might have been blocked.');
+            setError('Failed to open new tab. Please allow popups for this site in your browser settings.');
+            return;
+        }
+
+        const checkTempTabClosed = setInterval(() => {
+            if (tempTab.closed) {
+                clearInterval(checkTempTabClosed);
+                window.focus();
+            }
+        }, 1000);
+    };
+
 
     return (
         <div className="lg:flex  justify-between lg:space-x-8 container mt-8 ">
 
-                <div className="w-full grid gap-8 mb-8">
+                <div className="w-full grid gap-8 mb-8 scrollable-container">
                     <div className="w-full border border-stone-700 p-8">
                         <MyInformation></MyInformation>
                     </div>
@@ -23,7 +67,7 @@ const CheckOutPage = () => {
                 </div>
                 
 
-                <div className="border border-stone-700 min-w-[500px] h-fit p-8">
+                <div className="border border-stone-700 min-w-[500px] h-fit p-8 fixed-order-total">
                 <h1 className="cormorant-garamond-regular text-3xl">Order Total</h1>
                 <Separator className="mt-4 mb-4"/>
                 <div>
