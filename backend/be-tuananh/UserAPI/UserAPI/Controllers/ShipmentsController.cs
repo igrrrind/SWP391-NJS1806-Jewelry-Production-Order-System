@@ -75,6 +75,7 @@ namespace UserAPI.Controllers
         public IActionResult PostShipment(Shipment shipment)
         {
             _context.AddShipment(shipment);
+
             return Ok(shipment);
         }
 

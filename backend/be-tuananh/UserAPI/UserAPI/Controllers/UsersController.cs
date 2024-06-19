@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Repositories.CustomObjects;
 using Repositories.Models;
 using Services;
+using System.Configuration;
 
 namespace UserAPI.Controllers
 {
@@ -11,41 +13,54 @@ namespace UserAPI.Controllers
     [EnableCors("AllowAll")]
     public class UsersController : ControllerBase
     {
-        private UserService userService;
+        private readonly UserService iUserService;
+
         public UsersController()
         {
-            userService = new UserService();
+            iUserService = new UserService();
         }
 
         // GET: api/Users
         [HttpGet]
         public IActionResult GetUsers()
         {
-            var list = userService.GetAllUsers();
-            return list == null ? NotFound() : Ok(list);
+            if (iUserService.GetAllUsers() == null)
+            {
+                return NotFound();
+            }
+            var list = iUserService.GetAllUsers().ToList();
+            return Ok(list);
         }
         [HttpGet("GetRole{roleId}")]
 
         public IActionResult GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
         {
-            return userService.GetAllUsers() == null ? NotFound() : Ok(userService.GetAllUsersByRole(roleId, pageNumber, pageSize));
+            if (iUserService.GetAllUsers() == null)
+            {
+                return NotFound();
+            }
+            return Ok(iUserService.GetAllUsersByRole(roleId, pageNumber, pageSize));
         }
         [HttpGet("Customers")]
         public IActionResult GetCustomers()
         {
-            var list = userService.GetCustomers();
-            return list != null ? Ok(list) : NotFound();
+            if (iUserService.GetCustomers() == null)
+            {
+                return NotFound();
+            }
+            var list = iUserService.GetCustomers().ToList();
+            return Ok(list);
         }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUser(string id)
         {
-            if (userService.GetUsers() == null)
+            if (iUserService.GetUsers() == null)
             {
                 return NotFound();
             }
-            var user = userService.GetUser(id);
+            var user = iUserService.GetUser(id);
             if (user == null)
             {
                 return NotFound();
@@ -63,10 +78,10 @@ namespace UserAPI.Controllers
                 return BadRequest();
             }
 
-            userService.UpdateUser(id, user);
+            iUserService.UpdateUser(id, user);
 
             return NoContent();
-
+            
         }
 
         // POST: api/Users
@@ -74,11 +89,11 @@ namespace UserAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            if (userService.GetUsers() == null)
+            if(iUserService.GetUsers() == null)
             {
                 return NotFound();
             }
-            userService.AddUser(user);
+            iUserService.AddUser(user);
 
             return CreatedAtAction("GetUser", new { id = user.Uid }, user);
         }
@@ -87,17 +102,17 @@ namespace UserAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(string id)
         {
-
-            if (userService.GetUsers() == null)
+            
+            if (iUserService.GetUsers() == null)
             {
                 return NotFound();
             }
-            if (userService.GetUser(id) == null)
+            if(iUserService.GetUser(id) == null)
             {
                 return NotFound();
             }
 
-            userService.DeleteUser(id);
+            iUserService.DeleteUser(id);
             return NoContent();
         }
 

@@ -1,4 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Models;
 using Services;
 
@@ -21,6 +28,7 @@ namespace UserAPI.Controllers
         [HttpGet]
         public IActionResult GetQuotes(int pageNumber, int pageSize)
         {
+
             var quoteList = _context.GetQuotes(pageNumber, pageSize);
             return Ok(quoteList);
         }
@@ -30,7 +38,13 @@ namespace UserAPI.Controllers
         public async Task<ActionResult<Quote>> GetQuote(int id)
         {
             var quote = _context.GetQuote(id);
-            return quote == null ? NotFound() : Ok(quote);
+
+            if (quote == null)
+            {
+                return NotFound();
+            }
+
+            return quote;
         }
 
         // PUT: api/Quotes/5
@@ -46,7 +60,10 @@ namespace UserAPI.Controllers
             {
                 return BadRequest();
             }
+
+
             _context.UpdateQuote(id, quote);
+
             return NoContent();
         }
 
@@ -55,11 +72,15 @@ namespace UserAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<Quote>> PostQuote(Quote quote)
         {
+            
             if (_context.GetQuotes(1, 1000) == null)
             {
                 return NotFound();
             }
+           
+
             _context.AddQuote(quote);
+
             return quote;
         }
 
@@ -72,7 +93,9 @@ namespace UserAPI.Controllers
             {
                 return NotFound();
             }
+
             _context.DeleteQuote(id);
+
             return NoContent();
         }
 

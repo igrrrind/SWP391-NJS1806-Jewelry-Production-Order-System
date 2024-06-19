@@ -1,9 +1,9 @@
 node_modules
+backend
 
 
 .env
 .DS_Store
 .idea
 obj
-.vs
-bin
+

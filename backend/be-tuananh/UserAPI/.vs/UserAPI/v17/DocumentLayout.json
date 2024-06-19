@@ -3,56 +3,20 @@
   "WorkspaceRootPath": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\controllers\\customerdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\controllers\\customerdetailscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\userapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\userapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{930568B1-305A-4DE9-9F8B-4B7A274C71BE}|UserServices\\Services.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userservices\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{930568B1-305A-4DE9-9F8B-4B7A274C71BE}|UserServices\\Services.csproj|solutionrelative:userservices\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\controllers\\quotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\controllers\\quotescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{930568B1-305A-4DE9-9F8B-4B7A274C71BE}|UserServices\\Services.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userservices\\productiontrackingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{930568B1-305A-4DE9-9F8B-4B7A274C71BE}|UserServices\\Services.csproj|solutionrelative:userservices\\productiontrackingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\quoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\quoterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\controllers\\shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\controllers\\shipmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\controllers\\productiontrackingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\controllers\\productiontrackingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userrepositories\\productiontrackingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9E6DE228-5580-4B81-AEFF-8863B76E649D}|UserRepositories\\Repositories.csproj|solutionrelative:userrepositories\\productiontrackingrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|d:\\data\\code\\swp391\\new folder\\swp391-njs1806-jewelry-production-order-system\\backend\\be-tuananh\\userapi\\userapi\\userapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{02177964-FDD1-480F-881A-7685DA332677}|UserAPI\\UserAPI.csproj|solutionrelative:userapi\\userapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -94,143 +58,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Program.cs",
-              "RelativeDocumentMoniker": "UserAPI\\Program.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Program.cs",
-              "RelativeToolTip": "UserAPI\\Program.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAAA8AAAAzAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-17T03:25:54.205Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "UserAPI\\appsettings.json",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\appsettings.json",
-              "RelativeToolTip": "UserAPI\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-17T03:24:10.014Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductionTrackingService.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\ProductionTrackingService.cs",
-              "RelativeDocumentMoniker": "UserServices\\ProductionTrackingService.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\ProductionTrackingService.cs",
-              "RelativeToolTip": "UserServices\\ProductionTrackingService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-15T06:44:27.102Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Services.csproj",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj",
-              "RelativeDocumentMoniker": "UserServices\\Services.csproj",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserServices\\Services.csproj",
-              "RelativeToolTip": "UserServices\\Services.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-15T06:44:20.375Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "UserAPI\\Controllers\\UsersController.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "UserAPI\\Controllers\\UsersController.cs",
-              "ViewState": "AQIAABEAAAAAAAAAAAAYwBwAAAAOAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:28:21.575Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ShipmentsController.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\ShipmentsController.cs",
-              "RelativeDocumentMoniker": "UserAPI\\Controllers\\ShipmentsController.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\ShipmentsController.cs",
-              "RelativeToolTip": "UserAPI\\Controllers\\ShipmentsController.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAowEwAAAArAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:28:07.396Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CustomerDetailsController.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\CustomerDetailsController.cs",
-              "RelativeDocumentMoniker": "UserAPI\\Controllers\\CustomerDetailsController.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\CustomerDetailsController.cs",
-              "RelativeToolTip": "UserAPI\\Controllers\\CustomerDetailsController.cs",
-              "ViewState": "AQIAAC8AAAAAAAAAAAAowEEAAAANAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:27:04.883Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "QuotesController.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\QuotesController.cs",
-              "RelativeDocumentMoniker": "UserAPI\\Controllers\\QuotesController.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\QuotesController.cs",
-              "RelativeToolTip": "UserAPI\\Controllers\\QuotesController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:25:12.439Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ProductionTrackingsController.cs",
-              "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\ProductionTrackingsController.cs",
-              "RelativeDocumentMoniker": "UserAPI\\Controllers\\ProductionTrackingsController.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\Controllers\\ProductionTrackingsController.cs",
-              "RelativeToolTip": "UserAPI\\Controllers\\ProductionTrackingsController.cs",
-              "ViewState": "AQIAADAAAAAAAAAAAAAiwCQAAABIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-13T04:24:22.449Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
               "Title": "QuoteRepository.cs",
               "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\QuoteRepository.cs",
               "RelativeDocumentMoniker": "UserRepositories\\QuoteRepository.cs",
               "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\QuoteRepository.cs",
               "RelativeToolTip": "UserRepositories\\QuoteRepository.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAxwDkAAAAoAAAA",
+              "ViewState": "AQIAACAAAAAAAAAAAAAowDkAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T11:52:37.253Z"
+              "WhenOpened": "2024-06-12T11:52:37.253Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 0,
               "Title": "UserRepository.cs",
               "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\UserRepository.cs",
               "RelativeDocumentMoniker": "UserRepositories\\UserRepository.cs",
-              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\UserRepository.cs",
-              "RelativeToolTip": "UserRepositories\\UserRepository.cs",
-              "ViewState": "AQIAABQAAAAAAAAAAAAIwF4AAAAwAAAA",
+              "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\UserRepository.cs*",
+              "RelativeToolTip": "UserRepositories\\UserRepository.cs*",
+              "ViewState": "AQIAAGgAAAAAAAAAAAAQwI0AAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T11:52:37.767Z"
+              "WhenOpened": "2024-06-12T11:52:37.767Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 2,
               "Title": "ProductionTrackingRepository.cs",
               "DocumentMoniker": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserRepositories\\ProductionTrackingRepository.cs",
               "RelativeDocumentMoniker": "UserRepositories\\ProductionTrackingRepository.cs",
@@ -238,7 +92,8 @@
               "RelativeToolTip": "UserRepositories\\ProductionTrackingRepository.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAA9AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-12T10:47:29.308Z"
+              "WhenOpened": "2024-06-12T10:47:29.308Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -248,10 +103,9 @@
               "RelativeDocumentMoniker": "UserAPI\\UserAPI.csproj",
               "ToolTip": "D:\\DATA\\Code\\SWP391\\New folder\\SWP391-NJS1806-Jewelry-Production-Order-System\\backend\\be-tuananh\\UserAPI\\UserAPI\\UserAPI.csproj",
               "RelativeToolTip": "UserAPI\\UserAPI.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAAAAAA",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-06-12T10:47:24.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-12T10:47:24.378Z"
             }
           ]
         }
