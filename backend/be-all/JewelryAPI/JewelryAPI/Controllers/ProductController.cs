@@ -65,13 +65,14 @@ namespace JewelryAPI.Controllers
                     IsActive = product.IsActive
                 };
                 pServices.CreateProduct(newProduct);
+                return Ok(newProduct);
             }
             catch (Exception ex) 
             { 
                 return BadRequest(ex.Message);
             }
             
-            return Ok();
+        
         }
         //UPDATE
         [HttpPut("Update")]

@@ -54,7 +54,7 @@ namespace JewelryAPI.Controllers
         public async Task<ActionResult<CustomerDetail>> PostCustomerDetail(CustomerDetail customerDetail)
         {
             _context.AddCustomerDetail(customerDetail);
-            return NoContent();
+            return Ok(customerDetail);
         }
 
         // DELETE: api/CustomerDetails/5

@@ -93,7 +93,7 @@ namespace JewelryAPI.Controllers
             }
             iUserService.AddUser(user);
 
-            return CreatedAtAction("GetUser", new { id = user.Uid }, user);
+            return user;
         }
 
         // DELETE: api/Users/5

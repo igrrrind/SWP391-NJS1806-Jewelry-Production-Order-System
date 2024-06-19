@@ -77,26 +77,5 @@ namespace JewelryAPI.Controllers
             _context.AddProductionTracking(productionTracking);
             return Ok(productionTracking);
         }
-
-        // DELETE: api/ProductionTrackings/5
-        //[HttpDelete("{id}")]
-        //public async Task<IActionResult> DeleteProductionTracking(int id)
-        //{
-        //    var productionTracking = await _context.ProductionTrackings.FindAsync(id);
-        //    if (productionTracking == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    _context.ProductionTrackings.Remove(productionTracking);
-        //    await _context.SaveChangesAsync();
-
-        //    return NoContent();
-        //}
-
-        //private bool ProductionTrackingExists(int id)
-        //{
-        //    return _context.ProductionTrackings.Any(e => e.ProductionId == id);
-        //}
     }
 }
