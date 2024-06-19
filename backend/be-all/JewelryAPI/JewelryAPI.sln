@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.34928.147
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JewelryAPI", "JewelryAPI\JewelryAPI.csproj", "{86DF6993-5208-431A-B917-06D653192DEF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Repositories", "Repositories\Repositories.csproj", "{7B09C818-67B8-485D-B145-EB6F59F1ADB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{27ACEA1F-7627-4E40-B095-5C6F400BC3F7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{86DF6993-5208-431A-B917-06D653192DEF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86DF6993-5208-431A-B917-06D653192DEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86DF6993-5208-431A-B917-06D653192DEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86DF6993-5208-431A-B917-06D653192DEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B09C818-67B8-485D-B145-EB6F59F1ADB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B09C818-67B8-485D-B145-EB6F59F1ADB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B09C818-67B8-485D-B145-EB6F59F1ADB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B09C818-67B8-485D-B145-EB6F59F1ADB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27ACEA1F-7627-4E40-B095-5C6F400BC3F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27ACEA1F-7627-4E40-B095-5C6F400BC3F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27ACEA1F-7627-4E40-B095-5C6F400BC3F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27ACEA1F-7627-4E40-B095-5C6F400BC3F7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DE0081D3-2B81-4ECA-8115-2142D58F8A65}
+	EndGlobalSection
+EndGlobal
