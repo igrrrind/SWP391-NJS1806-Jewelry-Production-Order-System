@@ -20,13 +20,13 @@ const FirebaseImage = ({path,alt}) => {
   }, []);
 
   return (
-    <div>
+    <>
       {imageUrl ? (
-        <img src={imageUrl} alt={alt} />
+        <img src={imageUrl} alt={alt} className="object-cover " />
       ) : (
-        <p>Loading image...</p>
+        <div className="object-cover w-full h-full"></div>
       )}
-    </div>
+    </>
   );
 };
 
