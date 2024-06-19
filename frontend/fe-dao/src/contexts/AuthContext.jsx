@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
     // Set up the auth state listener
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setCurrentUser(user);
+      console.log(user)
       setLoading(false);
     });
 
