@@ -1,28 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj": {}
+    "/Users/nguyenwin/dev/SWP391-NJS1806-Jewelry-Production-Order-System/backend/be-dang/CRUDProductAPI/CRUDProductAPI/Repositories/Repositories.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj": {
+    "/Users/nguyenwin/dev/SWP391-NJS1806-Jewelry-Production-Order-System/backend/be-dang/CRUDProductAPI/CRUDProductAPI/Repositories/Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "/Users/nguyenwin/dev/SWP391-NJS1806-Jewelry-Production-Order-System/backend/be-dang/CRUDProductAPI/CRUDProductAPI/Repositories/Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
-        "packagesPath": "C:\\Users\\DEEps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\obj\\",
+        "projectPath": "/Users/nguyenwin/dev/SWP391-NJS1806-Jewelry-Production-Order-System/backend/be-dang/CRUDProductAPI/CRUDProductAPI/Repositories/Repositories.csproj",
+        "packagesPath": "/Users/nguyenwin/.nuget/packages/",
+        "outputPath": "/Users/nguyenwin/dev/SWP391-NJS1806-Jewelry-Production-Order-System/backend/be-dang/CRUDProductAPI/CRUDProductAPI/Repositories/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\DEEps\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/nguyenwin/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -35,11 +32,6 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -91,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.301/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.301/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

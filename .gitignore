@@ -1,9 +1,14 @@
 node_modules
 
 
+
 .env
 .DS_Store
 .idea
 obj
 .vs
 bin
+
+
+# Local Netlify folder
+.netlify
