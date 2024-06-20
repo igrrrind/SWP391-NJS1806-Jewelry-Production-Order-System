@@ -1,5 +1,5 @@
 ﻿using Repositories;
-using Repositories.CustomizeObjects;
+using Repositories.CustomObjects;
 using Repositories.Models;
 using System;
 using System.Collections.Generic;

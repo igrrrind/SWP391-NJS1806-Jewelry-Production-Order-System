@@ -1,4 +1,4 @@
-﻿namespace Repositories.CustomizeObjects
+﻿namespace Repositories.CustomObjects
 {
     public class ViewStock
     {

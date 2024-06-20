@@ -1,4 +1,4 @@
-﻿using Repositories.CustomizeObjects;
+﻿using Repositories.CustomObjects;
 using Repositories;
 using Repositories.Models;
 using Repositories.QueryObjects;
