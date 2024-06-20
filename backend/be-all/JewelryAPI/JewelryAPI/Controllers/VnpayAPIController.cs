@@ -21,7 +21,7 @@ namespace JewelryAPI.Controllers
         public IActionResult Payment([FromBody] PaymentRequest request)
         {
             string hostName = System.Net.Dns.GetHostName();
-            string clientIPAddress = System.Net.Dns.GetHostAddresses(hostName).GetValue(0).ToString();
+            string? clientIPAddress = System.Net.Dns.GetHostAddresses(hostName).GetValue(0).ToString();
             PayLib pay = new PayLib();
 
             pay.AddRequestData("vnp_Version", "2.1.0"); // API version

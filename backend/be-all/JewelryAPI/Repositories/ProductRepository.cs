@@ -13,7 +13,7 @@ namespace Repositories
 {
     public class ProductRepository
     {
-        private JeweleryOrderProductionContext _context = null;
+        private JeweleryOrderProductionContext? _context = null;
 
         //GET
         public List<ViewProduct> GetAllProducts(ProductQueryObject productQuery)

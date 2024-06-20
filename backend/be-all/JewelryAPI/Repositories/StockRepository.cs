@@ -5,7 +5,7 @@ namespace Repositories
 {
     public class StockRepository
     {
-        private JeweleryOrderProductionContext _context = null;
+        private JeweleryOrderProductionContext? _context = null;
         private OriginalGemstoneRepository _gemstoneRepo = new();
         public List<ViewStock>? GetAllStocksByProductId(int id)
         {

@@ -4,7 +4,7 @@ namespace Repositories
 {
     public class OriginalProductTypeRepository
     {
-        JeweleryOrderProductionContext _context;
+        private JeweleryOrderProductionContext? _context = null;
         public List<ProductType> GetAllProductTypes()
         {
             _context = new JeweleryOrderProductionContext();

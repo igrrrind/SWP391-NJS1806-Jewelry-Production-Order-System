@@ -4,7 +4,7 @@ namespace Repositories
 {
     public class OriginalMetalRepository
     {
-        private JeweleryOrderProductionContext _context;
+        private JeweleryOrderProductionContext? _context = null;
         public List<Metal> GetAllMetals()
         {
             _context = new JeweleryOrderProductionContext();

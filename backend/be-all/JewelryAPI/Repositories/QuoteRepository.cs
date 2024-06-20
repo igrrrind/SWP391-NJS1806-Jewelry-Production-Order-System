@@ -4,7 +4,7 @@ namespace Repositories
 {
     public class QuoteRepository
     {
-        private JeweleryOrderProductionContext dbContext = null;
+        private JeweleryOrderProductionContext? dbContext = null;
         public List<Quote> GetQuotes(int pageNumber, int pageSize)
         {
             dbContext = new JeweleryOrderProductionContext();
@@ -13,7 +13,7 @@ namespace Repositories
         }
         
 
-        public Quote? GetQuote(int id)
+        public Quote GetQuote(int id)
         {
             dbContext = new JeweleryOrderProductionContext();
             
@@ -28,7 +28,7 @@ namespace Repositories
             return quote;
         }
 
-        public Quote UpdateQuote(int id, Quote quote)
+        public Quote? UpdateQuote(int id, Quote quote)
         {
             dbContext = new JeweleryOrderProductionContext();
             Quote oQuote = GetQuote(id);

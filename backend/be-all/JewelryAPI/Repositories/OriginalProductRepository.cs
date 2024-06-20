@@ -4,7 +4,7 @@ namespace Repositories
 {
     public class OriginalProductRepository
     {
-        private JeweleryOrderProductionContext context = null;
+        private JeweleryOrderProductionContext? context = null;
 
         //ADD NEW PRODUCT & STOCK (ALREADY HAVE THINGS LIKE METALS, GEMSTONE,....)
         public void AddProduct(Product product) 

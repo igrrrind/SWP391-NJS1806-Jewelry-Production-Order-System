@@ -4,7 +4,7 @@ namespace Repositories
 {
     public class OriginalGemstoneRepository
     {
-        private JeweleryOrderProductionContext _context = null;
+        private JeweleryOrderProductionContext? _context = null;
 
         public List<Gemstone> GetAllGemstones()
         {

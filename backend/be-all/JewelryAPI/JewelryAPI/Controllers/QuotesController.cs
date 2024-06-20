@@ -63,7 +63,7 @@ namespace JewelryAPI.Controllers
         // POST: api/Quotes
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Quote>> PostQuote(Quote quote)
+        public IActionResult PostQuote(Quote quote)
         {
             
             if (_context.GetQuotes(1, 1000) == null)
@@ -74,7 +74,7 @@ namespace JewelryAPI.Controllers
 
             _context.AddQuote(quote);
 
-            return quote;
+            return Ok(quote);
         }
 
         // DELETE: api/Quotes/5
