@@ -9,6 +9,15 @@ import AddProductPage from './views/dashboard/manage-products/add-product/AddPro
 import HomePage from './views/home/HomePage';
 import ProductPage from './views/products/ProductsPage';
 import ProductDetailsPage from './views/products/{id}/ProductDetailsPage';
+import CartPage from './views/cart/CartPage';
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import CheckOutPage from './views/cart/checkout/CheckOutPage';
+import PaymentConfirm from './views/cart/payment-confirm';
+import AccountPage from './views/account/accountPage';
+import OrdersPage from './views/account/orders/Orders';
+import HeroCustomizePage from './views/customize/HeroCustomizePage';
+import JewelryCustomization from './views/customize/start/JewelryCustomization';
 
 
 const productsPages = {
@@ -58,8 +67,23 @@ const App = () => {
               />
             ))}
                <Route path=":productId/:productName" element={<ProductDetailsPage />} />
-
         </Route>
+
+        <Route path="/cart" element={<MainLayout />}>
+          <Route index element={<CartPage/>}/> 
+          <Route path="checkout" element={<CheckOutPage />}></Route>
+          <Route path="payment-confirm" element={<PaymentConfirm />} />
+        </Route>
+
+        <Route path="/account" element={<MainLayout />}>
+              <Route path="orders" element={<OrdersPage />}/>          
+        </Route> 
+
+        <Route path="/customize" element={<MainLayout />}>
+              <Route index element={<HeroCustomizePage />}/>    
+              <Route path="start" element={<JewelryCustomization/>}/>      
+        </Route>
+
 
         <Route path="/dashboard" element={<DashboardLayout />}>
               <Route path="manage-orders" element={<ManageOrdersPage />}/>        

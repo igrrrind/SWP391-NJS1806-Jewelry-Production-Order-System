@@ -9,7 +9,7 @@ const PaymentConfirm = () => {
         return (
         <div className="m-8 flex justify-center items-center">
             <div className="mb-8">
-                <h1 className="cormorant-garamond-regular text-3xl mb-4">Payment Error</h1>
+                <h1 className="cormorant-garamond-bold text-2xl mb-4">Payment Error</h1>
                 <p className="text-red-600 mb-4">There was an error processing your payment. Please try again later.</p>
                 <p className="text-gray-600">Error Message: {error.message}</p>
             </div>
@@ -20,7 +20,7 @@ const PaymentConfirm = () => {
     if (!confirmationResult) {
         return (
             <div className="mb-8 flex flex-col justify-center mx-auto">
-                <h1 className="cormorant-garamond-regular text-3xl mb-4">Processing Payment Confirmation...</h1>
+                <h1 className="cormorant-garamond-bold text-2xl mb-4">Processing Payment Confirmation...</h1>
                 <div className="spinner mb-4"></div> {/* Add a loading spinner animation */}
                 <p className="text-gray-600">Please wait while we confirm your payment...</p>
             </div>
@@ -31,8 +31,8 @@ const PaymentConfirm = () => {
         <div className="m-8 flex justify-center">
             {confirmationResult.message === 'Payment successful' ? (
                 <div className="flex flex-col justify-center items-center">
-                    <h1 className="cormorant-garamond-regular text-3xl mb-4 text-green-600">Payment Successful</h1>
-                    <p className="mb-2 ">Thank you for your payment.</p>
+                    <h1 className="cormorant-garamond-bold text-2xl mb-4">Order placed!</h1>
+                    <p className="mb-2 ">Your payment was successful. A copy of your receipt has been sent to your email</p>
                     <p className="mb-2 font-semibold">Order ID: #{confirmationResult.orderId}</p>
                     <p className="mb-4 font-semibold">Transaction ID: #{confirmationResult.transactionId}</p>
                     <Button  variant="outline" className="rounded-none border-black bg-zinc-900 pt-6 pb-6 text-white">                        
@@ -41,7 +41,7 @@ const PaymentConfirm = () => {
                 </div>
             ) : (
                 <div className="flex c justify-center">
-                    <h1 className="cormorant-garamond-regular text-3xl mb-4 text-red-600">Something went wrong with your payment</h1>
+                    <h1 className="cormorant-garamond-bold text-2xl mb-4 text-red-600">Something went wrong with your payment</h1>
                     <p className="mb-2">{confirmationResult.message}</p>
                     {confirmationResult.ErrorCode && <p className="mb-4">Error Code: {confirmationResult.ErrorCode}</p>}
                     <Button  variant="outline" className="rounded-none border-black bg-zinc-900 pt-6 pb-6 text-white">

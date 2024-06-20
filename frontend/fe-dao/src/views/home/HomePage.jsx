@@ -32,6 +32,10 @@ const HomePage = () => {
         navigate('/products')
     }
 
+    const handleCustomRedirect = () => {
+        navigate('/customize')
+    }
+
 
     return (
         <>
@@ -40,7 +44,7 @@ const HomePage = () => {
             <div className="flex-2 flex-row text-center lg:mx-6 max-w-1/3">
                <h1 className="text-6xl mb-4 cormorant-garamond-regular">Get a quote for custom jewellery</h1>                <p className="text-xl mb-6 font-sans">Buy jewellery made for you and your loved ones</p>
                     <div className="flex justify-center gap-10">
-                        <Button size="lg"  variant="outline" className="rounded-none bg-zinc-900 pt-6 pb-6">CREATE MY JEWELLERY</Button>
+                        <Button size="lg"  variant="outline" className="rounded-none bg-zinc-900 pt-6 pb-6" onClick={handleCustomRedirect}>CREATE MY JEWELLERY</Button>
                         <Button size="lg" variant="outline" className="rounded-none bg-zinc-900 pt-6 pb-6" onClick={handleBrowse}>BROWSE OUR DESIGNS</Button>
                 </div>
             </div>

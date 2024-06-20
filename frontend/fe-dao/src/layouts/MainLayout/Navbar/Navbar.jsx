@@ -1,28 +1,46 @@
 import Logo from '../../../assets/logo.svg';
 import { Button } from "@/components/ui/button"
-import { useNavigate,Outlet, Link } from 'react-router-dom'; 
+import { useNavigate,Outlet, Link, useLocation } from 'react-router-dom'; 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useState } from 'react';
-import { ShoppingCartIcon } from 'lucide-react';
+import { ShoppingCartIcon, User } from 'lucide-react';
+import { useSelector } from 'react-redux';
+import AccountSidebar from '@/views/account/accountPage';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 
 
 
 const Navbar = () => {
-
-    const [cartItems, setCartItems] = useState(3);
-
     const navigate = useNavigate(); 
     const handleClick = () => navigate('/login'); 
+    const handleCartClick = () => navigate('/cart');
+    const { currentUser, logout} = useAuth()
+    const  {list} = useSelector(state => state.cart)
+
+    const handleLogOut = async () => {
+      await logout();
+      navigate("/");
+  }
+
+
+    const location = useLocation();
+    const isAccountRoute = location.pathname.startsWith('/account');
+
     return (
       <>
           <header className="bg-white shadow-sm font-sans">
 
-          <div className='bg-stone-900 w-full inline-block h-7'></div>
+          <div className='bg-stone-900 w-full h-7 text-gray-200 text-sm flex justify-center items-center'>{currentUser && <>Happy shopping, {currentUser.displayName}</>}</div>
 
           <div className="container mx-auto items-center grid grid-cols-3">
           <div>
-            <nav className="flex items-center space-x-10 text-sm">
+            <nav className="flex items-center justify-between text-sm">
               <Link to="/products" className="text-gray-700 hover:text-gray-900">PRODUCTS</Link>
               <Link href="#" className="text-gray-700 hover:text-gray-900">CUSTOMIZE & PERSONALIZE</Link>
               <Link href="#" className="text-gray-700 hover:text-gray-900">OUR BLOG</Link>
@@ -30,7 +48,7 @@ const Navbar = () => {
           </div>
 
           <div className="logo flex justify-center">
-             <Link to="/"><img src={Logo} alt="" className='w-24'/></Link>
+             <Link to="/"><img src={Logo} alt="" className='w-20'/></Link>
           </div>
 
                 
@@ -50,22 +68,52 @@ const Navbar = () => {
               </div>
               
             </div>
+            {!currentUser &&
             <Button variant='outline' onClick={handleClick}>Login</Button> 
+            }
 
-            <div className="relative hover:cursor-pointer">
-                    <ShoppingCartIcon className="h-8 w-8 text-gray-800" />
-                    {cartItems > 0 && (
-                        <span className="absolute top-0 left-4 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
-                            {cartItems}
-                        </span>
-                    )}
-             </div>
+            
+
+            <div className="relative flex items-center hover:cursor-pointer">
+                <ShoppingCartIcon className="h-6 w-6 text-gray-800" onClick={handleCartClick} />
+                {list.length > 0 && (
+                    <span className="absolute top-0 left-4 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white bg-red-600 rounded-full">
+                        {list?.length}
+                    </span>
+                )}
+            </div>
+
+                    
+             {currentUser &&
+             
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+              <div className="flex items-center">
+              <User className="h-6 w-6 hover:cursor-pointer"/>
+              </div>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end">
+              <DropdownMenuItem><Link to='/account'>Account Settings</Link></DropdownMenuItem>
+              <DropdownMenuItem><Link to='/account/orders'>Order History</Link></DropdownMenuItem>
+              <DropdownMenuItem className="text-red-500" onClick={handleLogOut}>Logout</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
+
+            }
+
           </div>
+
+
+          
 
             
           </div>
         </header>
-        <Outlet/>
+         <div>
+          {isAccountRoute? <AccountSidebar/> :       
+          <Outlet/>}
+        </div>  
       </>
     );
   };

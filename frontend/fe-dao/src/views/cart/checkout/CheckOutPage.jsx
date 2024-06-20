@@ -15,9 +15,14 @@ const CheckOutPage = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
+
+        const handlePostOrder = async () => {
+
+        }
+
         const preparePaymentUrl = async () => {
             try {
-                const paymentUrl = await initiatePayment(cart.total * 10000, "Test", "86778676");
+                const paymentUrl = await initiatePayment(cart.total * 10000, "Test", "1232984");
                 setUrl(paymentUrl);
             } catch (error) {
                 console.error('Error preparing payment URL:', error.message);

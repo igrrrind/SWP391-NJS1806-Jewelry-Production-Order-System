@@ -112,7 +112,7 @@ const OrdersTable = ({ orders, onOrderClick}) => {
                                             {order.phone}
                                         </div>
                                     </TableCell>
-                                    <TableCell className="hidden sm:table-cell">{order.is_custom? "Custom": "Sale"}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{order.isCustom? "Custom": "Sale"}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
                                         <Badge className="text-xs" variant={order.order_status === 1 ? 'secondary' : 'outline'}>
                                             {order.status}

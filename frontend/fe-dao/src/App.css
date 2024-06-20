@@ -96,6 +96,13 @@
     font-style: italic;
   }
   
-  .pfont {
-    
+  .scrollable-container {
+    max-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+    overflow-y: auto;
   }
+  .fixed-order-total {
+    position: sticky;
+    top: 20px; /* Adjust based on your spacing needs */
+    align-self: start;
+  }
+
