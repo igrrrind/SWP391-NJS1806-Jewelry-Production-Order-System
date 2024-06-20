@@ -120,17 +120,21 @@ CREATE TABLE Order_Fixed_Items (
 CREATE TABLE Order_Custom_Items (
     order_item_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
+    product_type_id INT NOT NULL,
     gemstone_id INT NOT NULL,
     metal_id INT NOT NULL,
     size INT,
     unit_price DECIMAL(10, 2) NOT NULL,
-    quantity INT,
+    quantity INT NOT NULL,
+    request_description NVARCHAR(MAX) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (product_type_id) REFERENCES Product_Types(product_type_id),
     FOREIGN KEY (gemstone_id) REFERENCES Gemstone(gemstone_id),
     FOREIGN KEY (metal_id) REFERENCES Metals(metal_id),
-    UNIQUE (order_id, gemstone_id, metal_id, size)
+    UNIQUE (order_id, product_type_id, gemstone_id, metal_id, size)
 );
+
 
 CREATE TABLE Transactions (
     transaction_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -173,6 +177,7 @@ CREATE TABLE Design_Images (
     FOREIGN KEY (design_id) REFERENCES Design(design_id)
 );
 
+/*
 CREATE TABLE Request (
     request_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,    
@@ -181,6 +186,7 @@ CREATE TABLE Request (
     FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id),
     FOREIGN KEY (order_id) REFERENCES Orders(order_id)    
 )
+*/
 
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -318,11 +324,20 @@ INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity,
 INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (5, 5, 5, 1, 2500.00, 2500.00);
 
 -- Inserting into Order_Custom_Items
-INSERT INTO Order_Custom_Items (order_id, gemstone_id, metal_id, size, unit_price, quantity, subtotal) VALUES (1, 1, 1, 6, 500.00, 1, 500.00);
-INSERT INTO Order_Custom_Items (order_id, gemstone_id, metal_id, size, unit_price, quantity, subtotal) VALUES (2, 2, 2, 7, 1000.00, 1, 1000.00);
-INSERT INTO Order_Custom_Items (order_id, gemstone_id, metal_id, size, unit_price, quantity, subtotal) VALUES (3, 3, 3, 8, 1500.00, 1, 1500.00);
-INSERT INTO Order_Custom_Items (order_id, gemstone_id, metal_id, size, unit_price, quantity, subtotal) VALUES (4, 4, 4, 9, 2000.00, 1, 2000.00);
-INSERT INTO Order_Custom_Items (order_id, gemstone_id, metal_id, size, unit_price, quantity, subtotal) VALUES (5, 5, 5, 10, 2500.00, 1, 2500.00);
+INSERT INTO Order_Custom_Items (order_id, product_type_id, gemstone_id, metal_id, size, unit_price, quantity, request_description, subtotal) 
+VALUES (1, 1, 1, 1, 6, 500.00, 1, 'Custom ring with diamond', 500.00);
+
+INSERT INTO Order_Custom_Items (order_id, product_type_id, gemstone_id, metal_id, size, unit_price, quantity, request_description, subtotal) 
+VALUES (2, 2, 2, 2, 7, 1000.00, 1, 'Custom necklace with emerald', 1000.00);
+
+INSERT INTO Order_Custom_Items (order_id, product_type_id, gemstone_id, metal_id, size, unit_price, quantity, request_description, subtotal) 
+VALUES (3, 3, 3, 3, 8, 1500.00, 1, 'Custom bracelet with sapphire', 1500.00);
+
+INSERT INTO Order_Custom_Items (order_id, product_type_id, gemstone_id, metal_id, size, unit_price, quantity, request_description, subtotal) 
+VALUES (4, 4, 4, 4, 9, 2000.00, 1, 'Custom earrings with ruby', 2000.00);
+
+INSERT INTO Order_Custom_Items (order_id, product_type_id, gemstone_id, metal_id, size, unit_price, quantity, request_description, subtotal) 
+VALUES (5, 5, 5, 5, 10, 2500.00, 1, 'Custom pendant with amethyst', 2500.00);
 
 -- Inserting into Transactions
 INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2023-01-02', 500.00, 'Credit Card', 0);
@@ -351,11 +366,6 @@ INSERT INTO Design_Images (design_id, image_url) VALUES (2, 'http://example.com/
 INSERT INTO Design_Images (design_id, image_url) VALUES (3, 'http://example.com/design3.jpg');
 INSERT INTO Design_Images (design_id, image_url) VALUES (4, 'http://example.com/design4.jpg');
 INSERT INTO Design_Images (design_id, image_url) VALUES (5, 'http://example.com/design5.jpg');
-
--- Inserting into Request
-
-
-
 
 -- Inserting into Product_Images
 INSERT INTO Product_Images (product_stock_id, image_url, alt) VALUES (1, 'http://example.com/product1.jpg', 'Gold Ring');
