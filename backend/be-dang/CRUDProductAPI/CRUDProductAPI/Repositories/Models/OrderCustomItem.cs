@@ -9,6 +9,8 @@ public partial class OrderCustomItem
 
     public int OrderId { get; set; }
 
+    public int ProductTypeId { get; set; }
+
     public int GemstoneId { get; set; }
 
     public int MetalId { get; set; }
@@ -17,7 +19,9 @@ public partial class OrderCustomItem
 
     public decimal UnitPrice { get; set; }
 
-    public int? Quantity { get; set; }
+    public int Quantity { get; set; }
+
+    public string RequestDescription { get; set; } = null!;
 
     public decimal Subtotal { get; set; }
 
@@ -29,5 +33,5 @@ public partial class OrderCustomItem
 
     public virtual Order Order { get; set; } = null!;
 
-    public virtual ICollection<RequestImage> RequestImages { get; set; } = new List<RequestImage>();
+    public virtual ProductType ProductType { get; set; } = null!;
 }

@@ -1,98 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\",
+  "WorkspaceRootPath": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\crudproductapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\controllers\\productcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\crudproductapi\\crudproductapi\\repositories\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\transactionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\crudproductapi\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\controllers\\stockcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\crudproductapi\\crudproductapi\\repositories\\queryobjects\\transactionqueryobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\queryobjects\\transactionqueryobject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\services\\stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|solutionrelative:services\\stockservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\crudproductapi\\crudproductapi\\crudproductapi\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\controllers\\transactioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\stockrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\stockrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\models\\productstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\productstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\productrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|solutionrelative:services\\productservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\originalproducttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\originalproducttyperepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\repositories.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\repositories.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\customizeobjects\\viewstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\customizeobjects\\viewstock.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\services\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|solutionrelative:services\\services.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\originalproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\originalproductrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\originalmetalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\originalmetalrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\originalgemstonerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\originalgemstonerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\crudproductapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\models\\jeweleryorderproductioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\models\\jeweleryorderproductioncontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\crudproductapi\\controllers\\gemstonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\controllers\\gemstonecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\crudproductapi\\controllers\\metalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\controllers\\metalcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\services\\gemstoneservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|solutionrelative:services\\gemstoneservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\services\\metalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|solutionrelative:services\\metalservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\repositories\\customizeobjects\\viewproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{486641C1-3C7B-4318-AE2F-019CCD736A2E}|Repositories\\Repositories.csproj|solutionrelative:repositories\\customizeobjects\\viewproduct.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|c:\\users\\deeps\\desktop\\be-dang\\crudproductapi\\crudproductapi\\crudproductapi\\crudproductapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{23A40C71-0221-43B8-8DFE-DE275C22C4FF}|CRUDProductAPI\\CRUDProductAPI.csproj|solutionrelative:crudproductapi\\crudproductapi.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|c:\\users\\deeps\\desktop\\crudproductapi\\crudproductapi\\services\\transactionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D3A73901-F32C-48FC-AF55-6C7314ABF374}|Services\\Services.csproj|solutionrelative:services\\transactionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -129,287 +53,63 @@
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProductStock.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Models\\ProductStock.cs",
-              "RelativeDocumentMoniker": "Repositories\\Models\\ProductStock.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Models\\ProductStock.cs",
-              "RelativeToolTip": "Repositories\\Models\\ProductStock.cs",
-              "ViewState": "AQIAAA8AAAAAAAAAAAA7wBcAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T09:21:52.559Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Product.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Models\\Product.cs",
-              "RelativeDocumentMoniker": "Repositories\\Models\\Product.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Models\\Product.cs",
-              "RelativeToolTip": "Repositories\\Models\\Product.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABUAAAAfAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T07:39:03.1Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ProductController.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\ProductController.cs",
-              "RelativeDocumentMoniker": "CRUDProductAPI\\Controllers\\ProductController.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\ProductController.cs",
-              "RelativeToolTip": "CRUDProductAPI\\Controllers\\ProductController.cs",
-              "ViewState": "AQIAAEIAAAAAAAAAAAAmwEIAAAAyAAAA",
+              "Title": "TransactionRepository.cs",
+              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\TransactionRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\TransactionRepository.cs",
+              "ToolTip": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\TransactionRepository.cs",
+              "RelativeToolTip": "Repositories\\TransactionRepository.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABkAAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-01T10:53:37.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ProductService.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\ProductService.cs",
-              "RelativeDocumentMoniker": "Services\\ProductService.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\ProductService.cs",
-              "RelativeToolTip": "Services\\ProductService.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAAYwCEAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T10:25:44.182Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StockService.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\StockService.cs",
-              "RelativeDocumentMoniker": "Services\\StockService.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\StockService.cs",
-              "RelativeToolTip": "Services\\StockService.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAAAA4AAAA1AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T06:50:11.311Z",
+              "WhenOpened": "2024-06-21T16:01:58.652Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "StockController.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\StockController.cs",
-              "RelativeDocumentMoniker": "CRUDProductAPI\\Controllers\\StockController.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\StockController.cs",
-              "RelativeToolTip": "CRUDProductAPI\\Controllers\\StockController.cs",
-              "ViewState": "AQIAAAMAAAAAAAAAAAAAABYAAAAiAAAA",
+              "Title": "TransactionQueryObject.cs",
+              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\QueryObjects\\TransactionQueryObject.cs",
+              "RelativeDocumentMoniker": "Repositories\\QueryObjects\\TransactionQueryObject.cs",
+              "ToolTip": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\QueryObjects\\TransactionQueryObject.cs",
+              "RelativeToolTip": "Repositories\\QueryObjects\\TransactionQueryObject.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA0AAAAvAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T06:54:11.746Z",
+              "WhenOpened": "2024-06-21T16:00:44.183Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "StockRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\StockRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\StockRepository.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\StockRepository.cs",
-              "RelativeToolTip": "Repositories\\StockRepository.cs",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAAA8AAAA1AAAA",
+              "Title": "TransactionService.cs",
+              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Services\\TransactionService.cs",
+              "RelativeDocumentMoniker": "Services\\TransactionService.cs",
+              "ToolTip": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Services\\TransactionService.cs",
+              "RelativeToolTip": "Services\\TransactionService.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABYAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:47:08.508Z",
+              "WhenOpened": "2024-06-21T15:37:13.43Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransactionController.cs",
+              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\TransactionController.cs",
+              "RelativeDocumentMoniker": "CRUDProductAPI\\Controllers\\TransactionController.cs",
+              "ToolTip": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\TransactionController.cs",
+              "RelativeToolTip": "CRUDProductAPI\\Controllers\\TransactionController.cs",
+              "ViewState": "AQIAABYAAAAAAAAAAAAQwCsAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-21T14:59:16.752Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\ProductRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\ProductRepository.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\ProductRepository.cs",
-              "RelativeToolTip": "Repositories\\ProductRepository.cs",
-              "ViewState": "AQIAAE0AAAAAAAAAAAAgwFgAAAApAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T10:29:31.118Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "OriginalProductTypeRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalProductTypeRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\OriginalProductTypeRepository.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalProductTypeRepository.cs",
-              "RelativeToolTip": "Repositories\\OriginalProductTypeRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T07:08:44.531Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Repositories.csproj",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
-              "RelativeDocumentMoniker": "Repositories\\Repositories.csproj",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
-              "RelativeToolTip": "Repositories\\Repositories.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-30T09:35:30.91Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "ViewStock.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\CustomizeObjects\\ViewStock.cs",
-              "RelativeDocumentMoniker": "Repositories\\CustomizeObjects\\ViewStock.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\CustomizeObjects\\ViewStock.cs",
-              "RelativeToolTip": "Repositories\\CustomizeObjects\\ViewStock.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAUAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-08T06:21:09.285Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "OriginalProductRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalProductRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\OriginalProductRepository.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalProductRepository.cs",
-              "RelativeToolTip": "Repositories\\OriginalProductRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T10:31:59.453Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "OriginalMetalRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalMetalRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\OriginalMetalRepository.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalMetalRepository.cs",
-              "RelativeToolTip": "Repositories\\OriginalMetalRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAnAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:45:43.666Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\appsettings.json",
-              "RelativeDocumentMoniker": "CRUDProductAPI\\appsettings.json",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\appsettings.json",
-              "RelativeToolTip": "CRUDProductAPI\\appsettings.json",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAkAAAB3AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-06-01T11:08:30.859Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "OriginalGemstoneRepository.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalGemstoneRepository.cs",
-              "RelativeDocumentMoniker": "Repositories\\OriginalGemstoneRepository.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\OriginalGemstoneRepository.cs",
-              "RelativeToolTip": "Repositories\\OriginalGemstoneRepository.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAvAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:56:19.536Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "Services.csproj",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj",
-              "RelativeDocumentMoniker": "Services\\Services.csproj",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\Services.csproj",
-              "RelativeToolTip": "Services\\Services.csproj",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-30T09:34:12.612Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "JeweleryOrderProductionContext.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Models\\JeweleryOrderProductionContext.cs",
-              "RelativeDocumentMoniker": "Repositories\\Models\\JeweleryOrderProductionContext.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Models\\JeweleryOrderProductionContext.cs",
-              "RelativeToolTip": "Repositories\\Models\\JeweleryOrderProductionContext.cs",
-              "ViewState": "AQIAADoAAAAAAAAAAAA7wEoAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-05T08:24:48.618Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "GemstoneController.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\GemstoneController.cs",
-              "RelativeDocumentMoniker": "CRUDProductAPI\\Controllers\\GemstoneController.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\GemstoneController.cs",
-              "RelativeToolTip": "CRUDProductAPI\\Controllers\\GemstoneController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAsAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:59:25.687Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "MetalService.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\MetalService.cs",
-              "RelativeDocumentMoniker": "Services\\MetalService.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\MetalService.cs",
-              "RelativeToolTip": "Services\\MetalService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAuAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:48:01.096Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "MetalController.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\MetalController.cs",
-              "RelativeDocumentMoniker": "CRUDProductAPI\\Controllers\\MetalController.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\Controllers\\MetalController.cs",
-              "RelativeToolTip": "CRUDProductAPI\\Controllers\\MetalController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAEAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:52:08.367Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "GemstoneService.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\GemstoneService.cs",
-              "RelativeDocumentMoniker": "Services\\GemstoneService.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Services\\GemstoneService.cs",
-              "RelativeToolTip": "Services\\GemstoneService.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA4AAAAtAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-03T11:57:57.257Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "ViewProduct.cs",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\CustomizeObjects\\ViewProduct.cs",
-              "RelativeDocumentMoniker": "Repositories\\CustomizeObjects\\ViewProduct.cs",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\CustomizeObjects\\ViewProduct.cs",
-              "RelativeToolTip": "Repositories\\CustomizeObjects\\ViewProduct.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAdAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-06-01T09:24:01.598Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "CRUDProductAPI.csproj",
-              "DocumentMoniker": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI.csproj",
-              "RelativeDocumentMoniker": "CRUDProductAPI\\CRUDProductAPI.csproj",
-              "ToolTip": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI\\CRUDProductAPI.csproj",
-              "RelativeToolTip": "CRUDProductAPI\\CRUDProductAPI.csproj",
-              "ViewState": "AQIAABEAAAAAAAAAAABBwBMAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-30T09:29:55.98Z"
             }
           ]
         }

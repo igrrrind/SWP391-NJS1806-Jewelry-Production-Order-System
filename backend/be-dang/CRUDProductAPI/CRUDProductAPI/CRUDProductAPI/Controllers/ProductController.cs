@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Repositories.CustomizeObjects;
 using Repositories.Models;
+using Repositories.QueryObjects;
 using Services;
 
 namespace CRUDProductAPI.Controllers
@@ -16,20 +18,14 @@ namespace CRUDProductAPI.Controllers
         
 
         [HttpGet]
-        public IActionResult GetAllProduct()
+        public IActionResult GetAllProduct([FromQuery] ProductQueryObject productQuery)
         {
             
-            List<ViewProduct> products = pServices.GetAllProduct();
+            List<ViewProduct> products = pServices.GetAllProduct(productQuery);
             return Ok(products);
         }
 
-        [HttpGet("Active")]
-        public IActionResult GetAllActiveProduct()
-        {
-            
-            List<ViewProduct> products = pServices.GetAllActiveProduct();
-            return Ok(products);
-        }
+        
 
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
@@ -50,9 +46,10 @@ namespace CRUDProductAPI.Controllers
                 return BadRequest();
             }
         }
-        
+
+        //CREATE
         [HttpPost("Create")]
-        public IActionResult CreateProduct( Product product)
+        public IActionResult CreateProduct(Product product)
         {
             try
             {
@@ -63,14 +60,14 @@ namespace CRUDProductAPI.Controllers
                     ProductTypeId = product.ProductTypeId,
                     IsActive = product.IsActive
                 };
-                int productId = pServices.CreateProduct(newProduct); //Call the service method and get the productId
-
-                return Ok(new { productId });  // Return the productId in the response
+                pServices.CreateProduct(newProduct);
             }
             catch (Exception ex) 
             { 
                 return BadRequest(ex.Message);
             }
+            
+            return Ok();
         }
         //UPDATE
         [HttpPut("Update")]
@@ -90,8 +87,23 @@ namespace CRUDProductAPI.Controllers
 
 
 
-        //UPDATE
+        //DELETE
+        [HttpPut("DeleteProduct")]
+        public IActionResult DeleteProduct(int id)
+        {
+            try
+            {
+                pServices.DeleteProduct(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
+            return Ok(new { Success = true, Data = "Delete Successfully" });
+        }
+        
+        
 
         //GET ALL PRODUCT TYPE
         [HttpGet("type")]

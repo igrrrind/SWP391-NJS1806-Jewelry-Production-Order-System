@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj": {}
+    "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj": {}
   },
   "projects": {
-    "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj": {
+    "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
+        "projectUniqueName": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
         "projectName": "Repositories",
-        "projectPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
+        "projectPath": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\Repositories.csproj",
         "packagesPath": "C:\\Users\\DEEps\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\DEEps\\Desktop\\be-dang\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\obj\\",
+        "outputPath": "C:\\Users\\DEEps\\Desktop\\CRUDProductAPI\\CRUDProductAPI\\Repositories\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\DEEps\\AppData\\Roaming\\NuGet\\NuGet.Config",

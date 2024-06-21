@@ -37,5 +37,34 @@ namespace CRUDProductAPI.Controllers
             return Ok(new {Success = true, Data = productStock});
             
         }
+
+        //ADD NEW STOCK
+        [HttpPost("AddNewStockItem")]
+        public IActionResult AddNewProductStock(ProductStock productStock)
+        {
+            try
+            {
+                _stockService.AddNewProductStock(productStock);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(new {Success = true, Data = productStock });
+        }
+        //DELETE
+        [HttpPut("DeleteStockItem")]
+        public IActionResult DeleteProductStock(int id)
+        {
+            try
+            {
+                _stockService.DeleteProductStock(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(new { Success = true, Data = "Delete Successfully" });
+        }
     }
 }
