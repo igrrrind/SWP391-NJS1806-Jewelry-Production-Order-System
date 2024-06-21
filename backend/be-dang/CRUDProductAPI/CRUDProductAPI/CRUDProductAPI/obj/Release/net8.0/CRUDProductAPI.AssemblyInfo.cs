@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CRUDProductAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec3d58ee5ecaa28850d583111e8908e1881d15f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+be5e06b20d8b42ee21f752efb8bf0c3c24430863")]
 [assembly: System.Reflection.AssemblyProductAttribute("CRUDProductAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CRUDProductAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

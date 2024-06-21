@@ -17,5 +17,5 @@ public partial class Transaction
 
     public bool IsDeposit { get; set; }
 
-    public virtual Order Order { get; set; } = null!;
+    public virtual Order? Order { get; set; }// = null!;
 }

@@ -11,7 +11,7 @@ public partial class Order
 
     public DateOnly OrderDate { get; set; }
 
-    public string OrderStatus { get; set; } = null!;
+    public int StatusId { get; set; }
 
     public int PaymentStatusId { get; set; }
 
@@ -36,6 +36,8 @@ public partial class Order
     public virtual ICollection<Quote> Quotes { get; set; } = new List<Quote>();
 
     public virtual ICollection<Shipment> Shipments { get; set; } = new List<Shipment>();
+
+    public virtual Status Status { get; set; } = null!;
 
     public virtual ICollection<Transaction> Transactions { get; set; } = new List<Transaction>();
 }

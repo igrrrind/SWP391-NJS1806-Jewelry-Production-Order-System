@@ -21,5 +21,6 @@ namespace Repositories.CustomizeObjects
         public string? ProductDescription { get; set; }
 
         public bool? IsActive { get; set; }
+        public decimal? LowestPrice { get; set; }
     }
 }

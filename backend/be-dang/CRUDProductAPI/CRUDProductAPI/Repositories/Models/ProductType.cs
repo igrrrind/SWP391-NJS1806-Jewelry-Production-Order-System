@@ -9,5 +9,7 @@ public partial class ProductType
 
     public string TypeName { get; set; } = null!;
 
+    public virtual ICollection<OrderCustomItem> OrderCustomItems { get; set; } = new List<OrderCustomItem>();
+
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 }
