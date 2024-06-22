@@ -110,7 +110,7 @@ CREATE TABLE Order_Fixed_Items (
     unit_price DECIMAL(10, 2) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
-    FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id),
+    FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id) ON DELETE CASCADE,
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
     UNIQUE (order_id, product_stock_id)
 );
@@ -164,7 +164,7 @@ CREATE TABLE Design (
     designated_completion DATE,
     is_completed BIT NOT NULL,
     FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id) ON DELETE CASCADE,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) 
 );
 
 CREATE TABLE Design_Images (
@@ -199,7 +199,7 @@ CREATE TABLE Review (
     product_id INT NOT NULL,
     rating INT NOT NULL CHECK (rating BETWEEN 1 AND 5),
     comment TEXT,
-    FOREIGN KEY (product_id) REFERENCES Product(product_id)
+    FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Production_Status (
