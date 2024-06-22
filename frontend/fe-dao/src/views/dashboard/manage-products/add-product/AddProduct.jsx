@@ -33,7 +33,7 @@ const  AddProduct = ({productTypes, onSubmit, isSubmitted}) => {
       <CardHeader>
         <CardTitle>Product Details</CardTitle>
         <CardDescription>
-          Lipsum dolor sit amet, consectetur adipiscing elit
+          Name and describe your product
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -71,7 +71,7 @@ const  AddProduct = ({productTypes, onSubmit, isSubmitted}) => {
                   </SelectTrigger>
 
                   <SelectContent>
-                    {productTypes.map(type => (
+                    {productTypes.productTypes.map(type => (
                       <SelectItem key={type.productTypeId} value={type.productTypeId.toString()}>
                         {type.typeName}
                       </SelectItem>

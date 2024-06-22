@@ -16,7 +16,8 @@ const Sidenav = () => {
   
 
   return (
-    <div className="flex h-screen xl:h-screen flex-col p-4 bg-stone-900 text-white min-w-[210px]">
+   <div className=''>
+    <div className="flex h-screen xl:h-screen flex-col p-4 bg-stone-900 text-white min-w-[210px] fixed">
       <div className='h-[50px]'></div>
       <div className="flex items-center mb-6 mx-auto">
         <span className="text-xl font-bold">PACIFA ADMIN</span>
@@ -56,6 +57,10 @@ const Sidenav = () => {
         </div>
       )}
     </div>
+
+    <div className="flex h-screen xl:h-screen flex-col p-4 bg-stone-900 text-white min-w-[210px]"></div>
+
+    </div> 
   );
 };
 

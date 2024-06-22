@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, useMemo } from 'react';
 import { auth, provider } from '../services/Firebase';
-import { onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut } from 'firebase/auth';
+import { onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, createUserWithEmailAndPassword} from 'firebase/auth';
 
 // Create the context
 const AuthContext = createContext();
@@ -32,6 +32,10 @@ export const AuthProvider = ({ children }) => {
     await signInWithPopup(auth, provider);
   };
 
+  const signupWithEmailAndPassword = async (email, password, firstName, lastName) => {
+    await createUserWithEmailAndPassword(auth, email, password)
+  }
+
   // Function to sign out
   const logout = async () => {
     await signOut(auth);
@@ -43,6 +47,7 @@ export const AuthProvider = ({ children }) => {
     loginWithEmailAndPassword,
     loginWithGoogle,
     logout,
+    signupWithEmailAndPassword,
   };
 
 

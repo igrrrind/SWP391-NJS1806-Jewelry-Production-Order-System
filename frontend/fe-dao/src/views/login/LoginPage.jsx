@@ -75,7 +75,7 @@ const LoginPage = () => {
         </div>
     }
     <h1 className='cormorant-garamond-regular  text-5xl p-5'>Login</h1>
-        <span>Don&apos;t have an account? <Link to="./signup"  className='underline'>Click here to create an account.</Link></span>
+        <span>Don&apos;t have an account? <Link to="/signup"  className='underline'>Click here to create an account.</Link></span>
         <div className='m-4 w-full'>
           <Label htmlFor="email">Email</Label>
           <Input type="email" id="email" placeholder="Email" value = { email } onChange = { (e) => setEmail(e.target.value) } required/>

@@ -8,7 +8,7 @@ CREATE TABLE Roles (
 );
 
 CREATE TABLE [User] ( 
-    uid NVARCHAR(50) NOT NULL PRIMARY KEY, -- Changed from string to NVARCHAR(50)
+    uid NVARCHAR(50) NOT NULL PRIMARY KEY, 
     email NVARCHAR(50) NOT NULL,
     phone NVARCHAR(50) NOT NULL,
     first_name NVARCHAR(35) NOT NULL,
@@ -32,7 +32,7 @@ CREATE TABLE Customer_Detail (
     address_line NVARCHAR(50) NOT NULL,
     province NVARCHAR(50) NOT NULL,
     district_town NVARCHAR(50) NOT NULL,
-    FOREIGN KEY (uid) REFERENCES [User](uid),
+    FOREIGN KEY (uid) REFERENCES [User](uid) ON DELETE CASCADE,
     UNIQUE (uid)
 );
 
@@ -75,7 +75,7 @@ CREATE TABLE Product_Stock (
     stock_quantity INT,
     price DECIMAL(10, 2) NOT NULL,
     gallery_url NVARCHAR(255),
-    FOREIGN KEY (product_id) REFERENCES Product(product_id),
+    FOREIGN KEY (product_id) REFERENCES Product(product_id) ON DELETE CASCADE,
     FOREIGN KEY (gemstone_id) REFERENCES Gemstone(gemstone_id),
     FOREIGN KEY (metal_id) REFERENCES Metals(metal_id),
     UNIQUE (product_id, gemstone_id, metal_id, size)
@@ -101,8 +101,6 @@ CREATE TABLE Orders (
     FOREIGN KEY (status_id) REFERENCES [Status](status_id)
 );
 
-
-
 CREATE TABLE Order_Fixed_Items (
     order_fixed_item_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
@@ -111,7 +109,7 @@ CREATE TABLE Order_Fixed_Items (
     quantity INT NOT NULL,
     unit_price DECIMAL(10, 2) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
     FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id),
     FOREIGN KEY (product_id) REFERENCES Product(product_id),
     UNIQUE (order_id, product_stock_id)
@@ -128,13 +126,12 @@ CREATE TABLE Order_Custom_Items (
     quantity INT NOT NULL,
     request_description NVARCHAR(MAX) NOT NULL,
     subtotal DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
     FOREIGN KEY (product_type_id) REFERENCES Product_Types(product_type_id),
     FOREIGN KEY (gemstone_id) REFERENCES Gemstone(gemstone_id),
     FOREIGN KEY (metal_id) REFERENCES Metals(metal_id),
     UNIQUE (order_id, product_type_id, gemstone_id, metal_id, size)
 );
-
 
 CREATE TABLE Transactions (
     transaction_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -143,7 +140,7 @@ CREATE TABLE Transactions (
     transaction_total DECIMAL(10, 2) NOT NULL,
     payment_type NVARCHAR(50),
     is_deposit BIT NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Quote (
@@ -156,7 +153,7 @@ CREATE TABLE Quote (
     carat_cost DECIMAL(10, 2),
     production_cost DECIMAL(10, 2),
     quote_total_price DECIMAL(10, 2),
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Design (
@@ -166,34 +163,23 @@ CREATE TABLE Design (
     description TEXT NOT NULL,
     designated_completion DATE,
     is_completed BIT NOT NULL,
-    FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id),
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+    FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id) ON DELETE CASCADE,
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Design_Images (
     design_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     design_id INT NOT NULL,
     image_url NVARCHAR(255),
-    FOREIGN KEY (design_id) REFERENCES Design(design_id)
+    FOREIGN KEY (design_id) REFERENCES Design(design_id) ON DELETE CASCADE
 );
-
-/*
-CREATE TABLE Request (
-    request_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
-    order_id INT NOT NULL,    
-    order_custom_id INT,
-    request_description NVARCHAR(MAX) NOT NULL,
-    FOREIGN KEY (order_custom_id) REFERENCES Order_Custom_Items(order_item_id),
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)    
-)
-*/
 
 CREATE TABLE Product_Images (
     product_image_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     product_stock_id INT NOT NULL,
     image_url NVARCHAR(255),
     alt TEXT,
-    FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id)
+    FOREIGN KEY (product_stock_id) REFERENCES Product_Stock(product_stock_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Shipment (
@@ -205,7 +191,7 @@ CREATE TABLE Shipment (
     shipping_district NVARCHAR(50) NOT NULL,
     is_shipping BIT NOT NULL,
     shipping_fee DECIMAL(10, 2) NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id)
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
 
 CREATE TABLE Review (
@@ -221,17 +207,14 @@ CREATE TABLE Production_Status (
     status_name VARCHAR(50) NOT NULL
 );
 
-
 CREATE TABLE Production_Tracking (
     production_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
     start_date DATE NOT NULL,
     production_status_id INT NOT NULL,
-    FOREIGN KEY (order_id) REFERENCES Orders(order_id),
+    FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE,
     FOREIGN KEY (production_status_id) REFERENCES Production_Status(production_status_id)
 );
-
-
 
 
 

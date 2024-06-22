@@ -10,7 +10,7 @@ export function useAllProducts() {
     const fetchAllProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://localhost:7169/api/Product');
+        const response = await axios.get('https://localhost:7112/api/Product');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -32,7 +32,7 @@ export function useAllActiveProducts() {
     const fetchAllActiveProducts = async () => {
       try {
         setLoading(true);
-        const response = await axios.get('https://localhost:7169/api/Product/Active');
+        const response = await axios.get('https://localhost:7112/api/Product/Active');
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -55,7 +55,7 @@ export function useProductById(id) {
     const fetchProductById = async () => {
       try {
         setLoading(true);
-        const response = await axios.get(`https://localhost:7169/api/Product/${id}`);
+        const response = await axios.get(`https://localhost:7112/api/Product/${id}`);
         setProduct(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

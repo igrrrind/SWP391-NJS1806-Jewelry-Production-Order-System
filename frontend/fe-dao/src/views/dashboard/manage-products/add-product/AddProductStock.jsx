@@ -1,8 +1,7 @@
-import { useForm } from "react-hook-form"
-
-import { PlusCircle, Trash } from "lucide-react"
-
-import { Button } from "@/components/ui/button"
+import React, { useState } from "react";
+import { Controller, useForm, useFieldArray } from "react-hook-form";
+import { PlusCircle, Trash } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -10,9 +9,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
 import {
   Table,
   TableBody,
@@ -20,42 +19,29 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import {
-  ToggleGroup,
-  ToggleGroupItem,
-} from "@/components/ui/toggle-group"
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select"
-import { useState } from "react"
-import ImageUpload from "@/components/custom/image-upload"
+} from "@/components/ui/table";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import ImageUpload from "@/components/custom/image-upload";
 
+const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
+  const thumbnailPath = "products/thumbnails";
+  const productThumbnailName = `${productReference}`;
 
+  const { register, handleSubmit, control, formState: { errors } } = useForm({
+    defaultValues: {
+      stocktabs: [{ id: 1, stock: '', price: '', size: '', metal: '', gemstone: '' }]
+    }
+  });
+  const { fields, append, remove } = useFieldArray({
+    control,
+    name: "stocktabs"
+  });
 
-const AddProductStock = ({metals,gemstones,productReference,onSubmit}) => {
+  const addStocktab = () => {
+    append({ id: fields.length + 1, stock: '', price: '', size: '', metal: '', gemstone: '' });
+  };
 
-    const thumbnailPath = "products/thumbnails";
-    const productThumbnailName = `${productReference}`;
-
-
-    const { register, handleSubmit, control, formState: { errors } } = useForm();
-    const [stocktabs, setStocktabs] = useState([]);
-
-    const addStocktabs = () => {
-      setStocktabs([...stocktabs, { id: stocktabs.length }]);
-    };
-
-    const deleteStocktabs = (id) => {
-      setStocktabs(stocktabs.filter(stocktab => stocktab.id !== id));
-    };
-
-
-    return (
+  return (
     <Card className="w-full">
       <CardHeader>
         <CardTitle>Add Product Stock & Variants</CardTitle>
@@ -64,147 +50,117 @@ const AddProductStock = ({metals,gemstones,productReference,onSubmit}) => {
         </CardDescription>
       </CardHeader>
       <CardContent>
+        <div className="m-10">
+          <Label htmlFor="description">Thumbnail</Label>
+          <ImageUpload msg="Upload one image file as the product thumbnail" uploadPath={thumbnailPath} uploadFileName={productThumbnailName} />
+        </div>
 
-       <div className="m-10">
-            <Label htmlFor="description">Thumbnail</Label>
-            <ImageUpload msg="Upload one image file as the product thumbnail" uploadPath={thumbnailPath} uploadFileName={productThumbnailName}/>
-        </div> 
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="w-[100px]">SKU</TableHead>
+                <TableHead className="w-[150px]">Stock</TableHead>
+                <TableHead className="w-[150px]">Price</TableHead>
+                <TableHead className="w-[150px]">Size</TableHead>
+                <TableHead className="">Metals</TableHead>
+                <TableHead className="">Gemstones</TableHead>
+                <TableHead className="">Action</TableHead>
+              </TableRow>
+            </TableHeader>
 
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead className="w-[100px]">SKU</TableHead>
-              <TableHead className="w-[150px]">Stock</TableHead>
-              <TableHead className="w-[150px]">Price</TableHead>
-              <TableHead className="w-[150px]">Size</TableHead>
-              <TableHead className="">Metals</TableHead>
-              <TableHead className="">Gemstones</TableHead>
-              <TableHead className="">Action</TableHead>
-            </TableRow>
-          </TableHeader>
-          <TableBody>
+            <TableBody>
+              {fields.map((field, index) => (
+                <TableRow key={field.id}>
+                  <TableCell className="font-semibold">{index + 1}</TableCell>
 
-          <form onSubmit={handleSubmit(onSubmit)}>
-  
-            {stocktabs.map((stocktab =>
-            <TableRow key={stocktab.id}>
-              <TableCell className="font-semibold">{stocktab.id}</TableCell>
-              
-              <TableCell>
-                <Label htmlFor="stock-1" className="sr-only">
-                  Stock
-                </Label>
-                <Input id="stock-1" type="number" defaultValue="100"               
-                {...register('stock', { required: true })}
-                />
-              </TableCell>
-
-              <TableCell>
-                <Label htmlFor="price-1" className="sr-only">
-                  Price
-                </Label>
-                <Input id="price-1" type="number" defaultValue="99.99"               
-                {...register('price', { required: true })}
-                />
-              </TableCell>
-
-              <TableCell>
-                <Label htmlFor="size-1" className="sr-only">
-                  Size
-                </Label>
-                <Input id="size-1" type="number" defaultValue="99.99"               
-                {...register('price', { required: true })}
-                />    
-              </TableCell>
-
-              <TableCell>
-              <Label htmlFor="metal" className="sr-only" >Metal</Label>
-              
-              <Controller
-              name="metal"
-              control={control}
-              defaultValue=""
-              rules={{ required: true }}
-              render={({ field }) => (
-                <Select onValueChange={field.onChange} value={field.value}>
-                  <SelectTrigger
-                    id="metal"
-                    aria-label="Select Metal">
-                      
-                    <SelectValue placeholder="Select Metal" />
-                  </SelectTrigger>
-                  
-                  <SelectContent>    
-                  {metals.map((metal) => (                    
-                    <SelectItem value={metal.metalId.toString()} key={metal.metalId}>
-                      {metal.metalTypeName}
-                    </SelectItem>      
-                  ))} 
-                  </SelectContent>                           
-                </Select>
-              )}
-              />
-
-              </TableCell>
-
-              <TableCell>
-                <Controller
-                name="gemstone"
-                control={control}
-                defaultValue=""
-                rules={{ required: true }}
-                render={({ field }) => (
-                  <Select onValueChange={field.onChange} value={field.value}>
-                      <SelectTrigger
-                        id="gemstone"
-                        aria-label="Select Gemstone"
-                      >
-                        <SelectValue placeholder="Select Gemstone" />
-                      </SelectTrigger>
-                      
-                      <SelectContent >   
-                      {gemstones.map(gemstone => (                     
-                        <SelectItem  key={gemstone.gemstoneId} value={gemstone.gemstoneId.toString()}>{gemstone.gemstoneType} - {gemstone.color}</SelectItem>       
-                      ))}
-                      </SelectContent>
-                                
-                  </Select>
-                )}
-                />
-              </TableCell>
-
-              <TableCell>
-                <Button variant="outline" onClick={() => deleteStocktabs(stocktab.id)}>
-                  <Trash className="h-4 w-4" ></Trash>
-                </Button>
-              </TableCell>
-
-            </TableRow>
-
-            ))}
-
-
-
-
-
-          </form>
-          </TableBody>
-        </Table>
+                  <TableCell>
+                    <Label htmlFor={`stock-${index}`} className="sr-only">Stock</Label>
+                    <Input id={`stock-${index}`} type="number" defaultValue={field.stock}
+                      {...register(`stocktabs.${index}.stock`, { required: true })}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Label htmlFor={`price-${index}`} className="sr-only">Price</Label>
+                    <Input id={`price-${index}`} type="number" defaultValue={field.price}
+                      {...register(`stocktabs.${index}.price`, { required: true })}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Label htmlFor={`size-${index}`} className="sr-only">Size</Label>
+                    <Input id={`size-${index}`} type="number" defaultValue={field.size}
+                      {...register(`stocktabs.${index}.size`, { required: true })}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Controller
+                      name={`stocktabs.${index}.metal`}
+                      control={control}
+                      defaultValue={field.metal}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <SelectTrigger id={`metal-${index}`} aria-label="Select Metal">
+                            <SelectValue placeholder="Select Metal" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {metals.metals.map(metal => (
+                              <SelectItem key={metal.metalId} value={metal.metalId.toString()}>
+                                {metal.metalTypeName}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Controller
+                      name={`stocktabs.${index}.gemstone`}
+                      control={control}
+                      defaultValue={field.gemstone}
+                      rules={{ required: true }}
+                      render={({ field }) => (
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <SelectTrigger id={`gemstone-${index}`} aria-label="Select Gemstone">
+                            <SelectValue placeholder="Select Gemstone" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {gemstones.gemstones.map(gemstone => (
+                              <SelectItem key={gemstone.gemstoneId} value={gemstone.gemstoneId.toString()}>
+                                {gemstone.gemstoneType} - {gemstone.color}
+                              </SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      )}
+                    />
+                  </TableCell>
+                  <TableCell>
+                    <Button variant="outline" onClick={() => remove(index)}>
+                      <Trash className="h-4 w-4"></Trash>
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+          <CardFooter className="justify-center border-t p-4">
+            <Button size="sm" variant="ghost" className="gap-1" onClick={addStocktab}>
+              <PlusCircle className="h-3.5 w-3.5" />
+              Add Variant
+            </Button>
+          </CardFooter>
+          <CardFooter className="justify-center border-t p-4">
+            {errors && <div>Some fields are still empty.</div>}
+            <Button type="submit" size="sm" variant="" className="gap-1 bg-white text-black hover:text-white border-black border">
+              Submit
+            </Button>
+          </CardFooter>
+        </form>
       </CardContent>
-      <CardFooter className="justify-center border-t p-4">
-        <Button size="sm" variant="ghost" className="gap-1" onClick={addStocktabs}>
-          <PlusCircle className="h-3.5 w-3.5" />
-          Add Variant
-        </Button>
-      </CardFooter>
     </Card>
-    )
-
+  );
 }
 
-
-
 export default AddProductStock;
-
-
-

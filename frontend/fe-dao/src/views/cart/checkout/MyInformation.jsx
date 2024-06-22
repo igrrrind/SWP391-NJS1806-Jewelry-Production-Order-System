@@ -26,7 +26,7 @@ function MyInformation() {
 
     return (
         <>
-             <div className="flex items-center justify-between ">
+            <div className="flex items-center justify-between ">
              <h1 className="cormorant-garamond-regular text-3xl">My Information</h1>
             {!currentUser && <h2 className="text-sm mt-2 text-right	">Having an account makes placing an order faster. <Link to="/login"  className='underline'>Click here to sign up</Link></h2>}
             </div>

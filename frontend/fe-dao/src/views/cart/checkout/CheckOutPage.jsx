@@ -6,19 +6,36 @@ import CheckOutDetails from "./CheckOutDetails"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { initiatePayment } from "@/hooks/paymentHooks"
+import useCheckoutDetails from "@/hooks/useCheckOutDetails"
 
 const CheckOutPage = () => {
+
+
+    const {
+        shippingAddress,
+        city,
+        state,
+        deliveryMethod,
+        paymentMethod,
+        handleShippingAddressChange,
+        handleCityChange,
+        handleStateChange,
+        handleDeliveryMethodChange,
+        handlePaymentMethodChange
+    } = useCheckoutDetails();
+
+
+
 
     const cart = useSelector(state => state.cart);
     const navigate = useNavigate();
     const [url, setUrl] = useState(null);
     const [error, setError] = useState(null);
 
+
+
     useEffect(() => {
-
-        const handlePostOrder = async () => {
-
-        }
+        handlePaymentMethodChange("vnpay")
 
         const preparePaymentUrl = async () => {
             try {
@@ -40,21 +57,20 @@ const CheckOutPage = () => {
             setError('Payment URL is not available. Please try again.');
             return;
         }
-
-
+        //open url
         const tempTab = window.open(url, "_blank", "noopener,noreferrer");
-        if (!tempTab) {
-            console.error('Failed to open new tab. The popup might have been blocked.');
-            setError('Failed to open new tab. Please allow popups for this site in your browser settings.');
-            return;
-        }
+            if (!tempTab) {
+                console.error('Failed to open new tab. The popup might have been blocked.');
+                setError('Failed to open new tab. Please allow popups for this site in your browser settings.');
+                return;
+            }
 
         const checkTempTabClosed = setInterval(() => {
-            if (tempTab.closed) {
-                clearInterval(checkTempTabClosed);
-                window.focus();
-            }
-        }, 1000);
+                if (tempTab.closed) {
+                    clearInterval(checkTempTabClosed);
+                    window.focus();
+                }
+            }, 1000);
     };
 
 
@@ -67,7 +83,18 @@ const CheckOutPage = () => {
                     </div>
 
                     <div className="w-full border border-stone-700 p-8">
-                        <CheckOutDetails></CheckOutDetails>
+                    <CheckOutDetails
+                        shippingAddress={shippingAddress}
+                        city={city}
+                        state={state}
+                        deliveryMethod={deliveryMethod}
+                        paymentMethod={paymentMethod}
+                        onShippingAddressChange={handleShippingAddressChange}
+                        onCityChange={handleCityChange}
+                        onStateChange={handleStateChange}
+                        onDeliveryMethodChange={handleDeliveryMethodChange}
+                        onPaymentMethodChange={handlePaymentMethodChange}
+                    />
                     </div>
                 </div>
                 

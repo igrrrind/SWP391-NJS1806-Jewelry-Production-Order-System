@@ -18,6 +18,7 @@ import AccountPage from './views/account/accountPage';
 import OrdersPage from './views/account/orders/Orders';
 import HeroCustomizePage from './views/customize/HeroCustomizePage';
 import JewelryCustomization from './views/customize/start/JewelryCustomization';
+import SignupPage from './views/signup/SignupPage';
 
 
 const productsPages = {
@@ -95,6 +96,12 @@ const App = () => {
         <Route path="/login" element={<LoginPage />}>
         {/*   <Route index element={<HomePage />} /> */}
         </Route>
+
+        <Route path="/signup" element={<SignupPage />}>
+        {/*   <Route index element={<HomePage />} /> */}
+        </Route>
+
+
       </Routes>
       </AuthProvider>
     </Router>
