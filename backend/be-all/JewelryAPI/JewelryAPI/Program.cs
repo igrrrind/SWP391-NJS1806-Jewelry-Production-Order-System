@@ -7,6 +7,8 @@ builder.Services.AddScoped<QuoteService>();
 builder.Services.AddScoped<ShipmentService>();
 builder.Services.AddScoped<UserService>();
 builder.Services.AddScoped<ProductionTrackingService>();
+builder.Services.AddScoped<OrderCustomItemService>();
+builder.Services.AddScoped<DesignService>();
 // Add services to the container.
 
 builder.Services.AddControllers();

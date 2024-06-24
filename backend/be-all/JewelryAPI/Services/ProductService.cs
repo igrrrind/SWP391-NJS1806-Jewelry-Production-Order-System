@@ -1,4 +1,4 @@
-﻿using Repositories.CustomizeObjects;
+﻿using Repositories.Dto;
 using Repositories;
 using Repositories.Models;
 using Repositories.QueryObjects;
@@ -9,17 +9,14 @@ namespace Services
     {
         ProductRepository _ProductRepo = new ProductRepository();
         OriginalProductTypeRepository _originalProductTypeRepo = new OriginalProductTypeRepository();
-        public List<ViewProduct> GetAllProduct(ProductQueryObject productQuery)
+        StockService _stockService = new StockService();
+        public List<ProductDto> GetAllProduct(ProductQueryObject productQuery)
         {
             return _ProductRepo.GetAllProducts(productQuery);
         }
 
-        public List<ViewProduct> GetAllActiveProduct()
-        {
-            return _ProductRepo.GetAllActiveProducts();
-        }
 
-        public ViewProduct? GetProductById(int id)
+        public ProductDto? GetProductById(int id)
         {
             return _ProductRepo.GetProductById(id);
         }
@@ -34,7 +31,11 @@ namespace Services
         {
             _ProductRepo.UpdateProduct(product);
         }
-
+        //DELETE
+        public void DeleteProduct(int id)
+        {
+            _ProductRepo.DeleteProduct(id);
+        }
 
         //GET ALL PRODUCT TYPE
         public List<ProductType> GetAllProductTypes()

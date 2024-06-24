@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Repositories;
-using Repositories.CustomObjects;
+using Repositories.Dto;
 using Repositories.Models;
 
 namespace Services
@@ -15,16 +15,16 @@ namespace Services
                 userRepository = new UserRepository();
             }
         }
-        public List<DetailUser> GetAllUsers()
+        public List<UserDto> GetAllUsers()
         {
             return userRepository.GetAllUsers();
         }
-        public List<DetailUser> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
+        public List<UserDto> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
         {
             return userRepository.GetAllUsersByRole(roleId, pageNumber, pageSize);
         }
 
-        public List<Customer> GetCustomers()
+        public List<CustomerDto> GetCustomers()
         {
             return userRepository.GetCustomers();
         }
@@ -43,12 +43,12 @@ namespace Services
             return userRepository.GetUser(id);
         }
 
-        public List<DetailUser> GetUsers()
+        public List<UserDto> GetUsers()
         {
             return userRepository.GetAllUsers();
         }
 
-        public User UpdateUser(string id, DetailUser user)
+        public User UpdateUser(string id, UserDto user)
         {
             return userRepository.UpdateUser(id, user);
         }

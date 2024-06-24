@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.CustomizeObjects;
+using Microsoft.EntityFrameworkCore;
+using Repositories.Dto;
 using Repositories.Models;
 using Repositories.QueryObjects;
 using Services;
@@ -19,17 +21,11 @@ namespace JewelryAPI.Controllers
         public IActionResult GetAllProduct([FromQuery] ProductQueryObject productQuery)
         {
             
-            List<ViewProduct> products = pServices.GetAllProduct(productQuery);
+            List<ProductDto> products = pServices.GetAllProduct(productQuery);
             return Ok(products);
         }
 
-        [HttpGet("Active")]
-        public IActionResult GetAllActiveProduct()
-        {
-            
-            List<ViewProduct> products = pServices.GetAllActiveProduct();
-            return Ok(products);
-        }
+        
 
         [HttpGet("{id}")]
         public IActionResult GetProductById(int id)
@@ -37,7 +33,7 @@ namespace JewelryAPI.Controllers
             try
             {
                 
-                ViewProduct? product = pServices.GetProductById(id);
+                ProductDto? product = pServices.GetProductById(id);
                 if (product == null)
                 {
                     return NotFound();
@@ -91,8 +87,23 @@ namespace JewelryAPI.Controllers
 
 
 
-        //UPDATE
+        //DELETE
+        [HttpDelete("DeleteProduct")]
+        public IActionResult DeleteProduct(int id)
+        {
+            try
+            {
+                pServices.DeleteProduct(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
+            return Ok(new { Success = true, Data = "Delete Successfully" });
+        }
+        
+        
 
         //GET ALL PRODUCT TYPE
         [HttpGet("type")]

@@ -1,4 +1,4 @@
-﻿using Repositories.CustomObjects;
+﻿using Repositories.Dto;
 using Repositories.Models;
 
 namespace Repositories
@@ -8,13 +8,13 @@ namespace Repositories
     {
         private JeweleryOrderProductionContext dbContext = null;
 
-        public List<DetailUser> GetAllUsers()
+        public List<UserDto> GetAllUsers()
         {
             dbContext = new JeweleryOrderProductionContext();
-            var detailUserList = from u in dbContext.Users
+            var UserDtoList = from u in dbContext.Users
                                  join r in dbContext.Roles
                                  on u.RoleId equals r.RoleId
-                                 select new DetailUser()
+                                 select new UserDto()
                                  {
                                      Uid = u.Uid,
                                      Email = u.Email,
@@ -24,9 +24,9 @@ namespace Repositories
                                      RoleName = r.RoleName
                                  };
 
-            return detailUserList.ToList();
+            return UserDtoList.ToList();
         }
-        public List<Customer> GetCustomers()
+        public List<CustomerDto> GetCustomers()
         {
             dbContext = new JeweleryOrderProductionContext();
             var customerList = from u in dbContext.Users
@@ -35,7 +35,7 @@ namespace Repositories
                                join d in dbContext.CustomerDetails
                                on u.Uid equals d.Uid
                                where u.RoleId == 5
-                               select new Customer()
+                               select new CustomerDto()
                                {
                                    Uid = u.Uid,
                                    CustomerId = d.CustomerId,
@@ -53,13 +53,13 @@ namespace Repositories
                                };
             return customerList.ToList();
         }
-        public DetailUser? GetDetailUser(string id)
+        public UserDto? GetUserDto(string id)
         {
             dbContext = new JeweleryOrderProductionContext();
-            var detailUser = (from u in dbContext.Users
+            var UserDto = (from u in dbContext.Users
                               join r in dbContext.Roles
                               on u.RoleId equals r.RoleId
-                              select new DetailUser()
+                              select new UserDto()
                               {
                                   Uid = u.Uid,
                                   Email = u.Email,
@@ -69,16 +69,16 @@ namespace Repositories
                                   RoleName = r.RoleName
                               }).FirstOrDefault(u => u.Uid.Equals(id));
 
-            return detailUser;
+            return UserDto;
         }
-        public List<DetailUser> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
+        public List<UserDto> GetAllUsersByRole(int roleId, int pageNumber, int pageSize)
         {
             dbContext = new JeweleryOrderProductionContext();
-            var detailUserList = from u in dbContext.Users
+            var UserDtoList = from u in dbContext.Users
                                  join r in dbContext.Roles
                                  on u.RoleId equals r.RoleId
                                  where u.RoleId == roleId
-                                 select new DetailUser()
+                                 select new UserDto()
                                  {
                                      Uid = u.Uid,
                                      Email = u.Email,
@@ -88,7 +88,7 @@ namespace Repositories
                                      RoleName = r.RoleName
                                  };
             var skipNumber = (pageNumber - 1) * pageSize;
-            return detailUserList.ToList().Skip(skipNumber).Take(pageSize).ToList();
+            return UserDtoList.ToList().Skip(skipNumber).Take(pageSize).ToList();
         }
         public User? GetUser(string id)
         {
@@ -104,7 +104,7 @@ namespace Repositories
             return user;
         }
 
-        public User UpdateUser(string id, DetailUser user)
+        public User UpdateUser(string id, UserDto user)
         {
             dbContext = new JeweleryOrderProductionContext();
             User oUser = GetUser(id);
