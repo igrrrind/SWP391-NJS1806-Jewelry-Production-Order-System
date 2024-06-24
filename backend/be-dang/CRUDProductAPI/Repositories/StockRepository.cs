@@ -65,9 +65,9 @@ namespace Repositories
                                  Price = s.Price,
                                  GalleryUrl = s.GalleryUrl
                              }).AsQueryable();
-            stocksList = stocksList.OrderBy(s => s.Price);
-            
-            return stocksList.FirstOrDefault().Price;
+           var lowestPriceStock = stocksList.OrderBy(s => s.Price).FirstOrDefault();
+
+            return lowestPriceStock?.Price ?? 0;
         }
 
         //UPDATE
