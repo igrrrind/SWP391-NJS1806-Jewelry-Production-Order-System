@@ -1,10 +1,4 @@
-﻿using Repositories.Dto;
-using Repositories.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Repositories.Models;
 
 namespace Repositories
 {
@@ -23,7 +17,7 @@ namespace Repositories
             _context.SaveChanges();
             return design;
         }
-        public Design UpdateDesign (int id, Design design)
+        public Design UpdateDesign(int id, Design design)
         {
             _context = new JeweleryOrderProductionContext();
             Design oDesign = GetDesignByOrderCustomId(id);
