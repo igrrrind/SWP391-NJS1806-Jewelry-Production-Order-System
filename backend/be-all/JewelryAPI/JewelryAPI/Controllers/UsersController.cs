@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.CustomObjects;
+using Repositories.Dto;
 using Repositories.Models;
 using Services;
 
@@ -69,7 +69,7 @@ namespace JewelryAPI.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(string id, DetailUser user)
+        public async Task<IActionResult> PutUser(string id, UserDto user)
         {
             if (!user.Uid.Equals(id))
             {

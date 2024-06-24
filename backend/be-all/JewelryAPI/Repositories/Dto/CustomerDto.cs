@@ -1,8 +1,8 @@
 ﻿using Repositories.Models;
 
-namespace Repositories.CustomObjects
+namespace Repositories.Dto
 {
-    public class Customer
+    public class CustomerDto
     {
         public string Uid { get; set; } = null!;
 

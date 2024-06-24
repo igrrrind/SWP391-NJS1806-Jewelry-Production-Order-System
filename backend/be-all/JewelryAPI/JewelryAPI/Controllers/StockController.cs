@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
-using Repositories.CustomizeObjects;
+using Repositories.Dto;
 using Repositories.Models;
 using Services;
 
@@ -15,7 +15,7 @@ namespace JewelryAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult GetAllStocksByProductId(int id)
         {
-            List<ViewStock>? stocksList = _stockService.GetAllStocksByProductId(id);
+            List<StockDto>? stocksList = _stockService.GetAllStocksByProductId(id);
             if(stocksList == null)
             {
                 return NotFound();
@@ -36,6 +36,35 @@ namespace JewelryAPI.Controllers
             }
             return Ok(new {Success = true, Data = productStock});
             
+        }
+
+        //ADD NEW STOCK
+        [HttpPost("AddNewStockItem")]
+        public IActionResult AddNewProductStock(ProductStock productStock)
+        {
+            try
+            {
+                _stockService.AddNewProductStock(productStock);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(new {Success = true, Data = productStock });
+        }
+        //DELETE
+        [HttpPut("DeleteStockItem")]
+        public IActionResult DeleteProductStock(int id)
+        {
+            try
+            {
+                _stockService.DeleteProductStock(id);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok(new { Success = true, Data = "Delete Successfully" });
         }
     }
 }
