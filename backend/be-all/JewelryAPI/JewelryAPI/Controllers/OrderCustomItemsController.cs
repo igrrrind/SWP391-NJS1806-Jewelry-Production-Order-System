@@ -57,17 +57,16 @@ namespace JewelryAPI.Controllers
             }
 
             _service.UpdateOrderCustomItem(id, orderCustomItem);
-            return NoContent();
+            return Ok(orderCustomItem);
         }
 
         [HttpPost]
         public IActionResult PostOrderCustomItem(OrderCustomItem orderCustomItem)
         {
             _service.AddOrderCustomItem(orderCustomItem);
-            return CreatedAtAction("GetOrderCustomItem", new { id = orderCustomItem.OrderItemId }, orderCustomItem);
+            return Ok(orderCustomItem);
         }
 
-        // DELETE: api/OrderCustomItems/5
         [HttpDelete("{id}")]
         public IActionResult DeleteOrderCustomItem(int id)
         {
