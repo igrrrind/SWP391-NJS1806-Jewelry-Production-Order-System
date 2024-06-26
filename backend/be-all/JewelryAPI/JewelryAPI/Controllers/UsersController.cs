@@ -49,6 +49,20 @@ namespace JewelryAPI.Controllers
             var list = iUserService.GetCustomers().ToList();
             return Ok(list);
         }
+        [HttpGet("Customer{id}")]
+        public IActionResult GetCustomer(int id)
+        {
+            if (iUserService.GetCustomers() == null)
+            {
+                return NotFound();
+            }
+            var customer = iUserService.GetCustomerByCustomerId(id);
+            if (customer == null)
+            {
+                return NotFound();
+            }
+            return Ok(customer);
+        }
 
         // GET: api/Users/5
         [HttpGet("{id}")]
