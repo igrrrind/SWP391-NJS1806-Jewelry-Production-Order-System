@@ -28,6 +28,6 @@ namespace Repositories.Dto
 
         public string DistrictTown { get; set; } = null!;
 
-        public virtual ICollection<Order> Orders { get; set; } = new List<Order>();
+        
     }
 }
