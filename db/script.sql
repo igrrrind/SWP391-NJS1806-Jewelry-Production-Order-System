@@ -118,9 +118,9 @@ CREATE TABLE Order_Fixed_Items (
 CREATE TABLE Order_Custom_Items (
     order_item_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
     order_id INT NOT NULL,
-    product_type_id INT NOT NULL,
-    gemstone_id INT NOT NULL,
-    metal_id INT NOT NULL,
+    product_type_id INT NOT NULL, 
+    gemstone_id INT NOT NULL, 
+    metal_id INT NOT NULL,     
     size INT,
     unit_price DECIMAL(10, 2) NOT NULL,
     quantity INT NOT NULL,
@@ -189,7 +189,7 @@ CREATE TABLE Shipment (
     shipping_address NVARCHAR(255) NOT NULL,
     shipping_province NVARCHAR(50) NOT NULL,
     shipping_district NVARCHAR(50) NOT NULL,
-    is_shipping BIT NOT NULL,
+    is_shipping BIT,
     shipping_fee DECIMAL(10, 2) NOT NULL,
     FOREIGN KEY (order_id) REFERENCES Orders(order_id) ON DELETE CASCADE
 );
@@ -286,11 +286,18 @@ INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quanti
 INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (5, 5, 5, 10, 30, 2500.00, 'http://example.com/gallery5.jpg');
 
 -- Inserting into Status
-INSERT INTO Status (status_detail) VALUES ('Processing');
-INSERT INTO Status (status_detail) VALUES ('Shipped');
-INSERT INTO Status (status_detail) VALUES ('Delivered');
-INSERT INTO Status (status_detail) VALUES ('Cancelled');
-INSERT INTO Status (status_detail) VALUES ('Returned');
+INSERT INTO Status (status_detail) VALUES ('Awaiting Quote');
+INSERT INTO Status (status_detail) VALUES ('Quote Pending Approval');
+INSERT INTO Status (status_detail) VALUES ('Design In Progress');
+INSERT INTO Status (status_detail) VALUES ('Design Pending Approval');
+INSERT INTO Status (status_detail) VALUES ('Production In Progress');
+INSERT INTO Status (status_id,status_detail) VALUES (6,'Pick up store');
+INSERT INTO Status (status_id,status_detail) VALUES (7,'Shipment In Progress');
+INSERT INTO Status (status_id,status_detail) VALUES (20,'Returned');
+INSERT INTO Status (status_id,status_detail) VALUES (8,'Completed');
+INSERT INTO Status (status_id,status_detail) VALUES (11. 'Cancelled');
+
+
 
 -- Inserting into Orders
 INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (1, '2023-01-01', 1, 1, 1, 0, 600.00);
