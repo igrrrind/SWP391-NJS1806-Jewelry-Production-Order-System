@@ -28,6 +28,9 @@ namespace Services
         {
             return userRepository.GetCustomers();
         }
+        public CustomerDto GetCustomerByCustomerId(int id){
+            return userRepository.GetCustomerByCustomerId(id);
+        }
         public User AddUser(User user)
         {
             return userRepository.AddUser(user);

@@ -21,9 +21,23 @@ namespace JewelryAPI.Controllers
             {
                 orderList = _orderService.GetOrders(queryObject);
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                return BadRequest(ex.Message);   
+                return BadRequest(ex.Message);
+            }
+            return Ok(orderList);
+        }
+        [HttpGet("{customerId}")]
+        public IActionResult GetOrdersByCustomerId([FromQuery] OrderQueryObject queryObject, int customerId)
+        {
+            List<OrderDto> orderList = new List<OrderDto>();
+            try
+            {
+                orderList = _orderService.GetOrdersByCustomerId(queryObject, customerId);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
             }
             return Ok(orderList);
         }
@@ -38,7 +52,8 @@ namespace JewelryAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
-            return Ok(new {Data = order});
+            return Ok(new { Data = order });
         }
+
     }
 }

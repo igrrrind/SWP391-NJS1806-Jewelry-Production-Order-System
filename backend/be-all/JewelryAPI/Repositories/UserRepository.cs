@@ -53,6 +53,33 @@ namespace Repositories
                                };
             return customerList.ToList();
         }
+        public CustomerDto GetCustomerByCustomerId(int id)
+        {
+            dbContext = new JeweleryOrderProductionContext();
+            var customer = (from u in dbContext.Users
+                               join r in dbContext.Roles
+                               on u.RoleId equals r.RoleId
+                               join d in dbContext.CustomerDetails
+                               on u.Uid equals d.Uid
+                               where u.RoleId == 5
+                               select new CustomerDto()
+                               {
+                                   Uid = u.Uid,
+                                   CustomerId = d.CustomerId,
+                                   Email = u.Email,
+                                   Phone = u.Phone,
+                                   RoleName = r.RoleName,
+                                   FirstName = u.FirstName,
+                                   LastName = u.LastName,
+                                   Sex = d.Sex,
+                                   BirthDate = d.BirthDate,
+                                   AddressLine = d.AddressLine,
+                                   Province = d.Province,
+                                   DistrictTown = d.DistrictTown,
+
+                               }).FirstOrDefault(c => c.CustomerId == id);
+            return customer;
+        }
         public UserDto? GetUserDto(string id)
         {
             dbContext = new JeweleryOrderProductionContext();
