@@ -16,14 +16,24 @@ const cartSlice = createSlice({
 
 
         },
-        removeFromCart(state,action){
+        removeFromCart(state, action) {
+            const index = state.list.findIndex(productStock => productStock.productStockId === action.payload.productStockId);
+            if (index !== -1) {
+                if (state.list[index].quantity > 1) {
+                    state.list[index].quantity -= action.payload.quantity;
+                } else {
+                    state.list.splice(index, 1);
+                }
+            }
 
+            // Recalculate the total
+            state.total = state.list.reduce((sum, item) => sum + item.price * item.quantity, 0);
         }
     }
 });
 
 const { actions, reducer } = cartSlice;
 
-export const { addToCart } = actions;
+export const { addToCart, removeFromCart } = actions;
 
 export default reducer;

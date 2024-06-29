@@ -6,8 +6,6 @@ const ManageProductsPage = () => {
 
     const { products,loading } = useAllProducts();
 
-    if (loading) return <div>Loading...</div>;
-
     return (
         
         <main className="p-4 xl:flex flex-1 xl:space-x-4">

@@ -19,6 +19,10 @@ import OrdersPage from './views/account/orders/Orders';
 import HeroCustomizePage from './views/customize/HeroCustomizePage';
 import JewelryCustomization from './views/customize/start/JewelryCustomization';
 import SignupPage from './views/signup/SignupPage';
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ManageUsersPage from './views/dashboard/manage-users/ManageUsersPage';
+import CreateQuotePage from './views/dashboard/manage-orders/quote/CreateQuote';
 
 
 const productsPages = {
@@ -48,11 +52,14 @@ const productsPages = {
 const App = () => {
 
   return (
+    <>
+    <ToastContainer />
     <Router>
       <AuthProvider>
       <Routes>
         
         {/* Customer routes */}
+
         <Route path="/" element={<MainLayout />}>
               <Route index element={<HomePage />}/> 
         </Route>
@@ -87,10 +94,13 @@ const App = () => {
 
 
         <Route path="/dashboard" element={<DashboardLayout />}>
-              <Route path="manage-orders" element={<ManageOrdersPage />}/>        
+              <Route path="manage-orders" element={<ManageOrdersPage />}/>     
+              <Route path="manage-users" element={<ManageUsersPage />}/>        
               <Route path="manage-products" element={<ManageProductsPage />}>          
               </Route> 
               <Route path="add-product" element={<AddProductPage />} />
+              <Route path="create-quote/:orderId" element={<CreateQuotePage/>} />
+
         </Route>  
 
         <Route path="/login" element={<LoginPage />}>
@@ -105,6 +115,7 @@ const App = () => {
       </Routes>
       </AuthProvider>
     </Router>
+    </>
   );
 };
 

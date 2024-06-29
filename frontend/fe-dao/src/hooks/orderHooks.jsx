@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 
 
 //GET
-export function useOrderProducts() {
+export function useAllOrders(orderId, statusId, sortByNewer, pageNumber, pageSize) {
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
   
@@ -11,19 +11,51 @@ export function useOrderProducts() {
       const fetchAllOrders = async () => {
         try {
           setLoading(true);
-          const response = await axios.get('https://localhost:7112/api/Orders');
+          const response = await axios.get('https://localhost:7112/api/Order', {
+            params: {
+              OrderId: orderId,
+              StatusId: statusId,
+              SortByNewer: sortByNewer,
+              PageNumber: pageNumber,
+              PageSize: pageSize
+            }
+          });
           setOrders(response.data);
         } catch (error) {
-          console.error('Error fetching products:', error);
+          console.error('Error fetching orders:', error);
         } finally {
           setLoading(false);
         }
       };
   
       fetchAllOrders();
-    }, []);
+    }, [orderId, statusId, sortByNewer, pageNumber, pageSize]);
+  
     return { orders, loading };
-  }
+}
+
+
+export function useOrderById(id) {
+  const [order, setOrder] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchOrderById = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`https://localhost:7112/api/Order/${id}`);
+        setOrder(response.data);
+      } catch (error) {
+        console.error('Error fetching order by id: ', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrderById();
+  }, []);
+  return { order, loading };
+}
 
 
 

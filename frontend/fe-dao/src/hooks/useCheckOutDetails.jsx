@@ -3,7 +3,7 @@ import { useState } from 'react';
 const useCheckoutDetails = () => {
     const [shippingAddress, setShippingAddress] = useState("");
     const [city, setCity] = useState("");
-    const [state, setState] = useState("");
+    const [town, setTown] = useState("");
     const [deliveryMethod, setDeliveryMethod] = useState("byShipment");
     const [paymentMethod, setPaymentMethod] = useState("");
 
@@ -15,8 +15,8 @@ const useCheckoutDetails = () => {
         setCity(city);
     };
 
-    const handleStateChange = (state) => {
-        setState(state);
+    const handleTownChange = (town) => {
+        setTown(town);
     };
 
     const handleDeliveryMethodChange = (method) => {
@@ -30,12 +30,12 @@ const useCheckoutDetails = () => {
     return {
         shippingAddress,
         city,
-        state,
+        town,
         deliveryMethod,
         paymentMethod,
         handleShippingAddressChange,
         handleCityChange,
-        handleStateChange,
+        handleTownChange,
         handleDeliveryMethodChange,
         handlePaymentMethodChange
     };

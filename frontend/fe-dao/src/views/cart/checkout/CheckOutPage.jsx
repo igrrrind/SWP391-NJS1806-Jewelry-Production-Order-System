@@ -7,19 +7,19 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { initiatePayment } from "@/hooks/paymentHooks"
 import useCheckoutDetails from "@/hooks/useCheckOutDetails"
+import { useAllProvince } from "@/hooks/provinceApiHooks"
 
 const CheckOutPage = () => {
-
-
+    
     const {
         shippingAddress,
         city,
-        state,
+        town,
         deliveryMethod,
         paymentMethod,
         handleShippingAddressChange,
         handleCityChange,
-        handleStateChange,
+        handleTownChange,
         handleDeliveryMethodChange,
         handlePaymentMethodChange
     } = useCheckoutDetails();
@@ -31,6 +31,24 @@ const CheckOutPage = () => {
     const navigate = useNavigate();
     const [url, setUrl] = useState(null);
     const [error, setError] = useState(null);
+    const {provinces} = useAllProvince();
+    const [towns, setTowns] = useState(null);
+
+    const isDeliveryValid = deliveryMethod === 'inPerson' || 
+                        (deliveryMethod === 'byShipment' && shippingAddress && city && town);
+
+    useEffect(() => {
+        if (city) {
+            const province = provinces.find(prov => prov.Name === city);
+            if (province) {
+                setTowns(province.District);
+            }
+            console.log(towns)
+        }
+    }, [city, provinces]);
+
+
+
 
 
 
@@ -52,6 +70,8 @@ const CheckOutPage = () => {
 
     
     const handlePlaceOrder = () => {
+        if (paymentMethod !="vnpay") {
+    
         if (!url) {
             console.error('Payment URL is not available');
             setError('Payment URL is not available. Please try again.');
@@ -71,6 +91,7 @@ const CheckOutPage = () => {
                     window.focus();
                 }
             }, 1000);
+        }
     };
 
 
@@ -84,14 +105,16 @@ const CheckOutPage = () => {
 
                     <div className="w-full border border-stone-700 p-8">
                     <CheckOutDetails
+                        provinces={provinces}
+                        towns={towns}
                         shippingAddress={shippingAddress}
                         city={city}
-                        state={state}
+                        town={town}
                         deliveryMethod={deliveryMethod}
                         paymentMethod={paymentMethod}
                         onShippingAddressChange={handleShippingAddressChange}
                         onCityChange={handleCityChange}
-                        onStateChange={handleStateChange}
+                        onTownChange={handleTownChange}
                         onDeliveryMethodChange={handleDeliveryMethodChange}
                         onPaymentMethodChange={handlePaymentMethodChange}
                     />
@@ -124,7 +147,7 @@ const CheckOutPage = () => {
                                       
                     </div> 
 
-                    <Button size="lg"  variant="outline" className="rounded-none border-black bg-zinc-900 pt-6 pb-6 text-white w-full" onClick={handlePlaceOrder}>PLACE ORDER</Button>
+                    <Button size="lg"  variant="outline" className="rounded-none border-black bg-zinc-900 pt-6 pb-6 text-white w-full" onClick={handlePlaceOrder} disabled={!isDeliveryValid}>PLACE ORDER</Button>
 
                 </div>
 

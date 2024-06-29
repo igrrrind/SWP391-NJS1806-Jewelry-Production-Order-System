@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
+import { Link } from 'react-router-dom';
 
 
 const CompletedRequest = () => {
@@ -12,7 +13,7 @@ const CompletedRequest = () => {
       className='pointer-events-none w-24'
     />
         <h1 className='cormorant-garamond-medium text-xl mt-4'>Your order request has been sent. Our staff will contact you within the next 24 hours.</h1>
-        <Button className="m-4">View Your Order</Button>
+        <Button className="m-4"><Link to='/account/orders'>View Your Order</Link></Button>
 
     </div>
     )

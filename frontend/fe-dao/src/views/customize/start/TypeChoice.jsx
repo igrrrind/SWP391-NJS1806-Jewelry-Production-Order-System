@@ -26,7 +26,7 @@ const   TypeChoice = ({selectedJewelryType,setSelectedJewelryType}) => {
                     {jewelryTypes.map((jewelry) => (
                         <div key={jewelry.name} className="bg-white  rounded-lg hover:cursor-pointer transition" 
                         onClick={()=> {selectedJewelryType === jewelry.name? setSelectedJewelryType("") : setSelectedJewelryType(jewelry.name) }}>
-
+   
                             <div className="relative overflow-hidden rounded-lg">
                                 <img src={jewelry.imageUrl} alt={jewelry.name} className={`w-full h-64 object-cover rounded-lg hover:scale-110 transition ${selectedJewelryType === jewelry.name ? 'opacity-50' : ``}`}  />
                                 <a href={jewelry.link} className="absolute top-2 right-2 w-6 h-6 bg-black text-white rounded-full flex justify-center ">
