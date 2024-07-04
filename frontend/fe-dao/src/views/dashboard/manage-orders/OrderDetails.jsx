@@ -14,9 +14,10 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { useNavigate } from "react-router-dom";
 
 
-const OrderDetails = ({order, orderItems}) => {
+const OrderDetails = ({order, orderItems, quote, shipment, contact, transaction}) => {
     if (!order) {
       return (
         <div>
@@ -36,13 +37,13 @@ const OrderDetails = ({order, orderItems}) => {
     if (order.isCustom){
       return (
         <div>
-            <CustomCard order={order} orderItems={orderItems}/>         
+            <CustomCard order={order} orderItems={orderItems} quote={quote} shipment={shipment} contact={contact} transaction={transaction}/>         
         </div>
       )
     } else if (!order.isCustom)
     return(
         <div>
-            <FixedCard order={order} orderItems={orderItems}/>         
+            <FixedCard order={order} orderItems={orderItems} shipment={shipment} contact={contact} transaction={transaction}/>         
         </div>
     )
 
@@ -52,7 +53,12 @@ export default OrderDetails
 
 
 
-const CustomCard = ({order,orderItems}) =>{
+const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) =>{
+    const  navigate = useNavigate();
+
+    const handleCreateQuote = () => {
+       navigate(`/dashboard/create-quote/${order.orderId}`)
+    }
     return (
       <Card className="overflow-hidden border-blue-700" x-chunk="dashboard-05-chunk-4">
               <CardHeader>
@@ -81,7 +87,7 @@ const CustomCard = ({order,orderItems}) =>{
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {orderItems.map(item => (
+                    {orderItems.length !== 0 ? orderItems.map(item => (
                     <TableRow className="border-b " key={item.orderItemId}>
                         <TableCell className="px-0 flex flex-col items-center">
                           <p className=" text-left">item.typeName</p>
@@ -108,13 +114,13 @@ const CustomCard = ({order,orderItems}) =>{
                         <TableCell className="py-2">x {item.quantity}</TableCell>
                         <TableCell className="text-right px-0">{item.subtotal}</TableCell>
                     </TableRow>
-                    ))}   
+                    )): <TableRow><TableCell colSpan="5">Nothing here yet</TableCell></TableRow> }
                   </TableBody>
                 </Table>
                 <Separator className="mb-4"/>
                 <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">SHIPMENT FEE</p>
-                  <p className="text-sm">30000</p>
+                  <p className="text-sm">{shipment?.shippingFee}</p>
                 </div>
                 <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">EST. TOTAL</p>
@@ -122,7 +128,7 @@ const CustomCard = ({order,orderItems}) =>{
                 </div>
                 <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">ACTUAL TOTAL</p>
-                  <p className="text-gray-700 font-semibold">{order.orderTotal > 0 ? order.orderTotal : "Quote NF"}</p>
+                  <p className="text-gray-700 font-semibold">{order.orderTotal > 0 ? order.orderTotal : <div className="text-red-700">Quote NF</div>}</p>
                 </div>
                 <div className="text-sm text-gray-500 mb-4">
                   *Currency is VND
@@ -135,22 +141,49 @@ const CustomCard = ({order,orderItems}) =>{
                 <div>
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
-                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Pricing Quote</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Pricing Quote</div><div></div></div></AccordionTrigger>
                     <AccordionContent className=" flex justify-between">
+                        {quote ? (
                       <div className="space-y-1">
-                        <p className="font-semibold">Quote #1</p>
+                        <p className="font-semibold">Quote #{quote.quoteId}</p>
+                        <p className="text-sm text-foreground">{quote.createdDate}</p>
                         <div>
-                          <Table>
+                          <Table className="w-full">
                             <TableHeader>
+                              <TableRow>
                                 <TableHead className="pl-0 w-20">METAL WEIGHT(g)</TableHead>
-                                <TableHead className="py-2 w-8">METAL COST</TableHead>
-                                <TableHead className="py-2">CARAT PRICE</TableHead>
-                                <TableHead className="py-2">CARAT COST</TableHead>
-                                <TableHead className="px-0"><p className="text-right">PROD.</p></TableHead>
+                                <TableHead className="py-2">METAL COST</TableHead>
+                                <TableHead className="py-2 ">CARAT PRICE</TableHead>
+                                <TableHead className="py-2 ">CARAT COST</TableHead>
+                                <TableHead className="px-0"><p className="text-right">PROD. COST</p></TableHead>
+                              </TableRow>
                             </TableHeader>
+                            <TableBody>
+                              <TableRow>
+                                <TableCell className="pl-0">{quote.metalWeight}</TableCell>
+                                <TableCell>{quote.metalCost}</TableCell>
+                                <TableCell>{quote.caratPrice}</TableCell>
+                                <TableCell>{quote.caratCost}</TableCell>
+                                <TableCell className="text-right px-0">{quote.productionCost}</TableCell>
+                              </TableRow>
+                            </TableBody>
                           </Table>
+                          <Separator/>
+                          <div className="flex justify-between mb-4 mt-4">
+                            <p className="text-gray-700 font-semibold">QUOTE TOTAL</p>
+                            <p className="text-sm">{quote.quoteTotalPrice}</p>
+                          </div>
+                        </div>
+                        <div className="flex justify-center">
+                          <Button disabled={order.statusId !== 1}>{order.statusId === 1 ? "APPROVE QUOTE" : "QUOTE APPROVED"}</Button>
                         </div>
                       </div>
+                    ) : (
+                      <div className="flex flex-col">
+                        <p>Awaiting quote...</p>
+                        <Button onClick={handleCreateQuote}>CREATE QUOTE</Button>
+                      </div>
+                    )}
                     </AccordionContent>
                   </AccordionItem>
                 </Accordion>
@@ -158,15 +191,19 @@ const CustomCard = ({order,orderItems}) =>{
 
                 <div>
                 <Accordion type="single" collapsible>
-                  <AccordionItem value="item-1">
+                  <AccordionItem value="item-1" >
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
                     <AccordionContent className=" flex justify-between">
-                      <div className="space-y-1">
-                        <p className="font-semibold">Shipment #1</p>
-                        <p className="text-sm font-bold text-green-700 underline">Delivered date: 24-5-2020</p>
-                        <p>Address Line: New Way Avenue, 232 Street</p>
-                        <p>Province/City: New York</p>
-                        <p>District/Town: New Mexico</p>
+                    <div className="space-y-1">
+                      {shipment &&
+                        <>
+                          <p className="font-semibold">Shipment #{shipment.shipmentId}</p>
+                          <p className="text-sm font-bold text-green-700 underline">Delivered date: {shipment.shipmentDate}24-5-2020</p>
+                          <p>Address Line: {shipment.shippingAddress}</p>
+                          <p>Province/City: {shipment.shippingProvince}</p>
+                          <p>District/Town: {shipment.shippingDistrict}</p>
+                        </>
+                      }
                       </div>
                     </AccordionContent>
                   </AccordionItem>
@@ -191,10 +228,22 @@ const CustomCard = ({order,orderItems}) =>{
                     <AccordionItem value="item-1">
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Transaction Info</div><Badge variant={"outline"}>{order.paymentStatusName}</Badge></div></AccordionTrigger>
                       <AccordionContent className="space-y-1">
-                        <p className="font-semibold">Transaction #1</p>
-                        <p className="text-sm font-bold text-green-700 underline">Transaction date: 24-5-2020</p>
-                        <p>Payment Method: <span className="font-medium" >COD</span></p>        
-                        <p className="italic">*Deposit not applicable</p>
+                      {transaction.length !== 0 ? (
+                        transaction.map((t) => (
+                          <div key={t.transactionId}>
+                            <div className="flex">
+                              <p className="italic opacity-70">
+                                <span className="font-semibold">TID #{t.transactionId}  - </span>
+                                <span className="text-sm font-bold text-green-700 underline"> {t.transactionDate}</span>
+                                <span className="font-medium"> - Payment Method "{t.paymentType}"</span>
+                                <span className="font-medium"> - {t.transactionTotal}đ</span>
+                              </p>
+                            </div>
+                          </div>
+                        ))
+                      ) : (
+                        <p>Pending payment...</p>
+                      )}
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
@@ -204,7 +253,7 @@ const CustomCard = ({order,orderItems}) =>{
     )
 }
 
-const FixedCard = ({order,orderItems}) => {
+const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
   return (
     <Card className="overflow-hidden border-red-600" x-chunk="dashboard-05-chunk-4">
               <CardHeader>
@@ -234,7 +283,7 @@ const FixedCard = ({order,orderItems}) => {
                   </TableHeader>
                   <TableBody>
 
-                  {orderItems && orderItems.map(item => (
+                  {orderItems.length !== 0 ? orderItems.map(item => (
                     <TableRow className="border-b " key={item.orderFixedItemId}>
                       <TableCell className="px-0 flex flex-col items-center">
                         <p className=" text-left">Gold Necklace</p>
@@ -245,15 +294,18 @@ const FixedCard = ({order,orderItems}) => {
                       <TableCell className="py-2">x {item.quantity}</TableCell>
                       <TableCell className="text-right px-0">{item.subtotal}</TableCell>
                     </TableRow>
-                    ))}
+                    )): <TableRow><TableCell colSpan="5">Nothing here yet</TableCell></TableRow> }
                     
                   </TableBody>
                 </Table>
                 <Separator className="mb-4"/>
+                {shipment?
                 <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">Shipment Fee</p>
-                  <p className="text-sm">30000</p>
+                  <p className="text-sm">{shipment?.shippingFee}</p>
                 </div>
+                : ""
+                }
                 <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">TOTAL</p>
                   <p className="text-gray-700 font-semibold">{order.orderTotal}</p>
@@ -266,14 +318,22 @@ const FixedCard = ({order,orderItems}) => {
                 <div>
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
-                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div>{shipment?<Badge variant={"outline"}>{shipment.isShipping? "Shipping" : "Shipped" }</Badge>: "Not Applicable"}</div></div></AccordionTrigger>
                     <AccordionContent className=" flex justify-between">
                       <div className="space-y-1">
-                        <p className="font-semibold">Shipment #1</p>
-                        <p className="text-sm font-bold text-green-700 underline">Delivered date: 24-5-2020</p>
-                        <p>Address Line: New Way Avenue, 232 Street</p>
-                        <p>Province/City: New York</p>
-                        <p>District/Town: New Mexico</p>
+                      {shipment?
+                        <>
+                          <p className="font-semibold">#{shipment.shipmentId} - <span className="text-sm font-bold text-green-700 underline">Delivered date: {shipment.shipmentDate}</span>
+                          </p>
+                          <p>Address Line: {shipment.shippingAddress}</p>
+                          <p>Province/City: {shipment.shippingProvince}</p>
+                          <p>District/Town: {shipment.shippingDistrict}</p>
+                        </>
+                        :
+                        <>
+                          <>Customer will pick product up at store.</>
+                        </>
+                      }
                       </div>
                     </AccordionContent>
                   </AccordionItem>
@@ -298,10 +358,17 @@ const FixedCard = ({order,orderItems}) => {
                     <AccordionItem value="item-1">
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Transaction Info</div><div><Badge variant={"outline"}>{order.paymentStatusName}</Badge></div></div></AccordionTrigger>
                       <AccordionContent className="space-y-1">
-                        <p className="font-semibold">Transaction #1</p>
-                        <p className="text-sm font-bold text-green-700 underline">Transaction date: 24-5-2020</p>
-                        <p>Payment Method: <span className="font-medium" >COD</span></p>        
-                        <p className="italic">*Deposit not applicable</p>
+                        {transaction? (transaction.map((t)=> (
+                        <div key={t.transactionId}>
+                          <p className="font-semibold">Transaction #{t.transactionId}</p>
+                          <p className="text-sm font-bold text-green-700 underline">Transaction date: {t.transactionDate}</p>
+                          <p>Payment Method: <span className="font-medium" >{t.paymentType}</span></p>        
+                          <p className="italic">{t.isDeposit? "Deposit" : "Full payment"}</p>
+                        </div>
+                        ))) 
+                        : (     
+                            <p>Pending payment...</p>
+                        )}
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>

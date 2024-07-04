@@ -2,26 +2,17 @@
 import { useState } from 'react';
 import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from '@/components/ui/select';
 import { Input } from '@/components/ui/input';
+import { useGetAllMetals } from '@/hooks/metalHooks';
+import { useGetAllGemstones } from '@/hooks/gemstoneHooks';
 
 
-const metals = [
-    { metalId: '1', metalName: 'Gold 12K'},
-    { metalId: '2', metalName: 'Gold 32K'},
-    { metalId: '3', metalName: 'Gold 64K'},
-    { metalId: '4', metalName: 'Gold 80K'},
-    { metalId: '5', metalName: 'Gold 25K'},
-];
 
-const gemstones = [
-    { gemstoneId: '1', gemstoneType: 'Saphire'},
-    { gemstoneId: '2', gemstoneType: 'Saphire'},
-    { gemstoneId: '3', gemstoneType: 'Saphire'},
-    { gemstoneId: '4', gemstoneType: 'Saphire'},
-    { gemstoneId: '5', gemstoneType: 'Saphire'},
-];
 
 const   PersonalizeChoice = ({selectedMetal,setSelectedMetal,selectedGemstone,setSelectedGemstone,selectedSize,setSelectedSize}) => {
 
+    const {metals} = useGetAllMetals();
+
+    const {gemstones} = useGetAllGemstones();
 
     return (
         <>
@@ -62,7 +53,7 @@ const   PersonalizeChoice = ({selectedMetal,setSelectedMetal,selectedGemstone,se
 
                     <div className="col-span-1 text-center px-4 space-y-6 flex flex-col">  
                             <div>           
-                            <Select onValueChange={value => setSelectedMetal(value)} value={selectedMetal}>
+                            <Select onValueChange={value => setSelectedMetal(metals.find(m => m.metalId === value))} value={selectedMetal?.metalId}>
                                 <SelectTrigger className=" border w-full border-stone-800"
                                     id="gemstone"
                                     aria-label="Select metal">
@@ -72,8 +63,8 @@ const   PersonalizeChoice = ({selectedMetal,setSelectedMetal,selectedGemstone,se
                                 
                                 <SelectContent>    
                                 {metals.map((metal) => (                    
-                                    <SelectItem value={metal.metalId.toString()} key={metal.metalId} >
-                                    <p className="text-md">{metal.metalName}</p>
+                                    <SelectItem value={metal.metalId} key={metal.metalId} >
+                                    <p className="text-md">{metal.metalTypeName}</p>
                                     </SelectItem>      
                                 ))} 
                                 </SelectContent>                           
@@ -83,7 +74,7 @@ const   PersonalizeChoice = ({selectedMetal,setSelectedMetal,selectedGemstone,se
 
                     <div className="col-span-1 text-center px-4 space-y-6 flex flex-col">  
                             <div>
-                            <Select  onValueChange={value => setSelectedGemstone(value)} value={selectedGemstone}>
+                            <Select  onValueChange={value => setSelectedGemstone(gemstones.find(g => g.gemstoneId === value))} value={selectedGemstone?.gemstoneId}>
                                 <SelectTrigger className=" border w-full border-stone-800"
                                     id="gemstone"
                                     aria-label="Select gemstone">
@@ -93,7 +84,7 @@ const   PersonalizeChoice = ({selectedMetal,setSelectedMetal,selectedGemstone,se
                                 
                                 <SelectContent>    
                                 {gemstones.map((gemstone) => (                    
-                                    <SelectItem value={gemstone.gemstoneId.toString()} key={gemstone.gemstoneId} >
+                                    <SelectItem value={gemstone.gemstoneId} key={gemstone.gemstoneId} >
                                     <p className="text-md">{gemstone.gemstoneType} - {gemstone.color}</p>
                                     </SelectItem>      
                                 ))} 

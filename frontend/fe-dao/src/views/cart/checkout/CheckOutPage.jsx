@@ -8,9 +8,12 @@ import { useNavigate } from "react-router-dom"
 import { initiatePayment } from "@/hooks/paymentHooks"
 import useCheckoutDetails from "@/hooks/useCheckOutDetails"
 import { useAllProvince } from "@/hooks/provinceApiHooks"
+import { v4 as uuidv4 } from 'uuid';
+import { usePostOrder } from "@/hooks/orderHooks"
+import { generateNumericTransactionId } from "@/hooks/generateRandomId"
+
 
 const CheckOutPage = () => {
-    
     const {
         shippingAddress,
         city,
@@ -24,18 +27,19 @@ const CheckOutPage = () => {
         handlePaymentMethodChange
     } = useCheckoutDetails();
 
-
-
-
     const cart = useSelector(state => state.cart);
     const navigate = useNavigate();
     const [url, setUrl] = useState(null);
     const [error, setError] = useState(null);
-    const {provinces} = useAllProvince();
+    const { provinces } = useAllProvince();
     const [towns, setTowns] = useState(null);
+    const [order, setOrder] = useState(null);
+    const {postOrder, response} = usePostOrder(); 
 
     const isDeliveryValid = deliveryMethod === 'inPerson' || 
-                        (deliveryMethod === 'byShipment' && shippingAddress && city && town);
+                            (deliveryMethod === 'byShipment' && shippingAddress && city && town);
+
+                         
 
     useEffect(() => {
         if (city) {
@@ -43,54 +47,58 @@ const CheckOutPage = () => {
             if (province) {
                 setTowns(province.District);
             }
-            console.log(towns)
+            console.log(towns);
         }
     }, [city, provinces]);
 
-
-
-
-
-
     useEffect(() => {
-        handlePaymentMethodChange("vnpay")
+        handlePaymentMethodChange("vnpay");
 
         const preparePaymentUrl = async () => {
+            const transactionId = generateNumericTransactionId();
+
+            // Create the order in the database
+            const newOrder = {
+                customerId: 1,
+                orderDate: new Date().toISOString().slice(0, 10),
+                statusId: deliveryMethod === "byShipment" ? 7:6,  //pick up from store or awaiting shipment
+                paymentStatusId: 1,//pending 
+                isShipment: deliveryMethod === "byShipment",
+                isCustom: false,
+                orderTotal: cart.total,
+                transactionId: transactionId
+            };
+            setOrder(newOrder);
             try {
-                const paymentUrl = await initiatePayment(cart.total * 10000, "Test", "1232984");
+                const paymentUrl = await initiatePayment(cart.total *100, `Pacifa Payment ${transactionId}`, transactionId);
                 setUrl(paymentUrl);
             } catch (error) {
                 console.error('Error preparing payment URL:', error.message);
                 setError('Error preparing payment URL. Please try again.');
             }
+            
         };
 
         preparePaymentUrl();
-    }, [cart.total]);
+    }, [cart.total, deliveryMethod]);
 
-    
-    const handlePlaceOrder = () => {
-        if (paymentMethod !="vnpay") {
-    
-        if (!url) {
-            console.error('Payment URL is not available');
-            setError('Payment URL is not available. Please try again.');
-            return;
-        }
-        //open url
-        const tempTab = window.open(url, "_blank", "noopener,noreferrer");
-            if (!tempTab) {
-                console.error('Failed to open new tab. The popup might have been blocked.');
-                setError('Failed to open new tab. Please allow popups for this site in your browser settings.');
-                return;
+
+    const handlePlaceOrder = async () => {    
+        try {
+            await postOrder(order);
+            console.log("Order placed successfully!");
+
+            if (paymentMethod !== "vnpay") {
+            
+            } 
+            
+            else {
+                window.location.href = url;
             }
-
-        const checkTempTabClosed = setInterval(() => {
-                if (tempTab.closed) {
-                    clearInterval(checkTempTabClosed);
-                    window.focus();
-                }
-            }, 1000);
+        } catch (error) {
+            console.error('Error creating order:', error.message);
+            setError('Error creating order. Please try again.');
+            tempTab.close(); // Close the temporary tab if there is an error
         }
     };
 
@@ -151,9 +159,9 @@ const CheckOutPage = () => {
 
                 </div>
 
-
-             
+                {error && <div>{error}</div>}        
             </div>
+            
 
 
         </div>

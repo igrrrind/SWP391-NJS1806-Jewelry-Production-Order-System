@@ -1,24 +1,50 @@
 import { useAllOrderItems } from "@/hooks/orderItemHooks";
 import OrderDetails from "../OrderDetails";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useOrderById } from "@/hooks/orderHooks";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import { usePostQuote } from "@/hooks/quoteHooks";
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { useTransactionByOrderId } from "@/hooks/transactionHooks";
+import { useShipmentByOrderId } from "@/hooks/shipmentHooks";
 
 const CreateQuotePage = () => {
-    const id = useParams();
+    const { orderId } = useParams();
+
+    const navigate = useNavigate();
+
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { order } = useOrderById(id);
-    const { orderItems, loading: itemsLoad } = useAllOrderItems(order);
+    const { order } = useOrderById(orderId);
+    const { orderItems} = useAllOrderItems(order);
+    const { transaction } = useTransactionByOrderId(order);
+    const { shipment } = useShipmentByOrderId(order);
+    
+    const { postQuote, response } = usePostQuote();
+
+    useEffect(() => {
+        if (order) {
+            console.log(order);
+        }
+    }, [order]);
 
     const onSubmit = (data) => {
-        console.log(data);
-        // Handle form submission
+        console.log(data)
+        postQuote(data);
     };
+
+    useEffect(()=> {
+        if(response) {
+            navigate("/dashboard/manage-orders");
+            // Trigger toast notification
+            toast.success(`Quote sent successfully for order #${order.orderId}`);
+        }
+    },[response])
 
     return (
         <div>
@@ -33,6 +59,11 @@ const CreateQuotePage = () => {
                             <div className="flex-1">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className=''>
+                                    <input type="hidden" defaultValue={orderId} 
+                                     {...register("orderId", {})} />
+                                    <input type="hidden" defaultValue={new Date().toISOString().slice(0, 10)} 
+                                    {...register("createdDate", {})} />
+                                     
                                         <Label htmlFor="metalWeight">Metal Weight (g)
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>Use the customer budget or an existing product as reference</div>
                                         </Label>
@@ -124,13 +155,13 @@ const CreateQuotePage = () => {
                         </div>
                     </CardContent>
                 </Card>
+
                 <div className="relative"> 
-                    {/* Overlay div */}
-                    <div className="absolute inset-0 z-10 opacity-10 bg-stone-400"></div>
+
                     <div className="w-full relative z-0">
-                        <OrderDetails order={order} orderItems={orderItems}></OrderDetails>
+                        <OrderDetails order={order} orderItems={orderItems} transaction={transaction} shipment={shipment} ></OrderDetails>
                     </div>
-                </div>
+                </div> 
             </main>
         </div>
     );

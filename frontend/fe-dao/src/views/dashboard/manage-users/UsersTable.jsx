@@ -1,12 +1,5 @@
-import { useState, useEffect } from 'react';
 import { Badge } from "@/components/ui/badge";
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardHeader,
-    CardTitle,
-  } from "@/components/ui/card"
+
 
   import {
     Table,
@@ -24,34 +17,22 @@ import {
   } from "@/components/ui/dropdown-menu"
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
+import { useNavigate } from "react-router-dom";
 
-
-  
-  
-  
-
-
-const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
-
+const UsersTable = ({users}) => {
 
     return (
-            <Card>
-                <CardHeader className="px-7">
-                    <CardTitle>Orders</CardTitle>
-                    <CardDescription>
-                        Recent orders from your store.
-                    </CardDescription>
-                </CardHeader>
-                <CardContent>
+            
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-32">Customer</TableHead>
+                                <TableHead>ID</TableHead>
+                                <TableHead className="hidden sm:table-cell">Name</TableHead>
+                                <TableHead className="hidden sm:table-cell">Thumbnail</TableHead>
                                 <TableHead className="hidden sm:table-cell">Type</TableHead>
-                                <TableHead className="hidden sm:table-cell">Status</TableHead>
-                                <TableHead className={hidedate? "hidden"  : "hidden md:table-cell"}>Order Date</TableHead>
-                                <TableHead className="hidden sm:table-cell">Payment</TableHead>
-                                <TableHead className="hidden md:table-cell">Total</TableHead>
+                                <TableHead className="hidden sm:table-cell">Description</TableHead>
+                                <TableHead className="hidden sm:table-cell">Availability</TableHead>
+                               {/* <TableHead className="hidden md:table-cell">Sales</TableHead> */}
                                 <TableHead className="">Action</TableHead>
                             </TableRow>
                         </TableHeader>
@@ -98,35 +79,27 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
                                     </DropdownMenu>
                                     </TableCell>
                                 </TableRow>
-                                */}
 
-
+    */}
 
                         {/*  mapping orders to table cells*/}
 
+           
 
-
-                            {orders.map(order => (
-                                <TableRow key={order.orderId}  onClick={() => onOrderClick(order)} className="cursor-pointer">
-                                    <TableCell>
-                                        <div className="font-medium">Order.firstName Order.lastName</div>
-                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                            Order.phone
-                                        </div>
-                                    </TableCell>
-                                    <TableCell className="hidden sm:table-cell">{order.isCustom? <span className='text-blue-600'>Custom</span>: <span className='text-red-600'>Sale</span>}</TableCell>
+                            {users.map(user => (
+                                <TableRow key={user.uid}>
+                                    <TableCell>{user.firstName}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{user.phone}</TableCell>
+                                    <TableCell className="hidden sm:table-cell"> {/* <FireBaseImage path={products/thumbnail/{url converter}} alt={product.productnName} */} thumbnail</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{user.email}</TableCell>
+                                    <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{user.productDescription}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
-                                        <Badge className="text-xs text-center" variant='outline'>
-                                            {order.statusDetail}
+                                        <Badge className="text-xs" variant={product.isActive === 1 ? 'secondary' : 'outline'}>
+                                            {product.isActive? "Active" : "Hidden"}
                                         </Badge>
-                                    </TableCell>
-                                    <TableCell className={hidedate? "hidden"  : "hidden md:table-cell"}>{order.orderDate}</TableCell>
-                                    <TableCell className="hidden sm:table-cell">
-                                        <Badge className="text-xs" variant={'outline'}>
-                                            <p>{order.paymentStatusName}</p>
-                                        </Badge>
-                                    </TableCell>
-                                    <TableCell className="hidden sm:table-cell">{order.orderTotal}đ</TableCell>
+                                    </TableCell>                                  {/*  <TableCell className="hidden sm:table-cell">{product.sales}</TableCell> */}
+                                    
+                                   
                                     <TableCell>
                                       <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
@@ -140,9 +113,8 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
                                         </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
-                                        <DropdownMenuItem>Track Order</DropdownMenuItem>
-                                        <DropdownMenuItem>View Customer Info</DropdownMenuItem>
-                                        <DropdownMenuItem>Waranty Certificate</DropdownMenuItem>
+                                        <DropdownMenuItem>Edit Product Info & Stock</DropdownMenuItem>
+                                        <DropdownMenuItem>Delete Product</DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                     </TableCell>
@@ -150,11 +122,8 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
                             ))}
                             </TableBody>
                         </Table>
-                    </CardContent>
-                </Card>
-                
-
     )
 } 
 
-export default OrdersTable
+
+export default UsersTable

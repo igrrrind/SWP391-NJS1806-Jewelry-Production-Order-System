@@ -12,7 +12,7 @@ import MyInformation from '@/views/cart/checkout/MyInformation';
 import useCheckoutDetails from '@/hooks/useCheckOutDetails';
 import CheckOutDetails from '@/views/cart/checkout/CheckOutDetails';
 import { Input } from '@/components/ui/input';
-import { usePostOrder } from '@/hooks/orderHooks';
+import { usePostCustomOrder, usePostOrder } from '@/hooks/orderHooks';
 import CompletedRequest from './CompletedRequest';
 import { useAllProvince } from '@/hooks/provinceApiHooks';
 
@@ -42,8 +42,8 @@ const JewelryCustomization = () => {
     };
 
     const [selectedJewelryTypeName, setSelectedJewelryTypeName] = useState("");
-    const [selectedMetal, setSelectedMetal] = useState("");
-    const [selectedGemstone, setSelectedGemstone] = useState("");
+    const [selectedMetal, setSelectedMetal] = useState(null);
+    const [selectedGemstone, setSelectedGemstone] = useState(null);
     const [selectedSize, setSelectedSize] = useState("");
     const [description, setDescription] = useState("");
     const [isStepValid, setIsStepValid] = useState(false);
@@ -63,6 +63,11 @@ const JewelryCustomization = () => {
         handleDeliveryMethodChange,
         handlePaymentMethodChange
     } = useCheckoutDetails();
+
+    const {postOrder, response, loading, error } = usePostOrder();
+    const {postCustomOrder, response:cs, loading:csl, error:cse} = usePostCustomOrder();
+
+
 
 
     useEffect(() => {
@@ -95,7 +100,7 @@ const JewelryCustomization = () => {
                 setIsStepValid(!!description);
                 break;
             case 4:
-                setIsStepValid(!!selectedQuantity && isDeliveryValid);
+                setIsStepValid(!!selectedQuantity && selectedQuantity > 0 && isDeliveryValid);
                 break;    
             default:
                 setIsStepValid(true);
@@ -118,27 +123,27 @@ const JewelryCustomization = () => {
     };
 
     const handleSubmit = () => {
+        /*
         if (isStepValid && currentStep === 4){
             nextStep();
         }
 
-        /*
-
-
+        */
         if (isStepValid && currentStep === 4) {
             const newOrder = {
-                customerId: "1",
-                orderDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
-                statusId: "1",
-                paymentStatusId: "1",
+                customerId: 1,
+                orderDate: new Date().toISOString().slice(0, 10),
+                statusId: 1,
+                paymentStatusId: 1,
                 isShipment: deliveryMethod === "byShipment",
                 isCustom: true,
                 orderTotal: 0
             };
             setOrder(newOrder);
+            postOrder(order);
         }
 
-        */
+   
 
     };
 
@@ -149,23 +154,30 @@ const JewelryCustomization = () => {
     }, [order]);
     
 
-    const {response, loading, error } = usePostOrder(order)
+    useEffect(() => {
+        if (response) {
+            const newCustomOrderItem = {
+                orderId: response.orderId,
+                productTypeId: selectedJewelryType,
+                gemstoneId: selectedGemstone.gemstoneId,
+                metalId: selectedMetal.metalId,
+                size: selectedSize,
+                unitPrice: 0,
+                quantity: selectedQuantity,
+                requestDescription: description,
+                subtotal: selectedQuantity * 0
+            };
+            setCustomItem(newCustomOrderItem);
+            postCustomOrder(customItem)
+        }
+    }, [response, selectedJewelryType, selectedGemstone, selectedMetal, selectedSize, description, selectedQuantity]);
 
-    if (response){
-        const newCustomOrderItem = {
-            orderId: response.orderId,
-            productTypeId: selectedJewelryType,
-            gemstoneId: selectedGemstone,
-            metalId: selectedMetal,
-            size: selectedSize,
-            unitPrice: 0,
-            quantity: selectedQuantity,
-            requestDescription: description,
-            subtotal: selectedQuantity * 0
-        };
-        setCustomOrder(newCustomOrderItem);
-
-    }
+    useEffect(() => {
+        if (cs) {
+            console.log('Custom item has been set:', cs);
+            nextStep();
+        }
+    }, [cs]);
 
 
 
@@ -248,14 +260,14 @@ const JewelryCustomization = () => {
 
                                         <div className='flex justify-between'>
                                             <div>
-                                                <span className='font-medium'>Metal Base: </span>{selectedMetal} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                <span className='font-medium'>Metal Base: </span>{selectedMetal.metalTypeName} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                             </div>
                                             <span><button className='hover:text-blue-700 italic text-stone-400 text-sm transition' onClick={() => handleChanges(2)}>Make changes</button></span>
                                         </div>
 
                                         <div className='flex justify-between'>
                                             <div>
-                                                <span className='font-medium'>Gemstone: </span>{selectedGemstone} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                                <span className='font-medium'>Gemstone: </span>{selectedGemstone.gemstoneType} - {selectedGemstone.color} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                             </div>
                                             <span><button className='hover:text-blue-700 italic text-stone-400 text-sm transition' onClick={() => handleChanges(2)}>Make changes</button></span>
                                         </div>

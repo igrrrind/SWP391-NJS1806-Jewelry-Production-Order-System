@@ -1,20 +1,20 @@
 import { Button } from '@/components/ui/button';
 import { usePaymentConfirm } from '@/hooks/paymentHooks';
 import React from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const PaymentConfirm = () => {
     const { confirmationResult, error } = usePaymentConfirm();
+    const navigate = useNavigate()
+
+    const location = useLocation();
+    if(!location.search){
+        navigate('/cart/payment-sucess')
+    }
 
     if (error) {
-        return (
-        <div className="m-8 flex justify-center items-center">
-            <div className="mb-8">
-                <h1 className="cormorant-garamond-bold text-2xl mb-4">Payment Error</h1>
-                <p className="text-red-600 mb-4">There was an error processing your payment. Please try again later.</p>
-                <p className="text-gray-600">Error Message: {error.message}</p>
-            </div>
-        </div>
-        );
+        navigate(`/cart/payment-error?errMsg=${error.message}`)
+
     }
 
     if (!confirmationResult) {
@@ -33,8 +33,6 @@ const PaymentConfirm = () => {
                 <div className="flex flex-col justify-center items-center">
                     <h1 className="cormorant-garamond-bold text-2xl mb-4">Order placed!</h1>
                     <p className="mb-2 ">Your payment was successful. A copy of your receipt has been sent to your email</p>
-                    <p className="mb-2 font-semibold">Order ID: #{confirmationResult.orderId}</p>
-                    <p className="mb-4 font-semibold">Transaction ID: #{confirmationResult.transactionId}</p>
                     <Button  variant="outline" className="rounded-none border-black bg-zinc-900 pt-6 pb-6 text-white">                        
                         VIEW ORDER DETAILS
                     </Button>
