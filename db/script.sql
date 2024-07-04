@@ -239,7 +239,7 @@ INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('
 -- Inserting into Payment_Status
 INSERT INTO Payment_Status (status_name) VALUES ('Pending');
 INSERT INTO Payment_Status (status_name) VALUES ('Completed');
-INSERT INTO Payment_Status (status_name) VALUES ('Failed');
+INSERT INTO Payment_Status (status_name) VALUES ('Pending Quote');
 INSERT INTO Payment_Status (status_name) VALUES ('Refunded');
 INSERT INTO Payment_Status (status_name) VALUES ('Cancelled');
 
@@ -291,8 +291,9 @@ INSERT INTO Status (status_detail) VALUES ('Quote Pending Approval');
 INSERT INTO Status (status_detail) VALUES ('Design In Progress');
 INSERT INTO Status (status_detail) VALUES ('Design Pending Approval');
 INSERT INTO Status (status_detail) VALUES ('Production In Progress');
-INSERT INTO Status (status_id,status_detail) VALUES (6,'Pick up store');
-INSERT INTO Status (status_id,status_detail) VALUES (7,'Shipment In Progress');
+INSERT INTO Status (status_id,status_detail) VALUES (6,'Pick up from store');
+INSERT INTO Status (status_id,status_detail) VALUES (7,'Awaiting Shipment');
+INSERT INTO Status (status_id,status_detail) VALUES (71,'Shipment In Progress');
 INSERT INTO Status (status_id,status_detail) VALUES (20,'Returned');
 INSERT INTO Status (status_id,status_detail) VALUES (8,'Completed');
 INSERT INTO Status (status_id,status_detail) VALUES (11. 'Cancelled');
