@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/select"
 import QuantityButton from "@/components/custom/quantity-button";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { Phone, ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 
@@ -60,7 +60,7 @@ import { addToCart } from "@/redux/slice/cartSlice";
             </div>
 
             <div className="mb-4">
-                <label htmlFor="chooseVariant" className="block text-lg  mb-2">TYPE</label>
+                <label htmlFor="chooseVariant" className="block text-lg  mb-2">READY IN-STORE </label>
                 <Select onValueChange={(value) =>handleSelectedEntry(value)}>
                   <SelectTrigger className="pt-6 pb-6 border border-stone-800"
                     id="chooseVariant"
@@ -91,8 +91,19 @@ import { addToCart } from "@/redux/slice/cartSlice";
               </Button>
             </div>
 
-            <div className="mb-4 mt-6 h-18">
+            <div className="mb-2 mt-6 h-18">
               <Button variant="default" className="w-full h-full p-4 border rounded-none border-black" disabled={!selectedEntry}>Place Order Now</Button>
+            </div>
+
+            <div className="mb-4 mt-4 h-18">
+              <div className="text-center px-10 italic text-sm font-medium">Like the design?</div>
+              <div className="text-center px-10 mb-4 text-sm">Contact our staff to have it personalised for you. </div>
+
+              <div className="flex justify-between space-x-2">
+                <Button variant="default" className="w-full h-14 p-4 border rounded-none  bg-white text-green-500 font-bold hover:bg-green-100" ><Phone/>&nbsp; 0938 562 745</Button>
+                <Button variant="default" className="w-full h-14 p-4 border bg-white rounded-none text-blue-500 font-bold hover:bg-blue-100" >Message Zalo</Button>
+                <Button variant="default" className="w-full h-14 p-4 border rounded-none bg-blue-400 text-white font-bold hover:bg-blue-700" >Message Facebook</Button>
+              </div>
             </div>
 
             
