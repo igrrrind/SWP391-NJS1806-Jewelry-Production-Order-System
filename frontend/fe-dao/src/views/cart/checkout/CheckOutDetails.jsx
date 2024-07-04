@@ -1,23 +1,27 @@
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Separator } from "@/components/ui/separator";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useAuth } from "@/contexts/AuthContext";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 
 function CheckOutDetails({
+    provinces,
+    towns,
     shippingAddress,
     city,
-    state,
+    town,
     deliveryMethod,
     paymentMethod,
     onShippingAddressChange,
     onCityChange,
-    onStateChange,
+    onTownChange,
     onDeliveryMethodChange,
     onPaymentMethodChange
 }) {
 
-    const { currentUser } = useAuth();
+
+    const { currentUser, userDetails } = useAuth();
 
     const handleChoice = (event) => {
         onDeliveryMethodChange(event.target.value);
@@ -26,6 +30,8 @@ function CheckOutDetails({
     const handlePayment = (event) => {
         onPaymentMethodChange(event.target.value);
     };
+
+    if (!provinces || !Array.isArray(provinces)) return <p>No provinces found</p>;
 
     return (
         <>
@@ -82,6 +88,7 @@ function CheckOutDetails({
                     </div>
                     <div className="flex items-center justify-between space-x-6">
                         <Label htmlFor="city">Province/City</Label>
+                        {/* 
                         <Input
                             className="w-2/3"
                             type="text"
@@ -90,19 +97,42 @@ function CheckOutDetails({
                             value={city}
                             onChange={(e) => onCityChange(e.target.value)}
                             required
-                        />
+                        /> */}
+                        <Select onValueChange={value => onCityChange(value)} value={city}>
+                                <SelectTrigger className=" border w-2/3 border-stone-800"
+                                    id="province/city"
+                                    aria-label="Select province/city">
+                                    
+                                    <SelectValue placeholder="Select province/city" />
+                                </SelectTrigger>
+                                
+                                <SelectContent>    
+                                {provinces.map((province) => (
+                                        <SelectItem value={province.Name} key={province.Name}>
+                                            <p className="text-md">{province.Name}</p>
+                                        </SelectItem>
+                                ))}
+                                </SelectContent>                           
+                        </Select>
                     </div>
                     <div className="flex items-center justify-between space-x-6">
-                        <Label htmlFor="state">District/Town</Label>
-                        <Input
-                            className="w-2/3"
-                            type="text"
-                            id="state"
-                            placeholder="State"
-                            value={state}
-                            onChange={(e) => onStateChange(e.target.value)}
-                            required
-                        />
+                        <Label htmlFor="town">District/Town</Label>
+                        <Select onValueChange={value => onTownChange(value)} value={town} disabled={!city}>
+                                <SelectTrigger className=" border w-2/3 border-stone-800"
+                                    id="town"
+                                    aria-label="Select district/town">
+                                    
+                                    <SelectValue placeholder="Select district/town" />
+                                </SelectTrigger>
+                                
+                                <SelectContent>    
+                                {towns && towns.map((town) => (
+                                        <SelectItem value={town.Name} key={town.Name}>
+                                            <p className="text-md">{town.Name}</p>
+                                        </SelectItem>
+                                ))}
+                                </SelectContent>                           
+                        </Select>
                     </div>
                 </div>
             </div>

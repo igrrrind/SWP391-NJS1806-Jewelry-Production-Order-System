@@ -29,7 +29,7 @@ const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
 
   const { register, handleSubmit, control, formState: { errors } } = useForm({
     defaultValues: {
-      stocktabs: [{ id: 1, stock: '', price: '', size: '', metal: '', gemstone: '' }]
+      stocktabs: [{ productId: productReference, stockQuantity: '', price: '', size: '', metalId: '', gemstoneId: '' }]
     }
   });
   const { fields, append, remove } = useFieldArray({
@@ -38,7 +38,7 @@ const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
   });
 
   const addStocktab = () => {
-    append({ id: fields.length + 1, stock: '', price: '', size: '', metal: '', gemstone: '' });
+    append({ productId: productReference, stockQuantity: '', price: '', size: '', metalId: '', gemstoneId: '' });
   };
 
   return (
@@ -71,13 +71,13 @@ const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
 
             <TableBody>
               {fields.map((field, index) => (
-                <TableRow key={field.id}>
+                <TableRow key={field.productId}>
                   <TableCell className="font-semibold">{index + 1}</TableCell>
 
                   <TableCell>
                     <Label htmlFor={`stock-${index}`} className="sr-only">Stock</Label>
-                    <Input id={`stock-${index}`} type="number" defaultValue={field.stock}
-                      {...register(`stocktabs.${index}.stock`, { required: true })}
+                    <Input id={`stock-${index}`} type="number" defaultValue={field.stockQuantity}
+                      {...register(`stocktabs.${index}.stockQuantity`, { required: true })}
                     />
                   </TableCell>
                   <TableCell>
@@ -94,9 +94,9 @@ const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
                   </TableCell>
                   <TableCell>
                     <Controller
-                      name={`stocktabs.${index}.metal`}
+                      name={`stocktabs.${index}.metalId`}
                       control={control}
-                      defaultValue={field.metal}
+                      defaultValue={field.metalId}
                       rules={{ required: true }}
                       render={({ field }) => (
                         <Select onValueChange={field.onChange} value={field.value}>
@@ -116,9 +116,9 @@ const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
                   </TableCell>
                   <TableCell>
                     <Controller
-                      name={`stocktabs.${index}.gemstone`}
+                      name={`stocktabs.${index}.gemstoneId`}
                       control={control}
-                      defaultValue={field.gemstone}
+                      defaultValue={field.gemstoneId}
                       rules={{ required: true }}
                       render={({ field }) => (
                         <Select onValueChange={field.onChange} value={field.value}>
@@ -145,14 +145,15 @@ const AddProductStock = ({ metals, gemstones, productReference, onSubmit }) => {
               ))}
             </TableBody>
           </Table>
+          {errors.stocktabs && <div>Some fields are still empty.</div>}
+
           <CardFooter className="justify-center border-t p-4">
             <Button size="sm" variant="ghost" className="gap-1" onClick={addStocktab}>
               <PlusCircle className="h-3.5 w-3.5" />
               Add Variant
             </Button>
           </CardFooter>
-          <CardFooter className="justify-center border-t p-4">
-            {errors && <div>Some fields are still empty.</div>}
+          <CardFooter className="justify-center border-t p-4 flex">
             <Button type="submit" size="sm" variant="" className="gap-1 bg-white text-black hover:text-white border-black border">
               Submit
             </Button>

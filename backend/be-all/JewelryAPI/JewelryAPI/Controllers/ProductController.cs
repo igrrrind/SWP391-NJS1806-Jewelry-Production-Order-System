@@ -51,15 +51,16 @@ namespace JewelryAPI.Controllers
         [HttpPost("Create")]
         public IActionResult CreateProduct(Product product)
         {
+            Product newProduct = new Product()
+            {
+                ProductName = product.ProductName,
+                ProductDescription = product.ProductDescription,
+                ProductTypeId = product.ProductTypeId,
+                IsActive = product.IsActive
+            };
             try
             {
-                Product newProduct = new Product()
-                {
-                    ProductName = product.ProductName,
-                    ProductDescription = product.ProductDescription,
-                    ProductTypeId = product.ProductTypeId,
-                    IsActive = product.IsActive
-                };
+                
                 pServices.CreateProduct(newProduct);
             }
             catch (Exception ex) 
@@ -67,8 +68,9 @@ namespace JewelryAPI.Controllers
                 return BadRequest(ex.Message);
             }
             
-            return Ok();
+            return Ok(newProduct);
         }
+        
         //UPDATE
         [HttpPut("Update")]
         public IActionResult UpdateProduct(Product product)

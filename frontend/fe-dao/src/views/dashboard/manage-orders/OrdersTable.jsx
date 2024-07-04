@@ -31,7 +31,7 @@ import { MoreHorizontal } from 'lucide-react';
   
 
 
-const OrdersTable = ({ orders, onOrderClick}) => {
+const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
 
 
     return (
@@ -46,16 +46,17 @@ const OrdersTable = ({ orders, onOrderClick}) => {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead>Customer</TableHead>
+                                <TableHead className="w-32">Customer</TableHead>
                                 <TableHead className="hidden sm:table-cell">Type</TableHead>
                                 <TableHead className="hidden sm:table-cell">Status</TableHead>
-                                <TableHead className="hidden md:table-cell">Order Date</TableHead>
+                                <TableHead className={hidedate? "hidden"  : "hidden md:table-cell"}>Order Date</TableHead>
                                 <TableHead className="hidden sm:table-cell">Payment</TableHead>
                                 <TableHead className="hidden md:table-cell">Total</TableHead>
                                 <TableHead className="">Action</TableHead>
                             </TableRow>
                         </TableHeader>
                         <TableBody>
+                            {/*
                              <TableRow>
                                     <TableCell>
                                         <div className="font-medium">James Bond</div>
@@ -97,6 +98,7 @@ const OrdersTable = ({ orders, onOrderClick}) => {
                                     </DropdownMenu>
                                     </TableCell>
                                 </TableRow>
+                                */}
 
 
 
@@ -105,26 +107,26 @@ const OrdersTable = ({ orders, onOrderClick}) => {
 
 
                             {orders.map(order => (
-                                <TableRow key={order.order_id}  onClick={() => onOrderClick(order)} className="cursor-pointer">
+                                <TableRow key={order.orderId}  onClick={() => onOrderClick(order)} className="cursor-pointer">
                                     <TableCell>
-                                        <div className="font-medium">{order.customer}</div>
+                                        <div className="font-medium">Order.firstName Order.lastName</div>
                                         <div className="hidden text-sm text-muted-foreground md:inline">
-                                            {order.phone}
+                                            Order.phone
                                         </div>
                                     </TableCell>
-                                    <TableCell className="hidden sm:table-cell">{order.isCustom? "Custom": "Sale"}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{order.isCustom? <span className='text-blue-600'>Custom</span>: <span className='text-red-600'>Sale</span>}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
-                                        <Badge className="text-xs" variant={order.order_status === 1 ? 'secondary' : 'outline'}>
-                                            {order.status}
+                                        <Badge className="text-xs" variant='outline'>
+                                            {order.statusDetail}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className="hidden md:table-cell">{order.order_date}</TableCell>
+                                    <TableCell className={hidedate? "hidden"  : "hidden md:table-cell"}>{order.orderDate}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
-                                        <Badge className="text-xs" variant={order.payment_status_id === 1 ? 'secondary' : 'outline'}>
-                                            {order.payment_status}
+                                        <Badge className="text-xs" variant={'outline'}>
+                                            {order.paymentStatusName}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className="hidden sm:table-cell">${order.total.toFixed(2)}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">{order.orderTotal}đ</TableCell>
                                     <TableCell>
                                       <DropdownMenu>
                                         <DropdownMenuTrigger asChild>
@@ -138,7 +140,7 @@ const OrdersTable = ({ orders, onOrderClick}) => {
                                         </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
-                                        <DropdownMenuItem>View Pricing Quote</DropdownMenuItem>
+                                        <DropdownMenuItem>Track Order</DropdownMenuItem>
                                         <DropdownMenuItem>View Customer Info</DropdownMenuItem>
                                         <DropdownMenuItem>Waranty Certificate</DropdownMenuItem>
                                         </DropdownMenuContent>

@@ -213,25 +213,23 @@ public partial class JeweleryOrderProductionContext : DbContext
             entity.HasIndex(e => new { e.OrderId, e.GemstoneId, e.MetalId, e.Size }, "UQ__Order_Cu__1502BCB89BD56021").IsUnique();
 
             entity.Property(e => e.OrderItemId).HasColumnName("order_item_id");
-            //entity.Property(e => e.ProductTypeId).HasColumnName("product_type_id");
             entity.Property(e => e.GemstoneId).HasColumnName("gemstone_id");
+            entity.Property(e => e.ProductTypeId).HasColumnName("product_type_id");
             entity.Property(e => e.MetalId).HasColumnName("metal_id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
-            entity.Property(e => e.RequestDescription).HasColumnName("request_description");
             entity.Property(e => e.Size).HasColumnName("size");
+            entity.Property(e => e.RequestDescription).HasColumnName("request_description");
             entity.Property(e => e.Subtotal)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("subtotal");
             entity.Property(e => e.UnitPrice)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("unit_price");
-
             entity.HasOne(d => d.ProductType).WithMany(p => p.OrderCustomItems)
                 .HasForeignKey(d => d.ProductTypeId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Order_Cus__produ__534D60F1");
-                
             entity.HasOne(d => d.Gemstone).WithMany(p => p.OrderCustomItems)
                 .HasForeignKey(d => d.GemstoneId)
                 .OnDelete(DeleteBehavior.ClientSetNull)

@@ -13,7 +13,7 @@ const ProductPage = ({title,description}) =>{
                 <h1 className="text-3xl text-center cormorant-garamond-regular">{title}</h1>
                 <p className="text-center text-gray-500">{description}</p>
             </div>
-            {loading? <div>Loading...</div> : (
+            {loading? <div className="p-10">Loading...</div> : (
             <ProductListing products={products}> </ProductListing>
             )}
         </>

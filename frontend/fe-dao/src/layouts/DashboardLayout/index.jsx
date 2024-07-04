@@ -4,10 +4,8 @@ import Sidenav from './Sidenav/Sidenav'
 
 const DashboardLayout = () => {
     return (
-        <div className='flex bg-stone-300 w-screen' >
+        <div className='flex min-h-screen w-full flex-col bg-muted/40' >
         <Sidenav/>
-        <Outlet>
-        </Outlet>
         </div>
     )
 }

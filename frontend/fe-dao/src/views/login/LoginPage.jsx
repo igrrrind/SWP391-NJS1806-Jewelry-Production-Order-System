@@ -28,7 +28,7 @@ const LoginPage = () => {
             await loginWithEmailAndPassword(email, password);
             navigate("/");
         } catch (error) {
-            setNotice("You entered a wrong username or password.");
+            setNotice("You entered a incorrect email or password.");
             console.log(error);
           }
     }

@@ -71,7 +71,7 @@ const  AddProduct = ({productTypes, onSubmit, isSubmitted}) => {
                   </SelectTrigger>
 
                   <SelectContent>
-                    {productTypes.productTypes.map(type => (
+                    {productTypes.map(type => (
                       <SelectItem key={type.productTypeId} value={type.productTypeId.toString()}>
                         {type.typeName}
                       </SelectItem>

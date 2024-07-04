@@ -1,14 +1,14 @@
 import { Separator } from "@/components/ui/separator"
 import CartItem from "./CartItem"
 import { Button } from "@/components/ui/button"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
+import { removeFromCart } from "@/redux/slice/cartSlice"
 
 
 function CartPage()  {
     const navigate = useNavigate();
-
 
 
 
@@ -18,6 +18,16 @@ function CartPage()  {
     const handleCheckOut = () => {
         navigate('/cart/checkout')
     }
+
+    const dispatch = useDispatch();
+
+    const handleRemoveFromCart = (productStockId) => {
+        dispatch(removeFromCart({
+          productStockId: productStockId
+        }));
+        alert("Removed!");
+    };
+
     
 
 
@@ -43,7 +53,7 @@ function CartPage()  {
                 {cart?.list?.map (item => {
                 return (
                     <div key={item.productStockId}>
-                    <CartItem item={item}/>
+                    <CartItem item={item} onRemove={handleRemoveFromCart}/>
                     <Separator className="mt-4 mb-4"/>
                     </div>
                 )

@@ -97,12 +97,28 @@
   }
   
   .scrollable-container {
-    max-height: calc(100vh - 200px); /* Adjust based on your header/footer height */
+    max-height: calc(100vh - 200px); 
     overflow-y: auto;
   }
   .fixed-order-total {
     position: sticky;
-    top: 20px; /* Adjust based on your spacing needs */
+    top: 20px; 
     align-self: start;
   }
 
+
+@keyframes glow {
+  0% {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+  }
+}
+
+.glowing-card {
+  animation: glow 2s infinite;
+}

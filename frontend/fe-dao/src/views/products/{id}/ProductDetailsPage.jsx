@@ -1,11 +1,11 @@
-import FirebaseImage from "@/components/custom/fire-base-image"
-import { Separator } from "@/components/ui/separator";
 import React, { useEffect, useState } from 'react';
 import ProductGallery from "./ProductGallery";
-import DetailProductBuy from "./DetailSelectionBox";
-import RingConfigurator from "./DetailsComboBox";
 import DetailsComboBox from "./DetailsComboBox";
+import { useParams } from 'react-router-dom';
+import { useProductById } from '@/hooks/productsHooks';
+import { useProductStocksById } from '@/hooks/productStockHooks';
 
+/*
 
 const productStockEntries = [
   {   
@@ -66,6 +66,7 @@ const product =
   }
 ;
 
+*/
 
 
 
@@ -75,32 +76,34 @@ const ProductDetailsPage = () => {
       const sizeOptions = productStockEntries.map(p => p.size);
       const metalOptions = productStockEntries.map(m => m.metal_nameI
       const gemstoneOptions = productStockEntries.map(g => g.gemstoneName);
-    */
-    
+    */  
+    const { productId } = useParams();
 
-    
+    const { product, loading: productLoading } = useProductById(productId);
+    const { productStocks, loading: productStocksLoading } = useProductStocksById(productId);
 
-    
+    const isLoading = productLoading || productStocksLoading;
 
-    return(
-        <div className="container mx-auto p-6">
-        <div className="flex flex-col md:flex-row">
+    return (
+      <div className="container mx-auto p-6">
+        {isLoading ? (
+          <div></div>
+        ) : (
+          <div className="flex flex-col md:flex-row">
+            <div className="md:w-1/2">
+              <ProductGallery />
+            </div>
 
-          <div className="md:w-1/2">
-            <ProductGallery/>
+            <div className="md:w-1/2 md:pl-10">
+              <DetailsComboBox product={product} productStockEntries={productStocks} />
+            </div>
           </div>
-
-          <div className="md:w-1/2 md:pl-10">
-              <DetailsComboBox product={product} productStockEntries={productStockEntries} /> 
-            
-          </div>
-            
-        </div>
+        )}
       </div>
-    )
-}
+    );
+  }
 
-export default ProductDetailsPage 
+export default ProductDetailsPage; 
 
 
 

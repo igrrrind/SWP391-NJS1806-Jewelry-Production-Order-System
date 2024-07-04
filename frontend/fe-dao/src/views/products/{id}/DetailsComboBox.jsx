@@ -72,7 +72,7 @@ import { addToCart } from "@/redux/slice/cartSlice";
                   <SelectContent>    
                   {productStockEntries.map((entry) => (                    
                     <SelectItem value={entry.productStockId.toString()} key={entry.productStockId} >
-                      <p className="text-md font-semibold">{entry.metalName} - {entry.gemstoneName} - {entry.size}</p>
+                      <p className="text-md font-semibold">{entry.metalTypeName} - {entry.gemstoneType} - {entry.size}</p>
                     </SelectItem>      
                   ))} 
                   </SelectContent>                           

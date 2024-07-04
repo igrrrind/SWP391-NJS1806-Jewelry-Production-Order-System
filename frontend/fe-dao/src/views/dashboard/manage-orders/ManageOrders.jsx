@@ -1,90 +1,55 @@
 import { useState, useEffect } from 'react';
 import OrdersTable from './OrdersTable';
 import OrderDetails from './OrderDetails';
-
-
+import { useAllOrders } from '@/hooks/orderHooks';
+import { useAllOrderItems } from '@/hooks/orderItemHooks';
+import { Card, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 const ManageOrdersPage = () => {
-
     const [selectedOrder, setSelectedOrder] = useState(null);
-    const [orders, setOrders] = useState([]);
-    const [orderDetail, setOrderDetail] = useState([]);
+    const [hidedate, setHidedate] = useState(false);
+    const { orderItems, loading: itemsLoad } = useAllOrderItems(selectedOrder);
 
-    
+    const [orderId, setOrderId] = useState(null); 
+    const [statusId, setStatusId] = useState(null);
+    const [pendingQuoteStatusId, setPendingQuoteStatusId] = useState(); 
+    const [sortByNewer, setSortByNewer] = useState(true);
+    const [pageNumber, setPageNumber] = useState(1); 
+    const [pageSize, setPageSize] = useState(50); 
 
-    useEffect(() => {
-      // Function to fetch order data from the API, map to collumns
-      const fetchOrders = async () => {
-          try {
-              const response = await fetch('/data.json'); 
-              const data = await response.json();
-              const processedOrders = processOrders(data);
-              setOrders(processedOrders);
-          } catch (error) {
-              console.error('Error fetching resources:', error);
-          }
-      };
-
-      fetchOrders();
-      }, []);
-
-
-    const processOrders = (data) => {
-      return data.Orders.map(order => {
-        const customer = data.Customer_Detail.find(c => c.customer_id === order.customer_id);
-        const paymentStatus = data.Payment_Status.find(ps => ps.payment_status_id === order.payment_status_id);
-        const orderStatus = data.Status.find(s => s.status_id === order.order_status);
-        const user = data.User.find(u => u.user_id === customer.user_id)
-
-        return {
-          order_id: order.order_id,
-          customer: `${customer.first_name} ${customer.last_name}`,
-          phone: user.phone,
-          is_custom: order.is_custom,  
-          status: orderStatus.status_detail,
-          order_date: order.order_date,
-          payment_status: paymentStatus.status_name,
-          total: order.order_total
-        };
-      });
-    };
+    const { orders, loading } = useAllOrders(orderId, statusId, sortByNewer, pageNumber, pageSize);
 
     useEffect(() => {
-      // Function to fetch order data from the API, map to collumns
-      const fetchOrderDetails = async () => {
-          if (!selectedOrder) return;
-          try {
-              const response = await fetch('/data.json'); 
-              const data = await response.json();
-              const orderDetails = data.Order_Details.find(o => o.order_id === selectedOrder.order_id)
-              setOrderDetail(orderDetails);
-          } catch (error) {
-              console.error('Error fetching resources:', error);
-          }
-      };
-
-      fetchOrderDetails();
-      }, []);
-
-    
-
-
-
+        setHidedate(!!selectedOrder);
+    }, [selectedOrder]);
 
     return (
-        <main className="p-4 xl:flex flex-1 xl:space-x-4">
+        <main>
+            <div className='flex-1 p-4 xl:flex bg-muted'>
+                <Card className="glowing-card">
+                    <CardHeader className="space-y-0">
+                        <CardTitle className="text-lg flex items-center space-x-4 mb-0 pb-0 space-y-0">
+                            <div><span className='underline'>8</span> Custom Orders are pending a quotation</div>
+                            <Button>See orders</Button>
+                        </CardTitle>
+                        <CardDescription>
+                            Review them and give a quote before 24 hours. 
+                        </CardDescription>
+                    </CardHeader>
+                </Card>
+            </div>
+
+            <div className="flex-1 p-4 xl:flex xl:space-x-4 overflow-auto">
                 <div className="flex-1">
-                     <OrdersTable  orders={orders} onOrderClick={setSelectedOrder}   />
+                    <OrdersTable orders={orders} onOrderClick={setSelectedOrder} hidedate={hidedate} />
                 </div>
-                <div className=" mt-4 xl:mt-0">
-                    <OrderDetails order={selectedOrder} orderDetail={orderDetail} />
+                <div className="mt-4 xl:mt-0 xl:flex-shrink-0">
+                    <OrderDetails order={selectedOrder} orderItems={orderItems} />
                 </div>
+            </div>
         </main>
-
-    )
+    );
 }
-
-
-
 
 export default ManageOrdersPage;

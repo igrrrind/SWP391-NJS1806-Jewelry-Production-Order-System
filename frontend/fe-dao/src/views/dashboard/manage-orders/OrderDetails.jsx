@@ -1,9 +1,22 @@
+import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, Separator } from "@radix-ui/react-dropdown-menu";
-import { Copy, CreditCard, MoreVertical, Truck } from "lucide-react";
+import { Separator } from "@/components/ui/separator";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Info, MailIcon } from "lucide-react";
+//import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTableRowigger, Separator } from "@radix-ui/react-dropdown-menu";
+//import { Copy, CreditCard, MoreVertical, TableRowuck } from "lucide-react";
 
-const OrderDetails = ({order,orderDetails}) => {
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+
+
+const OrderDetails = ({order, orderItems}) => {
     if (!order) {
       return (
         <div>
@@ -20,152 +33,281 @@ const OrderDetails = ({order,orderDetails}) => {
       );
     }
 
-    if (order.is_custom){
+    if (order.isCustom){
       return (
-        div
+        <div>
+            <CustomCard order={order} orderItems={orderItems}/>         
+        </div>
       )
-    }
-
-
-    if (!order.is_custom)
+    } else if (!order.isCustom)
     return(
         <div>
-            <Card className="overflow-hidden" x-chunk="dashboard-05-chunk-4">
-
-              <CardHeader className="flex flex-row items-start bg-muted/50">
-                <div className="grid gap-0.5">
-                  <CardTitle className="group flex items-center gap-2 text-lg">
-                    Order {order.order_id} 
-                    <Button
-                      size="icon"
-                      variant="outline"
-                      className="h-6 w-6 opacity-0 transition-opacity group-hover:opacity-100"
-                    >
-                      <Copy className="h-3 w-3" />
-                      <span className="sr-only">Copy Order ID</span>
-                    </Button>
-                  </CardTitle>
-                  <CardDescription>Date: November 23, 2023</CardDescription>
-                </div>
-                <div className="ml-auto flex items-center gap-1">
-                  <Button size="sm" variant="outline" className="h-8 gap-1">
-                    <Truck className="h-3.5 w-3.5" />
-                    <span className="lg:sr-only xl:not-sr-only xl:whitespace-nowrap">
-                      Track Order
-                    </span>
-                  </Button>
-                  <DropdownMenu>
-                    <DropdownMenuTrigger asChild>
-                      <Button size="icon" variant="outline" className="h-8 w-8">
-                        <MoreVertical className="h-3.5 w-3.5" />
-                        <span className="sr-only">More</span>
-                      </Button>
-                    </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end">
-                      <DropdownMenuItem>Edit</DropdownMenuItem>
-                      <DropdownMenuItem>Export</DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>Trash</DropdownMenuItem>
-                    </DropdownMenuContent>
-                  </DropdownMenu>
-                </div>
-              </CardHeader>
-
-              <CardContent className="p-6 text-sm">
-                <div className="grid gap-3">
-                  <div className="font-semibold">Order Details</div>
-                  <ul className="grid gap-3">
-                    <li className="flex items-center justify-between">
-                      <span className="text-muted-foreground">
-                        Glimmer Lamps x <span>2</span>
-                      </span>
-                      <span>$250.00</span>
-                    </li>
-                    <li className="flex items-center justify-between">
-                      <span className="text-muted-foreground">
-                        Aqua Filters x <span>1</span>
-                      </span>
-                      <span>$49.00</span>
-                    </li>
-                  </ul>
-                  <Separator className="my-2" />
-                  <ul className="grid gap-3">
-                    <li className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Subtotal</span>
-                      <span>$299.00</span>
-                    </li>
-                    <li className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Shipping</span>
-                      <span>$5.00</span>
-                    </li>
-                    <li className="flex items-center justify-between">
-                      <span className="text-muted-foreground">Tax</span>
-                      <span>$25.00</span>
-                    </li>
-                    <li className="flex items-center justify-between font-semibold">
-                      <span className="text-muted-foreground">Total</span>
-                      <span>$329.00</span>
-                    </li>
-                  </ul>
-                </div>
-                <Separator className="my-4" />
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="grid gap-3">
-                    <div className="font-semibold">Shipping Information</div>
-                    <address className="grid gap-0.5 not-italic text-muted-foreground">
-                      <span>Liam Johnson</span>
-                      <span>1234 Main St.</span>
-                      <span>Anytown, CA 12345</span>
-                    </address>
-                  </div>
-                  <div className="grid auto-rows-max gap-3">
-                    <div className="font-semibold">Billing Information</div>
-                    <div className="text-muted-foreground">
-                      Same as shipping address
-                    </div>
-                  </div>
-                </div>
-                <Separator className="my-4" />
-                <div className="grid gap-3">
-                  <div className="font-semibold">Customer Information</div>
-                  <dl className="grid gap-3">
-                    <div className="flex items-center justify-between">
-                      <dt className="text-muted-foreground">Customer</dt>
-                      <dd>Liam Johnson</dd>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <dt className="text-muted-foreground">Email</dt>
-                      <dd>
-                        <a href="mailto:">liam@acme.com</a>
-                      </dd>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <dt className="text-muted-foreground">Phone</dt>
-                      <dd>
-                        <a href="tel:">+1 234 567 890</a>
-                      </dd>
-                    </div>
-                  </dl>
-                </div>
-                <Separator className="my-4" />
-                <div className="grid gap-3">
-                  <div className="font-semibold">Payment Information</div>
-                  <dl className="grid gap-3">
-                    <div className="flex items-center justify-between">
-                      <dt className="flex items-center gap-1 text-muted-foreground">
-                        <CreditCard className="h-4 w-4" />
-                        Visa
-                      </dt>
-                      <dd>**** **** **** 4532</dd>
-                    </div>
-                  </dl>
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+            <FixedCard order={order} orderItems={orderItems}/>         
+        </div>
     )
 
 }
 
 export default OrderDetails
+
+
+
+const CustomCard = ({order,orderItems}) =>{
+    return (
+      <Card className="overflow-hidden border-blue-700" x-chunk="dashboard-05-chunk-4">
+              <CardHeader>
+                <div className="border-b pb-2 mb-4">
+                  <h2 className=" font-semibold">Order #{order.orderId}</h2>
+                  <p className="text-gray-500">{order.orderDate}</p>
+                </div>
+                <div className="mb-4 flex flex-col items-center">
+                  <h3 className="font-semibold">Order Details</h3>
+                  <p className="text-gray-500 text-sm">Hover to view additional information</p>
+                </div>
+                <div className="flex justify-between pt-4 items-center">
+                  <p className="text-gray-700 text-sm font-semibold">Type: <Badge variant="secondary">{order.isCustom ? "Custom": "Sale"}</Badge></p>
+                  <p className="text-gray-700 text-sm font-semibold">Status: <Badge>{order.statusDetail}</Badge></p>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <Table className="w-full">
+                  <TableHeader>
+                    <TableRow className="text-left border-b">
+                      <TableHead className="pl-0 w-20">TYPE</TableHead>
+                      <TableHead className="py-2 w-8">SPECS.</TableHead>
+                      <TableHead className="py-2">EST.UNIT PRICE</TableHead>
+                      <TableHead className="py-2">QTY.</TableHead>
+                      <TableHead className="px-0"><p className="text-right">EST. SUBTOTAL</p></TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+                    {orderItems.map(item => (
+                    <TableRow className="border-b " key={item.orderItemId}>
+                        <TableCell className="px-0 flex flex-col items-center">
+                          <p className=" text-left">item.typeName</p>
+                          <p className="text-xs text-left">Custom</p>
+                        </TableCell>
+                        <TableCell className="py-2">
+                        <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger asChild>
+                            <div
+                              to="/dashboard/manage-users"
+                              className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+                            >
+                              <Info className="h-5 w-5" />
+                              <span className="sr-only">Customers</span>
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent side="top" className="flex flex-col items-center">{item.metalTypeName} - {item.gemstoneType} <p>Size {item.size}</p></TooltipContent>
+                        </Tooltip>
+                        </TooltipProvider>
+                      
+                        </TableCell>
+                        <TableCell className="py-2">{item.unitPrice}</TableCell>
+                        <TableCell className="py-2">x {item.quantity}</TableCell>
+                        <TableCell className="text-right px-0">{item.subtotal}</TableCell>
+                    </TableRow>
+                    ))}   
+                  </TableBody>
+                </Table>
+                <Separator className="mb-4"/>
+                <div className="flex justify-between mb-4">
+                  <p className="text-gray-700 font-semibold">SHIPMENT FEE</p>
+                  <p className="text-sm">30000</p>
+                </div>
+                <div className="flex justify-between mb-4">
+                  <p className="text-gray-700 font-semibold">EST. TOTAL</p>
+                  <p className="text-sm">30000</p>
+                </div>
+                <div className="flex justify-between mb-4">
+                  <p className="text-gray-700 font-semibold">ACTUAL TOTAL</p>
+                  <p className="text-gray-700 font-semibold">{order.orderTotal > 0 ? order.orderTotal : "Quote NF"}</p>
+                </div>
+                <div className="text-sm text-gray-500 mb-4">
+                  *Currency is VND
+                </div>
+                <div className="p-2">
+                    
+                </div>
+                <Separator className="mb-2"/>
+
+                <div>
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Pricing Quote</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
+                    <AccordionContent className=" flex justify-between">
+                      <div className="space-y-1">
+                        <p className="font-semibold">Quote #1</p>
+                        <div>
+                          <Table>
+                            <TableHeader>
+                                <TableHead className="pl-0 w-20">METAL WEIGHT(g)</TableHead>
+                                <TableHead className="py-2 w-8">METAL COST</TableHead>
+                                <TableHead className="py-2">CARAT PRICE</TableHead>
+                                <TableHead className="py-2">CARAT COST</TableHead>
+                                <TableHead className="px-0"><p className="text-right">PROD.</p></TableHead>
+                            </TableHeader>
+                          </Table>
+                        </div>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+                </div>
+
+                <div>
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
+                    <AccordionContent className=" flex justify-between">
+                      <div className="space-y-1">
+                        <p className="font-semibold">Shipment #1</p>
+                        <p className="text-sm font-bold text-green-700 underline">Delivered date: 24-5-2020</p>
+                        <p>Address Line: New Way Avenue, 232 Street</p>
+                        <p>Province/City: New York</p>
+                        <p>District/Town: New Mexico</p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+                </div>
+                <div className="">
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Contact Info</AccordionTrigger>
+                      <AccordionContent className="space-y-1">
+                        <p className="font-semibold">Customer #1</p>
+                        <p>Mr./ Mrs. <span className="font-medium" >San Jose</span></p>        
+                        <p>Email: <a href={`mailto:sanhose@gmail.com`} className="hover:underline">sanhose@gmail.com</a></p>
+                        <p>Phone: +84 938 562 745</p>
+                        <p>District/Town: New Mexico</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+                <div className="mb-4">
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Transaction Info</div><Badge variant={"outline"}>{order.paymentStatusName}</Badge></div></AccordionTrigger>
+                      <AccordionContent className="space-y-1">
+                        <p className="font-semibold">Transaction #1</p>
+                        <p className="text-sm font-bold text-green-700 underline">Transaction date: 24-5-2020</p>
+                        <p>Payment Method: <span className="font-medium" >COD</span></p>        
+                        <p className="italic">*Deposit not applicable</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </CardContent>            
+            </Card>
+    )
+}
+
+const FixedCard = ({order,orderItems}) => {
+  return (
+    <Card className="overflow-hidden border-red-600" x-chunk="dashboard-05-chunk-4">
+              <CardHeader>
+                <div className="border-b pb-2 mb-4">
+                  <h2 className=" font-semibold">Order #{order.orderId}</h2>
+                  <p className="text-gray-500">{order.orderDate}</p>
+                </div>
+                <div className="mb-4 flex flex-col items-center">
+                  <h3 className="font-semibold">Order Details</h3>
+                  <p className="text-gray-500 text-sm">Hover to view additional information</p>
+                </div>
+                <div className="flex justify-between pt-4 items-center">
+                  <p className="text-gray-700 text-sm font-semibold">Type: <Badge variant="secondary">{order.isCustom ? "Custom": "Sale"}</Badge></p>
+                  <p className="text-gray-700 text-sm font-semibold">Status: <Badge>{order.statusDetail}</Badge></p>
+                </div>
+              </CardHeader>
+              <CardContent>
+                <Table className="w-full">
+                  <TableHeader>
+                    <TableRow className="text-left border-b">
+                      <TableHead className="pl-0 w-20">ITEM</TableHead>
+                      <TableHead className="py-2 w-8">VARIANT</TableHead>
+                      <TableHead className="py-2">U.PRICE</TableHead>
+                      <TableHead className="py-2">QTY.</TableHead>
+                      <TableHead className="px-0"><p className="text-right">SUBTOTAL</p></TableHead>
+                    </TableRow>
+                  </TableHeader>
+                  <TableBody>
+
+                  {orderItems && orderItems.map(item => (
+                    <TableRow className="border-b " key={item.orderFixedItemId}>
+                      <TableCell className="px-0 flex flex-col items-center">
+                        <p className=" text-left">Gold Necklace</p>
+                        <p className="text-xs text-left">ID: {item.productId}</p>
+                      </TableCell>
+                      <TableCell className="py-2"><div className="w-full flex justify-center"><Info/></div></TableCell>
+                      <TableCell className="py-2">{item.price}</TableCell>
+                      <TableCell className="py-2">x {item.quantity}</TableCell>
+                      <TableCell className="text-right px-0">{item.subtotal}</TableCell>
+                    </TableRow>
+                    ))}
+                    
+                  </TableBody>
+                </Table>
+                <Separator className="mb-4"/>
+                <div className="flex justify-between mb-4">
+                  <p className="text-gray-700 font-semibold">Shipment Fee</p>
+                  <p className="text-sm">30000</p>
+                </div>
+                <div className="flex justify-between mb-4">
+                  <p className="text-gray-700 font-semibold">TOTAL</p>
+                  <p className="text-gray-700 font-semibold">{order.orderTotal}</p>
+                </div>
+                <div className="text-sm text-gray-500 mb-4">
+                  *Currency is VND
+                </div>
+                <Separator className="mb-2"/>
+
+                <div>
+                <Accordion type="single" collapsible>
+                  <AccordionItem value="item-1">
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
+                    <AccordionContent className=" flex justify-between">
+                      <div className="space-y-1">
+                        <p className="font-semibold">Shipment #1</p>
+                        <p className="text-sm font-bold text-green-700 underline">Delivered date: 24-5-2020</p>
+                        <p>Address Line: New Way Avenue, 232 Street</p>
+                        <p>Province/City: New York</p>
+                        <p>District/Town: New Mexico</p>
+                      </div>
+                    </AccordionContent>
+                  </AccordionItem>
+                </Accordion>
+                </div>
+                <div className="">
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                      <AccordionTrigger>Contact Info</AccordionTrigger>
+                      <AccordionContent className="space-y-1">
+                        <p className="font-semibold">Customer #1</p>
+                        <p>Mr./ Mrs. <span className="font-medium" >San Jose</span></p>        
+                        <p>Email: <a href={`mailto:sanhose@gmail.com`} className="hover:underline">sanhose@gmail.com</a></p>
+                        <p>Phone: +84 938 562 745</p>
+                        <p>District/Town: New Mexico</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+                <div className="mb-4">
+                  <Accordion type="single" collapsible>
+                    <AccordionItem value="item-1">
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Transaction Info</div><div><Badge variant={"outline"}>{order.paymentStatusName}</Badge></div></div></AccordionTrigger>
+                      <AccordionContent className="space-y-1">
+                        <p className="font-semibold">Transaction #1</p>
+                        <p className="text-sm font-bold text-green-700 underline">Transaction date: 24-5-2020</p>
+                        <p>Payment Method: <span className="font-medium" >COD</span></p>        
+                        <p className="italic">*Deposit not applicable</p>
+                      </AccordionContent>
+                    </AccordionItem>
+                  </Accordion>
+                </div>
+              </CardContent>            
+            </Card>
+  )
+}
 

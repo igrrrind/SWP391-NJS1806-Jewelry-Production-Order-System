@@ -12,13 +12,36 @@ import MyInformation from '@/views/cart/checkout/MyInformation';
 import useCheckoutDetails from '@/hooks/useCheckOutDetails';
 import CheckOutDetails from '@/views/cart/checkout/CheckOutDetails';
 import { Input } from '@/components/ui/input';
-import ImagesUpload from '@/components/custom/images-upload';
 import { usePostOrder } from '@/hooks/orderHooks';
 import CompletedRequest from './CompletedRequest';
+import { useAllProvince } from '@/hooks/provinceApiHooks';
+
+
+const productTypes = [
+    { "productTypeId": 1, "productTypeName": "Ring" },
+    { "productTypeId": 2, "productTypeName": "Necklace" },
+    { "productTypeId": 3, "productTypeName": "Earrings" },
+    { "productTypeId": 4, "productTypeName": "Charm" },
+    { "productTypeId": 5, "productTypeName": "Bracelet" }
+  ]
+
+
 
 const JewelryCustomization = () => {
+    //fetch data
+    const provinces = useAllProvince()
+    const [towns, setTowns] = useState(null);
     const [currentStep, setCurrentStep] = useState(1);
     const [selectedJewelryType, setSelectedJewelryType] = useState("");
+
+    const handleSetJewelry = (obj) => {
+        const selectedType = productTypes.find(type => type.productTypeName === obj);  
+        setSelectedJewelryType(selectedType.productTypeId);
+        setSelectedJewelryTypeName(selectedType.productTypeName);
+        console.log(selectedJewelryTypeName)      
+    };
+
+    const [selectedJewelryTypeName, setSelectedJewelryTypeName] = useState("");
     const [selectedMetal, setSelectedMetal] = useState("");
     const [selectedGemstone, setSelectedGemstone] = useState("");
     const [selectedSize, setSelectedSize] = useState("");
@@ -31,18 +54,29 @@ const JewelryCustomization = () => {
     const {
         shippingAddress,
         city,
-        state,
+        town,
         deliveryMethod,
         paymentMethod,
         handleShippingAddressChange,
         handleCityChange,
-        handleStateChange,
+        handleTownChange,
         handleDeliveryMethodChange,
         handlePaymentMethodChange
     } = useCheckoutDetails();
 
+
+    useEffect(() => {
+        if (city) {
+            const province = provinces.provinces.find(prov => prov.Name === city);
+            if (province) {
+                setTowns(province.District);
+            }
+            console.log(towns)
+        }
+    }, [city, provinces]);
+
     const isDeliveryValid = deliveryMethod === 'inPerson' || 
-                        (deliveryMethod === 'byShipment' && shippingAddress && city && state);
+                        (deliveryMethod === 'byShipment' && shippingAddress && city && town);
 
 
     useEffect(() => {
@@ -84,18 +118,28 @@ const JewelryCustomization = () => {
     };
 
     const handleSubmit = () => {
+        if (isStepValid && currentStep === 4){
+            nextStep();
+        }
+
+        /*
+
+
         if (isStepValid && currentStep === 4) {
             const newOrder = {
-                custId: "1",
+                customerId: "1",
                 orderDate: new Date().toISOString().slice(0, 19).replace('T', ' '),
                 statusId: "1",
-                paymentStatusId: "0",
+                paymentStatusId: "1",
                 isShipment: deliveryMethod === "byShipment",
                 isCustom: true,
                 orderTotal: 0
             };
             setOrder(newOrder);
         }
+
+        */
+
     };
 
     useEffect(() => {
@@ -162,8 +206,8 @@ const JewelryCustomization = () => {
 
                 {currentStep === 1 && (
                     <TypeChoice
-                        selectedJewelryType={selectedJewelryType}
-                        setSelectedJewelryType={setSelectedJewelryType}
+                        selectedJewelryType={selectedJewelryTypeName}
+                        setSelectedJewelryType={handleSetJewelry}
                     />
                 )}
 
@@ -197,7 +241,7 @@ const JewelryCustomization = () => {
                                     <div className='space-y-2 mt-2 text-stone-600 w-[400px]'>
                                         <div className='flex justify-between'>
                                             <div>
-                                                <span className='font-medium'>Type: </span>{selectedJewelryType}
+                                                <span className='font-medium'>Type: </span>{selectedJewelryTypeName}
                                             </div>
                                             <span><button className='hover:text-blue-700 italic text-stone-400 text-sm transition' onClick={() => handleChanges(1)}>Make changes</button></span>
                                         </div>
@@ -266,14 +310,16 @@ const JewelryCustomization = () => {
 
 
                         <CheckOutDetails
+                        towns={towns}
+                        provinces={provinces.provinces}
                         shippingAddress={shippingAddress}
                         city={city}
-                        state={state}
+                        town={town}
                         deliveryMethod={deliveryMethod}
                         paymentMethod={paymentMethod}
                         onShippingAddressChange={handleShippingAddressChange}
                         onCityChange={handleCityChange}
-                        onStateChange={handleStateChange}
+                        onTownChange={handleTownChange}
                         onDeliveryMethodChange={handleDeliveryMethodChange}
                         onPaymentMethodChange={handlePaymentMethodChange}
                     />

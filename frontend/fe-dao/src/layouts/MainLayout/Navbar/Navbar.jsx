@@ -1,9 +1,9 @@
-import Logo from '../../../assets/logo.svg';
+import Logo from '../../../assets/logo-cropped.webp';
 import { Button } from "@/components/ui/button"
 import { useNavigate,Outlet, Link, useLocation } from 'react-router-dom'; 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useState } from 'react';
-import { ShoppingCartIcon, User } from 'lucide-react';
+import { Cog, ShoppingCartIcon, User } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import AccountSidebar from '@/views/account/accountPage';
 import {
@@ -20,7 +20,7 @@ const Navbar = () => {
     const navigate = useNavigate(); 
     const handleClick = () => navigate('/login'); 
     const handleCartClick = () => navigate('/cart');
-    const { currentUser, logout} = useAuth()
+    const { currentUser, logout, userDetails } = useAuth()
     const  {list} = useSelector(state => state.cart)
 
     const handleLogOut = async () => {
@@ -36,9 +36,9 @@ const Navbar = () => {
       <>
           <header className="bg-white shadow-sm font-sans">
 
-          <div className='bg-stone-900 w-full h-7 text-gray-200 text-sm flex justify-center items-center'>{currentUser && <>Happy shopping, {currentUser.displayName}</>}</div>
+          <div className='bg-stone-900 w-full h-7 text-gray-200 text-sm flex justify-center items-center'>{userDetails && <>Happy shopping, {userDetails.firstName}{currentUser.displayName}</>}</div>
 
-          <div className="container mx-auto items-center grid grid-cols-3">
+          <div className="container mx-auto items-center grid grid-cols-3 py-2">
           <div>
             <nav className="flex items-center justify-between text-sm">
               <Link to="/products" className="text-gray-700 hover:text-gray-900">PRODUCTS</Link>
@@ -95,6 +95,7 @@ const Navbar = () => {
               <DropdownMenuContent align="end">
               <DropdownMenuItem><Link to='/account'>Account Settings</Link></DropdownMenuItem>
               <DropdownMenuItem><Link to='/account/orders'>Order History</Link></DropdownMenuItem>
+              {userDetails &&  userDetails.roleId === 1 && <DropdownMenuItem><Link to='/dashboard' className='flex items-center text-blue-600'> <span><Cog /> </span>&nbsp;Dashboard</Link></DropdownMenuItem>}
               <DropdownMenuItem className="text-red-500" onClick={handleLogOut}>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

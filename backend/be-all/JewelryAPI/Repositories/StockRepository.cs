@@ -50,24 +50,24 @@ namespace Repositories
         {
             _context = new JeweleryOrderProductionContext();
             var stocksList = (from s in _context.ProductStocks
-                             join m in _context.Metals
-                             on s.MetalId equals m.MetalId
-                             where s.ProductId == id
-                             select new StockDto()
-                             {
-                                 ProductStockId = s.ProductStockId,
-                                 ProductId = s.ProductId,
-                                 GemstoneId = s.GemstoneId,
-                                 MetalId = s.MetalId,
-                                 MetalTypeName = m.MetalTypeName,
-                                 Size = s.Size,
-                                 StockQuantity = s.StockQuantity,
-                                 Price = s.Price,
-                                 GalleryUrl = s.GalleryUrl
-                             }).AsQueryable();
-            stocksList = stocksList.OrderBy(s => s.Price);
-            
-            return stocksList.FirstOrDefault().Price;
+                join m in _context.Metals
+                    on s.MetalId equals m.MetalId
+                where s.ProductId == id
+                select new StockDto()
+                {
+                    ProductStockId = s.ProductStockId,
+                    ProductId = s.ProductId,
+                    GemstoneId = s.GemstoneId,
+                    MetalId = s.MetalId,  
+                    MetalTypeName = m.MetalTypeName,
+                    Size = s.Size,
+                    StockQuantity = s.StockQuantity,
+                    Price = s.Price,
+                    GalleryUrl = s.GalleryUrl
+                }).AsQueryable();
+            var lowestPriceStock = stocksList.OrderBy(s => s.Price).FirstOrDefault();
+
+            return lowestPriceStock?.Price ?? 0;
         }
 
         //UPDATE
