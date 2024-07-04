@@ -14,6 +14,8 @@ export function useAllOrderItems(order) {
 
       try {
         setLoading(true);
+        console.log(order);
+        console.log(order.isCustom);
         const response = await axios.get(
           order.isCustom
             ? `https://localhost:7112/api/OrderCustomItems/${order.orderId}`
