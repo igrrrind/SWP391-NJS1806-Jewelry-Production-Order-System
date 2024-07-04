@@ -22,7 +22,9 @@ import SignupPage from './views/signup/SignupPage';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageUsersPage from './views/dashboard/manage-users/ManageUsersPage';
-import CreateQuotePage from './views/dashboard/manage-orders/quote/CreateQuote';
+import CreateQuotePage from './views/dashboard/manage-orders/quote/CreateQuotePage';
+import { PaymentSucessPage } from './views/cart/payment-sucess';
+import { PaymentErrorPage } from './views/cart/checkout/payment-error';
 
 
 const productsPages = {
@@ -81,6 +83,10 @@ const App = () => {
           <Route index element={<CartPage/>}/> 
           <Route path="checkout" element={<CheckOutPage />}></Route>
           <Route path="payment-confirm" element={<PaymentConfirm />} />
+          <Route path="payment-success" element={<PaymentSucessPage />} />
+          <Route path="payment-error" element={<PaymentErrorPage />} />
+
+
         </Route>
 
         <Route path="/account" element={<MainLayout />}>
@@ -89,7 +95,8 @@ const App = () => {
 
         <Route path="/customize" element={<MainLayout />}>
               <Route index element={<HeroCustomizePage />}/>    
-              <Route path="start" element={<JewelryCustomization/>}/>      
+              <Route path="start" element={<JewelryCustomization/>}/>  
+    
         </Route>
 
 
