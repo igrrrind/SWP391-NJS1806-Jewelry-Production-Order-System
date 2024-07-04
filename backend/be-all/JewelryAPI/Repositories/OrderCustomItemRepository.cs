@@ -42,12 +42,14 @@ namespace Repositories
                          {
                              OrderItemId = o.OrderItemId,
                              OrderId = o.OrderId,
+                             ProductTypeId = o.ProductTypeId,
                              GemstoneId = o.GemstoneId,
                              GemstoneType = g.GemstoneType,
                              MetalId = o.MetalId,
                              MetalTypeName = m.MetalTypeName,
                              Size = o.Size,
                              UnitPrice = o.UnitPrice,
+                             RequestDescription = o.RequestDescription,
                              Quantity = o.Quantity,
                              Subtotal = o.Subtotal
                          }).FirstOrDefault(o => o.OrderId == id);
