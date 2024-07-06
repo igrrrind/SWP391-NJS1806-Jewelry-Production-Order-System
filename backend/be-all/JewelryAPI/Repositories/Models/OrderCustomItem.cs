@@ -9,6 +9,10 @@ public partial class OrderCustomItem
 
     public int OrderId { get; set; }
 
+    public int ProductTypeId { get; set; }
+
+    public int MyProperty { get; set; }
+
     public int GemstoneId { get; set; }
 
     public int MetalId { get; set; }
@@ -19,9 +23,13 @@ public partial class OrderCustomItem
 
     public int? Quantity { get; set; }
 
+    public string RequestDescription { get; set; }
+
     public decimal Subtotal { get; set; }
 
     public virtual ICollection<Design> Designs { get; set; } = new List<Design>();
+
+    public virtual ProductType ProductType { get; set; } = null!;
 
     public virtual Gemstone Gemstone { get; set; } = null!;
 

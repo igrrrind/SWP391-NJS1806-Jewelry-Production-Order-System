@@ -63,7 +63,7 @@ public partial class JeweleryOrderProductionContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=Deeznuts21;database=JeweleryOrderProduction;TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=(local);uid=sa;pwd=12345;database=JeweleryOrderProduction;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -214,21 +214,26 @@ public partial class JeweleryOrderProductionContext : DbContext
 
             entity.Property(e => e.OrderItemId).HasColumnName("order_item_id");
             entity.Property(e => e.GemstoneId).HasColumnName("gemstone_id");
+            entity.Property(e => e.ProductTypeId).HasColumnName("product_type_id");
             entity.Property(e => e.MetalId).HasColumnName("metal_id");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
             entity.Property(e => e.Size).HasColumnName("size");
+            entity.Property(e => e.RequestDescription).HasColumnName("request_description");
             entity.Property(e => e.Subtotal)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("subtotal");
             entity.Property(e => e.UnitPrice)
                 .HasColumnType("decimal(10, 2)")
                 .HasColumnName("unit_price");
-
+            entity.HasOne(d => d.ProductType).WithMany(p => p.OrderCustomItems)
+                .HasForeignKey(d => d.ProductTypeId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK__Order_Cus__produ__534D60F1");
             entity.HasOne(d => d.Gemstone).WithMany(p => p.OrderCustomItems)
                 .HasForeignKey(d => d.GemstoneId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK__Order_Cus__gemst__534D60F1");
+                .HasConstraintName("FK__Order_Cus__gemst__5441852A");
 
             entity.HasOne(d => d.Metal).WithMany(p => p.OrderCustomItems)
                 .HasForeignKey(d => d.MetalId)
