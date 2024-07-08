@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repositories.Dto;
 
 namespace Services
 {
@@ -18,7 +19,7 @@ namespace Services
             _orderFixedItemRepo.AddNewOrderFixedItem(orderFixedItem);
         }
         //GET
-        public List<OrderFixedItem> GetOrderFixedItems(OrderFixedItemQueryObject queryObject) => _orderFixedItemRepo.GetOrderFixedItems(queryObject);
+        public List<OrderFixedItemDto> GetOrderFixedItems(OrderFixedItemQueryObject queryObject) => _orderFixedItemRepo.GetOrderFixedItems(queryObject);
         //UPDATE
         public void UpdateOrderFixedItem(OrderFixedItem orderFixedItem) => _orderFixedItemRepo.UpdateOrderFixedItem(orderFixedItem);
         //DELETE

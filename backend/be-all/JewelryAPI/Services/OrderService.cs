@@ -16,6 +16,9 @@ namespace Services
         public List<OrderDto> GetOrders(OrderQueryObject queryObject) => _orderRepo.GetOders(queryObject);
        
         public void AddNewOrder(Order order) => _orderRepo.AddNewOrder(order);
+        
+        public void DeleteOrderById(int id) => _orderRepo.DeleteOrdersById(id);
+        
         public CustomerDto GetCustomer(Order order) => _orderRepo.GetCustomer(order);
 
         public List<OrderDto> GetOrdersByCustomerId(OrderQueryObject queryObject, int customerId) 

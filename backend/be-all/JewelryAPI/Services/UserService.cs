@@ -41,9 +41,9 @@ namespace Services
             userRepository.DeleteUser(id);
         }
 
-        public User GetUser(string id)
+        public UserDto GetUser(string id)
         {
-            return userRepository.GetUser(id);
+            return userRepository.GetUserDto(id);
         }
 
         public List<UserDto> GetUsers()
