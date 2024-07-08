@@ -10,9 +10,7 @@ public partial class OrderCustomItem
     public int OrderId { get; set; }
 
     public int ProductTypeId { get; set; }
-
-    public int MyProperty { get; set; }
-
+    
     public int GemstoneId { get; set; }
 
     public int MetalId { get; set; }
