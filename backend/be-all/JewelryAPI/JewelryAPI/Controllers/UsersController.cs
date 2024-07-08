@@ -66,7 +66,7 @@ namespace JewelryAPI.Controllers
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(string id)
+        public async Task<ActionResult<UserDto>> GetUser(string id)
         {
             if (iUserService.GetUsers() == null)
             {

@@ -54,6 +54,21 @@ namespace JewelryAPI.Controllers
             }
             return Ok(new { Data = order });
         }
+        
+        
+        [HttpDelete("{orderId}")]
+        public IActionResult DeleteOrdersById(int orderId)
+        {
+            try
+            {
+                _orderService.DeleteOrderById(orderId);
+                return Ok(new { message = "Orders deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
     }
 }

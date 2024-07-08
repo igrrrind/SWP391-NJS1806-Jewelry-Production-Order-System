@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
+using Repositories.Dto;
 using Repositories.Models;
 using Repositories.QueryObjects;
 using Services;
@@ -27,7 +28,7 @@ namespace JewelryAPI.Controllers
         [HttpGet]
         public IActionResult GetOrderFixedItems([FromQuery]OrderFixedItemQueryObject queryObject)
         {
-            List<OrderFixedItem> fixedItemList = new List<OrderFixedItem>();
+            List<OrderFixedItemDto> fixedItemList = new List<OrderFixedItemDto>();
             try
             {
                 fixedItemList = _orderFixedItemService.GetOrderFixedItems(queryObject);
