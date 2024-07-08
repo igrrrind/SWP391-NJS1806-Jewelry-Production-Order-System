@@ -6,6 +6,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Repositories.Dto;
 
 namespace Repositories
 {
@@ -20,24 +22,57 @@ namespace Repositories
             _context.SaveChanges();
         }
         //GET
-        public List<OrderFixedItem> GetOrderFixedItems(OrderFixedItemQueryObject queryObject)
+        public List<OrderFixedItemDto> GetOrderFixedItems(OrderFixedItemQueryObject queryObject)
         {
             _context = new JeweleryOrderProductionContext();
-            var fixedItemList = _context.OrderFixedItems.AsQueryable();
-            if(queryObject.OrderId != 0)
+            
+            var list = from ofi in _context.OrderFixedItems
+                join p in _context.Products on ofi.ProductId equals p.ProductId
+                join ps in _context.ProductStocks on ofi.ProductStockId equals ps.ProductStockId
+                join g in _context.Gemstones on ps.GemstoneId equals g.GemstoneId
+                join m in _context.Metals on ps.MetalId equals m.MetalId
+                select new OrderFixedItemDto
+                {
+                    OrderFixedItemId = ofi.OrderFixedItemId,
+                    OrderId = ofi.OrderId,
+                    ProductStockId = ofi.ProductStockId,
+                    ProductId = ofi.ProductId,
+                    Quantity = ofi.Quantity,
+                    UnitPrice = ofi.UnitPrice,
+                    Subtotal = ofi.Subtotal,
+                    ProductName = p.ProductName,
+                    ProductStock = new StockDto
+                    {
+                        ProductStockId = ps.ProductStockId,
+                        ProductId = ps.ProductId,
+                        GemstoneId = ps.GemstoneId,
+                        GemstoneType = g.GemstoneType,
+                        GemstoneColor = g.Color,
+                        MetalId = ps.MetalId,
+                        MetalTypeName = m.MetalTypeName,
+                        Size = ps.Size,
+                        StockQuantity = ps.StockQuantity,
+                        Price = ps.Price,
+                        GalleryUrl = ps.GalleryUrl
+                    }
+                };
+
+            if (queryObject.OrderId != 0)
             {
-                fixedItemList = fixedItemList.Where(f => f.OrderId == queryObject.OrderId);
+                list = list.Where(f => f.OrderId == queryObject.OrderId);
             }
 
-            if(queryObject.SortByNewer)
+            if (queryObject.SortByNewer)
             {
-                fixedItemList = fixedItemList.OrderByDescending(f => f.OrderFixedItemId);
+                list = list.OrderByDescending(f => f.OrderFixedItemId);
             }
 
             var skipNumber = (queryObject.PageNumber - 1) * queryObject.PageSize;
 
-            return fixedItemList.Skip(skipNumber).Take(queryObject.PageSize).ToList();
+            return list.Skip(skipNumber).Take(queryObject.PageSize).ToList();
         }
+
+        
         //UPDATE
         public void UpdateOrderFixedItem(OrderFixedItem orderFixedItem)
         {

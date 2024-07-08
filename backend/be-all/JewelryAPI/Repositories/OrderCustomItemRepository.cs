@@ -15,16 +15,22 @@ namespace Repositories
                        on o.GemstoneId equals g.GemstoneId
                        join m in _context.Metals
                        on o.MetalId equals m.MetalId
+                       join p in _context.ProductTypes 
+                       on o.ProductTypeId equals p.ProductTypeId
                        select new OrderCustomItemDto()
                        {
                            OrderItemId = o.OrderItemId,
                            OrderId = o.OrderId,
+                           ProductTypeId = o.ProductTypeId,
+                           TypeName = p.TypeName,
                            GemstoneId = o.GemstoneId,
                            GemstoneType = g.GemstoneType,
+                           GemstoneColor = g.Color,
                            MetalId = o.MetalId,
                            MetalTypeName = m.MetalTypeName,
                            Size = o.Size,
                            UnitPrice = o.UnitPrice,
+                           RequestDescription = o.RequestDescription,
                            Quantity = o.Quantity,
                            Subtotal = o.Subtotal
                        };
@@ -38,13 +44,17 @@ namespace Repositories
                          on o.GemstoneId equals g.GemstoneId
                          join m in _context.Metals
                          on o.MetalId equals m.MetalId
+                         join p in _context.ProductTypes 
+                         on o.ProductTypeId equals p.ProductTypeId
                          select new OrderCustomItemDto()
                          {
                              OrderItemId = o.OrderItemId,
                              OrderId = o.OrderId,
                              ProductTypeId = o.ProductTypeId,
+                             TypeName = p.TypeName,
                              GemstoneId = o.GemstoneId,
                              GemstoneType = g.GemstoneType,
+                             GemstoneColor = g.Color,
                              MetalId = o.MetalId,
                              MetalTypeName = m.MetalTypeName,
                              Size = o.Size,
@@ -78,6 +88,9 @@ namespace Repositories
                 oOrder.Size = order.Size;
                 oOrder.GemstoneId = order.GemstoneId;
                 oOrder.MetalId = order.MetalId;
+                oOrder.ProductTypeId = order.ProductTypeId;
+                oOrder.RequestDescription = order.RequestDescription;
+
                 _context.SaveChanges();
             }
             return oOrder;

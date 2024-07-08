@@ -17,7 +17,7 @@ namespace Repositories
         {
             dbContext = new JeweleryOrderProductionContext();
             
-            return dbContext.Quotes.FirstOrDefault(q => q.QuoteId == id);
+            return dbContext.Quotes.FirstOrDefault(q => q.OrderId == id);
         }
 
         public Quote AddQuote(Quote quote)

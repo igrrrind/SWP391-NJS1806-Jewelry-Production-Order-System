@@ -129,5 +129,14 @@ namespace Repositories
             _context = new JeweleryOrderProductionContext();
             return userRepository.GetCustomerByCustomerId(order.CustomerId);
         }
+        
+        
+        public void DeleteOrdersById(int id)
+        {
+            _context = new JeweleryOrderProductionContext();
+            var ordersToDelete = _context.Orders.Where(o => o.OrderId == id).ToList();
+            _context.Orders.RemoveRange(ordersToDelete);
+            _context.SaveChanges();
+        }
     }
 }
