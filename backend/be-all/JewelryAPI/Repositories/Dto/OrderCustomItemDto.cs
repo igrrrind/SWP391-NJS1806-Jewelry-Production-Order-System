@@ -10,6 +10,8 @@ public class OrderCustomItemDto
     public int OrderId { get; set; }
 
     public int ProductTypeId { get; set; }
+    
+    public string TypeName { get; set; }
     public int GemstoneId { get; set; }
     public string GemstoneType { get; set; }
     public string GemstoneColor { get; set; }
