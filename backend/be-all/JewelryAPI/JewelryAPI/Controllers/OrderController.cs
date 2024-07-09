@@ -56,13 +56,38 @@ namespace JewelryAPI.Controllers
         }
         
         
-        [HttpDelete("{orderId}")]
-        public IActionResult DeleteOrdersById(int orderId)
+        [HttpDelete("{id}")]
+        public IActionResult DeleteOrdersById(int id)
         {
             try
             {
-                _orderService.DeleteOrderById(orderId);
+                _orderService.DeleteOrderById(id);
                 return Ok(new { message = "Orders deleted successfully." });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        
+        [HttpPut("{id}")]
+        public IActionResult UpdateOrder(int id, [FromBody] Order updatedOrder)
+        {
+            if (updatedOrder == null || updatedOrder.OrderId != id)
+            {
+                return BadRequest();
+            }
+
+            var existingOrder = _orderService.GetOrders(new OrderQueryObject { OrderId = id }).FirstOrDefault();
+            if (existingOrder == null)
+            {
+                return NotFound();
+            }
+
+            try
+            {
+                _orderService.UpdateOrder(updatedOrder);
+                return Ok(new { message = "Orders updated successfully." });
             }
             catch (Exception ex)
             {

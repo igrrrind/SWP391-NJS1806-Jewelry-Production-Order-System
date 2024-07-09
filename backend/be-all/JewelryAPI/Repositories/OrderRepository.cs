@@ -130,7 +130,7 @@ namespace Repositories
             return userRepository.GetCustomerByCustomerId(order.CustomerId);
         }
         
-        
+        //DELETE
         public void DeleteOrdersById(int id)
         {
             _context = new JeweleryOrderProductionContext();
@@ -138,5 +138,25 @@ namespace Repositories
             _context.Orders.RemoveRange(ordersToDelete);
             _context.SaveChanges();
         }
+        
+        //PUT
+        public void UpdateOrder(Order updatedOrder)
+        {
+            _context = new JeweleryOrderProductionContext();
+            var existingOrder = _context.Orders.FirstOrDefault(o => o.OrderId == updatedOrder.OrderId);
+            if (existingOrder != null)
+            {
+                existingOrder.CustomerId = updatedOrder.CustomerId;
+                existingOrder.OrderDate = updatedOrder.OrderDate;
+                existingOrder.StatusId = updatedOrder.StatusId;
+                existingOrder.PaymentStatusId = updatedOrder.PaymentStatusId;
+                existingOrder.IsShipment = updatedOrder.IsShipment;
+                existingOrder.IsCustom = updatedOrder.IsCustom;
+                existingOrder.OrderTotal = updatedOrder.OrderTotal;
+
+                _context.SaveChanges();
+            }
+        }
+        
     }
 }

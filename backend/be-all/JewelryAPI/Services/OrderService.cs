@@ -17,6 +17,8 @@ namespace Services
        
         public void AddNewOrder(Order order) => _orderRepo.AddNewOrder(order);
         
+        public void UpdateOrder(Order order) => _orderRepo.UpdateOrder(order);
+        
         public void DeleteOrderById(int id) => _orderRepo.DeleteOrdersById(id);
         
         public CustomerDto GetCustomer(Order order) => _orderRepo.GetCustomer(order);
