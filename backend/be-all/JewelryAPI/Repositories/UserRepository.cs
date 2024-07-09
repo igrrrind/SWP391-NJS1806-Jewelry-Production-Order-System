@@ -61,7 +61,6 @@ namespace Repositories
                                on u.RoleId equals r.RoleId
                                join d in dbContext.CustomerDetails
                                on u.Uid equals d.Uid
-                               where u.RoleId == 5
                                select new CustomerDto()
                                {
                                    Uid = u.Uid,
