@@ -11,6 +11,7 @@ import { useAllProvince } from "@/hooks/provinceApiHooks"
 import { v4 as uuidv4 } from 'uuid';
 import { usePostOrder } from "@/hooks/orderHooks"
 import { generateNumericTransactionId } from "@/hooks/generateRandomId"
+import { useAuth } from "@/contexts/AuthContext"
 
 
 const CheckOutPage = () => {
@@ -26,6 +27,8 @@ const CheckOutPage = () => {
         handleDeliveryMethodChange,
         handlePaymentMethodChange
     } = useCheckoutDetails();
+
+    const {userDetails, currentUser, currentCustomer} = useAuth();
 
     const cart = useSelector(state => state.cart);
     const navigate = useNavigate();
@@ -53,34 +56,35 @@ const CheckOutPage = () => {
 
     useEffect(() => {
         handlePaymentMethodChange("vnpay");
-
+    
         const preparePaymentUrl = async () => {
             const transactionId = generateNumericTransactionId();
-
+    
             // Create the order in the database
             const newOrder = {
-                customerId: 1,
+                customerId: currentCustomer?.customerId,
                 orderDate: new Date().toISOString().slice(0, 10),
-                statusId: deliveryMethod === "byShipment" ? 7:6,  //pick up from store or awaiting shipment
-                paymentStatusId: 1,//pending 
+                statusId: deliveryMethod === "byShipment" ? 7 : 6,  // pick up from store or awaiting shipment
+                paymentStatusId: 1, // pending 
                 isShipment: deliveryMethod === "byShipment",
                 isCustom: false,
                 orderTotal: cart.total,
                 transactionId: transactionId
             };
+            console.log(newOrder)
             setOrder(newOrder);
             try {
-                const paymentUrl = await initiatePayment(cart.total *100, `Pacifa Payment ${transactionId}`, transactionId);
+                const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId);
                 setUrl(paymentUrl);
             } catch (error) {
                 console.error('Error preparing payment URL:', error.message);
                 setError('Error preparing payment URL. Please try again.');
             }
-            
         };
-
+    
         preparePaymentUrl();
-    }, [cart.total, deliveryMethod]);
+    }, [cart.total, deliveryMethod, currentCustomer]);
+    
 
 
     const handlePlaceOrder = async () => {    
@@ -89,7 +93,7 @@ const CheckOutPage = () => {
             console.log("Order placed successfully!");
 
             if (paymentMethod !== "vnpay") {
-            
+                
             } 
             
             else {
@@ -138,10 +142,10 @@ const CheckOutPage = () => {
                 return (
                     <div className="checkout-item flex flex-row justify-between mb-2" key={item.productStockId}>             
                         <div>
-                            <span className="font-bold" > x {item.quantity +1 } &nbsp; </span>
+                            <span className="font-bold" > x {item.quantity} &nbsp; </span>
                             <span>{item.productName}</span>
                         </div>
-                        <span>{(item.quantity+1) * item.price} VND</span>                     
+                        <span>{(item.quantity) * item.price} VND</span>                     
                     </div> 
                 )
                 })

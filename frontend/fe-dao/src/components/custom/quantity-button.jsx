@@ -5,25 +5,26 @@ const QuantityButton = ({stock,disabled, onValueChange, chosenQuantity}) => {
 
   // Use useEffect to update the quantity if chosenQuantity changes
   useEffect(() => {
-    if (chosenQuantity !== undefined) {
+    if (quantity !== undefined) {
       console.log(chosenQuantity)
       setQuantity(chosenQuantity);
     }
-  }, [chosenQuantity]);
+  }, []);
+
+
+  useEffect(() => {
+    onValueChange(quantity)
+  }, [quantity, onValueChange]);
  
 
   const handleIncrease = () => {
     console.log(stock)
-    if (quantity < stock) {
-      setQuantity(quantity + 1);
-      if (onValueChange !== undefined) onValueChange(quantity)
-    } 
+    setQuantity(prevQuantity => Math.min(prevQuantity + 1, stock));
+
   };
 
   const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      if (onValueChange !== undefined) onValueChange(quantity)    } 
+    setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1));
   };
 
   useEffect(() => {

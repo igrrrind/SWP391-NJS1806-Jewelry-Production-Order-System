@@ -8,24 +8,51 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { usePostQuote } from "@/hooks/quoteHooks";
+import { usePutQuote, useQuoteByOrderId } from "@/hooks/quoteHooks";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTransactionByOrderId } from "@/hooks/transactionHooks";
 import { useShipmentByOrderId } from "@/hooks/shipmentHooks";
+import { formatPrice } from "@/utils/formatPrice";
 
-const CreateQuotePage = () => {
+const EditQuotePage = () => {
     const { orderId } = useParams();
 
     const navigate = useNavigate();
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const { order } = useOrderById(orderId);
     const { orderItems} = useAllOrderItems(order);
     const { transaction } = useTransactionByOrderId(order);
     const { shipment } = useShipmentByOrderId(order);
-    
-    const { postQuote, response } = usePostQuote();
+    const {quote} = useQuoteByOrderId(order)
+
+    const { updateQuote, response } = usePutQuote();
+
+
+
+    const [totalCost, setTotalCost] = useState(0);
+
+    useEffect(() => {
+        if (quote) {
+            setTotalCost(quote.quotePriceTotal)
+        }
+    },[quote])
+
+    const calculateTotalCost = () => {
+        const metalCost = watch('metalCost') || 0;
+        const caratPrice = watch('caratPrice') || 0;
+        const caratCost = watch('caratCost') || 0;
+        const productionCost = watch('productionCost') || 0;
+
+        const total = Number(metalCost) + Number(caratPrice) + Number(caratCost) + Number(productionCost);
+        setTotalCost(total);
+    };
+
+    useEffect(() => {
+        calculateTotalCost();
+    }, [watch('metalWeight'), watch('metalCost'), watch('caratPrice'), watch('caratCost'), watch('productionCost')]);
+
 
     useEffect(() => {
         if (order) {
@@ -34,25 +61,27 @@ const CreateQuotePage = () => {
     }, [order]);
 
     const onSubmit = (data) => {
+        data.quoteTotalPrice = totalCost
         console.log(data)
-        postQuote(data);
+        updateQuote(data);
     };
 
     useEffect(()=> {
         if(response) {
             navigate("/dashboard/manage-orders");
             // Trigger toast notification
-            toast.success(`Quote sent successfully for order #${order.orderId}`);
+            toast.success(`Quote updated successfully for order #${order.orderId}`);
         }
     },[response])
 
-    return (
+    return (     
         <div>
+            {quote &&
             <main className="flex-1 p-4 xl:flex xl:space-x-4 overflow-auto">    
                 <Card className="w-full">
                     <CardHeader>
-                        <CardTitle>Create Quote</CardTitle>
-                        <CardDescription>Create a quote. Once submitted, you won't be able to edit. The assigned manager will be responsible for finalizing the quote</CardDescription>
+                        <CardTitle>Edit Quote</CardTitle>
+                        <CardDescription>Edit the quote details</CardDescription>
                     </CardHeader>
                     <CardContent>
                         <div className="flex space-x-8 text-sm">
@@ -61,13 +90,14 @@ const CreateQuotePage = () => {
                                     <div className=''>
                                     <input type="hidden" defaultValue={orderId} 
                                      {...register("orderId", {})} />
-                                    <input type="hidden" defaultValue={new Date().toISOString().slice(0, 10)} 
+                                    <input type="hidden" defaultValue={quote.createdDate} 
                                     {...register("createdDate", {})} />
                                      
                                         <Label htmlFor="metalWeight">Metal Weight (g)
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>Use the customer budget or an existing product as reference</div>
                                         </Label>
                                         <Input 
+                                            defaultValue={quote.metalWeight}
                                             type="number" 
                                             placeholder="Choose a valid amount" 
                                             className='border-black' 
@@ -82,7 +112,8 @@ const CreateQuotePage = () => {
                                         <Label htmlFor="metalCost">Metal Cost (VND)
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>Reference the price list to set the most appropriate cost</div>
                                         </Label>
-                                        <Input 
+                                        <Input  
+                                            defaultValue={quote.metalCost}
                                             type="number" 
                                             placeholder="Choose a valid amount" 
                                             className='border-black' 
@@ -94,10 +125,11 @@ const CreateQuotePage = () => {
                                         {errors.metalCost && <p className="text-red-500 text-xs mt-1">{errors.metalCost.message}</p>}
                                     </div>
                                     <div className='mt-4'>
-                                        <Label htmlFor="caratPrice">Carat Price
+                                        <Label htmlFor="caratPrice">Carat Price (VND)
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>Rate of which we sell our gemstones per carat. Referenced from the custom choice</div>
                                         </Label>
                                         <Input 
+                                            defaultValue={quote.caratPrice}
                                             type="number" 
                                             placeholder="Choose a valid amount" 
                                             className='border-black' 
@@ -109,10 +141,11 @@ const CreateQuotePage = () => {
                                         {errors.caratPrice && <p className="text-red-500 text-xs mt-1">{errors.caratPrice.message}</p>}
                                     </div>
                                     <div className='mt-4'>
-                                        <Label htmlFor="caratCost">Carat Cost
+                                        <Label htmlFor="caratCost">Carat Cost (VND)
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>A recommended budget for your gemstone.</div>
                                         </Label>
                                         <Input 
+                                            defaultValue={quote.caratCost}
                                             type="number" 
                                             placeholder="Choose a valid amount" 
                                             className='border-black' 
@@ -125,10 +158,11 @@ const CreateQuotePage = () => {
                                     </div>
 
                                     <div className='mt-4'>
-                                        <Label htmlFor="caratCost">Production Cost
+                                        <Label htmlFor="productionCost">Production Cost
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>Includes raw material logistics, labor costs, design costs </div>
                                         </Label>
                                         <Input 
+                                            defaultValue={quote.productionCost}
                                             type="number" 
                                             placeholder="Choose a valid amount" 
                                             className='border-black' 
@@ -140,14 +174,26 @@ const CreateQuotePage = () => {
                                         {errors.productionCost && <p className="text-red-500 text-xs mt-1">{errors.productionCost.message}</p>}
                                     </div>
 
+                                    <div className='mt-8'>
+                                        <p className=" font-bold"> QUOTE TOTAL: đ <span>{totalCost}</span>
+                                        </p>
+                                        <Input
+                                            type="hidden" 
+                                            placeholder="Choose a valid amount" 
+                                            className='border-black' 
+                                            {...register("quoteTotalPrice",{})}
+                                            value ={0}
+                                        />
+                                    </div>
+
                                     
 
-                                    <Button type="submit" className="mt-6 text float-right">Submit for approval</Button>
+                                    <Button type="submit" className="mt-6 text float-right">Update Quote Details</Button>
                                 </form>   
                             </div>                
                             <div className="border border-black p-4">
-                                <div>Current pricing info here</div>
-                                <div>Current pricing info here</div>
+                                <div>MEtals API HERE</div>
+                                <div>Gemstone pricing as well</div>
                                 <div>Current pricing info here</div>
                                 <div>Current pricing info here</div>
                                 <div>Current pricing info here</div>
@@ -163,8 +209,9 @@ const CreateQuotePage = () => {
                     </div>
                 </div> 
             </main>
+            }
         </div>
     );
 };
 
-export default CreateQuotePage;
+export default EditQuotePage;

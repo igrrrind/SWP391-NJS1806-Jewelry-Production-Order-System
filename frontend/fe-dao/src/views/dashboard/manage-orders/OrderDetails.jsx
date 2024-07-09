@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardDescription, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Info, MailIcon } from "lucide-react";
+import { Edit, Info, MailIcon, Send, User, User2 } from "lucide-react";
 //import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTableRowigger, Separator } from "@radix-ui/react-dropdown-menu";
 //import { Copy, CreditCard, MoreVertical, TableRowuck } from "lucide-react";
 
@@ -14,10 +14,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { formatDate } from "@/utils/formatDate";
+import { usePutOrder } from "@/hooks/orderHooks";
+import { useState } from "react";
 
 
-const OrderDetails = ({order, orderItems, quote, shipment, contact, transaction}) => {
+const OrderDetails = ({order, orderItems, quote, shipment, transaction}) => {
     if (!order) {
       return (
         <div>
@@ -37,13 +40,13 @@ const OrderDetails = ({order, orderItems, quote, shipment, contact, transaction}
     if (order.isCustom){
       return (
         <div>
-            <CustomCard order={order} orderItems={orderItems} quote={quote} shipment={shipment} contact={contact} transaction={transaction}/>         
+            <CustomCard order={order} orderItems={orderItems} quote={quote} shipment={shipment} transaction={transaction}/>         
         </div>
       )
     } else if (!order.isCustom)
     return(
         <div>
-            <FixedCard order={order} orderItems={orderItems} shipment={shipment} contact={contact} transaction={transaction}/>         
+            <FixedCard order={order} orderItems={orderItems} shipment={shipment} transaction={transaction}/>         
         </div>
     )
 
@@ -52,13 +55,53 @@ const OrderDetails = ({order, orderItems, quote, shipment, contact, transaction}
 export default OrderDetails
 
 
+//CUSTOM CARD
 
-const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) =>{
+
+const CustomCard = ({order, orderItems, quote, shipment, transaction}) =>{
     const  navigate = useNavigate();
-
+    const {updateOrder} = usePutOrder()
+    const [newOrder, setNewOrder] = useState(null)
+  
     const handleCreateQuote = () => {
        navigate(`/dashboard/create-quote/${order.orderId}`)
     }
+
+    const handleQuoteApproval = () => {
+      const { orderId, customerId, orderDate, paymentStatusId, isShipment, isCustom, orderTotal } = order;
+      const updatedOrder = {
+          orderId: orderId,
+          customerId: customerId,
+          orderDate: orderDate,
+          statusId: 2, // Approving quote updates the statusId to 2
+          paymentStatusId: paymentStatusId,
+          isShipment: isShipment,
+          isCustom: isCustom,
+          orderTotal: orderTotal
+      };
+
+      setNewOrder(updatedOrder);
+      updateOrder(updatedOrder)
+          .then(response => {
+              alert("Quote Approved.")
+              console.log('Order updated successfully', response);
+              navigate(0)
+          })
+          .catch(error => {
+              // Handle error if needed
+              console.error('Error updating order', error);
+          });
+    };
+
+    const handleQuoteEdit= () => {
+      navigate(`/dashboard/edit-quote/${order.orderId}`)      
+    }
+
+    const handleQuoteSend= () => {
+      //allows admin to download the quote and send to the user
+    }
+
+
     return (
       <Card className="overflow-hidden border-blue-700" x-chunk="dashboard-05-chunk-4">
               <CardHeader>
@@ -87,10 +130,10 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                     </TableRow>
                   </TableHeader>
                   <TableBody>
-                    {orderItems.length !== 0 ? orderItems.map(item => (
+                    {orderItems.length !== 0 ? orderItems.map(item => (<>
                     <TableRow className="border-b " key={item.orderItemId}>
                         <TableCell className="px-0 flex flex-col items-center">
-                          <p className=" text-left">item.typeName</p>
+                          <p className=" text-left">{item.typeName}</p>
                           <p className="text-xs text-left">Custom</p>
                         </TableCell>
                         <TableCell className="py-2">
@@ -114,6 +157,12 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                         <TableCell className="py-2">x {item.quantity}</TableCell>
                         <TableCell className="text-right px-0">{item.subtotal}</TableCell>
                     </TableRow>
+                    <TableRow>
+                       <TableCell colSpan="4">{item.requestDescription}</TableCell>
+
+
+                    </TableRow>
+                    </>
                     )): <TableRow><TableCell colSpan="5">Nothing here yet</TableCell></TableRow> }
                   </TableBody>
                 </Table>
@@ -143,14 +192,15 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                   <AccordionItem value="item-1">
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Pricing Quote</div><div></div></div></AccordionTrigger>
                     <AccordionContent className=" flex justify-between">
-                        {quote ? (
-                      <div className="space-y-1">
+                      {quote ? (
+                      <div className="space-y-2">
                         <p className="font-semibold">Quote #{quote.quoteId}</p>
-                        <p className="text-sm text-foreground">{quote.createdDate}</p>
-                        <div>
+                        <p className="text-sm text-foreground">Date of Creation: {formatDate(quote.createdDate)}</p>
+                        <div className="p-2"></div>
+                        <div className="">
                           <Table className="w-full">
                             <TableHeader>
-                              <TableRow>
+                              <TableRow> 
                                 <TableHead className="pl-0 w-20">METAL WEIGHT(g)</TableHead>
                                 <TableHead className="py-2">METAL COST</TableHead>
                                 <TableHead className="py-2 ">CARAT PRICE</TableHead>
@@ -174,8 +224,10 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                             <p className="text-sm">{quote.quoteTotalPrice}</p>
                           </div>
                         </div>
-                        <div className="flex justify-center">
-                          <Button disabled={order.statusId !== 1}>{order.statusId === 1 ? "APPROVE QUOTE" : "QUOTE APPROVED"}</Button>
+                        <div className="flex justify-center space-x-4">
+                          <Button onClick={handleQuoteEdit}><Edit/></Button>
+                          <Button disabled={order.statusId !== 1} onClick={handleQuoteApproval}>{order.statusId === 1 ? "APPROVE QUOTE" : "QUOTE APPROVED"}</Button>
+                          <Button><Send/></Button>
                         </div>
                       </div>
                     ) : (
@@ -214,11 +266,12 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                     <AccordionItem value="item-1">
                       <AccordionTrigger>Contact Info</AccordionTrigger>
                       <AccordionContent className="space-y-1">
-                        <p className="font-semibold">Customer #1</p>
-                        <p>Mr./ Mrs. <span className="font-medium" >San Jose</span></p>        
-                        <p>Email: <a href={`mailto:sanhose@gmail.com`} className="hover:underline">sanhose@gmail.com</a></p>
-                        <p>Phone: +84 938 562 745</p>
-                        <p>District/Town: New Mexico</p>
+                        <p className="font-semibold">Customer #{order.customerId}</p>
+                        <p>Mr./ Mrs. <span className="font-medium" >{order.firstName} {order.lastName}</span></p>        
+                        <p>Email: <a href={`mailto:${order.email}`} className="hover:underline">{order.email}</a></p>
+                        <p>Phone: <a href={`tel:${order.phone}`}>{order.phone}</a></p>
+                        <p>More Info</p>
+                        <Button><User/></Button>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
@@ -228,7 +281,7 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                     <AccordionItem value="item-1">
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Transaction Info</div><Badge variant={"outline"}>{order.paymentStatusName}</Badge></div></AccordionTrigger>
                       <AccordionContent className="space-y-1">
-                      {transaction.length !== 0 ? (
+                      {transaction.length > 0 ? (
                         transaction.map((t) => (
                           <div key={t.transactionId}>
                             <div className="flex">
@@ -241,8 +294,10 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
                             </div>
                           </div>
                         ))
-                      ) : (
+                      ) : (<>
                         <p>Pending payment...</p>
+                        <Link to={`/dashboard/create-transaction/${order.orderId}`}><Button>Create a Transaction for COD or In Person Payment</Button></Link>
+                        </>
                       )}
                       </AccordionContent>
                     </AccordionItem>
@@ -253,7 +308,7 @@ const CustomCard = ({order, orderItems, quote, shipment, contact, transaction}) 
     )
 }
 
-const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
+const FixedCard = ({order, orderItems, shipment, transaction}) => {
   return (
     <Card className="overflow-hidden border-red-600" x-chunk="dashboard-05-chunk-4">
               <CardHeader>
@@ -286,11 +341,11 @@ const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
                   {orderItems.length !== 0 ? orderItems.map(item => (
                     <TableRow className="border-b " key={item.orderFixedItemId}>
                       <TableCell className="px-0 flex flex-col items-center">
-                        <p className=" text-left">Gold Necklace</p>
+                        <p className=" text-left">{item.productName}</p>
                         <p className="text-xs text-left">ID: {item.productId}</p>
                       </TableCell>
                       <TableCell className="py-2"><div className="w-full flex justify-center"><Info/></div></TableCell>
-                      <TableCell className="py-2">{item.price}</TableCell>
+                      <TableCell className="py-2">{item.unitPrice}</TableCell>
                       <TableCell className="py-2">x {item.quantity}</TableCell>
                       <TableCell className="text-right px-0">{item.subtotal}</TableCell>
                     </TableRow>
@@ -299,7 +354,7 @@ const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
                   </TableBody>
                 </Table>
                 <Separator className="mb-4"/>
-                {shipment?
+                {shipment ?
                 <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">Shipment Fee</p>
                   <p className="text-sm">{shipment?.shippingFee}</p>
@@ -331,7 +386,7 @@ const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
                         </>
                         :
                         <>
-                          <>Customer will pick product up at store.</>
+                          Customer will pick product up at store.
                         </>
                       }
                       </div>
@@ -344,11 +399,12 @@ const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
                     <AccordionItem value="item-1">
                       <AccordionTrigger>Contact Info</AccordionTrigger>
                       <AccordionContent className="space-y-1">
-                        <p className="font-semibold">Customer #1</p>
-                        <p>Mr./ Mrs. <span className="font-medium" >San Jose</span></p>        
-                        <p>Email: <a href={`mailto:sanhose@gmail.com`} className="hover:underline">sanhose@gmail.com</a></p>
-                        <p>Phone: +84 938 562 745</p>
-                        <p>District/Town: New Mexico</p>
+                        <p className="font-semibold">Customer #{order.customerId}</p>
+                        <p>Mr./ Mrs. <span className="font-medium" >{order.firstName} {order.lastName}</span></p>        
+                        <p>Email: <a href={`mailto:${order.email}`} className="hover:underline">{order.email}</a></p>
+                        <p>Phone: <a href={`tel:${order.phone}`}>{order.phone}</a></p>
+                        <p>More Info</p>
+                        <Button><User/></Button>
                       </AccordionContent>
                     </AccordionItem>
                   </Accordion>
@@ -358,16 +414,23 @@ const FixedCard = ({order, orderItems, shipment, contact, transaction}) => {
                     <AccordionItem value="item-1">
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Transaction Info</div><div><Badge variant={"outline"}>{order.paymentStatusName}</Badge></div></div></AccordionTrigger>
                       <AccordionContent className="space-y-1">
-                        {transaction? (transaction.map((t)=> (
-                        <div key={t.transactionId}>
-                          <p className="font-semibold">Transaction #{t.transactionId}</p>
-                          <p className="text-sm font-bold text-green-700 underline">Transaction date: {t.transactionDate}</p>
-                          <p>Payment Method: <span className="font-medium" >{t.paymentType}</span></p>        
-                          <p className="italic">{t.isDeposit? "Deposit" : "Full payment"}</p>
-                        </div>
-                        ))) 
-                        : (     
-                            <p>Pending payment...</p>
+                        {transaction.length > 0 ? (
+                          transaction.map((t) => (
+                            <div key={t.transactionId}>
+                              <div className="flex">
+                                <p className="italic opacity-70">
+                                  <span className="font-semibold">TID #{t.transactionId}  - </span>
+                                  <span className="text-sm font-bold text-green-700 underline"> {t.transactionDate}</span>
+                                  <span className="font-medium"> - Payment Method "{t.paymentType}"</span>
+                                  <span className="font-medium"> - {t.transactionTotal}đ</span>
+                                </p>
+                              </div>
+                            </div>
+                          ))
+                        ) : (<>
+                          <p>Pending payment...</p>
+                          <Link to={`/dashboard/create-transaction/${order.orderId}`}><Button>Create a Transaction for COD or In Person Payment</Button></Link>
+                          </>
                         )}
                       </AccordionContent>
                     </AccordionItem>

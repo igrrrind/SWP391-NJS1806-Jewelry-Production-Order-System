@@ -2,31 +2,25 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 //response should return an order id
-export function usePostTransaction(transaction)  {
+export function usePostTransaction()  {
     const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    useEffect(()=> {
-        if (!transaction) return;
 
-        const postTransaction = async () => {
-            setLoading(true);
-            try {
-                const res = await axios.post('https://localhost:7112/api/Transaction/AddNewTransaction'); 
-                setResponse(res.data);
-            } catch (err) {
-                setError(err);
-            } finally {
-                setLoading(false);
-            }
-        };
+    const postTransaction = async (transaction) => {
+        setLoading(true);
+        try {
+            const res = await axios.post('https://localhost:7112/api/Transaction/AddNewTransaction',transaction); 
+            setResponse(res.data);
+        } catch (err) {
+            setError(err);
+        } finally {
+            setLoading(false);
+        }
+    };
 
-        postTransaction();
-
-    },[transaction])
-
-    return { response, loading, error };
+    return { postTransaction, response, loading, error };
 };
 
 

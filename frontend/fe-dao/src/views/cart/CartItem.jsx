@@ -6,7 +6,7 @@ import React, { useState } from 'react';
 const CartItem = ({ item, onRemove}) => {
 
   const {totalPrice, setTotalPrice} = useState(item.price * item?.quantity)
-  const {itemQuantity, setItemQuantity} = useState(item?.quantity)
+  const [itemQuantity, setItemQuantity] = useState(item?.quantity)
 
   
 
@@ -24,7 +24,7 @@ const CartItem = ({ item, onRemove}) => {
         <div className='flex flex-col justify-between'>
             <span className="font-medium block text-lg ">{item.productName}</span>
             <span className="text-gray-600 text-lg italic ml-2 mb-6">{item.metalTypeName} - {item.gemstoneType} - {item.size}</span>
-            <QuantityButton chosenQuantity={item?.quantity + 1} stock={item.stockQuantity} onValueChange={setItemQuantity}></QuantityButton>
+            <QuantityButton chosenQuantity={itemQuantity} stock={item.stockQuantity} onValueChange={setItemQuantity}></QuantityButton>
         </div>
 
       </div>

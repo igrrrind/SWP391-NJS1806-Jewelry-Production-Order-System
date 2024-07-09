@@ -12,18 +12,14 @@ const cartSlice = createSlice({
                 state.list.push(action.payload);
             }
 
-            state.total = state.list.reduce((sum,item) => sum + + item.price * (item?.quantity + 1), 0)
+            state.total = state.list.reduce((sum,item) => sum + + item.price * (item?.quantity), 0)
 
 
         },
         removeFromCart(state, action) {
             const index = state.list.findIndex(productStock => productStock.productStockId === action.payload.productStockId);
-            if (index !== -1) {
-                if (state.list[index].quantity > 1) {
-                    state.list[index].quantity -= action.payload.quantity;
-                } else {
-                    state.list.splice(index, 1);
-                }
+            if (index !== -1) {     
+                state.list.splice(index, 1);
             }
 
             // Recalculate the total

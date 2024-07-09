@@ -35,12 +35,17 @@ export function useUserById(id) {
 
   useEffect(() => {
     const fetchUserById = async () => {
+      if (!id) {
+        setLoading(false)
+        return;
+      }
+      
       try {
         setLoading(true);
         const response = await axios.get(`https://localhost:7112/api/Users/${id.uid}`);
         setUser(response.data);
       } catch (error) {
-        console.error('Error fetching customer details:', error);
+        console.error('Error fetching user details:', error);
       } finally {
         setLoading(false);
       }
@@ -72,4 +77,28 @@ export function useAllUsers() {
     fetchUsers();
   }, []);
   return { users, loading };
+}
+
+
+export function useUserCustomerbyId(id) {
+  const [userCustomer, setUserCustomer] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchUserCustomerbyId = async () => {
+      if (!id) return
+      try {
+        setLoading(true);
+        const response = await axios.get(`https://localhost:7112/api/Users/Customer/${id}`);
+        setUserCustomer(response.data);
+      } catch (error) {
+        console.error('Error fetching user customer info:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchUserCustomerbyId();
+  }, [id]);
+  return { userCustomer, loading };
 }

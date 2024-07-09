@@ -11,13 +11,14 @@ function MyInformation() {
     const [email,setEmail] = useState(null);
     const [phone,setPhone] = useState(null);
 
-    const {currentUser} = useAuth();
+    const {currentUser, userDetails, customerDetails} =  useAuth();
 
     useEffect(() => {
 
     if (currentUser) {
-        setName(currentUser.displayName);
-        setEmail(currentUser.email);
+        setName(`${userDetails?.firstName} ${userDetails?.lastName}`);
+        setEmail(currentUser?.email);
+        setPhone(userDetails?.phone)
     }
 
     }, );

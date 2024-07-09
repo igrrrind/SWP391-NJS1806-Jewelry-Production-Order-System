@@ -15,6 +15,7 @@ import { Input } from '@/components/ui/input';
 import { usePostCustomOrder, usePostOrder } from '@/hooks/orderHooks';
 import CompletedRequest from './CompletedRequest';
 import { useAllProvince } from '@/hooks/provinceApiHooks';
+import { useAuth } from '@/contexts/AuthContext';
 
 
 const productTypes = [
@@ -33,6 +34,8 @@ const JewelryCustomization = () => {
     const [towns, setTowns] = useState(null);
     const [currentStep, setCurrentStep] = useState(1);
     const [selectedJewelryType, setSelectedJewelryType] = useState("");
+
+    const {currentCustomer} = useAuth()
 
     const handleSetJewelry = (obj) => {
         const selectedType = productTypes.find(type => type.productTypeName === obj);  
@@ -64,8 +67,8 @@ const JewelryCustomization = () => {
         handlePaymentMethodChange
     } = useCheckoutDetails();
 
-    const {postOrder, response, loading, error } = usePostOrder();
-    const {postCustomOrder, response:cs, loading:csl, error:cse} = usePostCustomOrder();
+    const {postOrder, response:orderResponse, loading, error } = usePostOrder();
+    const {postCustomOrder, response:csResponse, loading:csl, error:cse} = usePostCustomOrder();
 
 
 
@@ -131,7 +134,7 @@ const JewelryCustomization = () => {
         */
         if (isStepValid && currentStep === 4) {
             const newOrder = {
-                customerId: 1,
+                customerId: currentCustomer.customerId,
                 orderDate: new Date().toISOString().slice(0, 10),
                 statusId: 1,
                 paymentStatusId: 1,
@@ -140,24 +143,22 @@ const JewelryCustomization = () => {
                 orderTotal: 0
             };
             setOrder(newOrder);
-            postOrder(order);
         }
-
-   
-
     };
 
     useEffect(() => {
         if (order) {
-            console.log('Order has been set:', order);
+            (async () => {
+                await postOrder(order);
+            })();
         }
     }, [order]);
     
-
     useEffect(() => {
-        if (response) {
+        if (orderResponse) {
+            console.log(orderResponse)
             const newCustomOrderItem = {
-                orderId: response.orderId,
+                orderId: orderResponse.data.orderId,
                 productTypeId: selectedJewelryType,
                 gemstoneId: selectedGemstone.gemstoneId,
                 metalId: selectedMetal.metalId,
@@ -168,16 +169,23 @@ const JewelryCustomization = () => {
                 subtotal: selectedQuantity * 0
             };
             setCustomItem(newCustomOrderItem);
-            postCustomOrder(customItem)
         }
-    }, [response, selectedJewelryType, selectedGemstone, selectedMetal, selectedSize, description, selectedQuantity]);
+    }, [orderResponse, selectedJewelryType, selectedGemstone, selectedMetal, selectedSize, description, selectedQuantity]);
 
     useEffect(() => {
-        if (cs) {
-            console.log('Custom item has been set:', cs);
+        if (customItem) {
+            (async () => {
+                await postCustomOrder(customItem);
+            })();
+        }
+    }, [customItem]);
+
+    useEffect(() => {
+        if (csResponse) {
+            console.log('Custom item has been set:');
             nextStep();
         }
-    }, [cs]);
+    }, [csResponse]);
 
 
 
@@ -194,7 +202,7 @@ const JewelryCustomization = () => {
                 </Button>
             </header>
 
-            {error && <div>There was an error in your submission.</div>}
+            {error && <div>There was an error in your submission. {error}</div>}
 
             <div className="w-full max-w-5xl bg-white p-6 rounded-lg mt-8">
                 <ProgressBarUtil currentStep={currentStep} />

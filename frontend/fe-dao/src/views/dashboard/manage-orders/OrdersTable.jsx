@@ -31,7 +31,7 @@ import { MoreHorizontal } from 'lucide-react';
   
 
 
-const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
+const OrdersTable = ({ orders, onOrderClick, onOrderDelete, hidedate}) => {
 
 
     return (
@@ -46,10 +46,11 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
                     <Table>
                         <TableHeader>
                             <TableRow>
-                                <TableHead className="w-32">Customer</TableHead>
+                                <TableHead className="w-12">ID</TableHead>
+                                <TableHead className="hidden sm:table-cell">Customer</TableHead>
                                 <TableHead className="hidden sm:table-cell">Type</TableHead>
                                 <TableHead className="hidden sm:table-cell">Status</TableHead>
-                                <TableHead className={hidedate? "hidden"  : "hidden md:table-cell"}>Order Date</TableHead>
+                                <TableHead className="hidden md:table-cell">Order Date</TableHead>
                                 <TableHead className="hidden sm:table-cell">Payment</TableHead>
                                 <TableHead className="hidden md:table-cell">Total</TableHead>
                                 <TableHead className="">Action</TableHead>
@@ -108,10 +109,13 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
 
                             {orders.map(order => (
                                 <TableRow key={order.orderId}  onClick={() => onOrderClick(order)} className="cursor-pointer">
-                                    <TableCell>
-                                        <div className="font-medium">Order.firstName Order.lastName</div>
-                                        <div className="hidden text-sm text-muted-foreground md:inline">
-                                            Order.phone
+                                    <TableCell>{order.orderId}</TableCell>
+                                    <TableCell className="hidden sm:table-cell">
+                                        <div className="font-medium">{order.firstName} {order.lastName}</div>
+                                        <div className="hidden text-sm text-muted-foreground md:inline flex-col">
+                                            <p>{order.phone}</p>    
+                                            <p>{order.email}</p>          
+      
                                         </div>
                                     </TableCell>
                                     <TableCell className="hidden sm:table-cell">{order.isCustom? <span className='text-blue-600'>Custom</span>: <span className='text-red-600'>Sale</span>}</TableCell>
@@ -120,7 +124,7 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
                                             {order.statusDetail}
                                         </Badge>
                                     </TableCell>
-                                    <TableCell className={hidedate? "hidden"  : "hidden md:table-cell"}>{order.orderDate}</TableCell>
+                                    <TableCell className="hidden md:table-cell">{order.orderDate}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
                                         <Badge className="text-xs" variant={'outline'}>
                                             <p>{order.paymentStatusName}</p>
@@ -142,7 +146,8 @@ const OrdersTable = ({ orders, onOrderClick, hidedate}) => {
                                         <DropdownMenuContent align="end">
                                         <DropdownMenuItem>Track Order</DropdownMenuItem>
                                         <DropdownMenuItem>View Customer Info</DropdownMenuItem>
-                                        <DropdownMenuItem>Waranty Certificate</DropdownMenuItem>
+                                        <DropdownMenuItem>View Customer Info</DropdownMenuItem>
+                                        <DropdownMenuItem className="text-red-700 hover:text-red-700 transition" onClick={()=> onOrderDelete(order)}>Delete Order</DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                     </TableCell>

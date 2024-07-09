@@ -1,4 +1,4 @@
-import { BaggageClaim, ChevronLeft, Star, UserCircle } from 'lucide-react';
+import { BaggageClaim, ChevronLeft, PhoneCallIcon, Star, UserCircle } from 'lucide-react';
 import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 
@@ -14,20 +14,26 @@ const AccountSidebar = () => {
                 {/* Navigation Links */}
                 <nav className="mt-4 text-stone-700 font-medium">
                     {/* Account Info */}
-                    <Link to="/account/orders" className="flex px-6 py-3  hover:border-x-teal-950 hover:border-l-4 ">
+                    <Link to="/account/orders" className="flex px-6 py-3  hover:bg-green-100 transition">
                     <UserCircle className='mr-4'/>Account Info
                     </Link>
 
                     {/* Favourites */}
-                    <Link to="/account/orders" className="flex px-6 py-3  hover:border-x-teal-950 hover:border-l-4 ">
+                    <Link to="/account/orders" className="flex px-6 py-3  hover:bg-green-100 transition ">
                     <Star className='mr-4'/>
                     Favourites
                     </Link>
 
                     {/* Orders */}
-                    <Link to="/account/orders" className="flex px-6 py-3  hover:border-x-teal-950 hover:border-l-4 ">
+                    <Link to="/account/orders" className="flex px-6 py-3  hover:bg-green-100 transition ">
                     <BaggageClaim className='mr-4'/>
                     Orders
+                    </Link>
+
+                    {/* Contact Staff */}
+                    <Link to="/account/orders" className="flex px-6 py-3  hover:bg-green-100 transition ">
+                    <PhoneCallIcon className='mr-4'/>
+                    Contact Staff
                     </Link>
                 </nav>
 

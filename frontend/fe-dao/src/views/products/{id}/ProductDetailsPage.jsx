@@ -91,11 +91,11 @@ const ProductDetailsPage = () => {
         ) : (
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2">
-              <ProductGallery />
+              <ProductGallery productId={productId} />
             </div>
 
             <div className="md:w-1/2 md:pl-10">
-              <DetailsComboBox product={product} productStockEntries={productStocks} />
+              <DetailsComboBox product={product} productStockEntries={productStocks}/>
             </div>
           </div>
         )}

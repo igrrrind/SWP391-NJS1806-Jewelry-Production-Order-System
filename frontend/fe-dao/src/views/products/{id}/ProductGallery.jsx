@@ -1,10 +1,11 @@
 import FirebaseImage from "@/components/custom/fire-base-image"
 
-const ProductGallery = () => {
+const ProductGallery = ({productId}) => {
     return (
         <>
             <div className="mb-4 h-[40rem] overflow-hidden relative">
-              <FirebaseImage path="products/thumbnails/bracelet.png" alt="bracelet"></FirebaseImage>
+              <FirebaseImage path={`products/thumbnails/${productId}.png`} alt="bracelet"></FirebaseImage>
+      
             </div>
             <div className="flex space-x-2">
               <img src="path_to_thumbnail1" alt="Thumbnail 1" className="w-20 h-20 rounded-lg" />

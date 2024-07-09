@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import {
+  Brush,
   Home,
   LineChart,
   Package,
@@ -12,6 +13,7 @@ import {
   User,
   UserCircle2,
   Users2,
+  Wrench,
 } from "lucide-react"
 
 import {
@@ -138,6 +140,37 @@ const Sidenav = () => {
             <TooltipContent side="right">Analytics</TooltipContent>
           </Tooltip>
           </TooltipProvider>
+
+          <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                to="/dashboard/manage-designs"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Brush className="h-5 w-5" />
+                <span className="sr-only">Designs</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Designs</TooltipContent>
+          </Tooltip>
+          </TooltipProvider>
+
+          <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Link
+                to="/dashboard/manage-production"
+                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
+              >
+                <Wrench className="h-5 w-5" />
+                <span className="sr-only">Production</span>
+              </Link>
+            </TooltipTrigger>
+            <TooltipContent side="right">Production</TooltipContent>
+          </Tooltip>
+          </TooltipProvider>
+
         </nav>
         <nav className="mt-auto flex flex-col items-center gap-4 px-2 sm:py-5">
         <TooltipProvider>
@@ -210,7 +243,7 @@ const Sidenav = () => {
                   className="flex items-center gap-4 px-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <LineChart className="h-5 w-5" />
-                  Settings
+                  Analytics
                 </Link>
               </nav>
             </SheetContent>
@@ -257,7 +290,7 @@ const Sidenav = () => {
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
+              <DropdownMenuItem><Link to="/">View As Customer</Link></DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>Logout</DropdownMenuItem>
             </DropdownMenuContent>

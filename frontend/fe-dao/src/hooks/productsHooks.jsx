@@ -24,15 +24,20 @@ export function useAllProducts() {
   return { products, loading };
 }
 
-export function useAllActiveProducts() {
+export function useAllActiveProducts(productTypeId) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    
     const fetchAllActiveProducts = async () => {
+      if (!productTypeId) return
+ 
       try {
         setLoading(true);
-        const response = await axios.get('https://localhost:7112/api/Product?IsActive=true');
+        const productTypeQuerry = productTypeId==="all" ? `` :`&ProductTypeId=${productTypeId}`;
+        console.log(productTypeQuerry)
+        const response = await axios.get(`https://localhost:7112/api/Product?IsActive=true${productTypeQuerry}`);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -42,7 +47,7 @@ export function useAllActiveProducts() {
     };
 
     fetchAllActiveProducts();
-  }, []);
+  }, [productTypeId]);
   return { products, loading };
 }
 

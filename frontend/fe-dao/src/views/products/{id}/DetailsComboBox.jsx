@@ -12,12 +12,16 @@ import { Button } from "@/components/ui/button";
 import { Phone, ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
+import { formatPrice } from "@/utils/formatPrice";
 
 
 
 
-  const DetailProductBuy = ({ product, productStockEntries }) => {
+const DetailProductBuy = ({ product, productStockEntries }) => {
+    const phone = "0938562745"
     const [selectedEntry, setSelectedEntry] = useState(null);
+    const [displayPrice, setDisplayPrice] = useState(product.lowestPrice);
+
     const [quantity, setQuantity] = useState(0);
 
     const handleSelectedEntry = (value) => {
@@ -27,7 +31,10 @@ import { addToCart } from "@/redux/slice/cartSlice";
     };
 
     useEffect(() => {
+      if (selectedEntry) {
       console.log(selectedEntry);
+      setDisplayPrice(selectedEntry.price)
+      }
     }, [selectedEntry]);
 
     const dispatch = useDispatch();
@@ -47,7 +54,7 @@ import { addToCart } from "@/redux/slice/cartSlice";
   return (
           <>
             <h1 className="text-3xl font-bold mb-2 cormorant-garamond-medium">{product.productName}</h1>
-            <p className="text-xl mb-2 text-stone-500">1,000,000 VND</p>
+            <p className="text-xl mb-2 text-stone-500">₫ {displayPrice}</p>
             {/*<p className="text-yellow-500 mb-4">★★★★★ 28 đánh giá</p>*/}
 
             <Separator className="mb-6 mt-6" />
@@ -60,7 +67,8 @@ import { addToCart } from "@/redux/slice/cartSlice";
             </div>
 
             <div className="mb-4">
-                <label htmlFor="chooseVariant" className="block text-lg  mb-2">READY IN-STORE </label>
+                <label htmlFor="chooseVariant" className="block text-lg mb-2">READY IN-STORE {selectedEntry && <span className="text-sm text-foreground text-right"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Purchase limit: {selectedEntry.stockQuantity} qty</span>}</label> 
+
                 <Select onValueChange={(value) =>handleSelectedEntry(value)}>
                   <SelectTrigger className="pt-6 pb-6 border border-stone-800"
                     id="chooseVariant"
@@ -80,9 +88,10 @@ import { addToCart } from "@/redux/slice/cartSlice";
             </div>
 
             
-
             <div className="mb-4 mt-6 flex h-12">
+              <div>
               <QuantityButton stock={selectedEntry ? selectedEntry.stockQuantity : 1} disabled={!selectedEntry} onValueChange={setQuantity} />
+              </div>
 
               <Button variant="outline" 
                 className="w-full h-full ml-6 p-4 rounded-none border-black"
@@ -100,7 +109,7 @@ import { addToCart } from "@/redux/slice/cartSlice";
               <div className="text-center px-10 mb-4 text-sm">Contact our staff to have it personalised for you. </div>
 
               <div className="flex justify-between space-x-2">
-                <Button variant="default" className="w-full h-14 p-4 border rounded-none  bg-white text-green-500 font-bold hover:bg-green-100" ><Phone/>&nbsp; 0938 562 745</Button>
+                <a href={`tel:${phone}`}><Button variant="default" className="w-full h-14 p-4 border rounded-none  bg-white text-green-500 font-bold hover:bg-green-100" ><Phone/>&nbsp; {phone}</Button></a>
                 <Button variant="default" className="w-full h-14 p-4 border bg-white rounded-none text-blue-500 font-bold hover:bg-blue-100" >Message Zalo</Button>
                 <Button variant="default" className="w-full h-14 p-4 border rounded-none bg-blue-400 text-white font-bold hover:bg-blue-700" >Message Facebook</Button>
               </div>

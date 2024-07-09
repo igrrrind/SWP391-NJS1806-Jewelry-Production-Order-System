@@ -104,3 +104,77 @@ export function usePostCustomOrder()  {
     return { postCustomOrder, response, loading, error };
 };
 
+
+export function useOrdersByCustomerId(customerId) {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchOrdersByCustomer = async () => {
+      setLoading(true);
+      setError(null); // Clear previous errors
+
+      if (!customerId) {
+        setLoading(false);
+        return;
+      }
+
+      try {
+        const res = await axios.get(`https://localhost:7112/api/Order/${customerId}`);
+        setOrders(res.data);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchOrdersByCustomer();
+  }, [customerId]);
+
+  return { orders, loading, error };
+}
+
+
+export function useDeleteOrderById() {
+    const [response, setResponse] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const deleteOrderById = async (orderId) => {
+        setLoading(true);
+        try {
+            const res = await axios.delete(`https://localhost:7112/api/Order/${orderId}`);
+            setResponse(res.data);
+        } catch (err) {
+            setError(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { deleteOrderById, response, loading, error };
+}
+
+
+export function usePutOrder()  {
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
+  const updateOrder = async (order) => {
+      console.log(order)
+      setLoading(true);
+      try {
+          const res = await axios.put(`https://localhost:7112/api/Order/${order.orderId}`, order); // Change to your API endpoint
+          setResponse(res.data);
+      } catch (err) {
+          setError(err);
+      } finally {
+          setLoading(false);
+      }
+  };
+  return { updateOrder, response, loading, error };
+};

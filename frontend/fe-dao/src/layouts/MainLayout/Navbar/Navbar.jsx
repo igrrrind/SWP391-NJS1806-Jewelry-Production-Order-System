@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button"
 import { useNavigate,Outlet, Link, useLocation } from 'react-router-dom'; 
 import { useAuth } from '../../../contexts/AuthContext';
 import { useState } from 'react';
-import { Cog, ShoppingCartIcon, User } from 'lucide-react';
+import { BellDot, Cog, ShoppingCartIcon, User } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import AccountSidebar from '@/views/account/accountPage';
 import {
@@ -83,8 +83,27 @@ const Navbar = () => {
                 )}
             </div>
 
+            {currentUser &&
+             
+             <DropdownMenu>
+               <DropdownMenuTrigger asChild>
+               <div className="flex items-center">
+               <BellDot className="h-6 w-6 hover:cursor-pointer"/>
+               </div>
+               </DropdownMenuTrigger>
+               <DropdownMenuContent align="end">
+               <DropdownMenuItem><Link to='/account'>Account Settings</Link></DropdownMenuItem>
+               <DropdownMenuItem><Link to='/account/orders'>Order History</Link></DropdownMenuItem>
+               {userDetails &&  userDetails.roleName !== "Customer" && <DropdownMenuItem><Link to='/dashboard' className='flex items-center text-blue-600'> <span><Cog /> </span>&nbsp;Dashboard</Link></DropdownMenuItem>}
+               <DropdownMenuItem className="text-red-500" onClick={handleLogOut}>Logout</DropdownMenuItem>
+               </DropdownMenuContent>
+             </DropdownMenu>
+ 
+ 
+             }
+
                     
-             {currentUser &&
+            {currentUser &&
              
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -95,7 +114,7 @@ const Navbar = () => {
               <DropdownMenuContent align="end">
               <DropdownMenuItem><Link to='/account'>Account Settings</Link></DropdownMenuItem>
               <DropdownMenuItem><Link to='/account/orders'>Order History</Link></DropdownMenuItem>
-              {userDetails &&  userDetails.roleId === 1 && <DropdownMenuItem><Link to='/dashboard' className='flex items-center text-blue-600'> <span><Cog /> </span>&nbsp;Dashboard</Link></DropdownMenuItem>}
+              {userDetails &&  userDetails.roleName !== "Customer" && <DropdownMenuItem><Link to='/dashboard' className='flex items-center text-blue-600'> <span><Cog /> </span>&nbsp;Dashboard</Link></DropdownMenuItem>}
               <DropdownMenuItem className="text-red-500" onClick={handleLogOut}>Logout</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>

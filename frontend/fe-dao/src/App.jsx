@@ -11,7 +11,6 @@ import ProductPage from './views/products/ProductsPage';
 import ProductDetailsPage from './views/products/{id}/ProductDetailsPage';
 import CartPage from './views/cart/CartPage';
 import { Provider } from 'react-redux';
-import store from './redux/store';
 import CheckOutPage from './views/cart/checkout/CheckOutPage';
 import PaymentConfirm from './views/cart/payment-confirm';
 import AccountPage from './views/account/accountPage';
@@ -22,9 +21,11 @@ import SignupPage from './views/signup/SignupPage';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageUsersPage from './views/dashboard/manage-users/ManageUsersPage';
-import CreateQuotePage from './views/dashboard/manage-orders/quote/CreateQuotePage';
+import CreateQuotePage from './views/dashboard/manage-orders/create-quote/CreateQuotePage';
 import { PaymentSucessPage } from './views/cart/payment-sucess';
 import { PaymentErrorPage } from './views/cart/checkout/payment-error';
+import EditQuotePage from './views/dashboard/manage-orders/edit-quote/EditQuotePage';
+import CreateTransactionPage from './views/dashboard/manage-orders/create-transaction/CreateTransactionPage';
 
 
 const productsPages = {
@@ -73,7 +74,7 @@ const App = () => {
               <Route 
                 key={key} 
                 path={key} 
-                element={<ProductPage title={title} description={description} />} 
+                element={<ProductPage title={title} description={description} productTypeKey={key} />} 
               />
             ))}
                <Route path=":productId/:productName" element={<ProductDetailsPage />} />
@@ -107,6 +108,9 @@ const App = () => {
               </Route> 
               <Route path="add-product" element={<AddProductPage />} />
               <Route path="create-quote/:orderId" element={<CreateQuotePage/>} />
+              <Route path="edit-quote/:orderId" element={<EditQuotePage/>} />
+              <Route path="create-transaction/:orderId" element={<CreateTransactionPage/>} />
+
 
         </Route>  
 

@@ -4,9 +4,16 @@ import { useEffect, useState } from "react";
 export function useCustomerDetailsById(id) {
     const [customerDetails, setCustomerDetails] = useState([]);
     const [loading, setLoading] = useState(true);
+
+   
   
     useEffect(() => {
       const fetchCustomerDetailsById = async () => {
+        if (!id) {
+          setLoading(false)
+          return;
+        }
+        
         try {
           setLoading(true);
           const response = await axios.get(`https://localhost:7112/api/CustomerDetails/${id.uid}`);

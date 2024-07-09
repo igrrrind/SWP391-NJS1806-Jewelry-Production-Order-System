@@ -70,10 +70,10 @@ function CartPage()  {
                 return (
                     <div className="checkout-item flex flex-row justify-between mb-2" key={item.productStockId}>             
                         <div>
-                            <span className="font-bold" > x {item.quantity +1 } &nbsp; </span>
+                            <span className="font-bold" > x {item.quantity} &nbsp; </span>
                             <span>{item.productName}</span>
                         </div>
-                        <span>{(item.quantity+1) * item.price} VND</span>                     
+                        <span>{(item.quantity) * item.price} VND</span>                     
                     </div> 
                 )
                 })

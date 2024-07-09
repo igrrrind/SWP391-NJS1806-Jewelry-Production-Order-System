@@ -19,22 +19,32 @@ import {
 import necklacesImage from '../../../assets/necklace.png'; 
 import { Badge } from "@/components/ui/badge"
 import OrderCard from "./OrderCard"
+import OrderCardC from "./OrderCard copy"
+import { useOrdersByCustomerId } from "@/hooks/orderHooks"
+import { useAuth } from "@/contexts/AuthContext"
 
 
 const OrdersPage = () => {
+    const {currentCustomer, userDetails} = useAuth();
+    const {orders} = useOrdersByCustomerId(currentCustomer.customerId);
+
     return (
         <>
                 <div className="cormorant-garamond-regular text-3xl">My Orders</div>
                 <Separator className="my-4"/>
-                <Tabs defaultValue="account" className="w-full space-y-6">
+                <Tabs defaultValue="account" className="w-full overflow-y-auto">
                     <TabsList className="grid w-[400px] grid-cols-2">
                         <TabsTrigger value="all" >All Orders</TabsTrigger>
                         <TabsTrigger value="password">Completed Orders</TabsTrigger>
                     </TabsList>
 
-                    <TabsContent value="all" className="space-y-10">
-                        <OrderCard/>
-                        
+                    <TabsContent value="all" className="pb-4">
+                        <div className="space-y-10 scrollable-container h-full pb-10 ">
+                        {orders.map(o => (
+                           <OrderCard key={o.orderId} order={o} userDetails={userDetails}/>
+                        ))}
+                  
+                        </div>        
                     </TabsContent>
 
 

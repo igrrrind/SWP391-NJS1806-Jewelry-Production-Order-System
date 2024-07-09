@@ -14,7 +14,7 @@ import braceletsImage from '../../assets/bracelet.png';
 import ringsImage from '../../assets/rings.png';
 import charmsImage from '../../assets/charm.png';
 import ProductCard from "../products/ProductCard";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const categories = [
     { id: 1, title: 'Necklaces', image: necklacesImage },
@@ -59,12 +59,14 @@ const HomePage = () => {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-5 gap-10 my-20">
                 {categories.map((category) => (
+                    <Link to={`/products/${category.title.toLowerCase()}`}>
                     <div className="max-w-sm mx-auto hover:cursor-pointer" key={category.id}>
                         <div className="aspect-1  overflow-hidden">
                         <img src={category.image} alt={category.title} className="w-full object-cover drop-shadow-md hover:scale-105 " />
                         </div>
                         <h2 className="mt-4 text-center text-xl cormorant-garamond-regular text-gray-800  hover:text-orange-500">{category.title}</h2>
-                    </div>                 
+                    </div>   
+                    </Link>              
                 ))}
 
             </div>

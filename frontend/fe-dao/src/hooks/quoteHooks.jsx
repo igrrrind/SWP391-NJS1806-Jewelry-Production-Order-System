@@ -55,4 +55,27 @@ export function useQuoteByOrderId(order) {
   
     return { quote, loading };
   }
+
+export function usePutQuote()  {
+    const [response, setResponse] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+
+    const updateQuote = async (quote) => {
+        setLoading(true);
+        try {
+            const res = await axios.put(`https://localhost:7112/api/Quotes/${quote.orderId}`, quote); // Change to your API endpoint
+            setResponse(res.data);
+            console.log(response)
+        } catch (err) {
+            setError(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { updateQuote, response, loading, error };
+};
+
   
