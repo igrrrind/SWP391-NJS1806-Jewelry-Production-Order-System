@@ -58,7 +58,7 @@ namespace JewelryAPI.Controllers
 
             _context.UpdateQuote(id, quote);
 
-            return NoContent();
+            return Ok(quote);
         }
 
         // POST: api/Quotes

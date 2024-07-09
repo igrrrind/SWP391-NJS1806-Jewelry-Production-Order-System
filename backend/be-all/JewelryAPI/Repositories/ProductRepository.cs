@@ -84,7 +84,8 @@ namespace Repositories
                                   ProductType = t.TypeName,
                                   ProductName = p.ProductName,
                                   ProductDescription = p.ProductDescription,
-                                  IsActive = p.IsActive
+                                  IsActive = p.IsActive,
+                                  LowestPrice = _stockRepo.GetLowestPrice(p.ProductId)
                               }).FirstOrDefault();
 
             //context.Products.FirstOrDefault(p => p.ProductId == productId);
