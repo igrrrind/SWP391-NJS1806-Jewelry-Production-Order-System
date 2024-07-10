@@ -15,7 +15,7 @@ namespace Services
         public Design GetDesignByOrderCustomId(int id)
         {
             _repository = new DesignRepository();
-            return GetDesignByOrderCustomId(id);
+            return _repository.GetDesignByOrderCustomId(id);
         }
         public Design AddDesign(Design design)
         {
