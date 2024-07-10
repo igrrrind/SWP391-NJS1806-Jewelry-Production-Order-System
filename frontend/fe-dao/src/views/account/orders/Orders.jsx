@@ -32,7 +32,7 @@ const OrdersPage = () => {
         <>
                 <div className="cormorant-garamond-regular text-3xl">My Orders</div>
                 <Separator className="my-4"/>
-                <Tabs defaultValue="account" className="w-full overflow-y-auto">
+                <Tabs defaultValue="all" className="w-full overflow-y-auto">
                     <TabsList className="grid w-[400px] grid-cols-2">
                         <TabsTrigger value="all" >All Orders</TabsTrigger>
                         <TabsTrigger value="password">Completed Orders</TabsTrigger>

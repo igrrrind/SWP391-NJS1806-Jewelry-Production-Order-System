@@ -86,7 +86,7 @@ export function usePostProduct(product) {
       product.isActive = true; // Add any default values to the product here
       setLoading(true);
       try {
-        const res = await axios.post('https://localhost:7112/api/Product/Create', product); // Change to your API endpoint
+        const res = await axios.post('https://localhost:7112/api/Product/Create', product); 
         setResponse(res.data);
         console.log(res);
       } catch (err) {

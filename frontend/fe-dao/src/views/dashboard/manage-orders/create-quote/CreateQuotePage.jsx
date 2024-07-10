@@ -53,17 +53,17 @@ const CreateQuotePage = () => {
 
 
     const onSubmit = (data) => {
-        console.log(data)
+        console.log(data);
         postQuote(data);
     };
 
-    useEffect(()=> {
-        if(response) {
+    useEffect(() => {
+        if (response) {
             navigate("/dashboard/manage-orders");
             // Trigger toast notification
-            toast.success(`Quote sent successfully for order #${order.orderId}`);
+            toast.success(`Quote sent successfully for order #${orderId}`);
         }
-    },[response])
+    }, [response]);
 
     return (
         <div>
@@ -78,11 +78,8 @@ const CreateQuotePage = () => {
                             <div className="flex-1">
                                 <form onSubmit={handleSubmit(onSubmit)}>
                                     <div className=''>
-                                    <input type="hidden" defaultValue={orderId} 
-                                     {...register("orderId", {})} />
-                                    <input type="hidden" defaultValue={new Date().toISOString().slice(0, 10)} 
-                                    {...register("createdDate", {})} />
-                                     
+                                    <input type="hidden" value={orderId} {...register("orderId")} />
+                                    <input type="hidden" value={new Date().toISOString().slice(0, 10)} {...register("createdDate")} />                   
                                         <Label htmlFor="metalWeight">Metal Weight (g)
                                             <div className='text-stone-600 text-sm font-light mt-1 mb-2'>Use the customer budget or an existing product as reference</div>
                                         </Label>
@@ -161,19 +158,15 @@ const CreateQuotePage = () => {
                                     </div>
 
                                     <div className='mt-8'>
-                                        <Label htmlFor="quoteTotalPrice">QUOTE TOTAL (VND)
-                                        </Label>
+                                        <p className=" font-bold"> QUOTE TOTAL: đ <span>{totalCost}</span>
+                                        </p>
                                         <Input
-                                            disabled 
-                                            type="number" 
-                                            placeholder="Choose a valid amount" 
+                                            type="hidden" 
                                             className='border-black' 
-                                            {...register("quoteTotalPrice", { 
-                                                validate: value => value > 0 || "Quote Total must be valid"
-                                            })}
-                                            value = {totalCost}
+                                            value ={totalCost}
+                                            {...register("quoteTotalPrice")}
+                                           
                                         />
-                                        {errors.productionCost && <p className="text-red-500 text-xs mt-1">{errors.productionCost.message}</p>}
                                     </div>
 
                                     

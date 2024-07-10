@@ -247,15 +247,19 @@ const CustomCard = ({order, orderItems, quote, shipment, transaction}) =>{
                     <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
                     <AccordionContent className=" flex justify-between">
                     <div className="space-y-1">
-                      {shipment &&
-                        <>
-                          <p className="font-semibold">Shipment #{shipment.shipmentId}</p>
-                          <p className="text-sm font-bold text-green-700 underline">Delivered date: {shipment.shipmentDate}24-5-2020</p>
-                          <p>Address Line: {shipment.shippingAddress}</p>
-                          <p>Province/City: {shipment.shippingProvince}</p>
-                          <p>District/Town: {shipment.shippingDistrict}</p>
-                        </>
-                      }
+                      {shipment?
+                          <>
+                            <p className="font-semibold">#{shipment.shipmentId} - <span className="text-sm font-bold text-green-700 underline">Delivered date: {shipment.shipmentDate}</span>
+                            </p>
+                            <p>Address Line: {shipment.shippingAddress}</p>
+                            <p>Province/City: {shipment.shippingProvince}</p>
+                            <p>District/Town: {shipment.shippingDistrict}</p>
+                          </>
+                          :
+                          <>
+                            Customer will pick product up at store.
+                          </>
+                        }
                       </div>
                     </AccordionContent>
                   </AccordionItem>

@@ -2,13 +2,15 @@ import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-export const initiatePayment = async (amount, info, orderInfo) => {
+export const initiatePayment = async (amount, info, orderInfo, backurl) => {
     if (!amount || !info || !orderInfo) {
         console.error('Invalid input provided for payment initiation.');
         return;
     }
+
+    //console.log(amount,info,orderInfo,backurl)
     
-    const returnUrl = `${window.location.origin}/cart/payment-confirm`;
+    const returnUrl = `${window.location.origin}/${backurl}`;
 
 
      try {

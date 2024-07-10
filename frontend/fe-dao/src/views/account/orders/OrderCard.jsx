@@ -22,7 +22,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatDate } from "@/utils/formatDate";
 import { formatLink, formatName } from "@/utils/formatLinks";
 import { useAllOrderItems } from "@/hooks/orderItemHooks";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTransactionByOrderId } from "@/hooks/transactionHooks";
 import { useShipmentByOrderId } from "@/hooks/shipmentHooks";
 import { useQuoteByOrderId } from "@/hooks/quoteHooks";
@@ -31,12 +31,14 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import QuoteItem from "./QuoteItem";
 
 const OrderCard = ({ order, userDetails }) => {
+  const navigate = useNavigate();
   const { orderItems } = useAllOrderItems(order);
   const { transaction } = useTransactionByOrderId(order);
   const { shipment } = useShipmentByOrderId(order);
   const { quote } = useQuoteByOrderId(order);
 
   const stages = ["Quote", "Design", "Production", "Shipment"];
+
  
   /*
   useEffect(()=> {
@@ -45,6 +47,9 @@ const OrderCard = ({ order, userDetails }) => {
     }
   },[orderItems])
   */
+  const handleQuoteAccept = () => {
+    navigate(`/customize/payment`, { state: { order, quote } })
+  }
 
   return (
     
@@ -78,8 +83,17 @@ const OrderCard = ({ order, userDetails }) => {
       {order.isCustom ? 
       <>
                    
-        <div className="font-semibold mb-4 flex justify-center">
-          <Badge variant='outline' className={`text-md ${order.statusDetail === "Completed" ? "bg-green-100 text-green-900" : "bg-yellow-100 text-yellow-900"}`}>{order.statusDetail}</Badge>
+        <div className="font-semibold mb-4 flex justify-between">
+          <div>
+            Status: &nbsp; 
+            <Badge variant='outline' className={`text-md ${order.statusDetail === "Completed" ? "bg-green-100 text-green-900" : "bg-yellow-100 text-yellow-900"}`}>{order.statusDetail}</Badge>
+          </div>
+
+
+          <div>
+            Payment:&nbsp; 
+            <Badge variant='outline' className={`text-md ${order.paymentStatusName === "Completed" ? "bg-green-100 text-green-900" : "bg-yellow-100 text-yellow-900"}`}>{order.paymentStatusName}</Badge>
+          </div>
         </div>
         <div className="flex overflow-x-auto">
             
@@ -108,7 +122,7 @@ const OrderCard = ({ order, userDetails }) => {
         
         </div>
 
-        <Tabs defaultValue="Quote" className="mt-2 ">
+        <Tabs className="mt-2 ">
           <TabsList className="w-full">
             {stages.map((stage) => (
               <TabsTrigger key={stage} value={stage} >
@@ -120,12 +134,20 @@ const OrderCard = ({ order, userDetails }) => {
             {quote && orderItems[0] && order.statusId>1 ? (
               <div className="space-y-4 flex flex-col ">
               <QuoteItem quote={quote} orderItem={orderItems[0]}  userDetails={userDetails}/>
-              <Button className="h-16">
+              <Button className="h-16" onClick={handleQuoteAccept} >
                 <div className="flex-col">
                   <div className="text-lg">Accept Quote</div>
                   <div className="text-xs">You'll be taken to the payment page</div>
                 </div>
               </Button>
+
+              <Button className="h-16 mt-4" variant="destructive">
+                <div className="flex-col">
+                  <div className="text-lg">Cancel Quote</div>
+                  <div className="text-xs">Your order will be cancelled</div>
+                </div>
+              </Button>
+
               </div>
             ) : (
               <div className="h-[128px] border-dotted border-2 flex align-middle items-center justify-center">
@@ -166,8 +188,17 @@ const OrderCard = ({ order, userDetails }) => {
         </>
         : (
             <>
-                <div className="text-center">
-                    <Badge variant='outline' className='text-md bg-purple-100 text-purple-900'>{order.statusDetail}</Badge>
+                <div className="font-semibold mb-4 flex justify-between">
+                  <div>
+                    Status: &nbsp; 
+                    <Badge variant='outline' className={`text-md ${order.statusDetail === "Completed" ? "bg-green-100 text-green-900" : "bg-yellow-100 text-yellow-900"}`}>{order.statusDetail}</Badge>
+                  </div>
+
+
+                  <div>
+                    Payment:&nbsp; 
+                    <Badge variant='outline' className={`text-md ${order.paymentStatusName === "Completed" ? "bg-green-100 text-green-900" : "bg-yellow-100 text-yellow-900"}`}>{order.paymentStatusName}</Badge>
+                  </div>
                 </div>
 
                 {orderItems.map(item => (

@@ -4,8 +4,8 @@ const policies = {
       { id: 'policy-2', text: "Customer will pay 50% bill after the quote is accepted." },
       { id: 'policy-3', text: "This quote is valid for 10 days." },
       { id: 'policy-4', text: "Remaining dues will be cleared after the provision of services." },
-      { id: 'policy-5', text: "For multiple gemstones, additional markup will be included in labour costs. However, gemstones with lower value will take the rate of the primary gemstone." }
-
+      { id: 'policy-5', text: "For multiple gemstones, additional markup will be included in labour costs. However, gemstones with lower value will take the rate of the primary gemstone." },
+      { id: 'policy-6', text: "Shipping fee not included in quote." }
     ]
   };
   

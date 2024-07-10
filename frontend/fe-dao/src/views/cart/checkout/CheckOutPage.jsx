@@ -12,6 +12,10 @@ import { v4 as uuidv4 } from 'uuid';
 import { usePostOrder } from "@/hooks/orderHooks"
 import { generateNumericTransactionId } from "@/hooks/generateRandomId"
 import { useAuth } from "@/contexts/AuthContext"
+import { calculateShipmentFeeByZone } from "@/config/shipmentFee"
+import { usePostShipment } from "@/hooks/shipmentHooks"
+import { usePostTransaction } from "@/hooks/transactionHooks"
+import { formatPrice } from "@/utils/formatPrice"
 
 
 const CheckOutPage = () => {
@@ -31,34 +35,43 @@ const CheckOutPage = () => {
     const {userDetails, currentUser, currentCustomer} = useAuth();
 
     const cart = useSelector(state => state.cart);
-    const navigate = useNavigate();
     const [url, setUrl] = useState(null);
     const [error, setError] = useState(null);
     const { provinces } = useAllProvince();
     const [towns, setTowns] = useState(null);
     const [order, setOrder] = useState(null);
     const {postOrder, response} = usePostOrder(); 
+    const [shipmentFee, setShipmentFee] = useState(0);
+    const {postShipment} = usePostShipment();
 
     const isDeliveryValid = deliveryMethod === 'inPerson' || 
                             (deliveryMethod === 'byShipment' && shippingAddress && city && town);
 
+
+    useEffect(()=>{
+        handlePaymentMethodChange("vnpay")
+    },[])
+    
+    useEffect(()=>{
+        if (deliveryMethod ==="inPerson") setShipmentFee(0)
+    },[deliveryMethod]) 
                          
 
     useEffect(() => {
         if (city) {
+            if (deliveryMethod === "byShipment") setShipmentFee(calculateShipmentFeeByZone(city))
             const province = provinces.find(prov => prov.Name === city);
             if (province) {
                 setTowns(province.District);
             }
             console.log(towns);
         }
-    }, [city, provinces]);
+    }, [city, provinces, deliveryMethod]);
 
     useEffect(() => {
-        handlePaymentMethodChange("vnpay");
     
         const preparePaymentUrl = async () => {
-            const transactionId = generateNumericTransactionId();
+            const transactionId = generateNumericTransactionId(1);
     
             // Create the order in the database
             const newOrder = {
@@ -68,13 +81,13 @@ const CheckOutPage = () => {
                 paymentStatusId: 1, // pending 
                 isShipment: deliveryMethod === "byShipment",
                 isCustom: false,
-                orderTotal: cart.total,
+                orderTotal: cart.total + shipmentFee,
                 transactionId: transactionId
             };
             console.log(newOrder)
             setOrder(newOrder);
             try {
-                const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId);
+                const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId, "cart/payment-confirm");
                 setUrl(paymentUrl);
             } catch (error) {
                 console.error('Error preparing payment URL:', error.message);
@@ -83,7 +96,7 @@ const CheckOutPage = () => {
         };
     
         preparePaymentUrl();
-    }, [cart.total, deliveryMethod, currentCustomer]);
+    }, [cart.total, shipmentFee, deliveryMethod, currentCustomer,order]);
     
 
 
@@ -92,8 +105,16 @@ const CheckOutPage = () => {
             await postOrder(order);
             console.log("Order placed successfully!");
 
+            await postShipment({orderId:response.orderId,
+                shipmentDate: "2024-01-01",
+                shippingAddress: shippingAddress,
+                shippingProvince: city,
+                shippingDistrict: town,
+                isShipping: false,
+                shippingFee: shipmentFee})
+
             if (paymentMethod !== "vnpay") {
-                
+                navigate(`/cart/order-success/${response.orderId}`)
             } 
             
             else {
@@ -153,9 +174,17 @@ const CheckOutPage = () => {
 
                     <Separator className="mt-4 mb-4"/>
 
+
+                    {deliveryMethod === "byShipment" && city &&
+                    <div className=" flex flex-row justify-between mb-4">                  
+                            <div className="" >Shipment Fee</div>
+                            <div>{formatPrice(shipmentFee)} VND</div>              
+                    </div> 
+                    }
+
                     <div className="total flex text-lg flex-row justify-between font-bold mb-4">                  
-                            <span className="" >TOTAL</span>
-                            <span>{cart.total} VND</span>
+                            <div className="" >TOTAL</div>
+                            <div>{formatPrice(cart.total + shipmentFee)} VND</div>
                                       
                     </div> 
 

@@ -151,7 +151,7 @@ const EditQuotePage = () => {
                                             className='border-black' 
                                             {...register("caratCost", { 
                                                 required: "Carat Cost is required",
-                                                validate: value => value > 0 || "Carat Cost must be valid"
+                                                validate: value => value >= 0 || "Carat Cost must be valid"
                                             })}
                                         />
                                         {errors.caratCost && <p className="text-red-500 text-xs mt-1">{errors.caratCost.message}</p>}

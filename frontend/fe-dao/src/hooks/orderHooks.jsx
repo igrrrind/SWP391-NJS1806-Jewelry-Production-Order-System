@@ -41,6 +41,7 @@ export function useOrderById(id) {
 
   useEffect(() => {
     const fetchOrderById = async () => {
+      if (!id) return
       try {
         setLoading(true);
         const response = await axios.get(`https://localhost:7112/api/Order?OrderId=${id}`);
@@ -121,7 +122,7 @@ export function useOrdersByCustomerId(customerId) {
       }
 
       try {
-        const res = await axios.get(`https://localhost:7112/api/Order/${customerId}`);
+        const res = await axios.get(`https://localhost:7112/api/Order/${customerId}?SortByNewer=true`);
         setOrders(res.data);
       } catch (err) {
         setError(err);

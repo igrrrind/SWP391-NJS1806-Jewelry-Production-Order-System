@@ -1,3 +1,4 @@
+
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import LoginPage from './views/login/LoginPage';
@@ -22,10 +23,13 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import ManageUsersPage from './views/dashboard/manage-users/ManageUsersPage';
 import CreateQuotePage from './views/dashboard/manage-orders/create-quote/CreateQuotePage';
-import { PaymentSucessPage } from './views/cart/payment-sucess';
+import { OrderSucessPage } from './views/cart/order-success';
 import { PaymentErrorPage } from './views/cart/checkout/payment-error';
 import EditQuotePage from './views/dashboard/manage-orders/edit-quote/EditQuotePage';
 import CreateTransactionPage from './views/dashboard/manage-orders/create-transaction/CreateTransactionPage';
+import CustomPaymentPage from './views/customize/payment/CustomPaymentPage';
+import DepositConfirm from './views/customize/deposit-confirm';
+import DepositSuccessPage from './views/customize/deposit-success';
 
 
 const productsPages = {
@@ -84,7 +88,7 @@ const App = () => {
           <Route index element={<CartPage/>}/> 
           <Route path="checkout" element={<CheckOutPage />}></Route>
           <Route path="payment-confirm" element={<PaymentConfirm />} />
-          <Route path="payment-success" element={<PaymentSucessPage />} />
+          <Route path="order-success/:orderId" element={<OrderSucessPage />} />
           <Route path="payment-error" element={<PaymentErrorPage />} />
 
 
@@ -97,7 +101,10 @@ const App = () => {
         <Route path="/customize" element={<MainLayout />}>
               <Route index element={<HeroCustomizePage />}/>    
               <Route path="start" element={<JewelryCustomization/>}/>  
-    
+              <Route path="payment" element={<CustomPaymentPage/>}/>  
+              <Route path="deposit-confirm" element={<DepositConfirm/>}/>  
+              <Route path="deposit-success" element={<DepositSuccessPage/>}/>  
+              
         </Route>
 
 

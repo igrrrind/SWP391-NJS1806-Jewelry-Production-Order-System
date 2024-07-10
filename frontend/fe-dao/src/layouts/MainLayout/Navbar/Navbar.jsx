@@ -42,7 +42,7 @@ const Navbar = () => {
           <div>
             <nav className="flex items-center justify-between text-sm">
               <Link to="/products" className="text-gray-700 hover:text-gray-900">PRODUCTS</Link>
-              <Link href="#" className="text-gray-700 hover:text-gray-900">CUSTOMIZE & PERSONALIZE</Link>
+              <Link to="/customize" className="text-gray-700 hover:text-gray-900">CUSTOMIZE & PERSONALIZE</Link>
               <Link href="#" className="text-gray-700 hover:text-gray-900">OUR BLOG</Link>
             </nav>
           </div>
