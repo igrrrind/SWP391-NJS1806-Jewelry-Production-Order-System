@@ -17,6 +17,8 @@ namespace Repositories
                        on o.MetalId equals m.MetalId
                        join p in _context.ProductTypes 
                        on o.ProductTypeId equals p.ProductTypeId
+                       join d in _context.Designs 
+                       on o.OrderItemId equals d.OrderCustomId
                        select new OrderCustomItemDto()
                        {
                            OrderItemId = o.OrderItemId,
@@ -32,6 +34,7 @@ namespace Repositories
                            UnitPrice = o.UnitPrice,
                            RequestDescription = o.RequestDescription,
                            Quantity = o.Quantity,
+                           DesignIsCompleted = d.IsCompleted,
                            Subtotal = o.Subtotal
                        };
             return list.ToList();
