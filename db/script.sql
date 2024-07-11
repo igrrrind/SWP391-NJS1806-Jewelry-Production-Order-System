@@ -239,7 +239,7 @@ INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('
 -- Inserting into Payment_Status
 INSERT INTO Payment_Status (status_name) VALUES ('Pending');
 INSERT INTO Payment_Status (status_name) VALUES ('Completed');
-INSERT INTO Payment_Status (status_name) VALUES ('Pending Quote');
+INSERT INTO Payment_Status (status_name) VALUES ('Deposited');
 INSERT INTO Payment_Status (status_name) VALUES ('Refunded');
 INSERT INTO Payment_Status (status_name) VALUES ('Cancelled');
 
@@ -255,7 +255,7 @@ INSERT INTO Product_Types (type_name) VALUES ('Ring');
 INSERT INTO Product_Types (type_name) VALUES ('Necklace');
 INSERT INTO Product_Types (type_name) VALUES ('Bracelet');
 INSERT INTO Product_Types (type_name) VALUES ('Earring');
-INSERT INTO Product_Types (type_name) VALUES ('Watch');
+INSERT INTO Product_Types (type_name) VALUES ('Charm');
 
 -- Inserting into Metals
 INSERT INTO Metals (metal_type_name) VALUES ('Gold');
