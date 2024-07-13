@@ -26,6 +26,7 @@ namespace Repositories
                 oDesign.Description = design.Description;
                 oDesign.DesignatedCompletion = design.DesignatedCompletion;
                 oDesign.IsCompleted = design.IsCompleted;
+                //_context.Designs.Update(oDesign);
                 _context.SaveChanges();
             }
             return oDesign;

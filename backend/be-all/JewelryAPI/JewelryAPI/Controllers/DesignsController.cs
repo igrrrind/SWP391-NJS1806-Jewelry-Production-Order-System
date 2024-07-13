@@ -16,12 +16,12 @@ namespace JewelryAPI.Controllers
     [ApiController]
     public class DesignsController : ControllerBase
     {
-        private DesignService _service;
+        private DesignService _service = new DesignService();
 
-        public DesignsController(DesignService context)
-        {
-            _service = context;
-        }
+        // public DesignsController(DesignService context)
+        // {
+        //     _service = context;
+        // }
         
 
         [HttpGet("{orderId}")]
@@ -38,10 +38,10 @@ namespace JewelryAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult PutDesign(int id, Design design)
         {
-            if (id != design.DesignId)
-            {
-                return BadRequest();
-            }
+            // if (id != design.DesignId)
+            // {
+            //     return BadRequest();
+            // }
             if (design == null)
             {
                 return BadRequest();

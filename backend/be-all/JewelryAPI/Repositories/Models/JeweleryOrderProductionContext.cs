@@ -183,7 +183,7 @@ public partial class JeweleryOrderProductionContext : DbContext
             entity.Property(e => e.IsShipment).HasColumnName("is_shipment");
             entity.Property(e => e.OrderDate).HasColumnName("order_date");
             entity.Property(e => e.OrderTotal)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("order_total");
             entity.Property(e => e.PaymentStatusId).HasColumnName("payment_status_id");
             entity.Property(e => e.StatusId).HasColumnName("status_id");
@@ -567,7 +567,7 @@ public partial class JeweleryOrderProductionContext : DbContext
                 .HasColumnName("payment_type");
             entity.Property(e => e.TransactionDate).HasColumnName("transaction_date");
             entity.Property(e => e.TransactionTotal)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("transaction_total");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Transactions)

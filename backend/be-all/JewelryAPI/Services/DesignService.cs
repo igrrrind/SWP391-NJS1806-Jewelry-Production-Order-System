@@ -25,7 +25,7 @@ namespace Services
         public Design UpdateDesign(int id, Design design)
         {
             _repository = new DesignRepository();
-            return UpdateDesign(id, design);
+            return _repository.UpdateDesign(id, design);
         }
         public void DeleteDesign(int id)
         {
