@@ -13,10 +13,12 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useTransactionByOrderId } from "@/hooks/transactionHooks";
 import { useShipmentByOrderId } from "@/hooks/shipmentHooks";
+import MetalRateCalculator from "@/components/custom/metal-rate";
+import { formatPrice } from "@/utils/formatPrice";
+import { GemstoneRate } from "@/components/custom/gemstone-rate";
 
 const CreateQuotePage = () => {
     const { orderId } = useParams();
-
     const navigate = useNavigate();
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
@@ -158,7 +160,7 @@ const CreateQuotePage = () => {
                                     </div>
 
                                     <div className='mt-8'>
-                                        <p className=" font-bold"> QUOTE TOTAL: đ <span>{totalCost}</span>
+                                        <p className=" font-bold"> QUOTE TOTAL: đ <span>{formatPrice(totalCost)}</span>
                                         </p>
                                         <Input
                                             type="hidden" 
@@ -175,11 +177,8 @@ const CreateQuotePage = () => {
                                 </form>   
                             </div>                
                             <div className="border border-black p-4">
-                                <div>Current pricing info here</div>
-                                <div>Current pricing info here</div>
-                                <div>Current pricing info here</div>
-                                <div>Current pricing info here</div>
-                                <div>Current pricing info here</div>
+                                <GemstoneRate/>
+                                <MetalRateCalculator/>
                             </div>
                         </div>
                     </CardContent>

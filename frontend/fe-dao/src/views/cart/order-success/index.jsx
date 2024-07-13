@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom"
 
 export const OrderSucessPage = () => {
     const {orderId} = useParams()
-    const {order} = useOrderById(orderId);
 
     return (
  

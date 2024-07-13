@@ -1,7 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useOrderById, usePutOrder } from '@/hooks/orderHooks';
 import { usePaymentConfirm } from '@/hooks/paymentHooks';
-import { usePostTransaction } from '@/hooks/transactionHooks';
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
@@ -32,7 +31,6 @@ const DepositConfirm = () => {
 
         const transactionTotal = parseFloat(params.get('vnp_Amount'));
 
-        // Create transaction object
         const transactionData = {
             orderId: orderId,
             transactionDate: new Date().toISOString().slice(0, 10), // Today's date
@@ -58,8 +56,9 @@ const DepositConfirm = () => {
                 orderDate: orderDate,
                 isShipment: isShipment,
                 isCustom: isCustom,
-                paymentStatusId: 3, // Assuming 3 is the status for paid orders
-                statusId: 3 // Assuming 3 is the status for completed orders
+                paymentStatusId: 3, //deposited orders
+                statusId: 3, // design pending
+                orderTotal: transaction.transactionTotal
             };
 
             navigate("/customize/deposit-success", { state: { updatedTransaction, updatedOrder } });

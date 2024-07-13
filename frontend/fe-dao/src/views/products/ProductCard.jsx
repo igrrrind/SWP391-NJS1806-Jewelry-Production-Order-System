@@ -7,17 +7,11 @@ import { ArrowRightIcon } from "lucide-react";
 
 const ProductCard = ({product, onClick}) =>{
 
-    const imagePath = `products/thumbnails/${product.productId}.png`
+    const imagePath = `products/thumbnails/${product.productId}`
     
-    //const navigate = useNavigate();
 
     const formattedName = formatName(product.productName)
     const formattedLink = formatLink(product.productId,formattedName)
-    /*
-    const handleProductClick = () => {
-        navigate(formattedLink);
-    };
-    */
 
     return (
         <a href={formattedLink} 

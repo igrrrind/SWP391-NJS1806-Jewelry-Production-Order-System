@@ -13,6 +13,7 @@ import { Phone, ShoppingCart } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/slice/cartSlice";
 import { formatPrice } from "@/utils/formatPrice";
+import { Link } from "react-router-dom";
 
 
 
@@ -111,7 +112,7 @@ const DetailProductBuy = ({ product, productStockEntries }) => {
               <div className="flex justify-between space-x-2">
                 <a href={`tel:${phone}`}><Button variant="default" className="w-full h-14 p-4 border rounded-none  bg-white text-green-500 font-bold hover:bg-green-100" ><Phone/>&nbsp; {phone}</Button></a>
                 <Button variant="default" className="w-full h-14 p-4 border bg-white rounded-none text-blue-500 font-bold hover:bg-blue-100" >Message Zalo</Button>
-                <Button variant="default" className="w-full h-14 p-4 border rounded-none bg-blue-400 text-white font-bold hover:bg-blue-700" >Message Facebook</Button>
+                <a href="https://m.me/heal.ytocin" target="_blank"><Button variant="default" className="w-full h-14 p-4 border rounded-none bg-blue-400 text-white font-bold hover:bg-blue-700" >Message Facebook</Button></a>
               </div>
             </div>
 

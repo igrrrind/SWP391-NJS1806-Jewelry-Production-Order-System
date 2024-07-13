@@ -37,7 +37,7 @@ export function useAllActiveProducts(productTypeId) {
         setLoading(true);
         const productTypeQuerry = productTypeId==="all" ? `` :`&ProductTypeId=${productTypeId}`;
         console.log(productTypeQuerry)
-        const response = await axios.get(`https://localhost:7112/api/Product?IsActive=true${productTypeQuerry}`);
+        const response = await axios.get(`https://localhost:7112/api/Product?IsActive=true${productTypeQuerry}&PageSize=50`);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);

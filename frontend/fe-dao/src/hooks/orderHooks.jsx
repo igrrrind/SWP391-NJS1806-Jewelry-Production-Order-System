@@ -177,5 +177,26 @@ export function usePutOrder()  {
           setLoading(false);
       }
   };
-  return { updateOrder, response, loading, error };
+
+
+  const updateOrderStatus = async (order, statusId) => {
+    setLoading(true);
+    try {
+        console.log('Updating order:', order);
+
+        const updatedOrder = { ...order, statusId };
+
+        const res = await axios.put(`https://localhost:7112/api/Order/${order.orderId}`, updatedOrder);
+        setResponse(res.data);
+    } catch (err) {
+        setError(err);
+    } finally {
+        setLoading(false);
+    }
+};
+
+
+
+
+  return { updateOrder, updateOrderStatus, response, loading, error };
 };

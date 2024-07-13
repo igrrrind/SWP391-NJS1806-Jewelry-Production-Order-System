@@ -1,5 +1,3 @@
-import { useAllUsers } from "@/hooks/userHooks";
-import UsersTable from "./UsersTable";
 import {
     Card,
     CardContent,
@@ -14,44 +12,27 @@ import { useEffect, useState } from "react";
 import { CustomCombobox } from "@/components/custom/custom-combobox";
 import { Input } from "@/components/ui/input";
 import { SearchIcon } from "lucide-react";
+import { CustomItemTable } from "./CustomItemTable";
+import { useAllCustomOrders } from "@/hooks/orderItemHooks";
 
 
-const ManageUsersPage = () => {
-    const { users,loading} = useAllUsers();
-    const [searchRole, setSearcRole] = useState(null)
-    const { roles } = useAllRoles();
-    const [rolesSelect, setRolesSelect] = useState(null)
-
-    useEffect(()=>{
-        if(roles){
-            const formattedRoles = roles.map(role => ({
-                value: role.roleId,
-                label: role.roleName,
-              }))
-              setRolesSelect(formattedRoles)
-              console.log(roles)
-
-        }
-
-    },[roles])
-
-    const handleSelect = (value) => {
-        console.log("Selected role ID:", value)
-      }
+const ManageDesignsPage = () => {
+    const { orderItems,loading} = useAllCustomOrders();
+    const [selectedOrderItem, setSelectedOrderItem] = useState(null)
 
     const navigate = useNavigate(); 
-    const handleClick = () => navigate('/dashboard/add-product'); 
+
 
     return (
         <main className="p-4 xl:flex flex-1 xl:space-x-4">
                 <div className="flex-1">
-                    {rolesSelect&&
+           
                     <Card>
                         <CardHeader className="px-7">
-                            <CardTitle>Manage Users</CardTitle>
+                            <CardTitle>Manage Custom Order & Designs</CardTitle>
                             <div className='flex justify-between align-middle'>
                             <CardDescription>
-                                Create, edit role and update existing user 
+                                For design staff to manange their designing process for each customer
 
                             </CardDescription>
                             </div>
@@ -60,26 +41,21 @@ const ManageUsersPage = () => {
                             <div className="grid grid-cols-4 mb-4 gap-4">
                                 <div className="p-2 border flex items-center space-x-4">
                                     <div className="w-full text-sm font-semibold">Filter by Role:</div> 
-                                    <CustomCombobox
-                                        items={rolesSelect}
-                                        onSelect={handleSelect}
-                                        placeholder="Select a role..."
-                                        buttonClassName="custom-button-class"
-                                    /> 
+                                    
                                </div>    
 
                                <div className="p-2 border flex items-center space-x-4">
                               <div><Input placeholder="Enter a name..."/></div><Button variant="outline"><SearchIcon/></Button>
                                </div>    
                             </div>
-                            <UsersTable users={users}/>
+                            <CustomItemTable items={orderItems}/>
                          </CardContent>
                 
                     </Card>
-                    }
+
                 </div>
         </main>
     )
 } 
 
-export default ManageUsersPage;
+export default ManageDesignsPage;

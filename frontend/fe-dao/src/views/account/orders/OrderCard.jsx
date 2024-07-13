@@ -29,6 +29,14 @@ import { useQuoteByOrderId } from "@/hooks/quoteHooks";
 import { getJewelrySizeLabel } from "@/utils/typeToUnit";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import QuoteItem from "./QuoteItem";
+import { ref,listAll, getDownloadURL } from "firebase/storage";
+import DesignLightbox from "./DesignLightbox";
+import { storage } from "@/services/Firebase";
+
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { usePutOrder } from "@/hooks/orderHooks";
+
 
 const OrderCard = ({ order, userDetails }) => {
   const navigate = useNavigate();
@@ -36,8 +44,21 @@ const OrderCard = ({ order, userDetails }) => {
   const { transaction } = useTransactionByOrderId(order);
   const { shipment } = useShipmentByOrderId(order);
   const { quote } = useQuoteByOrderId(order);
+  const {updateOrderStatus} = usePutOrder()
 
   const stages = ["Quote", "Design", "Production", "Shipment"];
+
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [lightboxImages, setLightboxImages] = useState([]);
+
+
+  const fetchDesignImages = async (orderItemId) => {
+    const designFolderRef = ref(storage,`designs/${orderItemId}`);
+    const imageRefs = await listAll(designFolderRef);
+    const imageUrls = await Promise.all(imageRefs.items.map((imageRef) => getDownloadURL(imageRef)));
+    setLightboxImages(imageUrls);
+    setIsLightboxOpen(true);
+  };
 
  
   /*
@@ -50,6 +71,17 @@ const OrderCard = ({ order, userDetails }) => {
   const handleQuoteAccept = () => {
     navigate(`/customize/payment`, { state: { order, quote } })
   }
+
+  const handleDesignApproval = async () => {
+      await updateOrderStatus(order, 5)
+      alert("Design Approved. Track your production.")
+      navigate(0)
+  }
+
+  const handleDisproval = async () => {
+    alert("Design Approved. Track your production.")
+    navigate(0)
+}
 
   return (
     
@@ -155,9 +187,38 @@ const OrderCard = ({ order, userDetails }) => {
               </div>
             )}
           </TabsContent>
+
           <TabsContent value="Design">
-            Design details go here.
+            {order.statusId >= 4 && (
+              <>
+                {orderItems.map((item, index) => (
+                  <div key={item.orderItemId} className="flex justify-between items-center mb-4">
+                    <p className="text-lg font-semibold">Order Item {index + 1}</p>
+                    <Button onClick={() => fetchDesignImages(item.orderItemId)}>View Design</Button>
+                  </div>
+                ))}
+                <Lightbox
+                   slides={lightboxImages.map((url) => ({
+                    src: url,
+                }))}
+                  open={isLightboxOpen}
+                  close={() => setIsLightboxOpen(false)}
+                />
+                <div className="flex justify-center space-x-4">
+                <Button onClick={handleDesignApproval}>Approve Design</Button>
+                <Button onClick={handleDisproval}>Disprove Design</Button>
+                </div>
+              </>
+            )}
+            {order.statusId < 4 && (
+              <div className="italic">
+                The design phase is not yet reached for this order.
+              </div>
+            )}
           </TabsContent>
+
+
+
           <TabsContent value="Production">
             Production details go here.
           </TabsContent>
@@ -177,14 +238,6 @@ const OrderCard = ({ order, userDetails }) => {
           </TabsContent>
         </Tabs>
 
-        {transaction && transaction.map(t => (
-          <div key={t.transactionId} className="mt-4">
-            <div><span className="font-light">Transaction ID:</span> {t.transactionId}</div>
-            <div><span className="font-light">Transaction Date:</span> {formatDate(t.transactionDate)}</div>
-            <div><span className="font-light">Payment Type:</span> {t.paymentType}</div>
-            <div><span className="font-light">Transaction Total:</span> {t.transactionTotal}</div>
-          </div>
-        ))}
         </>
         : (
             <>

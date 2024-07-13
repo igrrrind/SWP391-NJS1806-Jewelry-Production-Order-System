@@ -24,6 +24,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import FirebaseImage from "@/components/custom/fire-base-image";
 
 const ProductTable = ({products}) => {
 
@@ -112,7 +113,7 @@ const ProductTable = ({products}) => {
                                 <TableRow key={product.productId}>
                                     <TableCell>{product.productId}</TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productName}</TableCell>
-                                    <TableCell className="hidden sm:table-cell"> {/* <FireBaseImage path={products/thumbnail/{url converter}} alt={product.productnName} */} thumbnail</TableCell>
+                                    <TableCell className="hidden sm:table-cell"><div><FirebaseImage path={`products/thumbnail/${product.productId}`} alt={product.productnName}/></div></TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productType}</TableCell>
                                     <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{product.productDescription}</TableCell>
                                     <TableCell className="hidden sm:table-cell">

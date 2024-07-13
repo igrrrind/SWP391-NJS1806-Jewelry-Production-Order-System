@@ -30,6 +30,9 @@ import CreateTransactionPage from './views/dashboard/manage-orders/create-transa
 import CustomPaymentPage from './views/customize/payment/CustomPaymentPage';
 import DepositConfirm from './views/customize/deposit-confirm';
 import DepositSuccessPage from './views/customize/deposit-success';
+import ManageDesignsPage from './views/dashboard/manage-designs/ManageDesignsPage';
+import DesignDetailsPage from './views/dashboard/manage-designs/design/:id/DesignDetailsPage';
+import ManageProductionsPage from './views/dashboard/manage-productions/ManageProductionsPage';
 
 
 const productsPages = {
@@ -111,12 +114,18 @@ const App = () => {
         <Route path="/dashboard" element={<DashboardLayout />}>
               <Route path="manage-orders" element={<ManageOrdersPage />}/>     
               <Route path="manage-users" element={<ManageUsersPage />}/>        
-              <Route path="manage-products" element={<ManageProductsPage />}>          
+              <Route path="manage-products" element={<ManageProductsPage />}>  
+                      
               </Route> 
               <Route path="add-product" element={<AddProductPage />} />
               <Route path="create-quote/:orderId" element={<CreateQuotePage/>} />
               <Route path="edit-quote/:orderId" element={<EditQuotePage/>} />
               <Route path="create-transaction/:orderId" element={<CreateTransactionPage/>} />
+              <Route path="manage-designs" element={<ManageDesignsPage/>}/>
+              <Route path="design/:id" element={<DesignDetailsPage/>}/>
+              <Route path="manage-production" element={<ManageProductionsPage />}/>
+
+
 
 
         </Route>  

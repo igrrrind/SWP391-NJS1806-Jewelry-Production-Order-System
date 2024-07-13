@@ -18,7 +18,7 @@ const CartItem = ({ item, onRemove}) => {
       <div className="flex align-top space-x-6">
 
         <div className='image-wrapper h-36 aspect-1 overflow-hidden relative '>
-                <FirebaseImage path="products/thumbnails/bracelet.png" alt="bracelet"></FirebaseImage>
+                <FirebaseImage path={`products/thumbnails/${item.productId}`} alt="bracelet"></FirebaseImage>
         </div>
 
         <div className='flex flex-col justify-between'>

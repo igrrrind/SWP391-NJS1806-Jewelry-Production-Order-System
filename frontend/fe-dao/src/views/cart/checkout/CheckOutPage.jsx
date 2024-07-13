@@ -82,7 +82,6 @@ const CheckOutPage = () => {
                 isShipment: deliveryMethod === "byShipment",
                 isCustom: false,
                 orderTotal: cart.total + shipmentFee,
-                transactionId: transactionId
             };
             console.log(newOrder)
             setOrder(newOrder);
@@ -105,6 +104,12 @@ const CheckOutPage = () => {
             await postOrder(order);
             console.log("Order placed successfully!");
 
+
+            const transactionId = generateNumericTransactionId(1);
+            const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId, "cart/payment-confirm");
+
+
+            if (deliveryMethod === 'byShipment') {
             await postShipment({orderId:response.orderId,
                 shipmentDate: "2024-01-01",
                 shippingAddress: shippingAddress,
@@ -112,13 +117,14 @@ const CheckOutPage = () => {
                 shippingDistrict: town,
                 isShipping: false,
                 shippingFee: shipmentFee})
+            }
 
             if (paymentMethod !== "vnpay") {
                 navigate(`/cart/order-success/${response.orderId}`)
             } 
             
             else {
-                window.location.href = url;
+                window.location.href = paymentUrl;
             }
         } catch (error) {
             console.error('Error creating order:', error.message);

@@ -158,7 +158,7 @@ const CustomCard = ({order, orderItems, quote, shipment, transaction}) =>{
                         <TableCell className="text-right px-0">{item.subtotal}</TableCell>
                     </TableRow>
                     <TableRow>
-                       <TableCell colSpan="4">{item.requestDescription}</TableCell>
+                       <TableCell colSpan="4"><p className="text-ellipsis overflow-hidden whitespace-nowrap w-80">{item.requestDescription}</p></TableCell>
 
 
                     </TableRow>

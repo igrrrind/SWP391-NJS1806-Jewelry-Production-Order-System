@@ -38,3 +38,33 @@ export function useAllOrderItems(order) {
 
   return { orderItems, loading };
 }
+
+
+export function useAllCustomOrders(){
+  const [orderItems, setOrderItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchCustomOrders = async () => {
+      try {
+        setLoading(true);
+        const response = await axios.get(`https://localhost:7112/api/OrderCustomItems`);      
+        setOrderItems(response.data);
+      } catch (error) {
+        console.error('Error fetching order items:', error);
+        setOrderItems([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCustomOrders();
+  }, []);
+
+  return { orderItems, loading };
+}
+
+
+export function usePutCustomOrder(){
+  
+}

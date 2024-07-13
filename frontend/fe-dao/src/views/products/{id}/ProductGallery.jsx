@@ -4,7 +4,7 @@ const ProductGallery = ({productId}) => {
     return (
         <>
             <div className="mb-4 h-[40rem] overflow-hidden relative">
-              <FirebaseImage path={`products/thumbnails/${productId}.png`} alt="bracelet"></FirebaseImage>
+              <FirebaseImage path={`products/thumbnails/${productId}`} alt="bracelet"></FirebaseImage>
       
             </div>
             <div className="flex space-x-2">

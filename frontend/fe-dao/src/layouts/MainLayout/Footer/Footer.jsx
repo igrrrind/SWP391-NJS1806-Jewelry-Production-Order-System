@@ -3,7 +3,7 @@ import Logo from '../../../assets/logo-cropped.webp'; // Adjust the path as need
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-50 py-10 px-4 md:px-10">
+    <footer className="bg-stone-50 py-16 px-4 md:px-28">
       <div className="flex flex-col md:flex-row md:justify-between">
         <div className="mb-10 md:mb-0">
           <h3 className="text-lg font-semibold mb-2">Stay in touch.</h3>
