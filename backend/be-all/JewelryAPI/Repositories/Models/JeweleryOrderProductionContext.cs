@@ -221,10 +221,10 @@ public partial class JeweleryOrderProductionContext : DbContext
             entity.Property(e => e.Size).HasColumnName("size");
             entity.Property(e => e.RequestDescription).HasColumnName("request_description");
             entity.Property(e => e.Subtotal)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("subtotal");
             entity.Property(e => e.UnitPrice)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("unit_price");
             entity.HasOne(d => d.ProductType).WithMany(p => p.OrderCustomItems)
                 .HasForeignKey(d => d.ProductTypeId)
@@ -260,10 +260,10 @@ public partial class JeweleryOrderProductionContext : DbContext
             entity.Property(e => e.ProductStockId).HasColumnName("product_stock_id");
             entity.Property(e => e.Quantity).HasColumnName("quantity");
             entity.Property(e => e.Subtotal)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("subtotal");
             entity.Property(e => e.UnitPrice)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("unit_price");
 
             entity.HasOne(d => d.Order).WithMany(p => p.OrderFixedItems)
@@ -355,7 +355,7 @@ public partial class JeweleryOrderProductionContext : DbContext
             entity.Property(e => e.GemstoneId).HasColumnName("gemstone_id");
             entity.Property(e => e.MetalId).HasColumnName("metal_id");
             entity.Property(e => e.Price)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("price");
             entity.Property(e => e.ProductId).HasColumnName("product_id");
             entity.Property(e => e.Size).HasColumnName("size");
@@ -434,24 +434,24 @@ public partial class JeweleryOrderProductionContext : DbContext
 
             entity.Property(e => e.QuoteId).HasColumnName("quote_id");
             entity.Property(e => e.CaratCost)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("carat_cost");
             entity.Property(e => e.CaratPrice)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("carat_price");
             entity.Property(e => e.CreatedDate).HasColumnName("created_date");
             entity.Property(e => e.MetalCost)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("metal_cost");
             entity.Property(e => e.MetalWeight)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("metal_weight");
             entity.Property(e => e.OrderId).HasColumnName("order_id");
             entity.Property(e => e.ProductionCost)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("production_cost");
             entity.Property(e => e.QuoteTotalPrice)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("quote_total_price");
 
             entity.HasOne(d => d.Order).WithMany(p => p.Quotes)
@@ -529,7 +529,7 @@ public partial class JeweleryOrderProductionContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("shipping_district");
             entity.Property(e => e.ShippingFee)
-                .HasColumnType("decimal(10, 2)")
+                .HasColumnType("numeric(18, 0)")
                 .HasColumnName("shipping_fee");
             entity.Property(e => e.ShippingProvince)
                 .HasMaxLength(50)
