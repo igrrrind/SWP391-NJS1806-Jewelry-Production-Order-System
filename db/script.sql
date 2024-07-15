@@ -222,7 +222,7 @@ CREATE TABLE Production_Tracking (
 
 
 --**NOTE: ONLY INSERT THE DATA YOU NEED, BECASUE YOUR DATABASE BE DIFFERENT FROM THIS ONE (VIEW COMMITS TO SEE CHANGES)
-DROP DATABASE  JeweleryOrderProduction
+-- DROP DATABASE  JeweleryOrderProduction
 
 
 -- Inserting into Roles
@@ -423,15 +423,16 @@ INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quanti
 INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (5, 5, 5, 10, 30, 2500.00, 'http://example.com/gallery5.jpg');
 
 -- Inserting into Status
-INSERT INTO Status (status_detail) VALUES ('Awaiting Quote');
-INSERT INTO Status (status_detail) VALUES ('Quote Pending Approval');
-INSERT INTO Status (status_detail) VALUES ('Design In Progress');
-INSERT INTO Status (status_detail) VALUES ('Design Pending Approval');
-INSERT INTO Status (status_detail) VALUES ('Production In Progress');
+INSERT INTO Status (status_id,status_detail) VALUES (1,'Awaiting Quote');
+INSERT INTO Status (status_id,status_detail) VALUES (2,'Quote Pending Approval');
+INSERT INTO Status (status_id,status_detail) VALUES (3,'Design In Progress');
+INSERT INTO Status (status_id,status_detail) VALUES (4,'Design Pending Approval');
+INSERT INTO Status (status_id,status_detail) VALUES (5,'Production In Progress');
 INSERT INTO Status (status_id,status_detail) VALUES (6,'Pick up from store');
 INSERT INTO Status (status_id,status_detail) VALUES (7,'Awaiting Shipment');
 INSERT INTO Status (status_id,status_detail) VALUES (71,'Shipment In Progress');
 INSERT INTO Status (status_id,status_detail) VALUES (20,'Returned');
+INSERT INTO Status (status_id,status_detail) VALUES (21,'Quote Denied');
 INSERT INTO Status (status_id,status_detail) VALUES (8,'Completed');
 INSERT INTO Status (status_id,status_detail) VALUES (11, 'Cancelled');
 
