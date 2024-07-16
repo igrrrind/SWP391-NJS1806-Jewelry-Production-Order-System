@@ -5,24 +5,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Repositories.Dto;
 
 namespace Services
 {
     public class ProductionTrackingService
     {
-        private ProductionTrackingRepository? repository = null;
-
-        public ProductionTrackingService() { }
-
-        public ProductionTracking? GetProductionTracking(int id)
+        private ProductionTrackingRepository? productionTrackingRepository = null;
+        
+        
+        public List<ProductionTrackingDto>? GetAllProductionTracking()
         {
-            repository = new ProductionTrackingRepository();
-            return repository.GetProductionTracking(id);
+            productionTrackingRepository = new ProductionTrackingRepository();
+            return productionTrackingRepository.GetAllProductionTrackings();
+        }
+
+    
+        public ProductionTrackingDto? GetProductionTracking(int id)
+        {
+            productionTrackingRepository = new ProductionTrackingRepository();
+            return productionTrackingRepository.GetProductionTracking(id);
         }
         public ProductionTracking AddProductionTracking(ProductionTracking tracking)
         {
-            repository = new ProductionTrackingRepository();
-            return repository.AddProductionTracking(tracking);
+            productionTrackingRepository = new ProductionTrackingRepository();
+            return productionTrackingRepository.AddProductionTracking(tracking);
+        }
+        
+        public ProductionTracking UpdateProductionTracking(ProductionTracking tracking)
+        {
+            productionTrackingRepository = new ProductionTrackingRepository();
+            return productionTrackingRepository.UpdateProductionTracking(tracking);
         }
     }
 }

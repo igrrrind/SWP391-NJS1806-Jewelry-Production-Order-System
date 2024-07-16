@@ -18,11 +18,18 @@ namespace JewelryAPI.Controllers
         }
 
         // GET: api/ProductionTrackings
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<ProductionTracking>>> GetProductionTrackings()
-        //{
-        //    return await _context.ProductionTrackings.ToListAsync();
-        //}
+        [HttpGet]
+        public IActionResult GetProductionTrackings()
+        {
+            var productionTrackings = _context.GetAllProductionTracking();
+
+            if (productionTrackings == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(productionTrackings);
+        }
 
         // GET: api/ProductionTrackings/5
         [HttpGet("{id}")]
@@ -40,34 +47,19 @@ namespace JewelryAPI.Controllers
 
         // PUT: api/ProductionTrackings/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> PutProductionTracking(int id, ProductionTracking productionTracking)
-        //{
-        //    if (id != productionTracking.ProductionId)
-        //    {
-        //        return BadRequest();
-        //    }
-
-        //    _context.Entry(productionTracking).State = EntityState.Modified;
-
-        //    try
-        //    {
-        //        await _context.SaveChangesAsync();
-        //    }
-        //    catch (DbUpdateConcurrencyException)
-        //    {
-        //        if (!ProductionTrackingExists(id))
-        //        {
-        //            return NotFound();
-        //        }
-        //        else
-        //        {
-        //            throw;
-        //        }
-        //    }
-
-        //    return NoContent();
-        //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutProductionTracking(ProductionTracking tracking)
+        {
+            try
+            {
+                ProductionTracking trackingReturn =  _context.UpdateProductionTracking(tracking);
+                return Ok(trackingReturn);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
         // POST: api/ProductionTrackings
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
