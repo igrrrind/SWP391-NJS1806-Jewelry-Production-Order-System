@@ -10,7 +10,7 @@ namespace Repositories
         public Shipment? GetShipment(int id)
         {
             _context = new JeweleryOrderProductionContext();
-            return _context.Shipments.FirstOrDefault(s => s.ShipmentId == id);
+            return _context.Shipments.FirstOrDefault(s => s.OrderId == id);
         }
 
         public Shipment AddShipment(Shipment shipment)

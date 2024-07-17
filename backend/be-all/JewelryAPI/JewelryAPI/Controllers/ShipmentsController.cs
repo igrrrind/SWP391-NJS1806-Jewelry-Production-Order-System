@@ -25,10 +25,10 @@ namespace JewelryAPI.Controllers
         //}
 
         // GET: api/Shipments/5
-        [HttpGet("{id}")]
-        public IActionResult GetShipment(int id)
+        [HttpGet("{orderId}")]
+        public IActionResult GetShipment(int orderId)
         {
-            var shipment = _context.GetShipment(id);
+            var shipment = _context.GetShipment(orderId);
             return shipment == null ? NotFound() : Ok(shipment);
         }
 
