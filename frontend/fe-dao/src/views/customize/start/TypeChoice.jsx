@@ -1,19 +1,7 @@
 
-import necklacesImage from '../../../assets/necklace.png'; // Replace with the correct image path
-import earringsImage from '../../../assets/earrings.png';
-import braceletsImage from '../../../assets/bracelet.png';
-import ringsImage from '../../../assets/rings.png';
-import charmsImage from '../../../assets/charm.png';
-import { useState } from 'react';
-import { Check } from 'lucide-react';
 
-const jewelryTypes = [
-    { name: 'Ring', imageUrl: ringsImage, link: '#' },
-    { name: 'Bracelet', imageUrl: braceletsImage, link: '#' },
-    { name: 'Earrings', imageUrl: earringsImage, link: '#' },
-    { name: 'Necklace', imageUrl: necklacesImage, link: '#' },
-    { name: 'Charm', imageUrl: charmsImage, link: '#' },
-];
+import { Check } from 'lucide-react';
+import { jewelryTypes } from '@/config/jewelryTypes';
 
 const   TypeChoice = ({selectedJewelryType,setSelectedJewelryType}) => {
 
@@ -27,10 +15,10 @@ const   TypeChoice = ({selectedJewelryType,setSelectedJewelryType}) => {
                         <div key={jewelry.name} className="bg-white  rounded-lg hover:cursor-pointer transition">
    
                             <div className="relative overflow-hidden rounded-lg">
-                                <img src={jewelry.imageUrl} alt={jewelry.name} className={`w-full h-64 object-cover rounded-lg hover:scale-110 transition ${selectedJewelryType === jewelry.name ? 'opacity-50' : ``}`}  />
-                                <a href={jewelry.link} className="absolute top-2 right-2 w-6 h-6 bg-black text-white rounded-full flex justify-center ">
+                                <img src={jewelry.imageUrl} alt={jewelry.name} className={`w-full h-64 object-cover rounded-lg hover:scale-110 transition ${selectedJewelryType === jewelry.name && 'opacity-50'}`}  />
+                                <div className="absolute top-2 right-2 w-6 h-6 bg-black text-white rounded-full flex justify-center ">
                                     {selectedJewelryType === jewelry.name? <Check/>: <>+</>}
-                                </a>
+                                </div>
                             </div>
                             <p className="text-center mt-4 font-light">{jewelry.name}</p>
                         </div>

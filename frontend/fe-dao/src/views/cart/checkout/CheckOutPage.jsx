@@ -39,7 +39,6 @@ const CheckOutPage = () => {
     const [error, setError] = useState(null);
     const { provinces } = useAllProvince();
     const [towns, setTowns] = useState(null);
-    const [order, setOrder] = useState(null);
     const {postOrder, response} = usePostOrder(); 
     const [shipmentFee, setShipmentFee] = useState(0);
     const {postShipment} = usePostShipment();
@@ -68,13 +67,13 @@ const CheckOutPage = () => {
         }
     }, [city, provinces, deliveryMethod]);
 
-    useEffect(() => {
+
     
-        const preparePaymentUrl = async () => {
-            const transactionId = generateNumericTransactionId(1);
-    
-            // Create the order in the database
-            const newOrder = {
+
+
+    const handlePlaceOrder = async () => {            
+        try {
+            const order = {
                 customerId: currentCustomer?.customerId,
                 orderDate: new Date().toISOString().slice(0, 10),
                 statusId: deliveryMethod === "byShipment" ? 7 : 6,  // pick up from store or awaiting shipment
@@ -82,57 +81,54 @@ const CheckOutPage = () => {
                 isShipment: deliveryMethod === "byShipment",
                 isCustom: false,
                 orderTotal: cart.total + shipmentFee,
-            };
-            console.log(newOrder)
-            setOrder(newOrder);
-            try {
-                const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId, "cart/payment-confirm");
-                setUrl(paymentUrl);
-            } catch (error) {
-                console.error('Error preparing payment URL:', error.message);
-                setError('Error preparing payment URL. Please try again.');
             }
-        };
-    
-        preparePaymentUrl();
-    }, [cart.total, shipmentFee, deliveryMethod, currentCustomer,order]);
-    
+            console.log(order)
 
-
-    const handlePlaceOrder = async () => {    
-        try {
             await postOrder(order);
-            console.log("Order placed successfully!");
+            console.log(response);
 
-
-            const transactionId = generateNumericTransactionId(1);
-            const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId, "cart/payment-confirm");
-
-
-            if (deliveryMethod === 'byShipment') {
-            await postShipment({orderId:response.orderId,
-                shipmentDate: "2024-01-01",
-                shippingAddress: shippingAddress,
-                shippingProvince: city,
-                shippingDistrict: town,
-                isShipping: false,
-                shippingFee: shipmentFee})
-            }
-
-            if (paymentMethod !== "vnpay") {
-                navigate(`/cart/order-success/${response.orderId}`)
-            } 
-            
-            else {
-                window.location.href = paymentUrl;
-            }
         } catch (error) {
             console.error('Error creating order:', error.message);
             setError('Error creating order. Please try again.');
-            tempTab.close(); // Close the temporary tab if there is an error
         }
     };
 
+    useEffect(()=>{
+
+
+        const handleSuccessfulOrder = async () => {
+                const transactionId = generateNumericTransactionId(response.orderId);
+                const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId, "cart/payment-confirm");
+
+
+                if (deliveryMethod === 'byShipment') {
+                const shipmentDetails = {
+                    orderId: response.orderId,
+                    shipmentDate: "2024-01-01",  // Example date, replace with actual date logic if needed
+                    shippingAddress: shippingAddress,  // Assuming shippingAddress is defined elsewhere
+                    shippingProvince: city,  // Assuming city is defined elsewhere
+                    shippingDistrict: town,  // Assuming town is defined elsewhere
+                    isShipping: false,  // Example value, replace with actual logic if needed
+                    shippingFee: shipmentFee  // Assuming shipmentFee is defined elsewhere
+                };
+
+                await postShipment(shipmentDetails)
+                console.log(shipmentDetails)
+
+                }
+
+                if (paymentMethod !== "vnpay") {
+                    navigate(`/cart/order-success/${response.orderId}`)
+                } else {
+                    window.location.href = paymentUrl;
+                    console.log("Everything is fine.");
+                }
+        }
+        if (response) handleSuccessfulOrder()
+
+
+    },[response])
+    
 
     return (
         <div className="lg:flex  justify-between lg:space-x-8 container mt-8 ">
@@ -172,7 +168,7 @@ const CheckOutPage = () => {
                             <span className="font-bold" > x {item.quantity} &nbsp; </span>
                             <span>{item.productName}</span>
                         </div>
-                        <span>{(item.quantity) * item.price} VND</span>                     
+                        <span>{formatPrice((item.quantity) * item.price)} VND</span>                     
                     </div> 
                 )
                 })

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { removeFromCart } from "@/redux/slice/cartSlice"
+import { formatPrice } from "@/utils/formatPrice"
 
 
 function CartPage()  {
@@ -34,7 +35,7 @@ function CartPage()  {
     if (cart?.list.length == 0){
         return (
             (
-                <div className="text-center mt-8">
+                <div className="text-center mt-8 h-[400px]">
                     <p className="text-md text-gray-500 ">Nothing in your cart yet...</p>
                     <Button variant="default" className="mt-4">Continue Shopping</Button>
                 </div>
@@ -73,7 +74,7 @@ function CartPage()  {
                             <span className="font-bold" > x {item.quantity} &nbsp; </span>
                             <span>{item.productName}</span>
                         </div>
-                        <span>{(item.quantity) * item.price} VND</span>                     
+                        <span>{formatPrice((item.quantity) * item.price)} VND</span>                     
                     </div> 
                 )
                 })
@@ -87,7 +88,7 @@ function CartPage()  {
 
                     <div className="total flex text-lg flex-row justify-between font-bold mb-4">                  
                             <span className="" >TOTAL</span>
-                            <span>{cart.total} VND</span>
+                            <span>{formatPrice(cart.total)} VND</span>
                                       
                     </div> 
 

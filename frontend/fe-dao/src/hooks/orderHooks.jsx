@@ -71,7 +71,9 @@ export function usePostOrder()  {
         setLoading(true);
         try {
             const res = await axios.post('https://localhost:7112/api/Order/AddNewOrder', order); 
-            setResponse(res.data);
+            setResponse(res.data.data);
+            console.log(res.data.data)
+            console.log(response)
         } catch (err) {
             setError(err);
         } finally {

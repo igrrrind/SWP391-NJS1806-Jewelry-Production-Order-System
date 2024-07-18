@@ -19,7 +19,7 @@ const PaymentConfirm = () => {
 
         if (confirmationResult) {
             
-            navigate(`/dashboard/payment-success`, { state: { confirmationResult } });
+            navigate(`/cart/payment-success`, { state: { confirmationResult } });
         }
     }, [confirmationResult, error, location.search, navigate]);
 

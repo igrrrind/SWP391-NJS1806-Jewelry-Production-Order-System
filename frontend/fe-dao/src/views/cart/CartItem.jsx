@@ -1,5 +1,7 @@
 import FirebaseImage from '@/components/custom/fire-base-image';
 import QuantityButton from '@/components/custom/quantity-button';
+import { formatPrice } from '@/utils/formatPrice';
+import { getJewelrySizeLabel } from '@/utils/typeToUnit';
 import { Trash2 } from 'lucide-react';
 import React, { useState } from 'react';
 
@@ -23,7 +25,7 @@ const CartItem = ({ item, onRemove}) => {
 
         <div className='flex flex-col justify-between'>
             <span className="font-medium block text-lg ">{item.productName}</span>
-            <span className="text-gray-600 text-lg italic ml-2 mb-6">{item.metalTypeName} - {item.gemstoneType} - {item.size}</span>
+            <span className="text-gray-600 text-lg italic ml-2 mb-6">{item.metalTypeName} - {item.gemstoneType} - {getJewelrySizeLabel(item.productType,item.size)}</span>
             <QuantityButton chosenQuantity={itemQuantity} stock={item.stockQuantity} onValueChange={setItemQuantity}></QuantityButton>
         </div>
 
@@ -31,7 +33,7 @@ const CartItem = ({ item, onRemove}) => {
 
       <div className="flex align-top space-x-6">
         <div>
-            <span className="text-gray-600 mr-4 text-lg"> {item.price} VND</span>
+            <span className="text-gray-600 mr-4 text-lg"> {formatPrice(item.price)} VND</span>
         </div>
         
             <button

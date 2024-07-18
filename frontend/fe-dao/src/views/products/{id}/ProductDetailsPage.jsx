@@ -4,79 +4,12 @@ import DetailsComboBox from "./DetailsComboBox";
 import { useParams } from 'react-router-dom';
 import { useProductById } from '@/hooks/productsHooks';
 import { useProductStocksById } from '@/hooks/productStockHooks';
-
-/*
-
-const productStockEntries = [
-  {   
-      productStockId: 1,
-      productId: 1,
-      gemstoneName: 'Ruby',
-      metalName: 'Gold',
-      size: 6,
-      stockQuantity: 10,
-      price: 199.99
-  },
-  {
-      productStockId: 2,
-      productId: 1,
-      gemstoneName: 'Sapphire',
-      metalName: 'Gold',
-      size: 7,
-      stockQuantity: 5,
-      price: 209.99
-  },
-  {
-      productStockId: 3,
-      productId: 1,
-      gemstoneName: 'Ruby',
-      metalName: 'Silver',
-      size: 8,
-      stockQuantity: 20,
-      price: 299.99
-  },
-  {
-      productStockId: 4,
-      productId: 1,
-      gemstoneName: 'Emerald',
-      metalName: 'Platinum',
-      size: 9,
-      stockQuantity: 15,
-      price: 399.99
-  },
-  {
-      productStockId: 5,
-      productId: 1,
-      gemstoneName: 'Sapphire',
-      metalName: 'Platinum',
-      size: 10,
-      stockQuantity: 8,
-      price: 149.99
-  }
-];
-
-const product = 
-{ productId: 2,
-   productTypeId: 2, 
-   productTypeName: "necklace",
-   productName: "Golden Butterfly Charm", 
-   productDescription: 
-   "A beautiful specimen of a jewelry. Crafted from the mountains of Rvier.", 
-   isActive: true 
-  }
-;
-
-*/
-
-
-
+import { getDownloadURL, listAll, ref } from 'firebase/storage';
+import { fetchImageUrl } from '@/utils/fetchImageUrl';
+import { storage } from '@/services/Firebase';
+import BreadCrumbNav from '@/components/custom/breadcrumbNav';
 
 const ProductDetailsPage = () => {
-    /*
-      const sizeOptions = productStockEntries.map(p => p.size);
-      const metalOptions = productStockEntries.map(m => m.metal_nameI
-      const gemstoneOptions = productStockEntries.map(g => g.gemstoneName);
-    */  
     const { productId } = useParams();
 
     const { product, loading: productLoading } = useProductById(productId);
@@ -84,17 +17,35 @@ const ProductDetailsPage = () => {
 
     const isLoading = productLoading || productStocksLoading;
 
+    const [galleryImages, setGalleryImages] = useState([]);
+
+    useEffect(() => {
+      const fetchGalleryImages = async () => {
+        const galleryFolderRef = ref(storage,`products/gallery/p${productId}`);
+        const imageRefs = await listAll(galleryFolderRef);
+        const imageUrls = await Promise.all(imageRefs.items.map((imageRef) => getDownloadURL(imageRef)));
+        const thumbnailUrl = await fetchImageUrl(`products/thumbnails/${productId}`)
+
+        setGalleryImages([thumbnailUrl,...imageUrls]);
+      };
+
+      fetchGalleryImages()
+    },[productId])
+
+
+
     return (
-      <div className="container mx-auto p-6">
+      <div className="container mx-auto px-20 mt-10">
+        <BreadCrumbNav/>
         {isLoading ? (
           <div></div>
         ) : (
           <div className="flex flex-col md:flex-row">
-            <div className="md:w-1/2">
-              <ProductGallery productId={productId} />
+            <div className="md:w-5/12">
+              <ProductGallery productId={productId} gallery={galleryImages}/>
             </div>
 
-            <div className="md:w-1/2 md:pl-10">
+            <div className="md:w-7/12 md:pl-10 ">
               <DetailsComboBox product={product} productStockEntries={productStocks}/>
             </div>
           </div>

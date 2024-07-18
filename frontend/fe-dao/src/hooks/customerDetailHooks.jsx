@@ -30,29 +30,25 @@ export function useCustomerDetailsById(id) {
     return { customerDetails, loading };
 }
 
-export function usePostCustDetails(details) {
+export function usePostCustDetails() {
     const [response, setResponse] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
+
+    const postDetails= async (details) => {
+      setLoading(true);
+      try {
+        const res = await axios.post('https://localhost:7112/api/CustomerDetails', details); // Change to your API endpoint
+        setResponse(res.data);
+        console.log(res);
+      } catch (err) {
+        setError(err);
+      } finally {
+        setLoading(false);
+      }
+    };
   
-    useEffect(() => {
-      if (!details) return;
+   
   
-      const postDetails= async () => {
-        setLoading(true);
-        try {
-          const res = await axios.post('https://localhost:7112/api/CustomerdDetails', details); // Change to your API endpoint
-          setResponse(res.data);
-          console.log(res);
-        } catch (err) {
-          setError(err);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      postDetails();
-    }, [details]);
-  
-    return { response, loading, error };
+    return { postDetails, response, loading, error };
   }

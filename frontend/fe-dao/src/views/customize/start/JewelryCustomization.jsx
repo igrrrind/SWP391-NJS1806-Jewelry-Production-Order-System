@@ -239,6 +239,7 @@ const JewelryCustomization = () => {
                         setSelectedGemstone={setSelectedGemstone}
                         selectedSize={selectedSize}
                         setSelectedSize={setSelectedSize}
+                        selectedJewelryTypeName={selectedJewelryTypeName}
                     />
                 )}
 

@@ -1,4 +1,4 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useAuth } from '../../../contexts/AuthContext';
 import {
   Brush,
@@ -41,9 +41,11 @@ import {
   BreadcrumbPage,
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb"
+
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import BreadCrumbNav from '@/components/custom/breadcrumbNav';
 
 
 
@@ -57,6 +59,10 @@ const Sidenav = () => {
       await logout();
       navigate("/");
   }
+
+  const location = useLocation();
+  const pathname = location.pathname;
+
   
 
   return (
@@ -75,8 +81,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 to="/dashboard"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <Home className="h-5 w-5" />
                 <span className="sr-only">Dashboard</span>
               </Link>
@@ -89,8 +95,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 to="/dashboard/manage-orders"
-                className={"flex h-9 w-9 items-center justify-center rounded-lg bg-accent text-accent-foreground transition-colors hover:text-foreground md:h-8 md:w-8"}
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard/manage-orders' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <ShoppingCart className="h-5 w-5" />
                 <span className="sr-only">Orders</span>
               </Link>
@@ -103,8 +109,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 to="/dashboard/manage-products"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard/manage-products' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <Package className="h-5 w-5" />
                 <span className="sr-only">Products</span>
               </Link>
@@ -117,8 +123,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 to="/dashboard/manage-users"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard/manage-users' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <Users2 className="h-5 w-5" />
                 <span className="sr-only">Customers</span>
               </Link>
@@ -131,8 +137,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 href="#"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard/analytics' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <LineChart className="h-5 w-5" />
                 <span className="sr-only">Analytics</span>
               </Link>
@@ -146,8 +152,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 to="/dashboard/manage-designs"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard/manage-designs' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <Brush className="h-5 w-5" />
                 <span className="sr-only">Designs</span>
               </Link>
@@ -161,8 +167,8 @@ const Sidenav = () => {
             <TooltipTrigger asChild>
               <Link
                 to="/dashboard/manage-production"
-                className="flex h-9 w-9 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-foreground md:h-8 md:w-8"
-              >
+                className={`flex h-9 w-9 items-center justify-center rounded-lg transition-colors hover:text-foreground md:h-8 md:w-8 ${pathname === '/dashboard/manage-production' ? 'text-foreground bg-accent' : 'text-muted-foreground'}`}
+                >
                 <Wrench className="h-5 w-5" />
                 <span className="sr-only">Production</span>
               </Link>
@@ -248,25 +254,7 @@ const Sidenav = () => {
               </nav>
             </SheetContent>
           </Sheet>
-          <Breadcrumb className="hidden md:flex">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="#">Dashboard</Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <Link href="#">Orders</Link>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage>Recent Orders</BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
+          <BreadCrumbNav/>
           <div className="relative ml-auto flex-1 md:grow-0">
             <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
             <Input
@@ -292,7 +280,7 @@ const Sidenav = () => {
               <DropdownMenuItem>Settings</DropdownMenuItem>
               <DropdownMenuItem><Link to="/">View As Customer</Link></DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
+              <DropdownMenuItem><button onClick={handleLogOut}>Logout</button></DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </header>

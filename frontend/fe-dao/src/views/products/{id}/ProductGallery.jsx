@@ -1,18 +1,19 @@
 import FirebaseImage from "@/components/custom/fire-base-image"
+import ImageSlider from "@/components/custom/images-slider"
 
-const ProductGallery = ({productId}) => {
+const ProductGallery = ({productId, gallery}) => {
+
+
+
+    
     return (
-        <>
-            <div className="mb-4 h-[40rem] overflow-hidden relative">
-              <FirebaseImage path={`products/thumbnails/${productId}`} alt="bracelet"></FirebaseImage>
+        
+            <div className="mb-4 h-auto relative">
+                <ImageSlider images={gallery}/> 
       
             </div>
-            <div className="flex space-x-2">
-              <img src="path_to_thumbnail1" alt="Thumbnail 1" className="w-20 h-20 rounded-lg" />
-              <img src="path_to_thumbnail2" alt="Thumbnail 2" className="w-20 h-20 rounded-lg" />
-              <img src="path_to_thumbnail3" alt="Thumbnail 3" className="w-20 h-20 rounded-lg" />
-            </div>
-        </>
+           
+        
     )
 }
 

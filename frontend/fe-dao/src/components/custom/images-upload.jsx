@@ -58,14 +58,14 @@ const ImageUploadComponent = ({ refresh, mainDirectory, subfolder, onUpload}) =>
     <div className="upload-container">
       {/* Image Upload Box */}
       <div className="flex justify-center mb-4">
-        <div className="relative border border-gray-300 rounded-lg h-40 w-80 flex overflow-x-scroll">
+        <div className="relative border border-gray-300 rounded-lg h-40 w-80 flex overflow-x-scroll  hover:bg-stone-100 transition">
           <input
             ref={fileInputRef}
             type="file"
             accept="image/*"
             multiple
             onChange={handleImageChange}
-            className="opacity-0 absolute inset-0 z-10 cursor-pointer"
+            className="opacity-0 absolute inset-0 z-10 cursor-pointer "
           />
           <div className="text-gray-500 m-auto flex items-center">
             <ImageUpIcon className="h-8 w-12"/>
@@ -91,7 +91,7 @@ const ImageUploadComponent = ({ refresh, mainDirectory, subfolder, onUpload}) =>
 
       {/* Upload Button */}
       <div className="flex justify-center mt-4">
-        <Button onClick={handleUpload} variant="default">
+        <Button onClick={handleUpload} variant="default" >
           Upload Images
         </Button>
       </div>

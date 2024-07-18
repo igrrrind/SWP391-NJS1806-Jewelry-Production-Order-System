@@ -57,15 +57,20 @@ export function useUserById(id) {
 }
 
 
-export function useAllUsers() {
+export function useAllUsers(querry) {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        setLoading(true);
-        const response = await axios.get(`https://localhost:7112/api/Users`);
+        let getRolen = ''
+        if (querry !== ''){
+          getRolen = `/GetRole${querry}`
+        }
+        console.log(getRolen)
+        
+        const response = await axios.get(`https://localhost:7112/api/Users${getRolen}?pageSize=20`);
         setUsers(response.data);
       } catch (error) {
         console.error('Error fetching users list:', error);
@@ -75,7 +80,7 @@ export function useAllUsers() {
     };
 
     fetchUsers();
-  }, []);
+  }, [querry]);
   return { users, loading };
 }
 
@@ -101,4 +106,28 @@ export function useUserCustomerbyId(id) {
     fetchUserCustomerbyId();
   }, [id]);
   return { userCustomer, loading };
+}
+
+
+export function usePutUser()  {
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const updateUser = async (user) => {
+      setLoading(true);
+      try {
+          console.log(user)
+          const res = await axios.put(`https://localhost:7112/api/Users/${user.uid}`, user);
+          setResponse(res.status);
+          //console.log(res.status)
+      } catch (err) {
+          setError(err);
+      } finally {
+          setLoading(false);
+      }
+  };
+
+  return { updateUser, response, loading, error };
+
 }
