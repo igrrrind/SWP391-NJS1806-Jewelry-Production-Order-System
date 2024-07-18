@@ -5,21 +5,38 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Input } from "@/components/ui/input";
-import { SearchIcon } from "lucide-react";
+
 import { ProdCustomItemTable } from "./ProdCustomItemTable"; // Assuming this is your modified table component
-import { useAllProductions } from "@/hooks/productionHooks"; // Adjust the hook import
-import { useAllCustomOrders } from "@/hooks/orderItemHooks";
-import { usePutOrder } from "@/hooks/orderHooks";
+import { useAllProductions, useAllProductionStatuses } from "@/hooks/productionHooks"; // Adjust the hook import
+
 
 const ManageProductionsPage = () => {
-    const { orderItems,loading} = useAllCustomOrders();
-    const [selectedProductionItem, setSelectedProductionItem] = useState(null); // Adjusted state name
+    const { productions} = useAllProductions();
+    const { statuses } = useAllProductionStatuses();
+    const [statusesSelect, setStatusesSelect] = useState([])
+
+
 
     const navigate = useNavigate();
+
+    
+
+    useEffect(()=>{
+        if(statuses){
+            const formattedStatuses = statuses.map(status => ({
+                value: status.productionStatusId,
+                label: status.statusName,
+              }))
+              setStatusesSelect(formattedStatuses)
+              //console.log(statuses)
+
+        }
+
+    },[statuses])
+
+
 
     return (
         <main className="p-4 xl:flex flex-1 xl:space-x-4">
@@ -33,7 +50,7 @@ const ManageProductionsPage = () => {
                     </CardHeader>
                     <CardContent>
                         
-                        <ProdCustomItemTable items={orderItems} onStatusChange={handleStatusChange} /> {/* Adjusted prop name */}
+                        <ProdCustomItemTable productions={productions} statuses={statusesSelect}/> 
                     </CardContent>
                 </Card>
             </div>

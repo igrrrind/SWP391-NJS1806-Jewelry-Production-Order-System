@@ -113,7 +113,7 @@ const ProductTable = ({products}) => {
                                 <TableRow key={product.productId}>
                                     <TableCell>{product.productId}</TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productName}</TableCell>
-                                    <TableCell className="hidden sm:table-cell"><div><FirebaseImage path={`products/thumbnail/${product.productId}`} alt={product.productnName}/></div></TableCell>
+                                    <TableCell className="hidden sm:table-cell"><div className="w-20"><FirebaseImage path={`products/thumbnails/${product.productId}`} alt={product.productName}/></div></TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productType}</TableCell>
                                     <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{product.productDescription}</TableCell>
                                     <TableCell className="hidden sm:table-cell">

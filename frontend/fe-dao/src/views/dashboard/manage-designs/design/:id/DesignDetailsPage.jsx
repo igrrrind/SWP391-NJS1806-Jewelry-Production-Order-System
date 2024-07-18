@@ -91,7 +91,7 @@ const DesignDetailsPage = () => {
                     <CardHeader>
                         <CardTitle>Design Proposal For Item #{design?.orderCustomId}</CardTitle>
                         <CardDescription>
-                            Submit your design proposal. Once sent, editing is disabled until the user disproves of the design. A manager will review and finalize the quote.
+                            Submit your design proposal. Once sent, editing is disabled until the user disproves of the design.
                         </CardDescription>
                     </CardHeader>
                     <CardContent>

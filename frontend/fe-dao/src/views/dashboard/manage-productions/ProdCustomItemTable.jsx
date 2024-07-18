@@ -6,12 +6,19 @@ import {
     TableHeader,
     TableRow,
 } from "@/components/ui/table";
+
+
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
+
+
 import {
     Tooltip,
     TooltipContent,
@@ -19,92 +26,131 @@ import {
     TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { Button } from '@/components/ui/button';
-import { PencilLineIcon, BadgeInfoIcon, CloudUploadIcon, Eye, Menu, MoreHorizontal, Plus, View, CheckCircle } from 'lucide-react';
-import { Link } from "react-router-dom";
+import { PencilLineIcon, BadgeInfoIcon, CloudUploadIcon, Eye, Menu, MoreHorizontal, Plus, View, CheckCircle, Edit } from 'lucide-react';
+import { Link, useNavigate } from "react-router-dom";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 import { getJewelrySizeLabel } from "@/utils/typeToUnit";
 import { Badge } from "@/components/ui/badge";
 import { usePutOrder } from "@/hooks/orderHooks";
+import StatusBadge from "@/components/custom/status-badge";
+import { formatDate } from "@/utils/formatDate";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { CustomCombobox } from "@/components/custom/custom-combobox";
+import { useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { usePutProduction } from "@/hooks/productionHooks";
 
-export const ProdCustomItemTable = ({ items, onStatusChange }) => {
+export const ProdCustomItemTable = ({productions, statuses}) => {
 
-    const {updateOrderStatus} = usePutOrder()
-    const handleStatusChange = () => {
-        
+    const {updateOrderStatus, response} = usePutOrder()
+    const navigate = useNavigate()
+    const [error, setError] = useState('')
+    const [statusToUpdate, setStatusToUpdate] = useState(null)
+    const {updateProductionStatus, response:psResponse} = usePutProduction();
+    
+
+
+
+    const handleStatusChange = (value) => {
+        if (value === statusToUpdate) {
+            setStatusToUpdate(null)
+            return
+        }
+        console.log("Selected status ID:", value)
+        setStatusToUpdate(value);
+        setError('');
     }
 
 
+    const handleUpdate = async (production) => {
+        if (!statusToUpdate) {
+            setError("Choose a status before updating")
+            return;
+        }
+        await updateProductionStatus(production,statusToUpdate)
+        navigate(0)
+    }
+
+    useEffect(()=> {
+        if (psResponse) {
+            console.log(psResponse)
+        }
+    },[psResponse])
+
+
+
+
+    
     return (
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="">ID</TableHead>
-                    <TableHead className="hidden sm:table-cell">Order Id</TableHead>
-                    <TableHead className="hidden sm:table-cell">Type</TableHead>
-                    <TableHead className="hidden sm:table-cell">Gemstone</TableHead>
-                    <TableHead className="hidden sm:table-cell">Gem Color</TableHead>
-                    <TableHead className="hidden sm:table-cell">Metal</TableHead>
-                    <TableHead className="hidden sm:table-cell">Size</TableHead>
-                    <TableHead className="hidden sm:table-cell">Description</TableHead>
-                    <TableHead className="hidden sm:table-cell">Status</TableHead>
-                    <TableHead className=""><p className="text-center">View Designs</p></TableHead>
+                    <TableHead className="hidden sm:table-cell">Order ID</TableHead>
+                    <TableHead className=""><p className=""> Start Date</p></TableHead>
+                    <TableHead className=""><p className=""> Production Status</p></TableHead>
                     <TableHead className=""><p className="text-center">Actions</p></TableHead>
+
                 </TableRow>
             </TableHeader>
             <TableBody>
-                {items.map(item => (
-                    <TableRow key={item.orderItemId}>
-                        <TableCell>{item.orderItemId}</TableCell>
-                        <TableCell className="hidden sm:table-cell">{item.orderId}</TableCell>
-                        <TableCell className="hidden sm:table-cell">{item.typeName}</TableCell>
-                        <TableCell className="hidden sm:table-cell">{item.gemstoneType}</TableCell>
-                        <TableCell className="hidden sm:table-cell">{item.gemstoneColor}</TableCell>
-                        <TableCell className="hidden sm:table-cell">{item.metalTypeName}</TableCell>
-                        <TableCell className="hidden sm:table-cell">{getJewelrySizeLabel(item.typeName, item.size)}</TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                            <Popover modal="true">
-                                <PopoverTrigger asChild>
-                                    <Button variant="outline"><BadgeInfoIcon /></Button>
-                                </PopoverTrigger>
-                                <PopoverContent className="w-80" side="left">
-                                    <div className="grid gap-4">
-                                        <p className="text-sm">{item.requestDescription}</p>
-                                    </div>
-                                </PopoverContent>
-                            </Popover>
-                        </TableCell>
-                        <TableCell className="hidden sm:table-cell">
-                            {item.designIsCompleted ? 
-                                <Badge className={`bg-green-600`}>Completed</Badge> : 
-                                <Badge className={`bg-orange-600`}>In Progress</Badge>
-                            }
-                        </TableCell>
+                {productions ? productions.map(production => (
+                    <TableRow key={production.productionId}>
+                        <TableCell className="hidden sm:table-cell">{production.orderId}</TableCell>
+                        <TableCell className="hidden sm:table-cell">{formatDate(production.startDate)}</TableCell>
+
                         <TableCell>
-                            <div className="flex justify-around">
+                            <StatusBadge status={production.productionStatusName}/>
+                        </TableCell>
+
+                        <TableCell>
+                            <div className="flex justify-center space-x-4">
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
                                             <Link to="/">
-                                                <Button variant="outline"><View /></Button>
+                                                <Button variant="outline"> View Items</Button>
                                             </Link>
                                         </TooltipTrigger>
-                                        <TooltipContent side="top">View Design</TooltipContent>
+                                        <TooltipContent side="top">View Item Details</TooltipContent>
                                     </Tooltip>
                                 </TooltipProvider>
 
+
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <Button variant="outline">Update Status</Button>
+                                    </DialogTrigger>
+                                    <DialogContent className="sm:max-w-[425px]">
+                                        <DialogHeader>
+                                        <DialogTitle>Update Status</DialogTitle>
+                                        <DialogDescription>
+                                            Make changes to the production status
+                                        </DialogDescription>
+                                        </DialogHeader>
+                                        <div className="grid gap-4 py-4">
+                                        <div className="grid grid-cols-4 items-center gap-4">
+                                            <Label htmlFor="name" className="text-right">
+                                            Status
+                                            </Label>
+                                            <CustomCombobox 
+                                                items={statuses} 
+                                                onSelect={(e) => handleStatusChange(e)} 
+                                                placeholder="Update the status..."
+                                                buttonClassName="custom-button-class"/>
+                                        </div>
+                                        <div>{error && <p className="text-red-600 text-sm">{error}</p>}</div>
+                                        </div>
+                                        <DialogFooter>
+                                            <Button onClick={() => handleUpdate(production)}>Update</Button>
+                                        </DialogFooter>
+                                    </DialogContent>
+                                </Dialog>    
                             </div>
-                        </TableCell>
-                        <TableCell>
-                            <Button
-                                onClick={() => onStatusChange(item.orderItemId)}
-                                variant="outline"
-                            >
-                                { "Mark Completed"}
-                            </Button>
-                        </TableCell>
+                        </TableCell>  
                     </TableRow>
-                ))}
+                )) : (<TableCell colSpan={3} className="text-center">Loading...</TableCell>)}
             </TableBody>
         </Table>
     );

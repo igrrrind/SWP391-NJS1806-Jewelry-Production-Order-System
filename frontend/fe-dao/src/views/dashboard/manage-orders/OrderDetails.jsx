@@ -244,8 +244,8 @@ const CustomCard = ({order, orderItems, quote, shipment, transaction}) =>{
                 <div>
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1" >
-                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div><Badge variant={"outline"}>Shipped</Badge></div></div></AccordionTrigger>
-                    <AccordionContent className=" flex justify-between">
+                  <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div>{shipment?<Badge variant={"outline"}>{shipment.isShipping? "Sent For Shipping" : "Awaiting Shipment" }</Badge>: "Not Applicable"}</div></div></AccordionTrigger>
+                  <AccordionContent className=" flex justify-between">
                     <div className="space-y-1">
                       {shipment?
                           <>
@@ -377,7 +377,7 @@ const FixedCard = ({order, orderItems, shipment, transaction}) => {
                 <div>
                 <Accordion type="single" collapsible>
                   <AccordionItem value="item-1">
-                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div>{shipment?<Badge variant={"outline"}>{shipment.isShipping? "Shipping" : "Shipped" }</Badge>: "Not Applicable"}</div></div></AccordionTrigger>
+                    <AccordionTrigger><div className="flex justify-between w-full pr-3"><div>Shipment Info</div><div>{shipment?<Badge variant={"outline"}>{shipment.isShipping? "Sent For Shipping" : "Awaiting Shipment" }</Badge>: "Not Applicable"}</div></div></AccordionTrigger>
                     <AccordionContent className=" flex justify-between">
                       <div className="space-y-1">
                       {shipment?

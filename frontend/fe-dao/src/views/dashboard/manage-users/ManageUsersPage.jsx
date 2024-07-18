@@ -17,10 +17,13 @@ import { SearchIcon } from "lucide-react";
 
 
 const ManageUsersPage = () => {
-    const { users,loading} = useAllUsers();
+    const [roleIdQuerry, setRoleIdQuerry] = useState('');
+    const { users,loading} = useAllUsers(roleIdQuerry);
     const [searchRole, setSearcRole] = useState(null)
     const { roles } = useAllRoles();
     const [rolesSelect, setRolesSelect] = useState(null)
+
+
 
     useEffect(()=>{
         if(roles){
@@ -36,8 +39,12 @@ const ManageUsersPage = () => {
     },[roles])
 
     const handleSelect = (value) => {
-        console.log("Selected role ID:", value)
-      }
+        if (value === roleIdQuerry) {
+            setRoleIdQuerry('')
+            return
+        }
+        setRoleIdQuerry(value)
+    }
 
     const navigate = useNavigate(); 
     const handleClick = () => navigate('/dashboard/add-product'); 
@@ -72,7 +79,7 @@ const ManageUsersPage = () => {
                               <div><Input placeholder="Enter a name..."/></div><Button variant="outline"><SearchIcon/></Button>
                                </div>    
                             </div>
-                            <UsersTable users={users}/>
+                            <UsersTable users={users} roles={rolesSelect}/>
                          </CardContent>
                 
                     </Card>

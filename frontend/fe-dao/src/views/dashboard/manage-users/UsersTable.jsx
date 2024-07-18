@@ -1,5 +1,13 @@
 import { Badge } from "@/components/ui/badge";
-
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+  } from "@/components/ui/dialog"
 
 import {
     Table,
@@ -16,10 +24,48 @@ import {
     DropdownMenuTrigger,
   } from "@/components/ui/dropdown-menu"
 import { Button } from '@/components/ui/button';
-import { MoreHorizontal } from 'lucide-react';
+import { BadgeAlert, BadgeAlertIcon, Delete, LucideDelete, MoreHorizontal, RemoveFormatting, Trash, Trash2, TrashIcon, UserRoundCog } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
+import { Label } from "@/components/ui/label";
+import { CustomCombobox } from "@/components/custom/custom-combobox";
+import { useState } from "react";
+import { usePutUser } from "@/hooks/userHooks";
 
-const UsersTable = ({users}) => {
+const UsersTable = ({users, roles}) => {
+
+    const [error, setError] = useState('');
+    const [roleToUpdate, setRoleToUpdate] = useState(null);
+    const {updateUser} = usePutUser();
+
+    const navigate = useNavigate();
+
+    const handleRoleChange = (value) => {
+        if (value === roleToUpdate) {
+            setRoleToUpdate(null)
+            return
+        }
+        console.log("Selected role:", value)
+        setRoleToUpdate(value);
+        setError('');
+    }
+
+
+    const handleUpdate = async (user) => {
+        if (!roleToUpdate) {
+            setError("Choose a status before updating")
+            return;
+        }
+        const userTobeUpdated = {...user, roleId: roleToUpdate}
+        await updateUser(userTobeUpdated)
+        navigate(0)
+    }
+
+
+
+
+
+
+
 
     return (
             
@@ -47,22 +93,38 @@ const UsersTable = ({users}) => {
 
                                                            
                                     <TableCell>
-                                      <DropdownMenu>
-                                        <DropdownMenuTrigger asChild>
-                                        <Button
-                                            aria-haspopup="true"
-                                            size="icon"
-                                            variant="ghost"
-                                        >
-                                            <MoreHorizontal className="h-4 w-4" />
-                                            <span className="sr-only">Toggle menu</span>
-                                        </Button>
-                                        </DropdownMenuTrigger>
-                                        <DropdownMenuContent align="end">
-                                        <DropdownMenuItem>Edit User Info</DropdownMenuItem>
-                                        <DropdownMenuItem>Delete User</DropdownMenuItem>
-                                        </DropdownMenuContent>
-                                    </DropdownMenu>
+                                        <div className="flex items-center space-x-3">
+                                        <Dialog>
+                                            <DialogTrigger asChild>
+                                                <Button variant="outline" className=" px-3"><UserRoundCog className="w-5 text-blue-600"/></Button>
+                                            </DialogTrigger>
+                                            <DialogContent className="sm:max-w-[425px]">
+                                                <DialogHeader>
+                                                <DialogTitle>Update Role</DialogTitle>
+                                                <DialogDescription>
+                                                    Make changes to the user's role. 
+                                                </DialogDescription>
+                                                </DialogHeader>
+                                                <div className="grid gap-4 py-4">
+                                                <div className="grid grid-cols-4 items-center gap-4">
+                                                    <Label htmlFor="name" className="text-right">
+                                                    Status
+                                                    </Label>
+                                                    <CustomCombobox 
+                                                        items={roles} 
+                                                        onSelect={(e) => handleRoleChange(e)} 
+                                                        placeholder="Update the role..."
+                                                        buttonClassName="custom-button-class"/>
+                                                </div>
+                                                <div>{error && <p className="text-red-600 text-sm">{error}</p>}</div>
+                                                </div>
+                                                <DialogFooter>
+                                                    <Button onClick={() => handleUpdate(user)}>Update</Button>
+                                                </DialogFooter>
+                                            </DialogContent>
+                                        </Dialog> 
+                                        <Button variant="outline" className=" px-3"><Trash2 className="text-red-600 font-medium w-5"/></Button>
+                                        </div>
                                     </TableCell>
                                 </TableRow>
                             ))}
