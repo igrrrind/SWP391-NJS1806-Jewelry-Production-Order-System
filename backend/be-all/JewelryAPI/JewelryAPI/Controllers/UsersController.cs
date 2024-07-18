@@ -92,7 +92,7 @@ namespace JewelryAPI.Controllers
 
             iUserService.UpdateUser(id, user);
 
-            return NoContent();
+            return Ok();
             
         }
 

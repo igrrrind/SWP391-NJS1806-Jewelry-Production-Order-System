@@ -21,6 +21,7 @@ namespace Repositories
                                      Phone = u.Phone,
                                      FirstName = u.FirstName,
                                      LastName = u.LastName,
+                                     RoleId = u.RoleId,
                                      RoleName = r.RoleName
                                  };
 
@@ -92,6 +93,7 @@ namespace Repositories
                                   Phone = u.Phone,
                                   FirstName = u.FirstName,
                                   LastName = u.LastName,
+                                  RoleId = u.RoleId,
                                   RoleName = r.RoleName
                               }).FirstOrDefault(u => u.Uid.Equals(id));
 
@@ -111,6 +113,7 @@ namespace Repositories
                                      Phone = u.Phone,
                                      FirstName = u.FirstName,
                                      LastName = u.LastName,
+                                     RoleId = u.RoleId,
                                      RoleName = r.RoleName
                                  };
             var skipNumber = (pageNumber - 1) * pageSize;
@@ -140,6 +143,7 @@ namespace Repositories
                 oUser.FirstName = user.FirstName;
                 oUser.Email = user.Email;
                 oUser.Phone = user.Phone;
+                oUser.RoleId = user.RoleId;
                 dbContext.SaveChanges();
             }
             return oUser;

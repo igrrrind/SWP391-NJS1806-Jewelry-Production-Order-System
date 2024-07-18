@@ -11,7 +11,8 @@
         public string FirstName { get; set; } = null!;
 
         public string LastName { get; set; } = null!;
-        //RoleId
+        
+        public int RoleId { get; set; }
         public string RoleName { get; set; }
         
     }
