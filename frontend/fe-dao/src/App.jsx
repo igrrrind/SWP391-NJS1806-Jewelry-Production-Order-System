@@ -33,6 +33,9 @@ import DepositSuccessPage from './views/customize/deposit-success';
 import ManageDesignsPage from './views/dashboard/manage-designs/ManageDesignsPage';
 import DesignDetailsPage from './views/dashboard/manage-designs/design/:id/DesignDetailsPage';
 import ManageProductionsPage from './views/dashboard/manage-productions/ManageProductionsPage';
+import { PaymentSuccessPage } from './views/cart/paymentSuccess';
+import CustomerSignUpPage from './views/signup/CustomerSignUpPage';
+import { DashboardPage } from './views/dashboard/DashboardPage';
 
 
 const productsPages = {
@@ -72,6 +75,7 @@ const App = () => {
 
         <Route path="/" element={<MainLayout />}>
               <Route index element={<HomePage />}/> 
+              <Route path='*' element={<HomePage/>}/>
         </Route>
 
         <Route path="/products" element={<MainLayout />}>
@@ -93,6 +97,7 @@ const App = () => {
           <Route path="payment-confirm" element={<PaymentConfirm />} />
           <Route path="order-success/:orderId" element={<OrderSucessPage />} />
           <Route path="payment-error" element={<PaymentErrorPage />} />
+          <Route path="payment-success" element={<PaymentSuccessPage/>}/>  
 
 
         </Route>
@@ -112,6 +117,7 @@ const App = () => {
 
 
         <Route path="/dashboard" element={<DashboardLayout />}>
+              <Route index element={<DashboardPage/>}/>
               <Route path="manage-orders" element={<ManageOrdersPage />}/>     
               <Route path="manage-users" element={<ManageUsersPage />}/>        
               <Route path="manage-products" element={<ManageProductsPage />}>  
@@ -135,6 +141,10 @@ const App = () => {
         </Route>
 
         <Route path="/signup" element={<SignupPage />}>
+        {/*   <Route index element={<HomePage />} /> */}
+        </Route>
+
+        <Route path="/customer-signup" element={<CustomerSignUpPage/>}>
         {/*   <Route index element={<HomePage />} /> */}
         </Route>
 
