@@ -66,7 +66,7 @@ const SignupPage = () => {
 
   useEffect(() => {
     if (response) {
-      navigate('/');
+      navigate('/customer-signup');
     } else if (error) {
       setNotice('Failed to create user account, please try again.');
     }
