@@ -248,11 +248,11 @@ INSERT INTO Payment_Status (status_name) VALUES ('Refunded');
 INSERT INTO Payment_Status (status_name) VALUES ('Cancelled');
 
 -- Inserting into Customer_Detail
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U001', 'Male', '1985-01-01', '463B Nguyễn Thị Tú, Bình Hưng Hoà', 'Thành phố Hồ Chí Minh', 'Quận Bình Tân');
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U002', 'Female', '1990-02-02', '102 Trần Văn Kiểu, Phường 10', 'Thành phố Hồ Chí Minh', 'Quận 6');
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U003', 'Male', '1975-03-03', '112 Chu Văn An, Nghĩa Lộ', 'Quãng Ngãi', 'Thành phố Quãng Ngãi');
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U004', 'Female', '1988-04-04', '926 Kim Giang, Thanh Liệt', 'Hà Nội', 'Thanh Trì');
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U005', 'Male', '2000-05-05', '73 Trịnh Doanh, Thanh Sơn', 'Thanh Hoá', 'Thành phố Thanh Hoá');
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U001', 'Male', '1985-01-01', "463B Nguyễn Thị Tú, Bình Hưng Hoà", "Thành phố Hồ Chí Minh", "Quận Bình Tân");
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U002', 'Female', '1990-02-02', "102 Trần Văn Kiểu, Phường 10", "Thành phố Hồ Chí Minh", "Quận 6");
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U003', 'Male', '1975-03-03', "112 Chu Văn An, Nghĩa Lộ", "Quãng Ngãi", "Thành phố Quãng Ngãi");
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U004', 'Female', '1988-04-04', "926 Kim Giang, Thanh Liệt", "Hà Nội", "Thanh Trì");
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U005', 'Male', '2000-05-05', "73 Trịnh Doanh, Thanh Sơn", "Thanh Hoá", "Thành phố Thanh Hoá");
 
 -- Inserting into Product_Types
 INSERT INTO Product_Types (type_name) VALUES ('Ring');
