@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\SWP1.props" />
-</Project>
