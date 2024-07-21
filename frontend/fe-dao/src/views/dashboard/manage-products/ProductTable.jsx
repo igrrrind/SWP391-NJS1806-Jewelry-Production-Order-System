@@ -25,11 +25,35 @@ import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
 import { useNavigate } from "react-router-dom";
 import FirebaseImage from "@/components/custom/fire-base-image";
+import { usePutProduct } from "@/hooks/productsHooks";
+import { update } from "lodash";
 
 const ProductTable = ({products}) => {
 
     const navigate = useNavigate(); 
     const handleClick = () => navigate('/dashboard/add-product'); 
+    const { updateProduct } = usePutProduct();
+
+    const handleSetActive =  async (product) => {
+        let active = true
+        if (product.isActive) active = false;
+
+        const updatedProduct = {       
+            productId: product.productId,
+            productTypeId: product.productTypeId,
+            productName: product.productName,
+            productDescription: product.productDescription,
+            isActive: active
+        }
+        try {
+            await updateProduct(updatedProduct)
+
+        } catch (error) {
+            alert("something when wrong with the update")
+            console.log(error)
+        }
+
+    }
 
 
 
@@ -113,13 +137,19 @@ const ProductTable = ({products}) => {
                                 <TableRow key={product.productId}>
                                     <TableCell>{product.productId}</TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productName}</TableCell>
-                                    <TableCell className="hidden sm:table-cell"><div className="w-20"><FirebaseImage path={`products/thumbnails/${product.productId}`} alt={product.productName}/></div></TableCell>
+                                    <TableCell className="hidden sm:table-cell"><div className="w-20 h-20"><FirebaseImage path={`products/thumbnails/${product.productId}`} alt={product.productName}/></div></TableCell>
                                     <TableCell className="hidden sm:table-cell">{product.productType}</TableCell>
                                     <TableCell className="hidden sm:table-cell overflow-hidden max-w-6">{product.productDescription}</TableCell>
                                     <TableCell className="hidden sm:table-cell">
-                                        <Badge className="text-xs" variant={product.isActive === 1 ? 'secondary' : 'outline'}>
-                                            {product.isActive? "Active" : "Hidden"}
+                                        {product.isActive ?
+                                        <Badge className="text-xs bg-green-200" variant="outline">
+                                            Active
                                         </Badge>
+                                        :
+                                        <Badge className="text-xs" variant="outline">
+                                            Hidden
+                                        </Badge>
+                                        }
                                     </TableCell>                                  {/*  <TableCell className="hidden sm:table-cell">{product.sales}</TableCell> */}
                                     
                                    
@@ -137,7 +167,8 @@ const ProductTable = ({products}) => {
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
                                         <DropdownMenuItem>Edit Product Info & Stock</DropdownMenuItem>
-                                        <DropdownMenuItem>Delete Product</DropdownMenuItem>
+                                        <DropdownMenuItem onClick={() => handleSetActive(product)}>Set {product.isActive? "Inactive" : "Active"}</DropdownMenuItem>
+                                        <DropdownMenuItem><p className="text-red-500">Delete Product</p></DropdownMenuItem>
                                         </DropdownMenuContent>
                                     </DropdownMenu>
                                     </TableCell>

@@ -2,11 +2,14 @@ import { useAllActiveProducts, useAllProducts } from "@/hooks/productsHooks"
 import ProductListing from "./ProductListing"
 import { useGetAllProductTypes } from "@/hooks/productTypesHooks";
 import { useEffect, useState } from "react";
+import ProductSearchBar from "./search/ProductSearchBar";
 
 
 const ProductPage = ({ title, description, productTypeKey }) => {
     const { productTypes, loading: typesLoading } = useGetAllProductTypes();
     const [productTypeId, setProductTypeId] = useState(null);
+
+
 
     useEffect(() => {
         console.log(productTypeKey);
@@ -36,6 +39,7 @@ const ProductPage = ({ title, description, productTypeKey }) => {
                 <h1 className="text-3xl text-center cormorant-garamond-regular">{title}</h1>
                 <p className="text-center text-gray-500">{description}</p>
             </div>
+            <ProductSearchBar/>
             {(typesLoading || productsLoading) ? (
                 <div className="p-10">Loading...</div>
             ) : (

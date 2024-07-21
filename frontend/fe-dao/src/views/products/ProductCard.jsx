@@ -13,13 +13,14 @@ const ProductCard = ({product, onClick}) =>{
     const formattedName = formatName(product.productName)
     const formattedLink = formatLink(product.productId,formattedName)
 
+
     return (
         <a href={formattedLink} 
             onClick={(e) => { e.preventDefault();onClick(formattedLink);}}>
         <div className="bg-white min-w-full h-80 overflow-hidden cursor-pointer">
             <div className="max-w-full aspect-w-4 aspect-h-3">
                     <img src={placeholder} alt="meanigfultext" className="top-0 left-0 w-full h-full object-cover"></img>
-                    <FirebaseImage path={imagePath} alt={product.productName}/>              
+                    <FirebaseImage path={imagePath} alt={product.productName}/>            
             </div>
             <div className="py-2">
                 <div>{product.productName}</div>

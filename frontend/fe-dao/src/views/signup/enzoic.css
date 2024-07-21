@@ -1,0 +1,17 @@
+/* 
+   Example usage of the Enzoic CSS classes to show visual 
+   indicators for password acceptability.  The enz-success 
+   and enz-fail CSS classes get added automatically to 
+   the password input control when a password is classified 
+   by Enzoic.  See the documentation for more details.
+*/
+
+input.enz-fail {
+  border-color: #b94a48 !important;
+  background: url(https://cdn.enzoic.com/images/warning.png) 
+    right 5px center no-repeat;
+}
+
+input.enz-success {
+  border-color: #32cd32 !important;
+}

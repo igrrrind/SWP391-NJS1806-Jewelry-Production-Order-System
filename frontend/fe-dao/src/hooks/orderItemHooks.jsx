@@ -68,3 +68,35 @@ export function useAllCustomOrders(){
 export function usePutCustomOrder(){
   
 }
+
+
+export function usePostFixedItems() {
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
+    const postFixedItems = async (fixedItems) => {
+      if (!fixedItems || fixedItems.length === 0) return;
+
+      setLoading(true);
+      const tempResponses = [];
+      console.log(fixedItems)
+      for (const item of fixedItems) {
+        try {
+          const res = await axios.post('https://localhost:7112/api/OrderFixedItem/AddNewOrderFixedItem', item); // Change to your API endpoint
+          tempResponses.push(res.data);
+          console.log(res);
+        } catch (err) {
+          setError(err);
+          break;
+        }
+      }
+      setLoading(false);
+      setResponse(tempResponses);
+    };
+
+
+
+  return { postFixedItems, response, loading, error };
+}

@@ -158,7 +158,7 @@ const JewelryCustomization = () => {
         if (orderResponse) {
             console.log(orderResponse)
             const newCustomOrderItem = {
-                orderId: orderResponse.data.orderId,
+                orderId: orderResponse.orderId,
                 productTypeId: selectedJewelryType,
                 gemstoneId: selectedGemstone.gemstoneId,
                 metalId: selectedMetal.metalId,

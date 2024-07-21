@@ -26,7 +26,7 @@ import { useAuth } from "@/contexts/AuthContext"
 
 const OrdersPage = () => {
     const {currentCustomer, userDetails} = useAuth();
-    const {orders} = useOrdersByCustomerId(currentCustomer.customerId);
+    const {orders} = useOrdersByCustomerId(currentCustomer?.customerId);
 
     return (
         <>

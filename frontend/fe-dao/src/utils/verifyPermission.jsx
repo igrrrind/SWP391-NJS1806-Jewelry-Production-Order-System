@@ -1,29 +1,25 @@
 import { useAuth } from '@/contexts/AuthContext';
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
-const verifyPermission = (Component, requiredRoles) => {
-  function Verify() {
+const VerifyPermission = (component, requiredRoles) => {
     const {  userDetails } = useAuth();
 
     const checkIsAccessible = (requiredRoles) => {
-      if (!userDetail || !userDetails.roleId) {
+      if (!userDetails || !userDetails.roleName) {
         return false;
       }
-      return requiredRoles.includes(userDetails.roleId);
+      return requiredRoles.includes(userDetails.roleName.toLowerCase());
     };
 
 
     const isAccessible = checkIsAccessible(requiredRoles);
 
     if (!isAccessible) {
-      return <Redirect to="/" />;
+      return <Navigate to="/" />;
     }
 
     return <Component />;
-  }
-
-  return Verify;
 };
 
-export default verifyPermission;
+export default VerifyPermission;

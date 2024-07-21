@@ -24,12 +24,25 @@ const cartSlice = createSlice({
 
             // Recalculate the total
             state.total = state.list.reduce((sum, item) => sum + item.price * item.quantity, 0);
+        }, 
+        updateQuantity(state, action) {
+            const index = state.list.findIndex(productStock => productStock.productStockId === action.payload.productStockId);
+            if (index !== -1) {
+                state.list[index].quantity = action.payload.quantity;
+            } 
+            state.total = state.list.reduce((sum,item) => sum + + item.price * (item?.quantity), 0)
         }
     }
 });
 
 const { actions, reducer } = cartSlice;
 
-export const { addToCart, removeFromCart } = actions;
+export const { addToCart, removeFromCart, updateQuantity } = actions;
+
+export const willExceedStock = (state, productStockId, quantityToAdd, stockQuantity) => {
+    const itemInCart = state.cart.list.find(item => item.productStockId === productStockId);
+    const currentQuantity = itemInCart ? itemInCart.quantity : 0;
+    return (currentQuantity + quantityToAdd) > stockQuantity;
+};
 
 export default reducer;

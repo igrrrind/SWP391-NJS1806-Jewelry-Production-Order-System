@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-const QuantityButton = ({stock,disabled, onValueChange, chosenQuantity}) => {
+const QuantityButton = ({stock,disabled, onValueChange, chosenQuantity, allowDelete, onDelete}) => {
   const [quantity, setQuantity] = useState(1);
 
   // Use useEffect to update the quantity if chosenQuantity changes
@@ -25,6 +25,9 @@ const QuantityButton = ({stock,disabled, onValueChange, chosenQuantity}) => {
 
   const handleDecrease = () => {
     setQuantity(prevQuantity => Math.max(prevQuantity - 1, 1));
+    if (quantity == 1 && allowDelete) {
+      onDelete(); // Call the onDelete callback
+    }
   };
 
   useEffect(() => {

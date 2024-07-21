@@ -45,12 +45,12 @@ const CustomerSignUpPage = () => {
 
   const onSubmit = async (data) => {
      console.log(data)
-     data.uid = currentUser.uid   
-     await postDetails(data)
-     if (response) {
+     data.uid = currentUser.uid
+     try {
+        await postDetails(data)
         navigate('/');
-     } else if (error) {
-        setNotice('Failed to create user account, please try again.');
+     } catch (error){
+        setNotice("The customer detail was not successfull added");
      }
   }
 

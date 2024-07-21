@@ -36,6 +36,10 @@ import ManageProductionsPage from './views/dashboard/manage-productions/ManagePr
 import { PaymentSuccessPage } from './views/cart/paymentSuccess';
 import CustomerSignUpPage from './views/signup/CustomerSignUpPage';
 import { DashboardPage } from './views/dashboard/DashboardPage';
+import ShipmentTrackingPage from './views/track-shipment/ShipmentTrackingPage';
+import Protected from './contexts/Protected';
+import VerifyPermission from './utils/verifyPermission';
+import SearchProductPage from './views/products/search/SearchProductPage';
 
 
 const productsPages = {
@@ -89,6 +93,7 @@ const App = () => {
               />
             ))}
                <Route path=":productId/:productName" element={<ProductDetailsPage />} />
+               <Route path="search" element={<SearchProductPage/>}/>
         </Route>
 
         <Route path="/cart" element={<MainLayout />}>
@@ -115,8 +120,12 @@ const App = () => {
               
         </Route>
 
+        <Route path="/track-shipment" element={<MainLayout />}>
+              <Route index element={<ShipmentTrackingPage />}/>          
+        </Route> 
 
-        <Route path="/dashboard" element={<DashboardLayout />}>
+
+        <Route path="/dashboard" element={<VerifyPermission  component={<DashboardLayout/>} requiredRoles={["admin", "sales staff", "design staff", "manager", "production staff"]} />}>
               <Route index element={<DashboardPage/>}/>
               <Route path="manage-orders" element={<ManageOrdersPage />}/>     
               <Route path="manage-users" element={<ManageUsersPage />}/>        
@@ -144,7 +153,7 @@ const App = () => {
         {/*   <Route index element={<HomePage />} /> */}
         </Route>
 
-        <Route path="/customer-signup" element={<CustomerSignUpPage/>}>
+        <Route path="/customer-signup" element={<Protected><CustomerSignUpPage/></Protected>}>
         {/*   <Route index element={<HomePage />} /> */}
         </Route>
 

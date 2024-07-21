@@ -11,6 +11,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { usePostUser } from '@/hooks/userHooks';
 import { useForm } from 'react-hook-form';
+import { commonPasswords } from '@/config/commonPasswords';
+
 
 const SignupPage = () => {
   const navigate = useNavigate();
@@ -24,6 +26,8 @@ const SignupPage = () => {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
   const password = watch("password", "");
+
+
 
   const handleSignup = useCallback(async (data) => {
     if (data.password !== data.confirmPassword) {
@@ -160,7 +164,7 @@ const SignupPage = () => {
               {...register("phone", { 
                 required: "Phone is required",
                 pattern: {
-                  value: /^[0-9]{10}$/, // Adjust the regex according to your requirements
+                  value: /^[0-9]{10}$/, 
                   message: "Enter a valid phone number"
                 }
               })} 
@@ -169,12 +173,19 @@ const SignupPage = () => {
           </div>
 
           <div className="m-4 w-full relative">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Password<p className='font-normal text-muted-foreground mb-2'>Requires at least 8 characters</p></Label>
             <Input 
               type={showPassword ? "text" : "password"} 
               id="password" 
               placeholder="Password" 
-              {...register("password", { required: "Password is required" })} 
+              {...register("password", { 
+                required: "Password is required",  
+                minLength: {
+                  value: 8,
+                  message: "Password must have at least 8 characters"
+              }, validate: value => 
+              !commonPasswords.includes(value) || "Password is too common. Please enter a more secure one"
+              })} 
             />
             <FontAwesomeIcon 
               icon={showPassword ? faEyeSlash : faEye} 

@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import MyInformation from "./MyInformation"
 import { Separator } from "@/components/ui/separator"
 import CheckOutDetails from "./CheckOutDetails"
@@ -16,6 +16,8 @@ import { calculateShipmentFeeByZone } from "@/config/shipmentFee"
 import { usePostShipment } from "@/hooks/shipmentHooks"
 import { usePostTransaction } from "@/hooks/transactionHooks"
 import { formatPrice } from "@/utils/formatPrice"
+import { usePostFixedItems } from "@/hooks/orderItemHooks"
+import { removeFromCart } from "@/redux/slice/cartSlice"
 
 
 const CheckOutPage = () => {
@@ -35,6 +37,23 @@ const CheckOutPage = () => {
     const {userDetails, currentUser, currentCustomer} = useAuth();
 
     const cart = useSelector(state => state.cart);
+    const dispatch = useDispatch();
+    const [orderItems, setOrderItems] = useState([])
+
+    useEffect(() => {
+        if (cart?.list) {
+          const mappedOrderItems = cart.list.map(item => ({
+            productId: item.productId,
+            productStockId: item.productStockId,
+            quantity: item.quantity,
+            unitPrice: item.price,
+            subTotal:   item.quantity * item.price
+          }));
+          setOrderItems(mappedOrderItems);
+        }
+      }, [cart]);
+
+
     const [url, setUrl] = useState(null);
     const [error, setError] = useState(null);
     const { provinces } = useAllProvince();
@@ -42,6 +61,7 @@ const CheckOutPage = () => {
     const {postOrder, response} = usePostOrder(); 
     const [shipmentFee, setShipmentFee] = useState(0);
     const {postShipment} = usePostShipment();
+    const { postFixedItems} = usePostFixedItems();
 
     const isDeliveryValid = deliveryMethod === 'inPerson' || 
                             (deliveryMethod === 'byShipment' && shippingAddress && city && town);
@@ -66,8 +86,6 @@ const CheckOutPage = () => {
             console.log(towns);
         }
     }, [city, provinces, deliveryMethod]);
-
-
     
 
 
@@ -97,6 +115,21 @@ const CheckOutPage = () => {
 
 
         const handleSuccessfulOrder = async () => {
+  
+               
+                if (orderItems.length > 0) {
+                    const updatedOrderItems = orderItems.map(item => ({
+                        ...item,
+                        orderId: response.orderId
+                    }));
+                    await postFixedItems(updatedOrderItems);
+                }
+                
+                cart.list.forEach(item => {
+                    dispatch(removeFromCart({ productStockId: item.productStockId }));
+                });
+                
+
                 const transactionId = generateNumericTransactionId(response.orderId);
                 const paymentUrl = await initiatePayment(cart.total * 100, `Pacifa Payment ${transactionId}`, transactionId, "cart/payment-confirm");
 
@@ -104,12 +137,12 @@ const CheckOutPage = () => {
                 if (deliveryMethod === 'byShipment') {
                 const shipmentDetails = {
                     orderId: response.orderId,
-                    shipmentDate: "2024-01-01",  // Example date, replace with actual date logic if needed
-                    shippingAddress: shippingAddress,  // Assuming shippingAddress is defined elsewhere
-                    shippingProvince: city,  // Assuming city is defined elsewhere
-                    shippingDistrict: town,  // Assuming town is defined elsewhere
-                    isShipping: false,  // Example value, replace with actual logic if needed
-                    shippingFee: shipmentFee  // Assuming shipmentFee is defined elsewhere
+                    shipmentDate: "2024-01-01", 
+                    shippingAddress: shippingAddress,  
+                    shippingProvince: city,  
+                    shippingDistrict: town, 
+                    isShipping: false, 
+                    shippingFee: shipmentFee 
                 };
 
                 await postShipment(shipmentDetails)
@@ -123,8 +156,12 @@ const CheckOutPage = () => {
                     window.location.href = paymentUrl;
                     console.log("Everything is fine.");
                 }
+
         }
-        if (response) handleSuccessfulOrder()
+        if (response) {
+            console.log(response)
+            handleSuccessfulOrder()
+        }
 
 
     },[response])

@@ -36,6 +36,8 @@ import { storage } from "@/services/Firebase";
 import Lightbox from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
 import { usePutOrder } from "@/hooks/orderHooks";
+import { fetchImageUrl } from "@/utils/fetchImageUrl";
+import FirebaseImage from "@/components/custom/fire-base-image";
 
 
 const OrderCard = ({ order, userDetails }) => {
@@ -258,7 +260,7 @@ const OrderCard = ({ order, userDetails }) => {
                     <div className="flex justify-between items-center p-4 bg-white border border-gray-200 rounded-lg shadow-sm mb-4" key={item.orderFixedItemId}>
                         <div className="flex space-x-6">
                             <div className="overflow-hidden rounded-lg border border-gray-300 w-32 h-32">
-                                <img src={necklacesImage} alt="necklace" className="w-full h-full object-cover"/>
+                                <FirebaseImage path={`products/thumbnails/${item.productId}`} alt={item.productName}/>
                             </div>
                             <div className="flex flex-col justify-between">
                                 <div>

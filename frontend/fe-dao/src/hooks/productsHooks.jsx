@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 
 export function useAllProducts() {
   const [products, setProducts] = useState([]);
+
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -101,6 +102,31 @@ export function usePostProduct(product) {
 
   return { response, loading, error };
 }
+
+
+
+export function usePutProduct()  {
+  const [response, setResponse] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+
+  const updateProduct = async (product) => {
+      console.log(product)
+      
+      setLoading(true);
+      try {
+          const res = await axios.put(`https://localhost:7112/api/Product/Update`, product); // Change to your API endpoint
+          setResponse(res.data);
+      } catch (err) {
+          setError(err);
+      } finally {
+          setLoading(false);
+      }
+  };
+
+  return { updateProduct, response, loading, error };
+};
 
 
 

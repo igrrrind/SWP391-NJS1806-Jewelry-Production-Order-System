@@ -10,8 +10,8 @@ import {
 import QuantityButton from "@/components/custom/quantity-button";
 import { Button } from "@/components/ui/button";
 import { Phone, ShoppingCart } from "lucide-react";
-import { useDispatch } from "react-redux";
-import { addToCart } from "@/redux/slice/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, willExceedStock } from "@/redux/slice/cartSlice";
 import { formatPrice } from "@/utils/formatPrice";
 import { Link } from "react-router-dom";
 
@@ -22,7 +22,6 @@ const DetailProductBuy = ({ product, productStockEntries }) => {
     const phone = "0938562745"
     const [selectedEntry, setSelectedEntry] = useState(null);
     const [displayPrice, setDisplayPrice] = useState(product.lowestPrice);
-
     const [quantity, setQuantity] = useState(0);
 
     const handleSelectedEntry = (value) => {
@@ -40,6 +39,23 @@ const DetailProductBuy = ({ product, productStockEntries }) => {
 
     const dispatch = useDispatch();
 
+    const stockExceeded = useSelector(state => 
+      selectedEntry ? willExceedStock(state, selectedEntry.productStockId, quantity, selectedEntry.stockQuantity) : false
+    );
+
+    const handleAddToCart = () => {
+      if (!stockExceeded) {
+          dispatch(addToCart({
+              ...product,
+              ...selectedEntry,
+              quantity: quantity,
+          }));
+          alert("Item added to cart!");
+      } else {
+          alert("Amount exceed stock");
+      }
+    }
+    /*
     const handleAddToCart = () => {
       dispatch(addToCart({
         ...product,
@@ -48,6 +64,8 @@ const DetailProductBuy = ({ product, productStockEntries }) => {
       }))
       alert("Added!")
     }
+
+    */
   
 
   // Extract unique sizes
@@ -109,9 +127,9 @@ const DetailProductBuy = ({ product, productStockEntries }) => {
               <div className="text-center px-10 italic text-sm font-medium">Like the design?</div>
               <div className="text-center px-10 mb-4 text-sm">Contact our staff to have it personalised for you. </div>
 
-              <div className="flex justify-between space-x-2">
+              <div className="flex space-x-2">
                 <a href={`tel:${phone}`}><Button variant="default" className="w-full h-14 p-4 border rounded-none  bg-white text-green-500 font-bold hover:bg-green-100" ><Phone/>&nbsp; {phone}</Button></a>
-                <Button variant="default" className="w-full h-14 p-4 border bg-white rounded-none text-blue-500 font-bold hover:bg-blue-100" >Message Zalo</Button>
+                <a href="https://zalo.me/0938562745"><Button variant="default" className="w-full h-14 p-4 border bg-white rounded-none text-blue-500 font-bold hover:bg-blue-100" >Message Zalo</Button></a>
                 <a href="https://m.me/heal.ytocin" target="_blank"><Button variant="default" className="w-full h-14 p-4 border rounded-none bg-blue-400 text-white font-bold hover:bg-blue-700" >Message Facebook</Button></a>
               </div>
             </div>

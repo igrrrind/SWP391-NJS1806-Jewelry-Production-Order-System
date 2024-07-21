@@ -49,3 +49,29 @@ export function useShipmentByOrderId(order) {
 
     return { shipment, loading };
 }
+
+
+export function useShipmentTracking() {
+    const [shipment, setShipment] = useState(null);
+    const [loading, setLoading] = useState(true);
+
+    const fetchShipmentOrderId = async (orderId) => {
+        if (!orderId) {
+            setLoading(false);
+            return;
+        }
+
+        try {
+            setShipment(null)
+            setLoading(true);
+            const response = await axios.get(`https://localhost:7112/api/Shipments/${orderId}`);
+            return response.data
+        } catch (error) {
+            console.error('Error fetching Shipment', error);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { fetchShipmentOrderId, loading };
+}

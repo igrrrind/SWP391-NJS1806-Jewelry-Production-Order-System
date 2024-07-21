@@ -15,7 +15,6 @@ export async function fetchImageUrl (path) {
             return url
         } catch (error) {
             console.error("Error getting download URL", error);
-            return ""
         }
     }
     
