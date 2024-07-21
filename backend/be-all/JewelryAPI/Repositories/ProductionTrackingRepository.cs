@@ -32,7 +32,12 @@ namespace Repositories
                 return trackingDtos;
             }
         }
+        public int CountProductionStatusId(int id)
+        {
+            _context = new JeweleryOrderProductionContext();
+            return _context.ProductionTrackings.Where(t => t.ProductionStatusId == id).Count();
 
+        }
         
         
         

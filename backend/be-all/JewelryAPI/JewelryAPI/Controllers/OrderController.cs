@@ -40,6 +40,63 @@ namespace JewelryAPI.Controllers
                 return BadRequest(e.Message);
             }
             return Ok(orderList);
+
+        }
+        [HttpGet("OrderCountByATimePeriod")]
+        public IActionResult OrderCountByATimePeriod(DateOnly startDate, DateOnly endDate)
+        {
+
+            try
+            {
+                int orderCount = _orderService.OrderCountByATimePeriod(startDate, endDate);
+                return Ok(orderCount);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+          
+        }
+        [HttpGet("OrderCountByStatus")]
+        public IActionResult OrderCountByStatus(int statusId)
+        {
+            try
+            {
+                int orderCount = _orderService.OrderCountByStatus(statusId);
+                return Ok(orderCount);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("TotalMoneyForEachMonth")]
+        public IActionResult TotalMoneyForEachMonth(DateOnly year)
+        {
+            List<TotalMonth> totalMoneyList = new List<TotalMonth>();
+            try
+            {
+                totalMoneyList = _orderService.TotalMoneyForEachMonth(year);
+                return Ok(totalMoneyList);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            
+        }
+        [HttpGet("TotalMoneyByYear")]
+        public IActionResult TotalMoneyByYear(DateOnly year)
+        {
+            try
+            {
+                decimal totalMoney = _orderService.TotalMoneyByYear(year);
+                return Ok(totalMoney);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("AddNewOrder")]
         public IActionResult AddNewOrder(Order order)

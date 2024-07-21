@@ -19,7 +19,11 @@ namespace Services
             productionTrackingRepository = new ProductionTrackingRepository();
             return productionTrackingRepository.GetAllProductionTrackings();
         }
-
+        public int GetProductionTrackingCount(int id)
+        {
+            productionTrackingRepository = new ProductionTrackingRepository();
+            return productionTrackingRepository.CountProductionStatusId(id);
+        }
     
         public ProductionTrackingDto? GetProductionTracking(int id)
         {

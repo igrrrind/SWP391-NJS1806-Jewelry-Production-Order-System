@@ -44,6 +44,13 @@ namespace JewelryAPI.Controllers
 
             return Ok(productionTracking);
         }
+        [HttpGet("CountByProductionStatusId")]
+        public IActionResult CountProductionStatusId(int id)
+        {
+            var count = _context.GetProductionTrackingCount(id);
+            return Ok(count);
+        }
+
 
         // PUT: api/ProductionTrackings/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

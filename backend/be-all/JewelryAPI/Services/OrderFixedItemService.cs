@@ -20,6 +20,8 @@ namespace Services
         }
         //GET
         public List<OrderFixedItemDto> GetOrderFixedItems(OrderFixedItemQueryObject queryObject) => _orderFixedItemRepo.GetOrderFixedItems(queryObject);
+        public int SumQuantityByOrderId(int OrderId) => _orderFixedItemRepo.SumOfQuantiTyByProductId(OrderId);
+        public List<SaleProductDto> TopSaleProduct(OrderFixedItemQueryObject obj) => _orderFixedItemRepo.TopSaleProductList(obj);
         //UPDATE
         public void UpdateOrderFixedItem(OrderFixedItem orderFixedItem) => _orderFixedItemRepo.UpdateOrderFixedItem(orderFixedItem);
         //DELETE

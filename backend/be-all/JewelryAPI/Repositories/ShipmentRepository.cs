@@ -12,7 +12,11 @@ namespace Repositories
             _context = new JeweleryOrderProductionContext();
             return _context.Shipments.FirstOrDefault(s => s.OrderId == id);
         }
-
+        public int CountIsShipments(bool isShipped)
+        {
+            _context = new JeweleryOrderProductionContext();
+            return _context.Shipments.Where(s => s.IsShipping == isShipped).Count();
+        }
         public Shipment AddShipment(Shipment shipment)
         {
             _context = new JeweleryOrderProductionContext();

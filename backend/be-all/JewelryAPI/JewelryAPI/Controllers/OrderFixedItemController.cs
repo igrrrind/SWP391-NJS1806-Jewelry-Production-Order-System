@@ -39,6 +39,27 @@ namespace JewelryAPI.Controllers
             }
             return Ok(fixedItemList);
         }
+        [HttpGet("GetProductQuantity")]
+        public IActionResult GetProductQuantity(int Id)
+        {
+            try
+            {
+                int quantity = _orderFixedItemService.SumQuantityByOrderId(Id);
+                return Ok(quantity);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("TopsaleProduct")]
+        public IActionResult TopSaleProduct([FromQuery] OrderFixedItemQueryObject obj)
+        {
+            List<SaleProductDto> product = new List<SaleProductDto>();
+            product = _orderFixedItemService.TopSaleProduct(obj);
+            return Ok(product);
+
+        }
         //UPDATE
         [HttpPut("UpdateOrderFixedItem")]
         public IActionResult UpdateOrderFixedItem(OrderFixedItem orderFixedItem)

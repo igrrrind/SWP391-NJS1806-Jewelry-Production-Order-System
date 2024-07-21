@@ -16,7 +16,7 @@ namespace JewelryAPI.Controllers
         [HttpGet]
         public IActionResult GetTransaction([FromQuery] TransactionQueryObject queryObject)
         {
-            
+
             List<Transaction> transactionList = new List<Transaction>();
             try
             {
@@ -28,6 +28,32 @@ namespace JewelryAPI.Controllers
             }
 
             return Ok(transactionList);
+        }
+        [HttpGet("TotalMoney")]
+        public IActionResult TotalMoneyTransactedByATimePeriod(DateOnly begin, DateOnly end)
+        {
+            try
+            {
+              
+                decimal totalMoney = _transactionService.TotalMoneyTransactedByATimePeriod(begin, end);
+                return Ok(totalMoney);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpGet("TotalMoneyForEachMonth")]
+        public IActionResult TotalMoneyForEachMonth(DateOnly year)
+        {
+            try { 
+             var  totalMoney = _transactionService.TotalMoneyForEachMonth(year);
+                return Ok(totalMoney);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("AddNewTransaction")]
         public IActionResult PostTransaction(Transaction transaction)

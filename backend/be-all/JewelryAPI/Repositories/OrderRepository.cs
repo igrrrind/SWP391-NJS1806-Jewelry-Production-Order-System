@@ -115,6 +115,33 @@ namespace Repositories
 
             return orderList.Skip(skipNumber).Take(queryObject.PageSize).ToList();
         }
+        public int OrderCountByATime(DateOnly begin , DateOnly end)
+        {
+            _context = new JeweleryOrderProductionContext();
+            return _context.Orders.Where(o => o.OrderDate >= begin && o.OrderDate <= end).Count();
+        }
+        public int OrderCountByStatus(int statusId)
+        {
+            _context = new JeweleryOrderProductionContext();
+            return _context.Orders.Where(o => o.StatusId == statusId).Count();
+        }
+        public List<TotalMonth> TotalMoneyForEachMonth(DateOnly year)
+        {
+            _context = new JeweleryOrderProductionContext();
+            List<TotalMonth> total = new List<TotalMonth>();
+            for (int i = 1; i <= 12; i++)
+            {
+                var totalMoney = _context.Orders.Where(o => o.OrderDate.Year == year.Year && o.OrderDate.Month == i).Sum(o => o.OrderTotal);
+                total.Add(new TotalMonth() { Month = i, Total = totalMoney });
+            }
+            return total;
+        }
+        public decimal TotalMoneyByYear(DateOnly year)
+        {
+            _context = new JeweleryOrderProductionContext();
+            return _context.Orders.Where(o => o.OrderDate.Year == year.Year).Sum(o => o.OrderTotal);
+        }
+       
         //POST
         public void AddNewOrder(Order order)
         {

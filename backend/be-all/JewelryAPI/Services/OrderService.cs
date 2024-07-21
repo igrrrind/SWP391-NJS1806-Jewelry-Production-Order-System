@@ -14,7 +14,10 @@ namespace Services
     {
         private OrderRepository _orderRepo = new OrderRepository();
         public List<OrderDto> GetOrders(OrderQueryObject queryObject) => _orderRepo.GetOders(queryObject);
-       
+        public int OrderCountByATimePeriod(DateOnly startDate, DateOnly endDate) => _orderRepo.OrderCountByATime(startDate, endDate);
+        public int OrderCountByStatus(int statusId) => _orderRepo.OrderCountByStatus(statusId);
+        public List<TotalMonth> TotalMoneyForEachMonth(DateOnly year) => _orderRepo.TotalMoneyForEachMonth(year);
+        public decimal TotalMoneyByYear(DateOnly year) => _orderRepo.TotalMoneyByYear(year);
         public void AddNewOrder(Order order) => _orderRepo.AddNewOrder(order);
         
         public void UpdateOrder(Order order) => _orderRepo.UpdateOrder(order);

@@ -19,6 +19,11 @@ namespace Services
             repository = new ShipmentRepository();
             return repository.GetShipment(id);
         }
+        public int CountIsShipmennt(bool isShipment)
+        {
+            repository = new ShipmentRepository();
+            return repository.CountIsShipments(isShipment);
+        }
         public Shipment AddShipment(Shipment shipment)
         {
             repository = new ShipmentRepository();

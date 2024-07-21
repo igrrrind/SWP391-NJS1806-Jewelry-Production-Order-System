@@ -1,4 +1,5 @@
 ﻿using Repositories;
+using Repositories.Dto;
 using Repositories.Models;
 using Repositories.QueryObjects;
 using System;
@@ -18,7 +19,14 @@ namespace Services
         {
             return _transactionRepo.GetTransaction(queryObject);
         }
-
+        public decimal TotalMoneyTransactedByATimePeriod(DateOnly begin, DateOnly end)
+        {
+            return _transactionRepo.TotalmoneyTransactedByATimePeriod(begin, end);
+        }
+        public List<TotalMonth> TotalMoneyForEachMonth(DateOnly year)
+        {
+            return _transactionRepo.TotaLMoneyForEachMonth(year);
+        }
         public void AddTransaction(Transaction transaction)
         {
             _transactionRepo.AddTransaction(transaction);

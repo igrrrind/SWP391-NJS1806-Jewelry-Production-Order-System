@@ -72,7 +72,33 @@ namespace Repositories
             return list.Skip(skipNumber).Take(queryObject.PageSize).ToList();
         }
 
-        
+        public int SumOfQuantiTyByProductId(int id)
+        {
+            _context = new JeweleryOrderProductionContext();
+            var sum = _context.OrderFixedItems.Where(f => f.ProductId == id).Sum(s => s.Quantity);
+            return sum;
+        }
+        public List<SaleProductDto> TopSaleProductList(OrderFixedItemQueryObject obj)
+        {
+            _context = new JeweleryOrderProductionContext();
+            var list = (from o in _context.OrderFixedItems
+                        join p in _context.Products on o.ProductId equals p.ProductId
+                        group new { o, p } by o.ProductId into g
+                        select new SaleProductDto
+                        {
+                            ProductId = g.Key,
+                            ProductName = g.First().p.ProductName,
+                            QuantitySold = g.Sum(x => x.o.Quantity)
+                        });
+
+            if (obj.SortByNewer)
+            {
+                list = list.OrderByDescending(f =>f.ProductId);
+            }
+            var skipnumber =(obj.PageNumber -1) * obj.PageSize;
+            return list.Skip(skipnumber).Take(obj.PageSize).ToList();
+            
+        }
         //UPDATE
         public void UpdateOrderFixedItem(OrderFixedItem orderFixedItem)
         {

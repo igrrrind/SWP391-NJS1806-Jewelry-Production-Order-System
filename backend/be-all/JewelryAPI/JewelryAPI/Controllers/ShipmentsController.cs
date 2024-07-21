@@ -32,6 +32,12 @@ namespace JewelryAPI.Controllers
             return shipment == null ? NotFound() : Ok(shipment);
         }
 
+        [HttpGet("CountByIsShipping")]
+        public IActionResult CountByIsShipping(bool isShipping)
+        {
+            var count = _context.CountIsShipmennt(isShipping);
+            return Ok(count);
+        }
         // PUT: api/Shipments/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         //[HttpPut("{id}")]
