@@ -1,16 +1,14 @@
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
-import { Select } from '@radix-ui/react-select';
 import { Search } from 'lucide-react';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Select, SelectItem, SelectTrigger, SelectValue, SelectContent } from '@/components/ui/select';
 
-const ProductSearchBar = () => {
+
+const ProductSearchBar = ({searchKeyword, sortOptions, setSortOption, sortOption}) => {
   const buttonRef = useRef(null);
-  const [searchKeyword, setSearchKeyword] = useState('');
-  const [isDescending, setIsDescending] = useState('true');
-  const [sortBy, setSortBy] = useState('name'); // Static sort functionality
+  const [search, setSearch] = useState('');
 
   const navigate = useNavigate();
 
@@ -23,36 +21,51 @@ const ProductSearchBar = () => {
 
   const handleSearch = () => {
     const params = new URLSearchParams();
-    if (searchKeyword) params.append('SearchKeyWord', search);
-    if (isDescending !== '') params.append('IsDescending', isDescending);
-    params.append('SortBy', sortBy); // Static value
-
+    if (search) params.append('search', search);
     navigate(`/products/search?${params.toString()}`);
   };
 
 
 
   return (
-    <div className='flex justify-center'>
-        <div className="relative w-full max-w-sm">
-        <Input
-            type="text"
-            placeholder="Search for your jewelry..."
-            value={searchKeyword}
-            onChange={(e) => setSearchKeyword(e.target.value)}
-            className="rounded-none pl-12"
-            onKeyDown={handleKeyDown}
-        />
-        <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-700" />
+    <>
+        <div className='flex justify-center'>
+            <div className="relative w-full max-w-sm">
+            <Input
+                type="text"
+                placeholder="Search for your jewelry..."
+                value={search}
+                defaultValue={searchKeyword}
+                onChange={(e) => setSearch(e.target.value)}
+                className="rounded-none pl-12"
+                onKeyDown={handleKeyDown}
+            />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-700" />
+            </div>
+            
+            <Button 
+                onClick={handleSearch} 
+                ref={buttonRef}
+                className="ml-2 rounded-none bg-stone-900">
+                Search
+            </Button>
         </div>
-        
-        <Button 
-            onClick={handleSearch} 
-            ref={buttonRef}
-            className="ml-2">
-            Search
-        </Button>
-    </div>
+        <div className='mx-auto'>
+            Sort by 
+            <Select onValueChange={value => setSortOption(value)} value={sortOption}>
+                <SelectTrigger className="border w-40 border-stone-800" id="gemstone" aria-label="Select gemstone">
+                    <SelectValue placeholder="Most relevant" />
+                </SelectTrigger>
+                <SelectContent>
+                    {sortOptions.map((option) => (
+                        <SelectItem value={option} key={option}>
+                            <p className="text-md">{option}</p>
+                        </SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
+        </div>
+    </>
   );
 };
 

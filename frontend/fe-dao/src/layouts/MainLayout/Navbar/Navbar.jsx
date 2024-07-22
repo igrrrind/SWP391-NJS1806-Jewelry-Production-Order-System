@@ -7,11 +7,47 @@ import { BellDot, Cog, ShoppingCartIcon, User } from 'lucide-react';
 import { useSelector } from 'react-redux';
 import AccountSidebar from '@/views/account/accountPage';
 import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuIndicator,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+  NavigationMenuViewport,
+} from "@/components/ui/navigation-menu"
+
+
+import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+
+const components = [
+  {
+    title: "RINGS",
+    href: "/products/rings"
+  },
+  {
+    title: "NECKLACES",
+    href: "/products/necklaces"
+  },
+  {
+    title: "BRACELETS",
+    href: "/products/bracelets"
+  },
+  {
+    title: "EARRINGS",
+    href: "/products/earrings"
+  },
+  {
+    title: "CHARM",
+    href: "/products/charms"
+  }
+]
 
 
 
@@ -40,11 +76,46 @@ const Navbar = () => {
 
           <div className="container mx-auto items-center grid grid-cols-3 py-2">
           <div>
+            {/*
             <nav className="flex items-center justify-between text-sm">
               <Link to="/products" className="text-gray-700 hover:text-gray-900">PRODUCTS</Link>
               <Link to="/customize" className="text-gray-700 hover:text-gray-900">CUSTOMIZE & PERSONALIZE</Link>
               <Link href="#" className="text-gray-700 hover:text-gray-900">OUR BLOG</Link>
-            </nav>
+            </nav> */}
+            <NavigationMenu>
+              <NavigationMenuList>
+                <NavigationMenuItem>
+                  <NavigationMenuTrigger>PRODUCTS</NavigationMenuTrigger>
+                  <NavigationMenuContent>
+                  <ul className="grid w-[200px] p-2 md:w-[200px] md:grid-cols-1 lg:w-[200px] rounded-none ">
+                    <p className='font-medium p-2 '>TYPES</p>
+                    {components.map((component) => (
+                      <Link key={component.title} to={component.href}>
+                        <p className='hover:bg-stone-200 p-2 rounded-lg transition text-light text-sm'>{component.title}</p>
+                      </Link>
+                    ))}
+                  </ul>
+                  </NavigationMenuContent>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                <Link to="/customize">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    CUSTOMIZE & PERSONALIZE
+                  </NavigationMenuLink>
+                </Link>
+                  
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                <Link to="/customize">
+                  <NavigationMenuLink className={navigationMenuTriggerStyle()}>
+                    OUR BLOG
+                  </NavigationMenuLink>
+                </Link>
+                  
+                </NavigationMenuItem>
+                
+              </NavigationMenuList>
+            </NavigationMenu>
           </div>
 
           <div className="logo flex justify-center">

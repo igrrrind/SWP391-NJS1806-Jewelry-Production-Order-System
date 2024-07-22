@@ -127,8 +127,8 @@ function CheckOutDetails({
                                 
                                 <SelectContent>    
                                 {towns && towns.map((town) => (
-                                        <SelectItem value={town.Name} key={town.Name}>
-                                            <p className="text-md">{town.Name}</p>
+                                        <SelectItem value={town.FullName} key={town.FullName}>
+                                            <p className="text-md">{town.FullName}</p>
                                         </SelectItem>
                                 ))}
                                 </SelectContent>                           

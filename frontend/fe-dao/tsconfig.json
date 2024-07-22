@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+      "outDir": "./dist",             // Output directory for compiled files
+      "rootDir": "./src",
+      "target": "es5",
+      "lib": ["dom", "dom.iterable", "esnext"],
+      "allowJs": true,
+      "jsx": "react",
+      "module": "commonjs",
+      "strict": true,
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "forceConsistentCasingInFileNames": true
+    },
+    "include": ["src"]
+  }
+  

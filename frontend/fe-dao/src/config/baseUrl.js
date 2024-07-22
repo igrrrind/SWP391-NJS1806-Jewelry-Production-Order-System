@@ -1,0 +1,1 @@
+export const beUrl = "https://localhost:7112/api/"

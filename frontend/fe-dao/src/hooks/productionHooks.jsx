@@ -25,29 +25,6 @@ export function useAllProductions(){
 }
 
 
-export function useProductById(id) {
-    const [product, setProduct] = useState([]);
-    const [loading, setLoading] = useState(true);
-  
-    useEffect(() => {
-      const fetchProductById = async () => {
-        try {
-          setLoading(true);
-          const response = await axios.get(`https://localhost:7112/api/Product/${id}`);
-          setProduct(response.data);
-        } catch (error) {
-          console.error('Error fetching products:', error);
-        } finally {
-          setLoading(false);
-        }
-      };
-  
-      fetchProductById();
-    }, []);
-    return { product, loading };
-  }
-
-
   export function useAllProductionStatuses(){
     const [statuses, setStatuses] = useState([]);
     const [loading, setLoading] = useState(true);

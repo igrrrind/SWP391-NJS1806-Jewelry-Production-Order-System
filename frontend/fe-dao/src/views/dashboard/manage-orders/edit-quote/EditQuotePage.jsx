@@ -53,6 +53,11 @@ const EditQuotePage = () => {
         calculateTotalCost();
     }, [watch('metalWeight'), watch('metalCost'), watch('caratPrice'), watch('caratCost'), watch('productionCost')]);
 
+    const formData = watch();
+
+    useEffect(() => {
+      console.log("Form data changed:", formData);
+    }, [formData]);
 
     useEffect(() => {
         if (order) {

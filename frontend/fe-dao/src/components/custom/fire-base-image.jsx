@@ -4,6 +4,7 @@ import { storage } from "../../services/Firebase"; // Adjust the path according 
 
 const FirebaseImage = ({path,alt}) => {
   const [imageUrl, setImageUrl] = useState(null);
+  const [validImage, setValidImage] = useState(true);
   const extensions = ['png', 'jpg', 'jpeg', 'webp']; // List of possible extensions
 
 
@@ -14,17 +15,17 @@ const FirebaseImage = ({path,alt}) => {
       for (const ext of extensions) {
         if (found) break;
         const imageRef = ref(storage, `${path}.${ext}`);
-        try {
+         try {
           const url = await getDownloadURL(imageRef);
           setImageUrl(url);
           found = true
-        } catch (error) {
-          console.error("Error getting download URL", error);
-        }
+         } catch (error) {
+          //console.error("Error getting download URL", error);
+         }
       }
       
       if (!found) {
-        console.error("No valid image found for the given base path.");
+        setValidImage(false);
       }
     };
     fetchAndSetImageUrl();
@@ -32,7 +33,7 @@ const FirebaseImage = ({path,alt}) => {
 
   return (
     <>
-      {imageUrl ? (
+      {validImage && imageUrl ? (
         <img src={imageUrl} alt={alt} className="object-cover" />
       ) : (
         <div className="object-cover w-full h-full"></div>

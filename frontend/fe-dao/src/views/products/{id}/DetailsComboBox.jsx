@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addToCart, willExceedStock } from "@/redux/slice/cartSlice";
 import { formatPrice } from "@/utils/formatPrice";
 import { Link } from "react-router-dom";
+import { getJewelrySizeLabel, getJewelrySizeName } from "@/utils/typeToUnit";
 
 
 
@@ -99,7 +100,7 @@ const DetailProductBuy = ({ product, productStockEntries }) => {
                   <SelectContent>    
                   {productStockEntries.map((entry) => (                    
                     <SelectItem value={entry.productStockId.toString()} key={entry.productStockId} >
-                      <p className="text-md font-semibold">{entry.metalTypeName} - {entry.gemstoneType} - {entry.size}</p>
+                      <p className="text-md font-semibold">{entry.metalTypeName} - {entry.gemstoneType} - {getJewelrySizeLabel(product.productType, entry.size)}</p>
                     </SelectItem>      
                   ))} 
                   </SelectContent>                           

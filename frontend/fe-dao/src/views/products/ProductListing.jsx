@@ -18,8 +18,9 @@ const ProductListing = ({products}) => {
 
 
   return (
-    <div className="p-10">
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 container">
+    <div className="py-10">
+      <p className='mb-2'>Found <span className="font-bold">{products.length}</span> designs matching your search.</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products? products.map(product =>(
           <ProductCard key={product.productId} product={product} onClick={handleProductClick}/>
           )) : ""} 

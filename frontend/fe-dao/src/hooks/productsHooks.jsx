@@ -25,20 +25,34 @@ export function useAllProducts() {
   return { products, loading };
 }
 
-export function useAllActiveProducts(productTypeId) {
+export function useAllActiveProducts({
+  productTypeId,
+  searchKeyword,
+  isActive = true,
+  sortBy,
+  isDescending,
+  pageNumber,
+  pageSize = 16,
+}) {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     const fetchAllActiveProducts = async () => {
-      if (!productTypeId) return
- 
       try {
         setLoading(true);
-        const productTypeQuerry = productTypeId==="all" ? `` :`&ProductTypeId=${productTypeId}`;
-        console.log(productTypeQuerry)
-        const response = await axios.get(`https://localhost:7112/api/Product?IsActive=true${productTypeQuerry}&PageSize=50`);
+        const params = new URLSearchParams();
+        if (productTypeId) params.append('ProductTypeId', productTypeId);
+        if (searchKeyword) params.append('SearchKeyWord', searchKeyword);
+        if (isActive !== undefined) params.append('IsActive', isActive);
+        if (sortBy) params.append('SortBy', sortBy);
+        if (isDescending !== undefined) params.append('IsDescending', isDescending);
+        if (pageNumber) params.append('PageNumber', pageNumber);
+        if (pageSize) params.append('PageSize', pageSize);
+
+        console.log(params.toString())
+
+        const response = await axios.get(`https://localhost:7112/api/Product?${params.toString()}`);
         setProducts(response.data);
       } catch (error) {
         console.error('Error fetching products:', error);
@@ -48,13 +62,14 @@ export function useAllActiveProducts(productTypeId) {
     };
 
     fetchAllActiveProducts();
-  }, [productTypeId]);
+  }, [productTypeId, searchKeyword, isActive, sortBy, isDescending, pageNumber, pageSize]);
+
   return { products, loading };
 }
 
 
 export function useProductById(id) {
-  const [product, setProduct] = useState([]);
+  const [product, setProduct] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -116,8 +131,7 @@ export function usePutProduct()  {
       
       setLoading(true);
       try {
-          const res = await axios.put(`https://localhost:7112/api/Product/Update`, product); // Change to your API endpoint
-          setResponse(res.data);
+          const res = await axios.put(`https://localhost:7112/api/Product/Update`, product); 
       } catch (err) {
           setError(err);
       } finally {

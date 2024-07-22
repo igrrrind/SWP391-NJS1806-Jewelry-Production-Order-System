@@ -35,11 +35,12 @@ import DesignDetailsPage from './views/dashboard/manage-designs/design/:id/Desig
 import ManageProductionsPage from './views/dashboard/manage-productions/ManageProductionsPage';
 import { PaymentSuccessPage } from './views/cart/paymentSuccess';
 import CustomerSignUpPage from './views/signup/CustomerSignUpPage';
-import { DashboardPage } from './views/dashboard/DashboardPage';
 import ShipmentTrackingPage from './views/track-shipment/ShipmentTrackingPage';
 import Protected from './contexts/Protected';
 import VerifyPermission from './utils/verifyPermission';
 import SearchProductPage from './views/products/search/SearchProductPage';
+import DashboardPage from './views/dashboard/DashboardPage';
+import EditProductPage from './views/dashboard/manage-products/edit/:id/EditProductPage';
 
 
 const productsPages = {
@@ -125,7 +126,7 @@ const App = () => {
         </Route> 
 
 
-        <Route path="/dashboard" element={<VerifyPermission  component={<DashboardLayout/>} requiredRoles={["admin", "sales staff", "design staff", "manager", "production staff"]} />}>
+        <Route path="/dashboard" element={<VerifyPermission  component={DashboardLayout} requiredRoles={["admin", "sales staff", "design staff", "manager", "production staff"]} />}>
               <Route index element={<DashboardPage/>}/>
               <Route path="manage-orders" element={<ManageOrdersPage />}/>     
               <Route path="manage-users" element={<ManageUsersPage />}/>        
@@ -133,6 +134,7 @@ const App = () => {
                       
               </Route> 
               <Route path="add-product" element={<AddProductPage />} />
+              <Route path="edit-product/:id" element={<EditProductPage />} />
               <Route path="create-quote/:orderId" element={<CreateQuotePage/>} />
               <Route path="edit-quote/:orderId" element={<EditQuotePage/>} />
               <Route path="create-transaction/:orderId" element={<CreateTransactionPage/>} />

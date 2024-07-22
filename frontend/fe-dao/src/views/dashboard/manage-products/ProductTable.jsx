@@ -23,7 +23,7 @@ import {
   } from "@/components/ui/dropdown-menu"
 import { Button } from '@/components/ui/button';
 import { MoreHorizontal } from 'lucide-react';
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import FirebaseImage from "@/components/custom/fire-base-image";
 import { usePutProduct } from "@/hooks/productsHooks";
 import { update } from "lodash";
@@ -166,7 +166,7 @@ const ProductTable = ({products}) => {
                                         </Button>
                                         </DropdownMenuTrigger>
                                         <DropdownMenuContent align="end">
-                                        <DropdownMenuItem>Edit Product Info & Stock</DropdownMenuItem>
+                                        <DropdownMenuItem><Link to={`/dashboard/edit-product/${product.productId}`}>Edit Product Info & Stock</Link></DropdownMenuItem>
                                         <DropdownMenuItem onClick={() => handleSetActive(product)}>Set {product.isActive? "Inactive" : "Active"}</DropdownMenuItem>
                                         <DropdownMenuItem><p className="text-red-500">Delete Product</p></DropdownMenuItem>
                                         </DropdownMenuContent>

@@ -1,22 +1,32 @@
 import { useAuth } from '@/contexts/AuthContext';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 
-const VerifyPermission = (component, requiredRoles) => {
-    const {  userDetails } = useAuth();
+const VerifyPermission = ({ component: Component, requiredRoles }) => {
+    const { userDetails } = useAuth();
+    const [loading, setLoading] = useState(true);
+    const [isAccessible, setIsAccessible] = useState(false);
 
-    const checkIsAccessible = (requiredRoles) => {
-      if (!userDetails || !userDetails.roleName) {
-        return false;
-      }
-      return requiredRoles.includes(userDetails.roleName.toLowerCase());
-    };
+    useEffect(() => {
+        if (userDetails) {
+            const checkIsAccessible = (roles) => {
+                if (!userDetails.roleName) {
+                    return false;
+                }
+                return roles.includes(userDetails.roleName.toLowerCase());
+            };
+            
+            setIsAccessible(checkIsAccessible(requiredRoles));
+            setLoading(false);
+        }
+    }, [userDetails, requiredRoles]);
 
-
-    const isAccessible = checkIsAccessible(requiredRoles);
+    if (loading) {
+        return <div>Authenticating user...</div>; // Replace this with your loading component if any
+    }
 
     if (!isAccessible) {
-      return <Navigate to="/" />;
+        return <Navigate to="/" />;
     }
 
     return <Component />;
