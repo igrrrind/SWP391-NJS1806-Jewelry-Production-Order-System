@@ -270,14 +270,14 @@ INSERT INTO Metals (metal_type_name) VALUES ('Platinum');
 INSERT INTO Metals (metal_type_name) VALUES ('Palladium');
 
 -- Inserting into Product
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Daydream Ring', 'A beautiful gold ring.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (2, 'Moissanite Necklace', 'A shiny silver necklace.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (3, 'Spiritual Luxe Bracelet', 'An elegant platinum bracelet.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (4, 'Teardrop Earring', 'A sleek titanium earring.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (5, 'Raw Crystal Charm', 'A stylish palladium charm.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Crush On You Ring', 'A stylish palladium charm.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Flow Ring', 'A stylish palladium charm.', 1);
-INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Lania Ring', 'A stylish palladium charm.', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Daydream Ring', 'Stacked or worn alone, this Daydream emerald cut diamond band in various of materials is perfect for all occasions!', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (2, 'Moissanite Necklace', 'A luxurious design, imagine this lovely stylized circular silver necklace design on your neck, when going to work, going out or going on a date, it would be wonderful, wouldnnott it? This silver jewelry will make you more lovely and attractive. It is made from pure 92.5% silver with high-quality 1 carat Moissanite diamond. Let us go out and shine with it!', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (3, 'Spiritual Luxe Bracelet', 'It is a design that does all the talking for you while leveling up your everyday look. Make a statement by effortlessly building and adding more to this designer-favorite bundle - it is simple to personalize and even easier to style.', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (4, 'Teardrop Earring', 'Our Teardrop Errings are the perfect companions if you are yearning for a new adventure, seeking guidance, or facing moments of stress and anxiety. Moonstones heighten your intuition and carry the weight of your emotions.', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (5, 'Raw Crystal Charm', 'Our Raw Crystal Charm brings a wild yet meaningful touch to the most unremarkable of days. Feel like a no-makeup look but still want to unleash your inner goddess? Look no further - this powerful charm is just perfect for you. Match with your favorite necklace and/or chain to create a look that is uniquely yours.', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Crush On You Ring', 'Embark on a journey around the world with our Crush On You Ring. This captivating piece channels the mystical energies of Gemstone, renowned for its intuitive-enhancing, emotion-balancing, and energy-protecting properties.', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Flow Ring', 'Navigate new adventures confidently with our Raw Crystal Ring - Flow, adorned with enchanting Moonstone. Known as the Stone of Intuition, Moonstone supports inner balance and emotional healing, making it the perfect companion for your journeys ahead.', 1);
+INSERT INTO Product (product_type_id, product_name, product_description, isActive) VALUES (1, 'Lania Ring', 'Our Lania Ring will bring you a feeling of complete tranquility. Whether you want to be more relaxed or improve your patience, this gem is perfect for you. With the power to encourage inner calmness, you will experience a heavenly serenity.', 1);
 
 -- Inserting into Gemstone
 INSERT INTO Gemstone (gemstone_type, gemstone_carat, color) VALUES ('No Mounting', 0, 'None');
