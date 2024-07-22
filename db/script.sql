@@ -466,6 +466,45 @@ INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quanti
 INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (6, 10, 4, 6, 17, 2191000, 'http://example.com/gallery1.jpg');
 INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (6, 10, 4, 7, 23, 2191000, 'http://example.com/gallery1.jpg');
 
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 1, 5, 12, 27388000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 1, 6, 26, 2738000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 1, 7, 2, 2738000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 2, 5, 40, 26198000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 2, 6, 0, 2619000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 2, 7, 11, 2619000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 3, 5, 25, 2550000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 3, 6, 23, 2550000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 3, 7, 19, 2550000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 4, 5, 8, 2464000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 4, 6, 17, 2464000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 5, 4, 7, 23, 2464000, 'http://example.com/gallery1.jpg');
+
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 1, 5, 12, 3286000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 1, 6, 26, 3286000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 1, 7, 2, 3286000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 2, 5, 40, 3117000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 2, 6, 0, 3117000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 2, 7, 11, 3117000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 3, 5, 25, 3012000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 3, 6, 23, 3012000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 3, 7, 19, 3012000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 4, 5, 8, 2990000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 4, 6, 17, 2990000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 7, 4, 7, 23, 2990000, 'http://example.com/gallery1.jpg');
+
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 1, 5, 12, 3833000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 1, 6, 26, 3833000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 1, 7, 2, 3833000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 2, 5, 40, 3751000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 2, 6, 0, 3751000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 2, 7, 11, 3751000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 3, 5, 25, 3660000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 3, 6, 23, 3660000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 3, 7, 19, 3660000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 4, 5, 8, 3559000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 4, 6, 17, 3559000, 'http://example.com/gallery1.jpg');
+INSERT INTO Product_Stock (product_id, gemstone_id, metal_id, size, stock_quantity, price, gallery_url) VALUES (7, 9, 4, 7, 23, 3559000, 'http://example.com/gallery1.jpg');
+
 
 
 
