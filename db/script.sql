@@ -642,6 +642,8 @@ INSERT INTO Production_Status (status_name) VALUES ('In Progress');
 INSERT INTO Production_Status (status_name) VALUES ('Completed');
 INSERT INTO Production_Status (status_name) VALUES ('Delayed');
 INSERT INTO Production_Status (status_name) VALUES ('On Hold');
+INSERT INTO Production_Status (status_name) VALUES ('Handed Over');
+
 
 -- Inserting into Production_Tracking
 INSERT INTO Production_Tracking (order_id, start_date, production_status_id) VALUES (1, '2023-01-05', 1);
