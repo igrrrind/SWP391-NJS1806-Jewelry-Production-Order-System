@@ -235,11 +235,23 @@ INSERT INTO Roles (role_name) VALUES ('Design Staff');
 INSERT INTO Roles (role_name) VALUES ('Production Staff');
 
 -- Inserting into User
-INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('U001', 'user1@example.com', '1234567890', 'John', 'Doe', 1);
-INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('U002', 'user2@example.com', '0987654321', 'Jane', 'Smith', 2);
-INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('U003', 'user3@example.com', '5551234567', 'Bob', 'Brown', 3);
-INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('U004', 'user4@example.com', '7778889999', 'Alice', 'Johnson', 4);
-INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES ('U005', 'user5@example.com', '3334445555', 'Charlie', 'Williams', 5);
+INSERT INTO User (uid, email, phone, first_name, last_name, role_id) VALUES 
+('C5aGJ7TtCrT1PU5xRO5RlWrSbnH2', 'production@gmail.com', '1234567890', 'John', 'Doe', 6),
+('9Fs0AmOHLVQr5EyDOSTO0VLED753', 'designer@gmail.com', '2345678901', 'Jane', 'Smith', 5),
+('RRq7OCL3MMOQJBwCu10ACtMYbTm1', 'pacifamanager@gmail.com', '3456789012', 'Alex', 'Johnson', 3),
+('jMxpel01GYV2ZCM4jFavdALkW533', 'pacifastaff@gmail.com', '4567890123', 'Emily', 'Davis', 4),
+('061x85EJvgg2ClWtKZitpbnpo003', 'pacifaadmin@gmail.com', '5678901234', 'Michael', 'Brown', 2),
+('4oHLyz4yLMTnW5UjzxskGu1Z1VB3', 'esdoubleup@gmail.com', '6789012345', 'Sarah', 'Wilson', 1);
+
+-- Inserting into Customer_Detail
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES 
+(N'C5aGJ7TtCrT1PU5xRO5RlWrSbnH2', N'Male', '1985-01-01', N'463B Nguyễn Thị Tú, Bình Hưng Hoà', N'Thành phố Hồ Chí Minh', N'Quận Bình Tân'),
+(N'9Fs0AmOHLVQr5EyDOSTO0VLED753', N'Female', '1990-02-02', N'102 Trần Văn Kiểu, Phường 10', N'Thành phố Hồ Chí Minh', N'Quận 6'),
+(N'RRq7OCL3MMOQJBwCu10ACtMYbTm1', N'Male', '1975-03-03', N'112 Chu Văn An, Nghĩa Lộ', N'Quãng Ngãi', N'Thành phố Quãng Ngãi'),
+(N'jMxpel01GYV2ZCM4jFavdALkW533', N'Female', '1988-04-04', N'926 Kim Giang, Thanh Liệt', N'Hà Nội', N'Thanh Trì'),
+(N'jMxpel01GYV2ZCM4jFavdALkW533', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá'),
+(N'4oHLyz4yLMTnW5UjzxskGu1Z1VB3', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá');
+
 
 -- Inserting into Payment_Status
 INSERT INTO Payment_Status (status_name) VALUES ('Pending');
@@ -247,14 +259,6 @@ INSERT INTO Payment_Status (status_name) VALUES ('Completed');
 INSERT INTO Payment_Status (status_name) VALUES ('Deposited');
 INSERT INTO Payment_Status (status_name) VALUES ('Refunded');
 INSERT INTO Payment_Status (status_name) VALUES ('Cancelled');
-
--- Inserting into Customer_Detail
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES 
-(N'U001', N'Male', '1985-01-01', N'463B Nguyễn Thị Tú, Bình Hưng Hoà', N'Thành phố Hồ Chí Minh', N'Quận Bình Tân'),
-(N'U002', N'Female', '1990-02-02', N'102 Trần Văn Kiểu, Phường 10', N'Thành phố Hồ Chí Minh', N'Quận 6'),
-(N'U003', N'Male', '1975-03-03', N'112 Chu Văn An, Nghĩa Lộ', N'Quãng Ngãi', N'Thành phố Quãng Ngãi'),
-(N'U004', N'Female', '1988-04-04', N'926 Kim Giang, Thanh Liệt', N'Hà Nội', N'Thanh Trì'),
-(N'U005', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá');
 
 -- Inserting into Product_Types
 INSERT INTO Product_Types (type_name) VALUES ('Ring');
@@ -591,10 +595,10 @@ INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment
 INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-01-04', 15000000, 'VnPay', 0);
 INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-02-05', 20000000, 'Cash', 1);
 INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-03-06', 250000000, 'VnPay', 0);
-INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2023-04-02', 5000000, 'VnPay', 0);
-INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2023-05-03', 10000000, 'Cod', 1);
-INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2023-06-04', 15000000, 'VnPay', 0);
-INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2023-07-05', 20000000, 'Cash', 1);
+INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-04-02', 5000000, 'VnPay', 0);
+INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-05-03', 10000000, 'Cod', 1);
+INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-06-04', 15000000, 'VnPay', 0);
+INSERT INTO Transactions (order_id, transaction_date, transaction_total, payment_type, is_deposit) VALUES (1, '2024-07-05', 20000000, 'Cash', 1);
 
 -- Inserting into Quote
 INSERT INTO Quote (order_id, created_date, metal_weight, metal_cost, carat_price, carat_cost, production_cost, quote_total_price) VALUES (1, '2023-01-03', 10.0, 100.0, 200.0, 300.0, 50.0, 650.0);
