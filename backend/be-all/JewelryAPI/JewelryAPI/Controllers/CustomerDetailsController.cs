@@ -16,7 +16,7 @@ namespace JewelryAPI.Controllers
         {
             _context = context;
         }
-
+        //TEST
         // GET: api/CustomerDetails
         //[HttpGet]
         //public IActionResult GetCustomerDetails()
