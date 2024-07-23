@@ -39,7 +39,8 @@ import { usePutOrder } from "@/hooks/orderHooks";
 import { fetchImageUrl } from "@/utils/fetchImageUrl";
 import FirebaseImage from "@/components/custom/fire-base-image";
 import { useDesignById } from "../../../hooks/designHooks";
-import { useAllProductions, useProductionById } from "../../../hooks/productionHooks";
+import { useAllProductions, usePostProduction, useProductionById } from "../../../hooks/productionHooks";
+import { usePostProduct } from "../../../hooks/productsHooks";
 
 
 const OrderCard = ({ order, userDetails }) => {
@@ -48,9 +49,10 @@ const OrderCard = ({ order, userDetails }) => {
   const { transaction } = useTransactionByOrderId(order);
   const { shipment } = useShipmentByOrderId(order);
   const { quote } = useQuoteByOrderId(order);
-  const {production}= useProductionById(order.orderId)
+  const { production }= useProductionById(order.orderId)
   const {updateOrderStatus} = usePutOrder()
   const [designOrderId, setDesignOrderId] = useState();
+  const {postProduction} = usePostProduction();
 
   const {design} = useDesignById(designOrderId)
 
@@ -89,7 +91,14 @@ const OrderCard = ({ order, userDetails }) => {
 
   const handleDesignApproval = async () => {
       await updateOrderStatus(order, 5)
+      const production = {
+        orderId: order.orderId,
+        startDate: new Date().toISOString().slice(0,10),
+        productionStatusId: 1
+      }
+      await postProduction(production)
       alert("Design Approved. Track your production.")
+
       navigate(0)
   }
 
@@ -242,12 +251,12 @@ const OrderCard = ({ order, userDetails }) => {
           </TabsContent>
 
 
-
+          {/* PRODUCTION */}
           <TabsContent value="Production">
           {order.statusId > 4 && production ? (
               <div className="flex flex-col items-center border border-muted border-dashed my-4">
-                <h1 className="font-medium">We're working on your design!</h1> 
-                <p className="text-muted-foreground text-sm">Designated completion date: {formatDate(design.designatedCompletion)}</p>      
+                <h1 className="font-medium">Track the production process</h1> 
+                <p className="text-muted-foreground text-sm">State of production: {production.productionStatusName}</p>      
                 <Separator className="m-2"/>
               </div>      
             ) : 

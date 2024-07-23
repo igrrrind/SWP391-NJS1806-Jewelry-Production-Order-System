@@ -95,3 +95,25 @@ export function usePutProduction()  {
 
   return { updateProductionStatus, response, loading, error };
 };
+
+export function usePostProduction()  {
+    const [response, setResponse] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const postProduction = async (production) => {
+        setLoading(true);
+        try {
+            const res = await axios.post('https://localhost:7112/api/ProductionTrackings', production); 
+            setResponse(res.data);
+            //console.log(res.data)
+            //console.log(response)
+        } catch (err) {
+            setError(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { postProduction, response, loading, error };
+};
