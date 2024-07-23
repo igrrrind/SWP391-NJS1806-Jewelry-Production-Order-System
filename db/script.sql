@@ -1,5 +1,6 @@
 
-CREATE DATABASE JeweleryOrderProduction
+CREATE DATABASE JeweleryOrderProduction COLLATE SQL_Latin1_General_CP1_CI_AS;
+
 
 CREATE TABLE Roles (
     role_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -248,11 +249,12 @@ INSERT INTO Payment_Status (status_name) VALUES ('Refunded');
 INSERT INTO Payment_Status (status_name) VALUES ('Cancelled');
 
 -- Inserting into Customer_Detail
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U001', 'Male', '1985-01-01', "463B Nguyễn Thị Tú, Bình Hưng Hoà", "Thành phố Hồ Chí Minh", "Quận Bình Tân");
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U002', 'Female', '1990-02-02', "102 Trần Văn Kiểu, Phường 10", "Thành phố Hồ Chí Minh", "Quận 6");
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U003', 'Male', '1975-03-03', "112 Chu Văn An, Nghĩa Lộ", "Quãng Ngãi", "Thành phố Quãng Ngãi");
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U004', 'Female', '1988-04-04', "926 Kim Giang, Thanh Liệt", "Hà Nội", "Thanh Trì");
-INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES ('U005', 'Male', '2000-05-05', "73 Trịnh Doanh, Thanh Sơn", "Thanh Hoá", "Thành phố Thanh Hoá");
+INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, district_town) VALUES 
+(N'U001', N'Male', '1985-01-01', N'463B Nguyễn Thị Tú, Bình Hưng Hoà', N'Thành phố Hồ Chí Minh', N'Quận Bình Tân'),
+(N'U002', N'Female', '1990-02-02', N'102 Trần Văn Kiểu, Phường 10', N'Thành phố Hồ Chí Minh', N'Quận 6'),
+(N'U003', N'Male', '1975-03-03', N'112 Chu Văn An, Nghĩa Lộ', N'Quãng Ngãi', N'Thành phố Quãng Ngãi'),
+(N'U004', N'Female', '1988-04-04', N'926 Kim Giang, Thanh Liệt', N'Hà Nội', N'Thanh Trì'),
+(N'U005', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá');
 
 -- Inserting into Product_Types
 INSERT INTO Product_Types (type_name) VALUES ('Ring');
@@ -623,11 +625,13 @@ INSERT INTO Product_Images (product_stock_id, image_url, alt) VALUES (4, 'http:/
 INSERT INTO Product_Images (product_stock_id, image_url, alt) VALUES (5, 'http://example.com/product5.jpg', 'Palladium Watch');
 
 -- Inserting into Shipment
-INSERT INTO Shipment (order_id, shipment_date, shipping_address, shipping_province, shipping_district, is_shipping, shipping_fee) VALUES (1, '2023-01-10', '463B Nguyễn Thị Tú, Bình Hưng Hoà', 'Thành phố Hồ Chí Minh', 'Quận Bình Tân', 1, 0);
-INSERT INTO Shipment (order_id, shipment_date, shipping_address, shipping_province, shipping_district, is_shipping, shipping_fee) VALUES (2, '2023-02-15', '102 Trần Văn Kiểu, Phường 10', 'Thành phố Hồ Chí Minh', 'Quận 6', 1, 0);
-INSERT INTO Shipment (order_id, shipment_date, shipping_address, shipping_province, shipping_district, is_shipping, shipping_fee) VALUES (3, '2023-03-20', '112 Chu Văn An, Nghĩa Lộ', 'Quãng Ngãi', 'Thành phố Quãng Ngãi', 1, 50000);
-INSERT INTO Shipment (order_id, shipment_date, shipping_address, shipping_province, shipping_district, is_shipping, shipping_fee) VALUES (4, '2023-04-25', '926 Kim Giang, Thanh Liệt', 'Hà Nội', 'Thanh Trì', 1, 50000);
-INSERT INTO Shipment (order_id, shipment_date, shipping_address, shipping_province, shipping_district, is_shipping, shipping_fee) VALUES (5, '2023-05-30', '73 Trịnh Doanh, Thanh Sơn', 'Thanh Hoá', 'Thành phố Thanh Hoá', 1, 50000);
+INSERT INTO Shipment (order_id, shipment_date, shipping_address, shipping_province, shipping_district, is_shipping, shipping_fee) VALUES 
+(1, '2023-01-10', N'463B Nguyễn Thị Tú, Bình Hưng Hoà', N'Thành phố Hồ Chí Minh', N'Quận Bình Tân', 1, 0),
+(2, '2023-02-15', N'102 Trần Văn Kiểu, Phường 10', N'Thành phố Hồ Chí Minh', N'Quận 6', 1, 0),
+(3, '2023-03-20', N'112 Chu Văn An, Nghĩa Lộ', N'Quãng Ngãi', N'Thành phố Quãng Ngãi', 1, 50000),
+(4, '2023-04-25', N'926 Kim Giang, Thanh Liệt', N'Hà Nội', N'Thanh Trì', 1, 50000),
+(5, '2023-05-30', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá', 1, 50000);
+
 
 -- Inserting into Review
 INSERT INTO Review (product_id, rating, comment) VALUES (1, 5, 'Excellent product!');

@@ -48,6 +48,28 @@ export function useAllProductions(){
     return {statuses, loading}
 }
 
+export function useProductionById(id) {
+    const [production, setProduction] = useState(null);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const fetchProductionById = async () => {
+        try {
+          setLoading(true);
+          const response = await axios.get(`https://localhost:7112/api/ProductionTrackings/${id}`);
+          setProduction(response.data);
+        } catch (error) {
+          console.error('Error fetching products:', error);
+        } finally {
+          setLoading(false);
+        }
+      };
+  
+      fetchProductionById();
+    }, []);
+    return { production, loading };
+ }
+
 
 
 export function usePutProduction()  {
@@ -62,7 +84,7 @@ export function usePutProduction()  {
 
           console.log('Updating production:', updatedProduction);
 
-          const res = await axios.put(`https://localhost:7112/api/ProductionTrackings/${production.productionStatusId}`, updatedProduction);
+          const res = await axios.put(`https://localhost:7112/api/ProductionTrackings/${production.productionId}`, updatedProduction);
           setResponse(res.data.data);
       } catch (err) {
           setError(err);
@@ -72,4 +94,26 @@ export function usePutProduction()  {
   };
 
   return { updateProductionStatus, response, loading, error };
+};
+
+export function usePostProduction()  {
+    const [response, setResponse] = useState(null);
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState(null);
+
+    const postProduction = async (production) => {
+        setLoading(true);
+        try {
+            const res = await axios.post('https://localhost:7112/api/ProductionTrackings', production); 
+            setResponse(res.data);
+            //console.log(res.data)
+            //console.log(response)
+        } catch (err) {
+            setError(err);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    return { postProduction, response, loading, error };
 };

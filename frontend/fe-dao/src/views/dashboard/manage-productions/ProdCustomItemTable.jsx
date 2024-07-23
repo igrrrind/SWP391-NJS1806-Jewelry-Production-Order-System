@@ -67,6 +67,7 @@ export const ProdCustomItemTable = ({productions, statuses, handleStartShipment 
             setError("Choose a status before updating")
             return;
         }
+        console.log(production)
         await updateProductionStatus(production,statusToUpdate)
         navigate(0)
     }
@@ -76,6 +77,15 @@ export const ProdCustomItemTable = ({productions, statuses, handleStartShipment 
             console.log(psResponse)
         }
     },[psResponse])
+
+    const handleTransfer = async (orderId, production) => {
+        try {
+            await updateProductionStatus(production, 6)
+            handleStartShipment(orderId)
+        } catch (error) {
+            setError("")
+        }
+    }
 
 
 
@@ -117,7 +127,7 @@ export const ProdCustomItemTable = ({productions, statuses, handleStartShipment 
 
                                 <Dialog>
                                     <DialogTrigger asChild>
-                                        <Button variant="outline">Update Status</Button>
+                                        <Button variant="outline" disabled={production.productionStatusId === 6}>Update Status</Button>
                                     </DialogTrigger>
                                     <DialogContent className="sm:max-w-[425px]">
                                         <DialogHeader>
@@ -148,7 +158,7 @@ export const ProdCustomItemTable = ({productions, statuses, handleStartShipment 
                                 <TooltipProvider>
                                     <Tooltip>
                                         <TooltipTrigger asChild>
-                                                <Button variant="outline" disabled={production.productionStatusId != 3} onClick={() => handleStartShipment(production.orderId)}><CheckCircle/> &nbsp; Collected For Shipment</Button>
+                                                <Button variant="outline" disabled={production.productionStatusId != 3} onClick={() => handleTransfer(production.orderId,production)}><CheckCircle/> &nbsp; Collected For Shipment</Button>
                                         </TooltipTrigger>
                                         <TooltipContent side="top">Mark collected by shipment party</TooltipContent>
                                     </Tooltip>

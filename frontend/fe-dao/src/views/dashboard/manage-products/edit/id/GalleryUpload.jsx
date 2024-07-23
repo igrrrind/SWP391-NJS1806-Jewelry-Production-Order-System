@@ -32,7 +32,7 @@ const  GalleryUpload = ({id, handleRefresh}) => {
       </CardHeader>
       <CardContent>
          <div>
-            <ImageUploadComponent mainDirectory="products/gallery" subfolder={id} onUpload={handleRefresh} />
+            <ImageUploadComponent mainDirectory="products/gallery" subfolder={`p${id}`} onUpload={handleRefresh} />
          </div>
          <div>
             <Label>Uploaded Images</Label>
@@ -57,7 +57,7 @@ const UploadedGallery = ({id}) => {
 
 
     useEffect(() => {
-        const storageRef = ref(storage, `products/gallery/${id}`);
+        const storageRef = ref(storage, `products/gallery/p${id}`);
 
         const fetchImages = async () => {
           try {
@@ -95,7 +95,7 @@ const UploadedGallery = ({id}) => {
             {imageUrls.length > 0 ?    
                (imageUrls.map((url, index) => (
                 <div className="flex-col items-center w-1/5 flex-shrink-0 space-y-4" key={index}>
-                    <div className="flex justify-center items-center h-48 overflow-hidden "><img src={url} alt={customId} className="object-cover"/></div>
+                    <div className="flex justify-center items-center h-48 overflow-hidden "><img src={url} alt={id} className="object-cover"/></div>
                     <Button className="bg-red-600" onClick={() => handleDeleteImage(url)}><LucideTrash2/></Button>
                 </div>
                 )))

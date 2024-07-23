@@ -34,6 +34,7 @@ export function useDesignById(id){
     useEffect(() => {
         const fetchDesignById = async () => {    
         try {
+            if (!id) return
             setLoading(true);
             const response = await axios.get(`https://localhost:7112/api/Designs/${id}`);
             setDesign(response.data);
