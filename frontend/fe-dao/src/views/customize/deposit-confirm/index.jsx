@@ -29,7 +29,7 @@ const DepositConfirm = () => {
         console.log(orderId)
         setOrderId(orderId);
 
-        const transactionTotal = parseFloat(params.get('vnp_Amount'));
+        const transactionTotal = parseFloat(params.get('vnp_Amount'))/100;
 
         const transactionData = {
             orderId: orderId,
@@ -58,7 +58,7 @@ const DepositConfirm = () => {
                 isCustom: isCustom,
                 paymentStatusId: 3, //deposited orders
                 statusId: 3, // design pending
-                orderTotal: transaction.transactionTotal
+                orderTotal: transaction.transactionTotal*2
             };
 
             navigate("/customize/deposit-success", { state: { updatedTransaction, updatedOrder } });

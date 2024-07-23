@@ -38,6 +38,8 @@ import "yet-another-react-lightbox/styles.css";
 import { usePutOrder } from "@/hooks/orderHooks";
 import { fetchImageUrl } from "@/utils/fetchImageUrl";
 import FirebaseImage from "@/components/custom/fire-base-image";
+import { useDesignById } from "../../../hooks/designHooks";
+import { useAllProductions, useProductionById } from "../../../hooks/productionHooks";
 
 
 const OrderCard = ({ order, userDetails }) => {
@@ -46,7 +48,18 @@ const OrderCard = ({ order, userDetails }) => {
   const { transaction } = useTransactionByOrderId(order);
   const { shipment } = useShipmentByOrderId(order);
   const { quote } = useQuoteByOrderId(order);
+  const {production}= useProductionById(order.orderId)
   const {updateOrderStatus} = usePutOrder()
+  const [designOrderId, setDesignOrderId] = useState();
+
+  const {design} = useDesignById(designOrderId)
+
+  useEffect(() => {
+    if (orderItems.length > 0) {
+      console.log(orderItems)
+      setDesignOrderId(orderItems[0].orderItemId)
+    }
+  },[orderItems])
 
   const stages = ["Quote", "Design", "Production", "Shipment"];
 
@@ -168,7 +181,7 @@ const OrderCard = ({ order, userDetails }) => {
             {quote && orderItems[0] && order.statusId>1 ? (
               <div className="space-y-4 flex flex-col ">
               <QuoteItem quote={quote} orderItem={orderItems[0]}  userDetails={userDetails}/>
-              <Button className="h-16" onClick={handleQuoteAccept} >
+              <Button className="h-16" onClick={handleQuoteAccept} disabled={design !== undefined && design !== null} >
                 <div className="flex-col">
                   <div className="text-lg">Accept Quote</div>
                   <div className="text-xs">You'll be taken to the payment page</div>
@@ -190,7 +203,21 @@ const OrderCard = ({ order, userDetails }) => {
             )}
           </TabsContent>
 
+
           <TabsContent value="Design">
+            {order.statusId > 2 && design ? (
+              <div className="flex flex-col items-center border border-muted border-dashed my-4">
+                <h1 className="font-medium">We're working on your design!</h1> 
+                <p className="text-muted-foreground text-sm">Designated completion date: {formatDate(design.designatedCompletion)}</p>      
+                <Separator className="m-2"/>
+              </div>      
+            ) : 
+              <div className="h-[128px] border-dotted border-2 flex align-middle items-center justify-center">
+                The design phase is not yet reached for this order.
+              </div>
+            
+            }
+
             {order.statusId >= 4 && (
               <>
                 {orderItems.map((item, index) => (
@@ -212,18 +239,27 @@ const OrderCard = ({ order, userDetails }) => {
                 </div>
               </>
             )}
-            {order.statusId < 4 && (
-              <div className="italic">
-                The design phase is not yet reached for this order.
-              </div>
-            )}
           </TabsContent>
 
 
 
           <TabsContent value="Production">
-            Production details go here.
+          {order.statusId > 4 && production ? (
+              <div className="flex flex-col items-center border border-muted border-dashed my-4">
+                <h1 className="font-medium">We're working on your design!</h1> 
+                <p className="text-muted-foreground text-sm">Designated completion date: {formatDate(design.designatedCompletion)}</p>      
+                <Separator className="m-2"/>
+              </div>      
+            ) : 
+              <div className="h-[128px] border-dotted border-2 flex align-middle items-center justify-center">
+                The production phase is not yet reached for this order.
+              </div>
+            
+            }
           </TabsContent>
+
+
+
           <TabsContent value="Shipment">
             {shipment ? (
               <div>

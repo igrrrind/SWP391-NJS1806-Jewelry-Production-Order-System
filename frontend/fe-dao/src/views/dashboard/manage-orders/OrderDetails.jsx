@@ -172,10 +172,6 @@ const CustomCard = ({order, orderItems, quote, shipment, transaction}) =>{
                   <p className="text-sm">{shipment?.shippingFee}</p>
                 </div>
                 <div className="flex justify-between mb-4">
-                  <p className="text-gray-700 font-semibold">EST. TOTAL</p>
-                  <p className="text-sm">30000</p>
-                </div>
-                <div className="flex justify-between mb-4">
                   <p className="text-gray-700 font-semibold">ACTUAL TOTAL</p>
                   <p className="text-gray-700 font-semibold">{order.orderTotal > 0 ? order.orderTotal : <div className="text-red-700">Quote NF</div>}</p>
                 </div>

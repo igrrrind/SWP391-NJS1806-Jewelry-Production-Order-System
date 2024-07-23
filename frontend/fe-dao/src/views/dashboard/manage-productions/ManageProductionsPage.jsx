@@ -20,30 +20,44 @@ const ManageProductionsPage = () => {
     const [statusesSelect, setStatusesSelect] = useState([])
     const {updateOrderStatus, response} = usePutOrder()
     const navigate = useNavigate();
+    const [orderIdProduction, setOrderIdProduction] = useState(null)
+    const {order} = useOrderById(orderIdProduction);
 
 
     
 
-    useEffect(()=>{
-        if(statuses) {
-            const formattedStatuses = statuses.map(status => ({
-                value: status.productionStatusId,
-                label: status.statusName,
-              }))
-              setStatusesSelect(formattedStatuses)
-              //console.log(statuses)
+    useEffect(() => {
+        if (statuses) {
+          const formattedStatuses = statuses
+            .filter(status => status.productionStatusId >= 1 && status.productionStatusId <= 5)
+            .map(status => ({
+              value: status.productionStatusId,
+              label: status.statusName,
+            }));
+          setStatusesSelect(formattedStatuses);
         }
-    },[statuses])
+    }, [statuses]);
+
 
     const handleStartShipment = async (orderId) => {
-        const {order} = useOrderById(orderId)
-        const statusId = orderId.isShipment ? 7 : 6
-        try {
-            await updateOrderStatus(order,statusId)
-        }catch(error) {
-            toast.error("Something went wrong with your order");
-        }
+        setOrderIdProduction(orderId)
     }   
+
+    useEffect(() => {
+        const updateOrder = async () => {
+            if (order) {
+                const statusId = order.isShipment ? 7 : 6;
+                try {
+                    await updateOrderStatus(order, statusId);
+                    navigate(0)
+                } catch (error) {
+                    toast.error("Something went wrong with your order");
+                }
+            }
+        };
+    
+        updateOrder();
+    }, [order]);
 
 
 
