@@ -5,6 +5,7 @@ using System.Net.Mail;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services
 {//quotes, design, place order, receipt
@@ -30,6 +31,7 @@ namespace Services
             body {
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
+                color: #000000;
             }
             .container {
                 max-width: 600px;
@@ -38,6 +40,7 @@ namespace Services
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 background-color: #f9f9f9;
+                color: #000000;
             }
             .button {
                 display: inline-block;
@@ -56,9 +59,9 @@ namespace Services
             <p>Your order <strong>#{{orderID}}</strong>'s quote is READY! </p>
             <p><em>{{messageText}}</em></p>
             <p>For more details, please click the link below:</p>
-            <p><a class='button' href='{{link}}'>View Order Details</a></p>
+            <p><a class='button' href='{{link}}' style='color:white'>View Order Details</a></p>
             <p>Thank you for choosing our service!</p>
-            <p>Best regards,<br/>Pacifa Jewelry</p>
+            <h4>Best regards,<br/>Pacifa Jewelry</h4>
         </div>
     </body>
     </html>";
@@ -104,6 +107,7 @@ namespace Services
             body {
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
+                color: #000000;
             }
             .container {
                 max-width: 600px;
@@ -112,6 +116,7 @@ namespace Services
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 background-color: #f9f9f9;
+                color: #000000;
             }
             .button {
                 display: inline-block;
@@ -130,9 +135,9 @@ namespace Services
             <p>Your order <strong>#{{orderID}}</strong>'s DESIGN is HERE! </p>
             <p><em>{{messageText}}</em></p>
             <p>For more details, please click the link below:</p>
-            <p><a class='button' href='{{link}}'>View Order Details</a></p>
+            <p><a class='button' href='{{link}}' style='color:white'>View Order Details</a></p>
             <p>Thank you for choosing our service!</p>
-            <p>Best regards,<br/>Pacifa Jewelry</p>
+            <h4>Best regards,<br/>Pacifa Jewelry</h4>
         </div>
     </body>
     </html>";
@@ -181,6 +186,7 @@ namespace Services
             body {
                 font-family: Arial, sans-serif;
                 line-height: 1.6;
+                color: #000000;
             }
             .container {
                 max-width: 600px;
@@ -189,6 +195,7 @@ namespace Services
                 border: 1px solid #ccc;
                 border-radius: 5px;
                 background-color: #f9f9f9;
+                color: #000000;
             }
             .button {
                 display: inline-block;
@@ -207,9 +214,9 @@ namespace Services
             <p>Your order <strong>#{{orderID}}</strong> has been received and is being processed. </p>
             <p><em>{{messageText}}</em></p>
             <p>For more details, please click the link below:</p>
-            <p><a class='button' href='{{link}}'>View Order Details</a></p>
+            <p><a class='button' href='{{link}}' style='color:white'>View Order Details</a></p>
             <p>Thank you for choosing our service!</p>
-            <p>Best regards,<br/>Pacifa Jewelry</p>
+            <h4>Best regards,<br/>Pacifa Jewelry</h4>
         </div>
     </body>
     </html>";
@@ -235,5 +242,86 @@ namespace Services
             smtpClient.Send(message);
         }
 
+
+        public void SendReceiptEmail(string email, string firstName, string lastName, int orderId, string link, decimal total)
+        {
+            string fromMail = "pacifajewelry@gmail.com";
+            string fromPassword = "cbakeikturrqmcav";
+
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(fromMail);
+            message.Subject = "Pacifa's Notification";
+            message.To.Add(new MailAddress(email));
+            string orderID = "" + orderId;
+            string totalAmount = total.ToString("#,0"); ;
+            string messageText = "Your Payment is succefully! please check your receipt and tell us if anything is wrong, Thank you for buying our products!";
+
+            string body = @"
+    <html>
+    <head>
+        <style>
+            /* Define styles for the email body */
+            body {
+                font-family: Arial, sans-serif;
+                line-height: 1.6;
+                color: #000000;
+            }
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                border: 1px solid #ccc;
+                border-radius: 5px;
+                background-color: #f9f9f9;
+                color: #000000;
+                
+            }
+            .button {
+                display: inline-block;
+                padding: 10px 20px;
+                background-color: #007bff;
+                color: white;
+                text-decoration: none;
+                border-radius: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class='container'>
+            <h2>Dear {{firstName}} {{lastName}},</h2>
+            <p>Greetings! We hope this email finds you well.</p>
+            <p>Your order <strong>#{{orderID}}</strong>'s RECEIPT is HERE! </p>
+            <p><em>{{messageText}}</em></p>
+            <h3><em>TOTAL AMOUNT: {{total}} VND</em></h3>
+            <p>For more details, please click the link below:</p>
+            <p><a class='button' href='{{link}}' style='color:white'>View Order Details</a></p>
+            <p>Thank you for choosing our service!</p>
+            <h4>Best regards,<br/>Pacifa Jewelry</h4>
+        </div>
+    </body>
+    </html>";
+
+            // Replace placeholders with actual values
+            body = body.Replace("{{firstName}}", firstName);
+            body = body.Replace("{{lastName}}", lastName);
+            body = body.Replace("{{orderID}}", orderID);
+            body = body.Replace("{{link}}", link);
+            body = body.Replace("{{messageText}}", messageText);
+            body = body.Replace("{{total}}", totalAmount);
+
+            message.Body = body;
+            message.IsBodyHtml = true;
+
+
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential(fromMail, fromPassword),
+                EnableSsl = true,
+            };
+
+            smtpClient.Send(message);
+
+        }
     }
 }
