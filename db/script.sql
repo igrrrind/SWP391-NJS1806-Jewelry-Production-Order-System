@@ -1,6 +1,4 @@
-
 CREATE DATABASE JeweleryOrderProduction COLLATE SQL_Latin1_General_CP1_CI_AS;
-
 
 CREATE TABLE Roles (
     role_id INT NOT NULL PRIMARY KEY IDENTITY(1,1),
@@ -235,7 +233,7 @@ INSERT INTO Roles (role_name) VALUES ('Design Staff');
 INSERT INTO Roles (role_name) VALUES ('Production Staff');
 
 -- Inserting into User
-INSERT INTO User (uid, email, phone, first_name, last_name, role_id) VALUES 
+INSERT INTO [User] (uid, email, phone, first_name, last_name, role_id) VALUES 
 ('C5aGJ7TtCrT1PU5xRO5RlWrSbnH2', 'production@gmail.com', '1234567890', 'John', 'Doe', 6),
 ('9Fs0AmOHLVQr5EyDOSTO0VLED753', 'designer@gmail.com', '2345678901', 'Jane', 'Smith', 5),
 ('RRq7OCL3MMOQJBwCu10ACtMYbTm1', 'pacifamanager@gmail.com', '3456789012', 'Alex', 'Johnson', 3),
@@ -249,7 +247,7 @@ INSERT INTO Customer_Detail (uid, sex, birth_date, address_line, province, distr
 (N'9Fs0AmOHLVQr5EyDOSTO0VLED753', N'Female', '1990-02-02', N'102 Trần Văn Kiểu, Phường 10', N'Thành phố Hồ Chí Minh', N'Quận 6'),
 (N'RRq7OCL3MMOQJBwCu10ACtMYbTm1', N'Male', '1975-03-03', N'112 Chu Văn An, Nghĩa Lộ', N'Quãng Ngãi', N'Thành phố Quãng Ngãi'),
 (N'jMxpel01GYV2ZCM4jFavdALkW533', N'Female', '1988-04-04', N'926 Kim Giang, Thanh Liệt', N'Hà Nội', N'Thanh Trì'),
-(N'jMxpel01GYV2ZCM4jFavdALkW533', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá'),
+(N'061x85EJvgg2ClWtKZitpbnpo003', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá'),
 (N'4oHLyz4yLMTnW5UjzxskGu1Z1VB3', N'Male', '2000-05-05', N'73 Trịnh Doanh, Thanh Sơn', N'Thanh Hoá', N'Thành phố Thanh Hoá');
 
 
