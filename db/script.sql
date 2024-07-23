@@ -599,18 +599,23 @@ INSERT INTO Status (status_id,status_detail) VALUES (11, 'Cancelled');
 
 
 -- Inserting into Orders
-INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (1, '2023-05-04', 3, 2, 1, 0, 10724000);
-INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (2, '2023-12-02', 3, 2, 1, 0, 2612000);
-INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (3, '2024-07-22', 3, 2, 0, 0, 5590000);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (1, '2023-05-04', 8, 2, 1, 0, 10724000);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (2, '2023-12-02', 8, 2, 1, 0, 2612000);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (3, '2024-07-22', 7, 2, 0, 0, 5590000);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (4, '2024-07-12', 71, 2, 1, 0, 15760000);
+INSERT INTO Orders (customer_id, order_date, status_id, payment_status_id, is_shipment, is_custom, order_total) VALUES (5, '2023-08-22', 8, 2, 1, 0, 2464000);
 
 
 -- Inserting into Order_Fixed_Items
 INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (1, 81, 4, 2, 2612000, 5224000);
 INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (1, 2, 1, 1, 5500000, 5500000);
 INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (2, 45, 4, 1, 2612000, 2612000);
-INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (3, 10, 2, 1, 2700000, 2700000);
-INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (3, 11, 2, 1, 2890000, 2890000);
-
+INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (3, 10, 1, 1, 2700000, 2700000);
+INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (3, 11, 1, 1, 2890000, 2890000);
+INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (4, 135, 6, 3, 2464000, 7392000);
+INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (4, 254, 9, 1, 2588000, 2588000);
+INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (4, 11, 2, 2, 2890000, 5780000);
+INSERT INTO Order_Fixed_Items (order_id, product_stock_id, product_id, quantity, unit_price, subtotal) VALUES (5, 160, 7, 1, 2464000, 2464000);
 -- Inserting into Order_Custom_Items
 INSERT INTO Order_Custom_Items (order_id, product_type_id, gemstone_id, metal_id, size, unit_price, quantity, request_description, subtotal) 
 VALUES (1, 1, 1, 1, 6, 500.00, 1, 'Custom ring with diamond', 500.00);
