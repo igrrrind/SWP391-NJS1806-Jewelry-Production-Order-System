@@ -32,7 +32,6 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 import { DropdownMenuLabel } from "@radix-ui/react-dropdown-menu";
 import { getJewelrySizeLabel } from "@/utils/typeToUnit";
 import { Badge } from "@/components/ui/badge";
-import { usePutOrder } from "@/hooks/orderHooks";
 import StatusBadge from "@/components/custom/status-badge";
 import { formatDate } from "@/utils/formatDate";
 import { Label } from "@/components/ui/label";
@@ -42,9 +41,8 @@ import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { usePutProduction } from "@/hooks/productionHooks";
 
-export const ProdCustomItemTable = ({productions, statuses}) => {
+export const ProdCustomItemTable = ({productions, statuses, handleStartShipment }) => {
 
-    const {updateOrderStatus, response} = usePutOrder()
     const navigate = useNavigate()
     const [error, setError] = useState('')
     const [statusToUpdate, setStatusToUpdate] = useState(null)
@@ -78,7 +76,6 @@ export const ProdCustomItemTable = ({productions, statuses}) => {
             console.log(psResponse)
         }
     },[psResponse])
-
 
 
 
@@ -146,7 +143,17 @@ export const ProdCustomItemTable = ({productions, statuses}) => {
                                             <Button onClick={() => handleUpdate(production)}>Update</Button>
                                         </DialogFooter>
                                     </DialogContent>
-                                </Dialog>    
+                                </Dialog>   
+
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                                <Button variant="outline" disabled={production.productionStatusId != 3} onClick={() => handleStartShipment(production.orderId)}><CheckCircle/> &nbsp; Collected For Shipment</Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent side="top">Mark collected by shipment party</TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+
                             </div>
                         </TableCell>  
                     </TableRow>

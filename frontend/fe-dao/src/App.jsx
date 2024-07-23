@@ -31,7 +31,7 @@ import CustomPaymentPage from './views/customize/payment/CustomPaymentPage';
 import DepositConfirm from './views/customize/deposit-confirm';
 import DepositSuccessPage from './views/customize/deposit-success';
 import ManageDesignsPage from './views/dashboard/manage-designs/ManageDesignsPage';
-import DesignDetailsPage from './views/dashboard/manage-designs/design/:id/DesignDetailsPage';
+import DesignDetailsPage from './views/dashboard/manage-designs/design/id/DesignDetailsPage';
 import ManageProductionsPage from './views/dashboard/manage-productions/ManageProductionsPage';
 import { PaymentSuccessPage } from './views/cart/paymentSuccess';
 import CustomerSignUpPage from './views/signup/CustomerSignUpPage';
@@ -40,7 +40,7 @@ import Protected from './contexts/Protected';
 import VerifyPermission from './utils/verifyPermission';
 import SearchProductPage from './views/products/search/SearchProductPage';
 import DashboardPage from './views/dashboard/DashboardPage';
-import EditProductPage from './views/dashboard/manage-products/edit/:id/EditProductPage';
+import EditProductPage from './views/dashboard/manage-products/edit/id/EditProductPage';
 
 
 const productsPages = {

@@ -28,10 +28,6 @@ const EditProductPage = () => {
 
 
     //get all types, all gemstones, all metals
-    const [newProductId, setNewProductId] =  useState([]);
-    const [isCreated, setIsCreated] = useState(false);
-    const [addedProduct, setAddedProduct] = useState(null);
-    const [addedProductStocks, setAddedProductStocks] = useState(null);
     const {updateProduct} = usePutProduct();
     const {updateProductStocks} = usePutProductStocks();
 
