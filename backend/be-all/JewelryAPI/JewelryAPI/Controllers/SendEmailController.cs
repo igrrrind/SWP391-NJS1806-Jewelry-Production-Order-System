@@ -30,5 +30,12 @@ namespace JewelryAPI.Controllers
             _sendEmailService.SendPlaceOrderEmail(email, firstName, lastName, orderId, link);
             return Ok();
         }
+
+        [HttpPost("SendReceiptEmail")]
+        public IActionResult SendReceiptEmail(string email, string firstName, string lastName, int orderId, string link, decimal total)
+        {
+            _sendEmailService.SendReceiptEmail(email, firstName, lastName, orderId, link, total);
+            return Ok();
+        }
     }
 }
