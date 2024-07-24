@@ -58,6 +58,8 @@ const UploadedGallery = ({id}) => {
 
     useEffect(() => {
         const storageRef = ref(storage, `products/gallery/p${id}`);
+        console.log(storageRef.toString())
+        
 
         const fetchImages = async () => {
           try {

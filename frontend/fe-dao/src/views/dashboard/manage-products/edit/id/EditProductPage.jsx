@@ -58,7 +58,7 @@ const EditProductPage = () => {
         <main className="flex-1 p-4 xl:space-y-4 overflow-auto">    
             <EditProduct  productTypes={productTypes} onSubmit={handleUpdate} productId={id}/>
             {productStocks && <EditProductStock metals={metals} gemstones={gemstones} productReference={id} onSubmit={handleStockUpdate} currentStocksBatch={productStocks}/>}
-            <GalleryUpload/>
+            <GalleryUpload id={id}/>
 
         </main>
     )

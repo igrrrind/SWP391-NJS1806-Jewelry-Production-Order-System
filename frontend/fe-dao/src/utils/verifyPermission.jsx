@@ -26,7 +26,7 @@ const VerifyPermission = ({ component: Component, requiredRoles }) => {
     }
 
     if (!isAccessible) {
-        return <Navigate to="/" />;
+        return <div className='flex h-screen items-center justify-center my-auto'>UNAUTHORIZED</div>;
     }
 
     return <Component />;

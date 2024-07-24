@@ -127,7 +127,7 @@ const App = () => {
 
 
         <Route path="/dashboard" element={<VerifyPermission  component={DashboardLayout} requiredRoles={["admin", "sales staff", "design staff", "manager", "production staff"]} />}>
-              <Route index element={<VerifyPermission  component={DashboardPage} requiredRoles={["admin", "sales staff", "manager"]} />}/>
+              <Route index element={<VerifyPermission  component={DashboardPage} requiredRoles={["admin", "sales staff", "manager"]}/>}/>
               <Route path="manage-orders" element={<ManageOrdersPage />}/>     
               <Route path="manage-users" element={<ManageUsersPage />}/>        
               <Route path="manage-products" element={<ManageProductsPage />}>  

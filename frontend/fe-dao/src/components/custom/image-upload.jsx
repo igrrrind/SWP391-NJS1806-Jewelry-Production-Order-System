@@ -32,7 +32,7 @@ export default function ImageUpload({msg,uploadPath,uploadFileName}) {
   };
 
   const uploadFileToFirebase = (file) => {
-    const storageRef = ref(storage, `${uploadPath}/${uploadFileName}.png`);
+    const storageRef = ref(storage, `${uploadPath}/`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(

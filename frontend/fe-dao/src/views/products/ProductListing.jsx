@@ -23,9 +23,7 @@ const ProductListing = ({products}) => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
           {products? products.map(product =>(
           <ProductCard key={product.productId} product={product} onClick={handleProductClick}/>
-          )) : ""} 
-          <Button onClick={handleTestClick}>Test product</Button>      
-          
+          )) : ""}           
       </div>
     </div>
   );

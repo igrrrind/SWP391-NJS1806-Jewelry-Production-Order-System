@@ -97,13 +97,12 @@ const OrderCard = ({ order, userDetails }) => {
         productionStatusId: 1
       }
       await postProduction(production)
-      alert("Design Approved. Track your production.")
-
+        alert("Design Approved. Track your production.")
       navigate(0)
   }
 
   const handleDisproval = async () => {
-    alert("Design Approved. Track your production.")
+    alert("Design Disproved. The design staff will continue to work on it.")
     navigate(0)
 }
 
@@ -190,14 +189,14 @@ const OrderCard = ({ order, userDetails }) => {
             {quote && orderItems[0] && order.statusId>1 ? (
               <div className="space-y-4 flex flex-col ">
               <QuoteItem quote={quote} orderItem={orderItems[0]}  userDetails={userDetails}/>
-              <Button className="h-16" onClick={handleQuoteAccept} disabled={design !== undefined && design !== null} >
+              <Button className="h-16" onClick={handleQuoteAccept} disabled={design != undefined && design !== null} >
                 <div className="flex-col">
                   <div className="text-lg">Accept Quote</div>
                   <div className="text-xs">You'll be taken to the payment page</div>
                 </div>
               </Button>
 
-              <Button className="h-16 mt-4" variant="destructive">
+              <Button className="h-16 mt-4" variant="destructive" onClick={handleQuoteCancel}>
                 <div className="flex-col">
                   <div className="text-lg">Cancel Quote</div>
                   <div className="text-xs">Your order will be cancelled</div>

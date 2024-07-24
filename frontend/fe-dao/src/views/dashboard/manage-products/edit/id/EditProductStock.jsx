@@ -40,7 +40,7 @@ const EditProductStock = ({ metals, gemstones, productReference, onSubmit, curre
 
   useEffect(() => {
     currentStocksBatch.forEach(stock => append(stock));
-  }, [append, currentStocksBatch]);
+  }, [currentStocksBatch]);
 
 
 

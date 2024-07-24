@@ -305,8 +305,8 @@ const JewelryCustomization = () => {
                         <div className='mt-8'>
                             <Label htmlFor="description" className="text-lg">Upload any relevant images:</Label>
                             <div className='text-stone-600 text-sm mt-1 mb-2'>Whether it be a sketch or a 3D design, upload any kind of file you think that would help us help you</div>
-                            <ImageUpload msg={`Upload 1 or more images to help us see your vision.`} />
-                        </div>
+                            <ImageUpload  msg={`Upload 1 or more images to help us see your vision.`} />
+                        </div> 
 
                         <div className='mt-8'>
                                 <Label htmlFor="description" className="text-lg">Item Quantity
