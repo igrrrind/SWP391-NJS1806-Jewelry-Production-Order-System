@@ -49,10 +49,10 @@ A 5th semester Mini Capstone project for a software app design, tested and built
 
 ## Prerequisites
 
-Step 1: Clone the repo
-Step 2: Set up the database in MSSQL Server and run it
-Step 3: Clone and run backend with your prefered .NET program compiler
-Step 4: cd frontend/fe-dao, npm install to download dependencies and npm run dev
+- Step 1: Clone the repo
+- Step 2: Set up the database in MSSQL Server and run it
+- Step 3: Clone and run backend with your prefered .NET program compiler
+- Step 4: cd frontend/fe-dao, npm install to download dependencies and npm run dev
 
 
 
